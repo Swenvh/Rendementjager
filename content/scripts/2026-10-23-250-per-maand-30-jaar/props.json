@@ -1,6 +1,6 @@
 {
   "timeline": {
-    "totalMs": 48880,
+    "totalMs": 48680,
     "scenes": [
       {
         "id": "hook",
@@ -30,7 +30,7 @@
       {
         "id": "cta",
         "startMs": 44830,
-        "endMs": 48880
+        "endMs": 48680
       }
     ]
   },
@@ -38,7 +38,7 @@
     "src": null,
     "provider": "none",
     "brandVoice": false,
-    "durationMs": 47280
+    "durationMs": 47080
   },
   "captions": [
     {
@@ -871,43 +871,38 @@
       ]
     },
     {
-      "text": "Volg @rendementjager",
+      "text": "Meer tips?",
       "startMs": 45080,
-      "endMs": 46001,
+      "endMs": 45645,
       "segmentId": "s10",
       "words": [
         {
-          "text": "Volg",
+          "text": "Meer",
           "startMs": 45080,
-          "endMs": 45331
+          "endMs": 45362
         },
         {
-          "text": "@rendementjager",
-          "startMs": 45331,
-          "endMs": 46001
+          "text": "tips?",
+          "startMs": 45362,
+          "endMs": 45645
         }
       ]
     },
     {
-      "text": "voor meer inzicht.",
-      "startMs": 46001,
-      "endMs": 46880,
+      "text": "Volg @rendementjager.",
+      "startMs": 45645,
+      "endMs": 46680,
       "segmentId": "s10",
       "words": [
         {
-          "text": "voor",
-          "startMs": 46001,
-          "endMs": 46252
+          "text": "Volg",
+          "startMs": 45645,
+          "endMs": 45927
         },
         {
-          "text": "meer",
-          "startMs": 46252,
-          "endMs": 46503
-        },
-        {
-          "text": "inzicht.",
-          "startMs": 46503,
-          "endMs": 46880
+          "text": "@rendementjager.",
+          "startMs": 45927,
+          "endMs": 46680
         }
       ]
     }
@@ -916,10 +911,11 @@
     "text": "Hypothetisch rekenvoorbeeld · geen advies · bedragen exclusief kosten en belasting, inflatie alleen waar vermeld"
   },
   "cta": {
-    "text": "Volg @rendementjager voor meer inzicht",
+    "text": "Meer tips? Volg @rendementjager",
     "tagline": "Meer inzicht."
   },
   "background": null,
+  "showProgress": false,
   "kicker": "Geld in cijfers",
   "hookLines": [
     "Wat doet",

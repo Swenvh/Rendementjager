@@ -10,4 +10,4 @@
 | Scène | Voice-over |
 | --- | --- |
 | table | Inleg naast elkaar: €50 tot €500 per maand, bij 8%. Bij 8% per jaar, vóór kosten en belasting. Rekenvoorbeeld, geen garantie of advies. |
-| cta | Meer rekentabellen? Volg @rendementjager. |
+| cta | Meer handige tips? Volg @rendementjager. |

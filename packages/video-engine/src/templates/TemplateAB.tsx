@@ -47,6 +47,7 @@ export const TemplateA: React.FC<TemplateAProps> = (props) => {
       headerLabel="Rendement in 30 sec"
       hideFootnoteIn={['cta']}
       background={props.background}
+      showProgress={props.showProgress}
       blurSceneIds={['chart']}
       renderScene={(id) => {
         if (id === 'hook')
@@ -90,6 +91,7 @@ export const TemplateB: React.FC<TemplateBProps> = (props) => {
       headerLabel="De markt uitgelegd"
       hideFootnoteIn={['cta']}
       background={props.background}
+      showProgress={props.showProgress}
       blurSceneIds={['chart']}
       renderScene={(id) => {
         if (id === 'hook')

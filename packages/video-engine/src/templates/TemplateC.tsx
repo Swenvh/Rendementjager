@@ -163,6 +163,7 @@ export const TemplateC: React.FC<TemplateCProps> = (props) => (
     headerLabel="Geld in cijfers"
     hideFootnoteIn={['cta']}
     background={props.background}
+      showProgress={props.showProgress}
     blurSceneIds={['growth', 'result']}
     renderScene={(id) => {
       switch (id) {

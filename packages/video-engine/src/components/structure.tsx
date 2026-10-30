@@ -113,7 +113,9 @@ export const ReelShell: React.FC<{
   background?: BackgroundProps | null;
   /** Scene ids with chart cards: the footage is blurred and darkened a bit behind them. */
   blurSceneIds?: string[];
-}> = ({ scenes, renderScene, captions, footnote, voiceSrc, headerLabel, hideFootnoteIn = [], background, blurSceneIds = [] }) => {
+  /** Segmented progress bar at the top. OFF by default: viewers scroll away when they see it run out. */
+  showProgress?: boolean;
+}> = ({ scenes, renderScene, captions, footnote, voiceSrc, headerLabel, hideFootnoteIn = [], background, blurSceneIds = [], showProgress = false }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const ms = (frame / fps) * 1000;
@@ -132,7 +134,7 @@ export const ReelShell: React.FC<{
         );
       })}
       <BrandHeader label={headerLabel} />
-      <ProgressIndicator scenes={scenes} />
+      {showProgress ? <ProgressIndicator scenes={scenes} /> : null}
       <CaptionOverlay pages={captions} />
       {current && hideFootnoteIn.includes(current) ? null : <SourceFootnote text={footnote.text} source={footnote.source} />}
       <Grade />

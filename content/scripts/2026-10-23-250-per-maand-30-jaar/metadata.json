@@ -2,8 +2,8 @@
   "slug": "2026-10-23-250-per-maand-30-jaar",
   "title": "Wat doet €250 per maand beleggen over 30 jaar?",
   "template": "TemplateC",
-  "preparedAt": "2026-10-30T15:06:03.297Z",
-  "durationMs": 48880,
+  "preparedAt": "2026-10-30T15:34:44.068Z",
+  "durationMs": 48680,
   "calculation": {
     "engine": "@rj/finance-engine",
     "function": "buildReelCalculation",
@@ -31,7 +31,7 @@
     "qa": {
       "voice": "none",
       "file": null,
-      "durationMs": 47280,
+      "durationMs": 47080,
       "targetLufs": 0,
       "inputLufs": null,
       "outputLufs": null,
@@ -137,11 +137,11 @@
       },
       {
         "id": "s10",
-        "text": "Volg @rendementjager voor meer inzicht.",
-        "spokenText": "Volg rendementjager voor meer inzicht.",
+        "text": "Meer tips? Volg @rendementjager.",
+        "spokenText": "Meer tips? Volg rendementjager.",
         "startMs": 45080,
-        "endMs": 46880,
-        "durationMs": 1800,
+        "endMs": 46680,
+        "durationMs": 1600,
         "cacheHit": false,
         "wordTimingSource": "reading-speed"
       }
@@ -164,17 +164,17 @@
   ],
   "render": {
     "file": "output/reels/2026-10-23-250-per-maand-30-jaar.mp4",
-    "sha256": "0408b55b0056028de22f6b44274ef69761ec43c8faccfdbab681569bfe0b3bc1",
-    "sizeBytes": 14270310,
+    "sha256": "f6dbe00da2b287115f91febb8831598eda7933c412fb786cd7e96dd144f8ce81",
+    "sizeBytes": 14310726,
     "composition": "TemplateC",
     "width": 1080,
     "height": 1920,
     "fps": 30,
-    "durationInFrames": 1467,
+    "durationInFrames": 1461,
     "codec": "h264",
-    "renderedAt": "2026-10-30T15:12:13.056Z",
-    "prepareMs": 77,
-    "renderMs": 365367
+    "renderedAt": "2026-10-30T15:40:53.086Z",
+    "prepareMs": 66,
+    "renderMs": 364275
   },
   "mediaQa": {
     "report": "output/reels/2026-10-23-250-per-maand-30-jaar.qa.json",

@@ -30,9 +30,9 @@ const HASHTAGS = {
   table: { base: ['#beleggen', '#renteoprente', '#financieleeducatie'], pool: ['#vermogensopbouw', '#geldzaken'] },
 } as const;
 const CTAS = [
-  'Volg @rendementjager voor meer inzicht.',
-  'Meer rekenvoorbeelden? Volg @rendementjager.',
-  'Volg @rendementjager voor de volgende berekening.',
+  'Meer tips? Volg @rendementjager.',
+  'Meer handige tips? Volg @rendementjager.',
+  'Volg @rendementjager voor meer tips.',
 ];
 
 const refOf = (fn: string, input: unknown, path: string) => `@rj/finance-engine:${fn}(${JSON.stringify(input)})#${path}`;

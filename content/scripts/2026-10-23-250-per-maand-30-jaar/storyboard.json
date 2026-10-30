@@ -29,7 +29,7 @@
       ]
     },
     "footnote": "Hypothetisch rekenvoorbeeld · geen advies · bedragen exclusief kosten en belasting, inflatie alleen waar vermeld",
-    "cta": "Volg @rendementjager voor meer inzicht"
+    "cta": "Meer tips? Volg @rendementjager"
   },
   "scenes": [
     {
@@ -109,7 +109,7 @@
       "segments": [
         {
           "id": "s10",
-          "text": "Volg @rendementjager voor meer inzicht."
+          "text": "Meer tips? Volg @rendementjager."
         }
       ]
     }

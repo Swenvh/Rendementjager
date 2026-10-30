@@ -2,7 +2,7 @@
   "slug": "2026-10-30-tabel-r8-m50-500-contrast",
   "title": "Inleg naast elkaar: €50 tot €500 per maand, bij 8%",
   "template": "TemplateD",
-  "preparedAt": "2026-10-30T15:25:55.945Z",
+  "preparedAt": "2026-10-30T15:33:09.008Z",
   "durationMs": 10000,
   "table": {
     "origin": "calculated",
@@ -57,7 +57,7 @@
     "qa": {
       "voice": "none",
       "file": null,
-      "durationMs": 13450,
+      "durationMs": 13650,
       "targetLufs": 0,
       "inputLufs": null,
       "outputLufs": null,
@@ -93,11 +93,11 @@
       },
       {
         "id": "s03",
-        "text": "Meer rekentabellen? Volg @rendementjager.",
-        "spokenText": "Meer rekentabellen? Volg rendementjager.",
+        "text": "Meer handige tips? Volg @rendementjager.",
+        "spokenText": "Meer handige tips? Volg rendementjager.",
         "startMs": 11450,
-        "endMs": 13050,
-        "durationMs": 1600,
+        "endMs": 13250,
+        "durationMs": 1800,
         "cacheHit": false,
         "wordTimingSource": "reading-speed"
       }
@@ -118,17 +118,17 @@
   "brand": "@rendementjager",
   "render": {
     "file": "output/reels/2026-10-30-tabel-r8-m50-500-contrast.mp4",
-    "sha256": "209d85f852f3ada38ec76c99a374698382b23fa88c878ce083841d67ae76f379",
-    "sizeBytes": 2771852,
+    "sha256": "49f6e14c80e318966994ed376fce5676c613da8c5f1693fe113732e02cdb63c2",
+    "sizeBytes": 2792260,
     "composition": "TemplateD",
     "width": 1080,
     "height": 1920,
     "fps": 30,
     "durationInFrames": 300,
     "codec": "h264",
-    "renderedAt": "2026-10-30T15:27:15.859Z",
-    "prepareMs": 56,
-    "renderMs": 78500
+    "renderedAt": "2026-10-30T15:34:35.597Z",
+    "prepareMs": 60,
+    "renderMs": 85237
   },
   "mediaQa": {
     "report": "output/reels/2026-10-30-tabel-r8-m50-500-contrast.qa.json",

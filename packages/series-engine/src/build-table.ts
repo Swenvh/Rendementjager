@@ -13,7 +13,7 @@ export const TABLE_FOOTER = 'Rekenvoorbeeld, geen garantie of advies.';
 /** Same disclaimer as the video footer (video-engine TABLE_DISCLAIMER_NL). */
 export const TABLE_DISCLAIMER = 'Rendementen uit het verleden bieden geen garantie voor de toekomst. Geen beleggingsadvies.';
 const SERIES = 'Tabel in cijfers';
-const CTAS = ['Volg @rendementjager voor meer inzicht.', 'Meer rekentabellen? Volg @rendementjager.', 'Volg @rendementjager voor de volgende berekening.'];
+const CTAS = ['Meer tips? Volg @rendementjager.', 'Meer handige tips? Volg @rendementjager.', 'Volg @rendementjager voor meer tips.'];
 const HASHTAGS = ['#beleggen', '#renteoprente', '#financieleeducatie', '#vermogensopbouw', '#geldzaken'];
 
 const range = (a: number[]) => `${eur(Math.min(...a))} tot ${eur(Math.max(...a))}`;

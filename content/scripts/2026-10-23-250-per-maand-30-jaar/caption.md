@@ -8,6 +8,6 @@ Een rekenvoorbeeld:
 
 Belangrijk: dit is een hypothetisch voorbeeld, geen garantie en geen advies. Het eindbedrag is nominaal: kosten, belasting (box 3) en inflatie zitten er niet in. Echte rendementen schommelen en kunnen negatief zijn. Let op! Beleggen brengt risico's met zich mee. Je kunt (een deel van) je inleg verliezen.
 
-Volg @rendementjager voor meer inzicht.
+Meer tips? Volg @rendementjager.
 
 #beleggen #renteoprente #financieleeducatie #geldzaken #vermogenopbouwen

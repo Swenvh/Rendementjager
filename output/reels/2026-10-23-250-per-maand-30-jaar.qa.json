@@ -1,6 +1,6 @@
 {
   "file": "output/reels/2026-10-23-250-per-maand-30-jaar.mp4",
-  "checkedAt": "2026-10-30T15:12:13.055Z",
+  "checkedAt": "2026-10-30T15:40:53.085Z",
   "pass": true,
   "issues": [],
   "voice": "none",
@@ -10,7 +10,7 @@
     "height": 1920,
     "fps": 30,
     "pixFmt": "yuv420p",
-    "durationS": 48.9
+    "durationS": 48.7
   },
   "audio": {
     "present": false,
@@ -21,54 +21,54 @@
     "meanVolumeDb": null,
     "silent": null
   },
-  "expectedDurationMs": 48880,
+  "expectedDurationMs": 48680,
   "frames": [
     {
       "timeS": 2.988,
       "label": "hook",
       "file": "output/reels/2026-10-23-250-per-maand-30-jaar.frames/01-hook-3.0s.png",
-      "mean": 34.63,
-      "stdDev": 39.24,
+      "mean": 34.54,
+      "stdDev": 39.21,
       "blank": false
     },
     {
       "timeS": 12.207,
       "label": "assumptions",
       "file": "output/reels/2026-10-23-250-per-maand-30-jaar.frames/02-assumptions-12.2s.png",
-      "mean": 30.11,
-      "stdDev": 22.26,
+      "mean": 29.96,
+      "stdDev": 22.07,
       "blank": false
     },
     {
       "timeS": 21.582,
       "label": "growth",
       "file": "output/reels/2026-10-23-250-per-maand-30-jaar.frames/03-growth-21.6s.png",
-      "mean": 31.07,
-      "stdDev": 27.37,
+      "mean": 30.86,
+      "stdDev": 27.11,
       "blank": false
     },
     {
       "timeS": 31.116,
       "label": "result",
       "file": "output/reels/2026-10-23-250-per-maand-30-jaar.frames/04-result-31.1s.png",
-      "mean": 37.82,
-      "stdDev": 42.73,
+      "mean": 37.55,
+      "stdDev": 42.55,
       "blank": false
     },
     {
       "timeS": 41.764,
       "label": "risks",
       "file": "output/reels/2026-10-23-250-per-maand-30-jaar.frames/05-risks-41.8s.png",
-      "mean": 30.39,
-      "stdDev": 24.45,
+      "mean": 30.06,
+      "stdDev": 23.94,
       "blank": false
     },
     {
-      "timeS": 47.746,
+      "timeS": 47.602,
       "label": "cta",
-      "file": "output/reels/2026-10-23-250-per-maand-30-jaar.frames/06-cta-47.7s.png",
-      "mean": 29.87,
-      "stdDev": 25.88,
+      "file": "output/reels/2026-10-23-250-per-maand-30-jaar.frames/06-cta-47.6s.png",
+      "mean": 29.59,
+      "stdDev": 26.04,
       "blank": false
     }
   ],

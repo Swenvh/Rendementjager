@@ -1,6 +1,6 @@
 {
   "file": "output/reels/2026-10-30-tabel-r8-m50-500-contrast.mp4",
-  "checkedAt": "2026-10-30T15:27:15.858Z",
+  "checkedAt": "2026-10-30T15:34:35.596Z",
   "pass": true,
   "issues": [],
   "voice": "none",
@@ -27,16 +27,16 @@
       "timeS": 5.94,
       "label": "table",
       "file": "output/reels/2026-10-30-tabel-r8-m50-500-contrast.frames/01-table-5.9s.png",
-      "mean": 45.93,
-      "stdDev": 52.21,
+      "mean": 45.74,
+      "stdDev": 52.14,
       "blank": false
     },
     {
       "timeS": 9.51,
       "label": "cta",
       "file": "output/reels/2026-10-30-tabel-r8-m50-500-contrast.frames/02-cta-9.5s.png",
-      "mean": 30.6,
-      "stdDev": 28.52,
+      "mean": 30.11,
+      "stdDev": 27.9,
       "blank": false
     }
   ],

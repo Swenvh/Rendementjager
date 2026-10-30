@@ -138,6 +138,7 @@ export const TemplateD: React.FC<TemplateDProps> = (props) => {
       headerLabel={props.kicker}
       hideFootnoteIn={['cta']}
       background={props.background}
+      showProgress={props.showProgress}
       blurSceneIds={['table']}
       renderScene={(id) => {
         if (id === 'table') return <TableScene props={props} />;

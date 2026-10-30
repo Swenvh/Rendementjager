@@ -11,6 +11,6 @@ Rendementen uit het verleden bieden geen garantie voor de toekomst. Geen beleggi
 Dit is een hypothetisch rekenvoorbeeld, geen garantie en geen advies.
 Let op! Beleggen brengt risico's met zich mee. Je kunt (een deel van) je inleg verliezen.
 
-Meer rekentabellen? Volg @rendementjager.
+Meer handige tips? Volg @rendementjager.
 
 #beleggen #renteoprente #financieleeducatie #vermogensopbouw #geldzaken

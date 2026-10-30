@@ -18,17 +18,18 @@
     "src": null,
     "provider": "none",
     "brandVoice": false,
-    "durationMs": 13450
+    "durationMs": 13650
   },
   "captions": [],
   "footnote": {
     "text": "Rendementen uit het verleden bieden geen garantie voor de toekomst. Geen beleggingsadvies."
   },
   "cta": {
-    "text": "Meer rekentabellen? Volg @rendementjager",
+    "text": "Meer handige tips? Volg @rendementjager",
     "tagline": "Meer inzicht."
   },
   "background": null,
+  "showProgress": false,
   "kicker": "Tabel in cijfers",
   "title": "Inleg naast elkaar: €50 tot €500 per maand, bij 8%",
   "subtitle": "Bij 8% per jaar. Bedragen vóór kosten en belasting.",

@@ -58,6 +58,8 @@ const shellSchema = z.object({
   cta: z.object({ text: z.string(), tagline: z.string() }),
   /** null/absent = animated dark-green fallback background. */
   background: backgroundSchema.nullable().optional(),
+  /** Segmented progress bar: off by default in every template. */
+  showProgress: z.boolean().default(false),
   /** Show the dim "Illustratief" hint etc. Always on for illustrative visuals. */
 });
 
