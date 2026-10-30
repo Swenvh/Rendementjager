@@ -1,0 +1,141 @@
+{
+  "timeline": {
+    "totalMs": 18540,
+    "scenes": [
+      {
+        "id": "table",
+        "startMs": 0,
+        "endMs": 15040
+      },
+      {
+        "id": "cta",
+        "startMs": 15040,
+        "endMs": 18540
+      }
+    ]
+  },
+  "voice": {
+    "src": null,
+    "provider": "none",
+    "brandVoice": false,
+    "durationMs": 17290
+  },
+  "captions": [],
+  "footnote": {
+    "text": "Rendementen uit het verleden bieden geen garantie voor de toekomst. Geen beleggingsadvies."
+  },
+  "cta": {
+    "text": "Meer rekentabellen? Volg @rendementjager",
+    "tagline": "Meer inzicht."
+  },
+  "background": null,
+  "kicker": "Tabel in cijfers",
+  "title": "Inleg en looptijd vergeleken: €50 tot €500 per maand, 8%",
+  "columns": [
+    {
+      "key": "amount",
+      "label": "Inleg p/m",
+      "kind": "label"
+    },
+    {
+      "key": "y10",
+      "label": "10 jaar",
+      "kind": "value"
+    },
+    {
+      "key": "y20",
+      "label": "20 jaar",
+      "kind": "value"
+    },
+    {
+      "key": "y30",
+      "label": "30 jaar",
+      "kind": "value"
+    }
+  ],
+  "rows": [
+    {
+      "cells": {
+        "amount": "€50",
+        "y10": "€9.006",
+        "y20": "€28.450",
+        "y30": "€70.428"
+      },
+      "highlight": false
+    },
+    {
+      "cells": {
+        "amount": "€100",
+        "y10": "€18.012",
+        "y20": "€56.900",
+        "y30": "€140.855"
+      },
+      "highlight": false
+    },
+    {
+      "cells": {
+        "amount": "€150",
+        "y10": "€27.019",
+        "y20": "€85.350",
+        "y30": "€211.283"
+      },
+      "highlight": false
+    },
+    {
+      "cells": {
+        "amount": "€200",
+        "y10": "€36.025",
+        "y20": "€113.800",
+        "y30": "€281.710"
+      },
+      "highlight": false
+    },
+    {
+      "cells": {
+        "amount": "€250",
+        "y10": "€45.031",
+        "y20": "€142.250",
+        "y30": "€352.138"
+      },
+      "highlight": true
+    },
+    {
+      "cells": {
+        "amount": "€300",
+        "y10": "€54.037",
+        "y20": "€170.700",
+        "y30": "€422.565"
+      },
+      "highlight": false
+    },
+    {
+      "cells": {
+        "amount": "€400",
+        "y10": "€72.050",
+        "y20": "€227.600",
+        "y30": "€563.420"
+      },
+      "highlight": false
+    },
+    {
+      "cells": {
+        "amount": "€500",
+        "y10": "€90.062",
+        "y20": "€284.500",
+        "y30": "€704.275"
+      },
+      "highlight": false
+    }
+  ],
+  "source": {
+    "name": "Eigen rekenvoorbeeld met @rj/finance-engine"
+  },
+  "asOfDate": "2026-10-30",
+  "dataOrigin": "calculated",
+  "disclaimer": "Rendementen uit het verleden bieden geen garantie voor de toekomst. Geen beleggingsadvies.",
+  "assumptions": [
+    "Rekenvoorbeeld: 8% effectief per jaar (hypothetisch)",
+    "inleg aan het eind van de maand",
+    "nominaal, zonder kosten, belasting en inflatie"
+  ]
+}

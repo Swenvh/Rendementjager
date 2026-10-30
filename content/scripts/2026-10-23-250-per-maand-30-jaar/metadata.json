@@ -2,7 +2,7 @@
   "slug": "2026-10-23-250-per-maand-30-jaar",
   "title": "Wat doet €250 per maand beleggen over 30 jaar?",
   "template": "TemplateC",
-  "preparedAt": "2026-10-30T14:53:50.343Z",
+  "preparedAt": "2026-10-30T15:06:03.297Z",
   "durationMs": 48880,
   "calculation": {
     "engine": "@rj/finance-engine",
@@ -172,9 +172,9 @@
     "fps": 30,
     "durationInFrames": 1467,
     "codec": "h264",
-    "renderedAt": "2026-10-30T15:00:17.572Z",
-    "prepareMs": 83,
-    "renderMs": 382198
+    "renderedAt": "2026-10-30T15:12:13.056Z",
+    "prepareMs": 77,
+    "renderMs": 365367
   },
   "mediaQa": {
     "report": "output/reels/2026-10-23-250-per-maand-30-jaar.qa.json",

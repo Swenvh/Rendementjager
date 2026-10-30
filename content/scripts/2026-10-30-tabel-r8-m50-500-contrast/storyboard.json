@@ -1,0 +1,73 @@
+{
+  "slug": "2026-10-30-tabel-r8-m50-500-contrast",
+  "title": "Inleg en looptijd vergeleken: €50 tot €500 per maand, 8%",
+  "template": "TemplateD",
+  "series": "Tabel in cijfers",
+  "language": "nl",
+  "table": {
+    "kind": "matrix",
+    "annualReturn": 0.08,
+    "amounts": [
+      50,
+      100,
+      150,
+      200,
+      250,
+      300,
+      400,
+      500
+    ],
+    "horizons": [
+      10,
+      20,
+      30
+    ],
+    "title": "Inleg en looptijd vergeleken: €50 tot €500 per maand, 8%"
+  },
+  "onScreen": {
+    "kicker": "Tabel in cijfers",
+    "hookLines": [
+      "Inleg en looptijd vergeleken: €50 tot €500 per maand, 8%"
+    ],
+    "hookHighlightLine": 0,
+    "assumptionsFootnote": "Rekenvoorbeeld: 8% effectief per jaar (hypothetisch), inleg aan het eind van de maand, nominaal, zonder kosten, belasting en inflatie.",
+    "risks": {
+      "title": "Let op",
+      "items": [
+        "Hypothetisch voorbeeld, geen garantie",
+        "Nominaal: exclusief kosten, belasting en inflatie",
+        "Rendementen uit het verleden bieden geen garantie voor de toekomst. Geen beleggingsadvies."
+      ]
+    },
+    "footnote": "Rendementen uit het verleden bieden geen garantie voor de toekomst. Geen beleggingsadvies.",
+    "cta": "Meer rekentabellen? Volg @rendementjager"
+  },
+  "scenes": [
+    {
+      "id": "table",
+      "visual": "Titelblok (licht label), kolomkop en rijen een voor een; voetregel met aannames, disclaimer en bron.",
+      "segments": [
+        {
+          "id": "s01",
+          "text": "Inleg en looptijd vergeleken: €50 tot €500 per maand, 8% Dit is een rekenvoorbeeld met 8% per jaar, zonder kosten en belasting.",
+          "pauseAfterMs": 450
+        },
+        {
+          "id": "s02",
+          "text": "Rendementen uit het verleden bieden geen garantie voor de toekomst. Geen beleggingsadvies.",
+          "pauseAfterMs": 450
+        }
+      ]
+    },
+    {
+      "id": "cta",
+      "visual": "Branded outro met CTA.",
+      "segments": [
+        {
+          "id": "s03",
+          "text": "Meer rekentabellen? Volg @rendementjager."
+        }
+      ]
+    }
+  ]
+}

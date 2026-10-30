@@ -1,0 +1,235 @@
+{
+  "claims": [
+    {
+      "calculationRef": "@rj/finance-engine:futureValueOfMonthlyContributions(annualReturn=0.08)#input.annualReturn",
+      "claimText": "Hypothetisch rendement 8% effectief per jaar (aanname)",
+      "key": "return",
+      "role": "assumption",
+      "unit": "percent",
+      "value": 8
+    },
+    {
+      "calculationRef": "@rj/finance-engine:futureValueOfMonthlyContributions({\"monthlyContribution\":50,\"years\":10,\"annualReturn\":0.08,\"compounding\":\"monthly\",\"timing\":\"end\",\"rateConvention\":\"effective\",\"annualCostRate\":0})#totals.endValueNominal",
+      "claimText": "Bij €50 per maand is het eindbedrag na 10 jaar €9.006 (nominaal)",
+      "key": "m50y10",
+      "role": "result",
+      "unit": "EUR",
+      "value": 9006
+    },
+    {
+      "calculationRef": "@rj/finance-engine:futureValueOfMonthlyContributions({\"monthlyContribution\":50,\"years\":20,\"annualReturn\":0.08,\"compounding\":\"monthly\",\"timing\":\"end\",\"rateConvention\":\"effective\",\"annualCostRate\":0})#totals.endValueNominal",
+      "claimText": "Bij €50 per maand is het eindbedrag na 20 jaar €28.450 (nominaal)",
+      "key": "m50y20",
+      "role": "result",
+      "unit": "EUR",
+      "value": 28450
+    },
+    {
+      "calculationRef": "@rj/finance-engine:futureValueOfMonthlyContributions({\"monthlyContribution\":50,\"years\":30,\"annualReturn\":0.08,\"compounding\":\"monthly\",\"timing\":\"end\",\"rateConvention\":\"effective\",\"annualCostRate\":0})#totals.endValueNominal",
+      "claimText": "Bij €50 per maand is het eindbedrag na 30 jaar €70.428 (nominaal)",
+      "key": "m50y30",
+      "role": "result",
+      "unit": "EUR",
+      "value": 70428
+    },
+    {
+      "calculationRef": "@rj/finance-engine:futureValueOfMonthlyContributions({\"monthlyContribution\":100,\"years\":10,\"annualReturn\":0.08,\"compounding\":\"monthly\",\"timing\":\"end\",\"rateConvention\":\"effective\",\"annualCostRate\":0})#totals.endValueNominal",
+      "claimText": "Bij €100 per maand is het eindbedrag na 10 jaar €18.012 (nominaal)",
+      "key": "m100y10",
+      "role": "result",
+      "unit": "EUR",
+      "value": 18012
+    },
+    {
+      "calculationRef": "@rj/finance-engine:futureValueOfMonthlyContributions({\"monthlyContribution\":100,\"years\":20,\"annualReturn\":0.08,\"compounding\":\"monthly\",\"timing\":\"end\",\"rateConvention\":\"effective\",\"annualCostRate\":0})#totals.endValueNominal",
+      "claimText": "Bij €100 per maand is het eindbedrag na 20 jaar €56.900 (nominaal)",
+      "key": "m100y20",
+      "role": "result",
+      "unit": "EUR",
+      "value": 56900
+    },
+    {
+      "calculationRef": "@rj/finance-engine:futureValueOfMonthlyContributions({\"monthlyContribution\":100,\"years\":30,\"annualReturn\":0.08,\"compounding\":\"monthly\",\"timing\":\"end\",\"rateConvention\":\"effective\",\"annualCostRate\":0})#totals.endValueNominal",
+      "claimText": "Bij €100 per maand is het eindbedrag na 30 jaar €140.855 (nominaal)",
+      "key": "m100y30",
+      "role": "result",
+      "unit": "EUR",
+      "value": 140855
+    },
+    {
+      "calculationRef": "@rj/finance-engine:futureValueOfMonthlyContributions({\"monthlyContribution\":150,\"years\":10,\"annualReturn\":0.08,\"compounding\":\"monthly\",\"timing\":\"end\",\"rateConvention\":\"effective\",\"annualCostRate\":0})#totals.endValueNominal",
+      "claimText": "Bij €150 per maand is het eindbedrag na 10 jaar €27.019 (nominaal)",
+      "key": "m150y10",
+      "role": "result",
+      "unit": "EUR",
+      "value": 27019
+    },
+    {
+      "calculationRef": "@rj/finance-engine:futureValueOfMonthlyContributions({\"monthlyContribution\":150,\"years\":20,\"annualReturn\":0.08,\"compounding\":\"monthly\",\"timing\":\"end\",\"rateConvention\":\"effective\",\"annualCostRate\":0})#totals.endValueNominal",
+      "claimText": "Bij €150 per maand is het eindbedrag na 20 jaar €85.350 (nominaal)",
+      "key": "m150y20",
+      "role": "result",
+      "unit": "EUR",
+      "value": 85350
+    },
+    {
+      "calculationRef": "@rj/finance-engine:futureValueOfMonthlyContributions({\"monthlyContribution\":150,\"years\":30,\"annualReturn\":0.08,\"compounding\":\"monthly\",\"timing\":\"end\",\"rateConvention\":\"effective\",\"annualCostRate\":0})#totals.endValueNominal",
+      "claimText": "Bij €150 per maand is het eindbedrag na 30 jaar €211.283 (nominaal)",
+      "key": "m150y30",
+      "role": "result",
+      "unit": "EUR",
+      "value": 211283
+    },
+    {
+      "calculationRef": "@rj/finance-engine:futureValueOfMonthlyContributions({\"monthlyContribution\":200,\"years\":10,\"annualReturn\":0.08,\"compounding\":\"monthly\",\"timing\":\"end\",\"rateConvention\":\"effective\",\"annualCostRate\":0})#totals.endValueNominal",
+      "claimText": "Bij €200 per maand is het eindbedrag na 10 jaar €36.025 (nominaal)",
+      "key": "m200y10",
+      "role": "result",
+      "unit": "EUR",
+      "value": 36025
+    },
+    {
+      "calculationRef": "@rj/finance-engine:futureValueOfMonthlyContributions({\"monthlyContribution\":200,\"years\":20,\"annualReturn\":0.08,\"compounding\":\"monthly\",\"timing\":\"end\",\"rateConvention\":\"effective\",\"annualCostRate\":0})#totals.endValueNominal",
+      "claimText": "Bij €200 per maand is het eindbedrag na 20 jaar €113.800 (nominaal)",
+      "key": "m200y20",
+      "role": "result",
+      "unit": "EUR",
+      "value": 113800
+    },
+    {
+      "calculationRef": "@rj/finance-engine:futureValueOfMonthlyContributions({\"monthlyContribution\":200,\"years\":30,\"annualReturn\":0.08,\"compounding\":\"monthly\",\"timing\":\"end\",\"rateConvention\":\"effective\",\"annualCostRate\":0})#totals.endValueNominal",
+      "claimText": "Bij €200 per maand is het eindbedrag na 30 jaar €281.710 (nominaal)",
+      "key": "m200y30",
+      "role": "result",
+      "unit": "EUR",
+      "value": 281710
+    },
+    {
+      "calculationRef": "@rj/finance-engine:futureValueOfMonthlyContributions({\"monthlyContribution\":250,\"years\":10,\"annualReturn\":0.08,\"compounding\":\"monthly\",\"timing\":\"end\",\"rateConvention\":\"effective\",\"annualCostRate\":0})#totals.endValueNominal",
+      "claimText": "Bij €250 per maand is het eindbedrag na 10 jaar €45.031 (nominaal)",
+      "key": "m250y10",
+      "role": "result",
+      "unit": "EUR",
+      "value": 45031
+    },
+    {
+      "calculationRef": "@rj/finance-engine:futureValueOfMonthlyContributions({\"monthlyContribution\":250,\"years\":20,\"annualReturn\":0.08,\"compounding\":\"monthly\",\"timing\":\"end\",\"rateConvention\":\"effective\",\"annualCostRate\":0})#totals.endValueNominal",
+      "claimText": "Bij €250 per maand is het eindbedrag na 20 jaar €142.250 (nominaal)",
+      "key": "m250y20",
+      "role": "result",
+      "unit": "EUR",
+      "value": 142250
+    },
+    {
+      "calculationRef": "@rj/finance-engine:futureValueOfMonthlyContributions({\"monthlyContribution\":250,\"years\":30,\"annualReturn\":0.08,\"compounding\":\"monthly\",\"timing\":\"end\",\"rateConvention\":\"effective\",\"annualCostRate\":0})#totals.endValueNominal",
+      "claimText": "Bij €250 per maand is het eindbedrag na 30 jaar €352.138 (nominaal)",
+      "key": "m250y30",
+      "role": "result",
+      "unit": "EUR",
+      "value": 352138
+    },
+    {
+      "calculationRef": "@rj/finance-engine:futureValueOfMonthlyContributions({\"monthlyContribution\":300,\"years\":10,\"annualReturn\":0.08,\"compounding\":\"monthly\",\"timing\":\"end\",\"rateConvention\":\"effective\",\"annualCostRate\":0})#totals.endValueNominal",
+      "claimText": "Bij €300 per maand is het eindbedrag na 10 jaar €54.037 (nominaal)",
+      "key": "m300y10",
+      "role": "result",
+      "unit": "EUR",
+      "value": 54037
+    },
+    {
+      "calculationRef": "@rj/finance-engine:futureValueOfMonthlyContributions({\"monthlyContribution\":300,\"years\":20,\"annualReturn\":0.08,\"compounding\":\"monthly\",\"timing\":\"end\",\"rateConvention\":\"effective\",\"annualCostRate\":0})#totals.endValueNominal",
+      "claimText": "Bij €300 per maand is het eindbedrag na 20 jaar €170.700 (nominaal)",
+      "key": "m300y20",
+      "role": "result",
+      "unit": "EUR",
+      "value": 170700
+    },
+    {
+      "calculationRef": "@rj/finance-engine:futureValueOfMonthlyContributions({\"monthlyContribution\":300,\"years\":30,\"annualReturn\":0.08,\"compounding\":\"monthly\",\"timing\":\"end\",\"rateConvention\":\"effective\",\"annualCostRate\":0})#totals.endValueNominal",
+      "claimText": "Bij €300 per maand is het eindbedrag na 30 jaar €422.565 (nominaal)",
+      "key": "m300y30",
+      "role": "result",
+      "unit": "EUR",
+      "value": 422565
+    },
+    {
+      "calculationRef": "@rj/finance-engine:futureValueOfMonthlyContributions({\"monthlyContribution\":400,\"years\":10,\"annualReturn\":0.08,\"compounding\":\"monthly\",\"timing\":\"end\",\"rateConvention\":\"effective\",\"annualCostRate\":0})#totals.endValueNominal",
+      "claimText": "Bij €400 per maand is het eindbedrag na 10 jaar €72.050 (nominaal)",
+      "key": "m400y10",
+      "role": "result",
+      "unit": "EUR",
+      "value": 72050
+    },
+    {
+      "calculationRef": "@rj/finance-engine:futureValueOfMonthlyContributions({\"monthlyContribution\":400,\"years\":20,\"annualReturn\":0.08,\"compounding\":\"monthly\",\"timing\":\"end\",\"rateConvention\":\"effective\",\"annualCostRate\":0})#totals.endValueNominal",
+      "claimText": "Bij €400 per maand is het eindbedrag na 20 jaar €227.600 (nominaal)",
+      "key": "m400y20",
+      "role": "result",
+      "unit": "EUR",
+      "value": 227600
+    },
+    {
+      "calculationRef": "@rj/finance-engine:futureValueOfMonthlyContributions({\"monthlyContribution\":400,\"years\":30,\"annualReturn\":0.08,\"compounding\":\"monthly\",\"timing\":\"end\",\"rateConvention\":\"effective\",\"annualCostRate\":0})#totals.endValueNominal",
+      "claimText": "Bij €400 per maand is het eindbedrag na 30 jaar €563.420 (nominaal)",
+      "key": "m400y30",
+      "role": "result",
+      "unit": "EUR",
+      "value": 563420
+    },
+    {
+      "calculationRef": "@rj/finance-engine:futureValueOfMonthlyContributions({\"monthlyContribution\":500,\"years\":10,\"annualReturn\":0.08,\"compounding\":\"monthly\",\"timing\":\"end\",\"rateConvention\":\"effective\",\"annualCostRate\":0})#totals.endValueNominal",
+      "claimText": "Bij €500 per maand is het eindbedrag na 10 jaar €90.062 (nominaal)",
+      "key": "m500y10",
+      "role": "result",
+      "unit": "EUR",
+      "value": 90062
+    },
+    {
+      "calculationRef": "@rj/finance-engine:futureValueOfMonthlyContributions({\"monthlyContribution\":500,\"years\":20,\"annualReturn\":0.08,\"compounding\":\"monthly\",\"timing\":\"end\",\"rateConvention\":\"effective\",\"annualCostRate\":0})#totals.endValueNominal",
+      "claimText": "Bij €500 per maand is het eindbedrag na 20 jaar €284.500 (nominaal)",
+      "key": "m500y20",
+      "role": "result",
+      "unit": "EUR",
+      "value": 284500
+    },
+    {
+      "calculationRef": "@rj/finance-engine:futureValueOfMonthlyContributions({\"monthlyContribution\":500,\"years\":30,\"annualReturn\":0.08,\"compounding\":\"monthly\",\"timing\":\"end\",\"rateConvention\":\"effective\",\"annualCostRate\":0})#totals.endValueNominal",
+      "claimText": "Bij €500 per maand is het eindbedrag na 30 jaar €704.275 (nominaal)",
+      "key": "m500y30",
+      "role": "result",
+      "unit": "EUR",
+      "value": 704275
+    }
+  ],
+  "contentHash": "b75570dc6cceb94bfeff11475752c1d16806f1be75b8268ba94f7d77327db690",
+  "hashtags": [
+    "#beleggen",
+    "#renteoprente",
+    "#financieleeducatie",
+    "#vermogensopbouw",
+    "#geldzaken"
+  ],
+  "hook": "Inleg en looptijd vergeleken: €50 tot €500 per maand, 8%",
+  "hookPattern": "contrast",
+  "kind": "table",
+  "pillar": "vermogensopbouw",
+  "propsHash": "c01955e6aa03983d40690bb631ed46d961066b9da6062f2997c2cd0024adebb4",
+  "series": "Tabel in cijfers",
+  "slug": "2026-10-30-tabel-r8-m50-500-contrast",
+  "tags": {
+    "amount": 500,
+    "durationS": 13.1,
+    "hookPattern": "contrast",
+    "horizon": 30,
+    "kind": "table",
+    "ratePct": 8,
+    "template": "D",
+    "trial": true,
+    "variantGroup": "table-r8-m50-100-150-200-250-300-400-500-y10-20-30",
+    "variantIndex": 2
+  },
+  "title": "Inleg en looptijd vergeleken: €50 tot €500 per maand, 8%",
+  "topicKey": "table:r8:m50-100-150-200-250-300-400-500:y10-20-30",
+  "trial": true,
+  "version": 1
+}

@@ -1,0 +1,44 @@
+{
+  "file": "output/reels/2026-10-30-tabel-r8-m50-500-contrast.mp4",
+  "checkedAt": "2026-10-30T15:06:01.980Z",
+  "pass": true,
+  "issues": [],
+  "voice": "none",
+  "video": {
+    "codec": "h264",
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "pixFmt": "yuv420p",
+    "durationS": 18.566667
+  },
+  "audio": {
+    "present": false,
+    "codec": null,
+    "sampleRate": null,
+    "integratedLufs": null,
+    "maxVolumeDb": null,
+    "meanVolumeDb": null,
+    "silent": null
+  },
+  "expectedDurationMs": 18540,
+  "frames": [
+    {
+      "timeS": 10.829,
+      "label": "table",
+      "file": "output/reels/2026-10-30-tabel-r8-m50-500-contrast.frames/01-table-10.8s.png",
+      "mean": 45.44,
+      "stdDev": 50.62,
+      "blank": false
+    },
+    {
+      "timeS": 17.56,
+      "label": "cta",
+      "file": "output/reels/2026-10-30-tabel-r8-m50-500-contrast.frames/02-cta-17.6s.png",
+      "mean": 30.64,
+      "stdDev": 28.47,
+      "blank": false
+    }
+  ],
+  "reportPath": "output/reels/2026-10-30-tabel-r8-m50-500-contrast.qa.json"
+}

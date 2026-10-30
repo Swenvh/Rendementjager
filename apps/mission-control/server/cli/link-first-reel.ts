@@ -14,8 +14,12 @@ import { sha256File, WorkflowService } from '@rj/content-engine';
 import { openRepository, REPO_ROOT } from '@rj/database';
 import { captionHash, newId, topicHash } from '@rj/shared';
 
-const TITLE = 'Wat doet €250 per maand beleggen over 30 jaar?';
-const SLUG = '2026-10-23-250-per-maand-30-jaar';
+// Optional first argument: another content slug (title read from content/scripts/<slug>/metadata.json).
+const SLUG = process.argv[2] ?? '2026-10-23-250-per-maand-30-jaar';
+const TITLE =
+  process.argv[2] === undefined
+    ? 'Wat doet €250 per maand beleggen over 30 jaar?'
+    : (JSON.parse(readFileSync(join(REPO_ROOT, 'content', 'scripts', SLUG, 'metadata.json'), 'utf8')) as { title: string }).title;
 const ACTOR = 'chief-of-staff';
 
 const video = join(REPO_ROOT, 'output', 'reels', `${SLUG}.mp4`);
