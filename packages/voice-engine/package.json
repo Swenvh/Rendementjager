@@ -1,0 +1,14 @@
+{
+  "name": "@rj/voice-engine",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "TTS provider interface: ElevenLabs adapter + labelled local fallback (espeak-ng), Dutch normalization, cache, audio QA",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc -p ."
+  }
+}

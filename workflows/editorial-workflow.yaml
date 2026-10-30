@@ -1,0 +1,118 @@
+# Rendementjager editorial workflow: idea -> analytics (16 steps).
+# Status: DESIGN. Stage names and gates follow docs/BUILD_CONTRACT.md; enforcement lives in
+# @rj/content-engine. Commands marked to_be_verified depend on packages still being built.
+id: editorial-workflow
+version: 1
+owner_approval_required_for: [SCHEDULED, PUBLISHED]
+max_parallel_subagents: 3
+steps:
+  - n: 1
+    id: capture-idea
+    stage_after: IDEA
+    actor: content-strategist
+    skill: research-topics
+    output: ContentIdea
+    rule: dedupe by topic content hash (@rj/research-engine) before creating
+  - n: 2
+    id: research
+    stage_before: IDEA
+    stage_after: RESEARCHING
+    actor: research-analyst
+    output: ResearchBrief
+    store: content/research/
+  - n: 3
+    id: gate-g1-research
+    gate: G1
+    stage_after: RESEARCHED
+    actor: rj-chief-of-staff
+    pass_criteria: ">=2 approved sources per key fact; question and angle clear; not a duplicate"
+    on_fail: ARCHIVED or back to RESEARCHING
+  - n: 4
+    id: write-script
+    stage_after: SCRIPTING
+    actor: editorial-copywriter
+    output: Script
+    store: content/scripts/
+    rule: every number tagged with finance-engine calculation id or source id
+  - n: 5
+    id: compute-figures
+    actor: editorial-copywriter
+    tool: "@rj/finance-engine"
+    rule: no hand-typed figures; inputs and assumptions stored with the item
+  - n: 6
+    id: gate-g2-editorial
+    gate: G2
+    stage_after: SCRIPT_READY
+    actor: content-strategist
+    skill: review-content
+    pass_criteria: "hook <=2s, one idea, 3-5 beats, one CTA, Dutch tone, fits template length"
+  - n: 7
+    id: fact-check
+    stage_after: FACT_CHECK
+    actor: financial-fact-checker
+    output: FactCheck
+  - n: 8
+    id: compliance-review
+    actor: compliance-reviewer
+    output: ComplianceReview
+    parallel_with: fact-check
+  - n: 9
+    id: gate-g3
+    gate: G3
+    stage_after: APPROVED_FOR_PRODUCTION
+    requires: [FactCheck.verdict == pass, ComplianceReview.verdict == pass]
+    on_fail: REVISION_REQUIRED (back to step 4)
+    invalidation: "script change after G3 invalidates G2 and G3"
+    store: content/approved/
+  - n: 10
+    id: creative-brief
+    actor: creative-director
+    output: Storyboard
+    rule: pick Template A/B/C, scenes, chart types; tokens from @rj/brand
+  - n: 11
+    id: generate-audio
+    stage_after: AUDIO_GENERATING
+    actor: audio-voice-producer
+    job: generate_audio
+    rule: fallback audio labelled "not brand voice"; cache by text hash
+  - n: 12
+    id: render
+    stage_after: RENDERING
+    actor: remotion-video-engineer
+    skill: render-content
+    command: "npm run render -w @rj/video-engine -- --content <slug>"   # to_be_verified
+    output: [output/reels/<slug>.mp4, output/covers/<slug>.png]
+    then_stage: RENDERED
+  - n: 13
+    id: gate-g4-media-qa
+    gate: G4
+    stage_before: QA_REVIEW
+    stage_after: READY_FOR_EDITOR
+    actor: qa-reliability-engineer
+    command: "npm run qa -w @rj/video-engine -- output/reels/<slug>.mp4"   # to_be_verified
+    output: "media_qa job result"
+  - n: 14
+    id: gate-g5-owner-approval
+    gate: G5
+    stage_after: APPROVED_FOR_PUBLISHING
+    actor: owner          # ONLY the owner; no agent may perform this step
+    via: Mission Control (http://localhost:8787 API / :5173 UI)
+    binds: [video_sha256, caption_hash]
+    invalidation: "asset or caption change after G5 invalidates G5"
+  - n: 15
+    id: schedule-publish
+    stage_after: SCHEDULED   # then PUBLISHED when the platform confirms
+    actor: distribution-manager
+    preconditions:
+      - valid G5 exists
+      - sha256(file to send) == approval.video_sha256
+      - caption hash == approval.caption_hash
+      - RJ_EMERGENCY_STOP != 1
+    mode: mock   # live publishing not activated (docs/INTEGRATIONS.md)
+  - n: 16
+    id: analytics
+    actor: growth-analyst
+    skill: analyze-performance
+    output: AnalyticsSnapshot (+ report in output/reports/)
+    schedule: snapshots at +24h, +72h, +7d, +28d after PUBLISHED
+    rule: unavailable metrics are null, never 0

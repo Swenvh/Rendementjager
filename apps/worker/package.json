@@ -1,0 +1,18 @@
+{
+  "name": "@rj/worker",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": { ".": "./src/index.ts" },
+  "scripts": {
+    "start": "tsx src/cli.ts",
+    "test": "vitest run",
+    "typecheck": "tsc -p ."
+  },
+  "dependencies": {
+    "@rj/shared": "*",
+    "@rj/database": "*",
+    "@rj/content-engine": "*",
+    "@rj/integrations": "*"
+  }
+}

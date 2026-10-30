@@ -1,0 +1,31 @@
+{
+  "name": "rendementjager-ai-factory",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Rendementjager — AI Content Factory voor Nederlandstalige financiële educatie",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "test": "npm run test --workspaces --if-present && npm run test:integration",
+    "test:integration": "vitest run --dir tests",
+    "typecheck": "npm run typecheck --workspaces --if-present && tsc -p tests",
+    "db:migrate": "tsx packages/database/src/cli/migrate.ts",
+    "db:seed": "tsx packages/database/src/cli/seed.ts",
+    "worker": "tsx apps/worker/src/cli.ts",
+    "dev": "npm run dev -w @rj/mission-control",
+    "start": "npm run start -w @rj/mission-control"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.5",
+    "tsx": "4.23.15",
+    "typescript": "7.0.2",
+    "vitest": "5.0.5",
+    "zod": "4.6.7"
+  }
+}

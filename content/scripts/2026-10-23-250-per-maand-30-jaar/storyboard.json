@@ -1,0 +1,117 @@
+{
+  "slug": "2026-10-23-250-per-maand-30-jaar",
+  "title": "Wat doet €250 per maand beleggen over 30 jaar?",
+  "template": "TemplateC",
+  "series": "Geld in cijfers",
+  "language": "nl",
+  "calculation": {
+    "engine": "@rj/finance-engine",
+    "function": "buildReelCalculation",
+    "overrides": {}
+  },
+  "tokensNote": "{{...}} tokens are filled from the finance-engine result at render time; no figure is typed by hand.",
+  "onScreen": {
+    "kicker": "Geld in cijfers",
+    "hookLines": [
+      "Wat doet",
+      "€250 per maand",
+      "beleggen over",
+      "30 jaar?"
+    ],
+    "hookHighlightLine": 1,
+    "assumptionsFootnote": "Rente-op-rente per maand, afgeleid van {{annualReturn}} effectief per jaar. Zonder kosten en belasting.",
+    "risks": {
+      "title": "Let op",
+      "items": [
+        "Hypothetisch voorbeeld, geen garantie",
+        "Eindbedrag is nominaal: exclusief kosten, belasting en inflatie",
+        "Echte rendementen schommelen, ook negatief"
+      ]
+    },
+    "footnote": "Hypothetisch rekenvoorbeeld · geen advies · bedragen exclusief kosten en belasting, inflatie alleen waar vermeld",
+    "cta": "Volg @rendementjager voor meer inzicht"
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "visual": "Kicker GELD IN CIJFERS; hook in 4 lines, '€250 per maand' in lime with glow; words stagger in.",
+      "segments": [
+        {
+          "id": "s01",
+          "text": "Wat doet €250 per maand beleggen over 30 jaar?",
+          "pauseAfterMs": 450
+        }
+      ]
+    },
+    {
+      "id": "assumptions",
+      "visual": "Title 'De aannames'; three stat cards stagger in: inleg per maand (eind van de maand), looptijd (360 inleggen), 7% per jaar (hypothetisch, lime). Footnote on monthly compounding.",
+      "segments": [
+        {
+          "id": "s02",
+          "text": "We rekenen met een hypothetisch rendement van {{annualReturn}} effectief per jaar."
+        },
+        {
+          "id": "s03",
+          "text": "Je legt aan het eind van elke maand {{monthlyContribution}} in. Het rendement wordt per maand verrekend.",
+          "pauseAfterMs": 450
+        }
+      ]
+    },
+    {
+      "id": "growth",
+      "visual": "Counter 'Waarde na N jaar' climbs with the chart; growth chart draws year 0 to 30: lime value line over green contributed area. Holds at the end.",
+      "segments": [
+        {
+          "id": "s04",
+          "text": "In {{years}} leg je zelf {{totalContributed}} in."
+        },
+        {
+          "id": "s05",
+          "text": "Door rente op rente groeit dat in dit voorbeeld naar {{endValueSpoken}}.",
+          "pauseAfterMs": 450
+        }
+      ]
+    },
+    {
+      "id": "result",
+      "visual": "Title 'Na 30 jaar'; bar comparison eigen inleg (green) vs eindwaarde (lime) with 'waarvan ... rendement'; inflation card 'Zelfde eindbedrag in geld van nu' lands with s07.",
+      "segments": [
+        {
+          "id": "s06",
+          "text": "Daarvan is {{growthSpoken}} rendement."
+        },
+        {
+          "id": "s07",
+          "text": "Reken je met {{inflationRate}} inflatie per jaar, dan is hetzelfde eindbedrag {{endValueRealSpoken}} in geld van nu.",
+          "pauseAfterMs": 450
+        }
+      ]
+    },
+    {
+      "id": "risks",
+      "visual": "Title 'Let op'; three red-marked risk rows; small illustrative line chart 'Koersen schommelen' with Illustratief badge.",
+      "segments": [
+        {
+          "id": "s08",
+          "text": "Dit is een rekenvoorbeeld, geen garantie. Het eindbedrag is nominaal: kosten, belasting en inflatie zitten er niet in."
+        },
+        {
+          "id": "s09",
+          "text": "En echte rendementen schommelen: sommige jaren gaat het omlaag.",
+          "pauseAfterMs": 450
+        }
+      ]
+    },
+    {
+      "id": "cta",
+      "visual": "Branded outro: placeholder logo scales in, CTA with lime handle, brand promise.",
+      "segments": [
+        {
+          "id": "s10",
+          "text": "Volg @rendementjager voor meer inzicht."
+        }
+      ]
+    }
+  ]
+}

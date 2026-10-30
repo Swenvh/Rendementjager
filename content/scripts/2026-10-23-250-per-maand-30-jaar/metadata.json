@@ -1,0 +1,178 @@
+{
+  "slug": "2026-10-23-250-per-maand-30-jaar",
+  "title": "Wat doet €250 per maand beleggen over 30 jaar?",
+  "template": "TemplateC",
+  "preparedAt": "2026-10-25T11:17:42.419Z",
+  "durationMs": 47068,
+  "calculation": {
+    "engine": "@rj/finance-engine",
+    "function": "buildReelCalculation",
+    "overrides": {},
+    "tokens": {
+      "annualReturn": "7%",
+      "monthlyContribution": "€250",
+      "years": "30 jaar",
+      "totalContributed": "€90.000",
+      "endValue": "€292.363",
+      "endValueSpoken": "ruim €292.000",
+      "growth": "€202.363",
+      "growthSpoken": "ruim €202.000",
+      "inflationRate": "2%",
+      "endValueRealSpoken": "ruim €161.000"
+    }
+  },
+  "voice": {
+    "provider": "local-fallback",
+    "brandVoice": false,
+    "voice": "mb-nl2",
+    "label": "LOCAL FALLBACK (espeak-ng), NOT the brand voice: replace with ElevenLabs before publishing",
+    "audioFile": "packages/video-engine/public/generated/2026-10-23-250-per-maand-30-jaar/voice.wav",
+    "qa": {
+      "file": "/home/user/AI-workspace/rendementjager/packages/video-engine/public/generated/2026-10-23-250-per-maand-30-jaar/voice.wav",
+      "durationMs": 45468,
+      "targetLufs": -16,
+      "inputLufs": -20.9,
+      "outputLufs": -16.83,
+      "truePeakDb": -1.5,
+      "maxVolumeDb": -1.5,
+      "meanVolumeDb": -16.4,
+      "clipping": false,
+      "silences": [],
+      "maxSilenceS": 1.5,
+      "pass": true,
+      "issues": []
+    },
+    "segments": [
+      {
+        "id": "s01",
+        "text": "Wat doet €250 per maand beleggen over 30 jaar?",
+        "spokenText": "Wat doet tweehonderdvijftig euro per maand beleggen over dertig jaar?",
+        "startMs": 350,
+        "endMs": 3965,
+        "durationMs": 3615,
+        "cacheHit": true,
+        "wordTimingSource": "estimated"
+      },
+      {
+        "id": "s02",
+        "text": "We rekenen met een hypothetisch rendement van 7% per jaar.",
+        "spokenText": "We rekenen met een hypothetisch rende-ment van zeven procent per jaar.",
+        "startMs": 4415,
+        "endMs": 7951,
+        "durationMs": 3536,
+        "cacheHit": true,
+        "wordTimingSource": "estimated"
+      },
+      {
+        "id": "s03",
+        "text": "Je legt aan het eind van elke maand €250 in, en het rendement groeit maandelijks mee.",
+        "spokenText": "Je legt aan het eind van elke maand tweehonderdvijftig euro in, en het rende-ment groeit maandelijks mee.",
+        "startMs": 8251,
+        "endMs": 14065,
+        "durationMs": 5814,
+        "cacheHit": true,
+        "wordTimingSource": "estimated"
+      },
+      {
+        "id": "s04",
+        "text": "In 30 jaar leg je zelf €90.000 in.",
+        "spokenText": "In dertig jaar leg je zelf negentigduizend euro in.",
+        "startMs": 14515,
+        "endMs": 17198,
+        "durationMs": 2683,
+        "cacheHit": true,
+        "wordTimingSource": "estimated"
+      },
+      {
+        "id": "s05",
+        "text": "Door rente op rente groeit dat in dit voorbeeld naar ruim €292.000.",
+        "spokenText": "Door rente op rente groeit dat in dit voorbeeld naar ruim tweehonderdtweeënnegentigduizend euro.",
+        "startMs": 17498,
+        "endMs": 22287,
+        "durationMs": 4789,
+        "cacheHit": true,
+        "wordTimingSource": "estimated"
+      },
+      {
+        "id": "s06",
+        "text": "Daarvan is ruim €202.000 rendement.",
+        "spokenText": "Daarvan is ruim tweehonderdtweeduizend euro rende-ment.",
+        "startMs": 22737,
+        "endMs": 25599,
+        "durationMs": 2862,
+        "cacheHit": true,
+        "wordTimingSource": "estimated"
+      },
+      {
+        "id": "s07",
+        "text": "Reken je met 2% inflatie per jaar, dan is dat ruim €161.000 in geld van nu.",
+        "spokenText": "Reken je met twee procent inflaatsie per jaar, dan is dat ruim honderdeenenzestigduizend euro in geld van nu.",
+        "startMs": 25899,
+        "endMs": 32149,
+        "durationMs": 6250,
+        "cacheHit": true,
+        "wordTimingSource": "estimated"
+      },
+      {
+        "id": "s08",
+        "text": "Dit is een rekenvoorbeeld, geen garantie. Kosten, belasting en inflatie zitten niet in het eindbedrag.",
+        "spokenText": "Dit is een rekenvoorbeeld, geen garantie. Kosten, belasting en inflaatsie zitten niet in het eindbedrag.",
+        "startMs": 32599,
+        "endMs": 38713,
+        "durationMs": 6114,
+        "cacheHit": true,
+        "wordTimingSource": "estimated"
+      },
+      {
+        "id": "s09",
+        "text": "En echte rendementen schommelen: sommige jaren gaat het omlaag.",
+        "spokenText": "En echte rendementen schommelen: sommige jaren gaat het omlaag.",
+        "startMs": 39013,
+        "endMs": 42418,
+        "durationMs": 3405,
+        "cacheHit": true,
+        "wordTimingSource": "estimated"
+      },
+      {
+        "id": "s10",
+        "text": "Volg @rendementjager voor meer inzicht.",
+        "spokenText": "Volg rendementjager voor meer inzicht.",
+        "startMs": 42868,
+        "endMs": 45068,
+        "durationMs": 2200,
+        "cacheHit": true,
+        "wordTimingSource": "estimated"
+      }
+    ]
+  },
+  "captions": {
+    "pages": 35,
+    "timing": "segment durations measured with ffprobe; word timings within a segment estimated by spoken length"
+  },
+  "logo": {
+    "file": "logo-placeholder.svg",
+    "isPlaceholder": true
+  },
+  "illustrativeVisuals": [
+    "risks scene line chart \"Koersen schommelen\" (badged Illustratief, not data)"
+  ],
+  "render": {
+    "file": "output/reels/2026-10-23-250-per-maand-30-jaar.mp4",
+    "sha256": "b8d13945b5c67332984736befa455843d116080b3c138ef8e14d9836a86eeb47",
+    "sizeBytes": 14978823,
+    "composition": "TemplateC",
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationInFrames": 1413,
+    "codec": "h264",
+    "renderedAt": "2026-10-25T11:22:01.383Z",
+    "prepareMs": 6169,
+    "renderMs": 250433
+  },
+  "mediaQa": {
+    "report": "output/reels/2026-10-23-250-per-maand-30-jaar.qa.json",
+    "pass": true,
+    "issues": []
+  }
+}

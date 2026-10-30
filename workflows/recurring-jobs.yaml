@@ -1,0 +1,79 @@
+# Recurring jobs for Rendementjager. Status: DESIGNED, NOT ACTIVATED.
+# Nothing here runs by itself: each entry must be triggered by cron, a Claude Code scheduled
+# task, or GitHub Actions (see docs/AUTOMATIONS.md, docs/ARCHITECTURE.md "Scheduling honesty").
+# Times are Europe/Amsterdam. No job publishes or spends money.
+defaults:
+  timezone: Europe/Amsterdam
+  retries: 3            # RJ_MAX_RETRIES
+  backoff: exponential  # 1m, 4m, 16m
+  respect_emergency_stop: true
+  respect_cost_caps: true
+  activated: false
+jobs:
+  daily:
+    - id: system-health
+      cron: "50 6 * * *"
+      run: { skill: system-health }
+      timeout_min: 10
+      idempotency_key: "system-health:{date}"
+    - id: worker-drain-morning
+      cron: "55 6 * * *"
+      run: { command: "npm run worker -- --once" }   # to_be_verified
+      timeout_min: 30
+      idempotency_key: per job (type + content id + input hash)
+    - id: daily-brief
+      cron: "7 7 * * *"
+      run: { skill: daily-brief }
+      timeout_min: 15
+      idempotency_key: "daily-brief:{date}"
+      output: output/reports/{date}-daily-brief.md
+    - id: analytics-snapshot
+      cron: "13 9 * * *"
+      run: { command: "npm run worker -- --once", enqueue: collect_metrics }   # to_be_verified
+      timeout_min: 15
+      idempotency_key: "collect_metrics:{content_id}:{window}"
+      note: mock until an insights integration is live; no fabricated metrics
+    - id: worker-drain-evening
+      cron: "47 18 * * *"
+      run: { command: "npm run worker -- --once" }
+      timeout_min: 30
+  weekly:
+    - id: research-topics
+      cron: "17 8 * * 1"
+      run: { skill: research-topics }
+      timeout_min: 45
+      idempotency_key: "research-topics:{iso_week}"
+    - id: plan-week
+      cron: "43 9 * * 1"
+      run: { skill: plan-week }
+      timeout_min: 30
+      idempotency_key: "plan-week:{iso_week}"
+    - id: weekly-review
+      cron: "37 16 * * 5"
+      run: { skill: weekly-review }
+      timeout_min: 30
+      idempotency_key: "weekly-review:{iso_week}"
+    - id: db-backup
+      cron: "11 23 * * 0"
+      run: { command: "see docs/OPERATIONS.md#backup" }
+      timeout_min: 5
+      idempotency_key: "backup:{date}"
+  monthly:
+    - id: regulation-reverify
+      cron: "23 8 1 * *"
+      run: { agent: financial-fact-checker, task: "re-verify yearly-changing figures used in live/queued items" }
+      timeout_min: 60
+      idempotency_key: "reverify:{yyyy-mm}"
+    - id: cost-report
+      cron: "29 8 1 * *"
+      run: { skill: weekly-review, mode: monthly-costs }
+      timeout_min: 15
+    - id: performance-deep-dive
+      cron: "41 9 2 * *"
+      run: { skill: analyze-performance, window: last_month }
+      timeout_min: 45
+      idempotency_key: "perf:{yyyy-mm}"
+    - id: archive-stale
+      cron: "53 9 2 * *"
+      run: { note: "propose ARCHIVED for items idle > 30 days; owner confirms" }
+      timeout_min: 10

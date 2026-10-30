@@ -1,0 +1,15 @@
+{
+  "name": "@rj/brand",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Rendementjager design tokens (TS + CSS variables), logo config and typography",
+  "exports": {
+    ".": "./src/index.ts",
+    "./tokens.css": "./src/tokens.css"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc -p ."
+  }
+}

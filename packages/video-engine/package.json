@@ -1,0 +1,38 @@
+{
+  "name": "@rj/video-engine",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Rendementjager Remotion project: shared components, Templates A/B/C, render + cover scripts, media QA",
+  "exports": {
+    ".": "./src/lib.ts"
+  },
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "render": "tsx scripts/render.ts",
+    "cover": "tsx scripts/cover.ts",
+    "voice": "tsx scripts/voice.ts",
+    "qa": "tsx scripts/qa.ts",
+    "fonts": "tsx scripts/copy-fonts.ts",
+    "test": "vitest run",
+    "typecheck": "tsc -p ."
+  },
+  "dependencies": {
+    "@remotion/bundler": "4.0.535",
+    "@remotion/cli": "4.0.535",
+    "@remotion/fonts": "4.0.535",
+    "@remotion/renderer": "4.0.535",
+    "@rj/brand": "*",
+    "@rj/finance-engine": "*",
+    "@rj/voice-engine": "*",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "remotion": "4.0.535",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@fontsource/inter": "5.3.0",
+    "@fontsource/manrope": "5.3.0",
+    "@types/react": "19.2.7"
+  }
+}

@@ -1,0 +1,55 @@
+/* Rendementjager design tokens as CSS variables (dashboard + video).
+   Keep in sync with tokens.ts (packages/brand/test/tokens.test.ts checks this). */
+:root {
+  --rj-color-bg: #0B1F17;
+  --rj-color-bg-raised: #10291F;
+  --rj-color-green: #166534;
+  --rj-color-positive: #3FB86A;
+  --rj-color-lime: #A7F36A;
+  --rj-color-red: #EF4444;
+  --rj-color-surface: #F8FAF9;
+  --rj-color-black: #000000;
+  --rj-color-text-dim: rgba(248, 250, 249, 0.68);
+  --rj-color-text-faint: rgba(248, 250, 249, 0.42);
+  --rj-color-hairline: rgba(248, 250, 249, 0.12);
+  --rj-color-lime-glow: rgba(167, 243, 106, 0.35);
+
+  --rj-font-heading: 'Manrope', 'Inter', system-ui, sans-serif;
+  --rj-font-body: 'Inter', system-ui, sans-serif;
+  --rj-weight-regular: 400;
+  --rj-weight-medium: 500;
+  --rj-weight-bold: 700;
+  --rj-weight-extrabold: 800;
+
+  --rj-text-xs: 0.75rem;
+  --rj-text-sm: 0.875rem;
+  --rj-text-md: 1rem;
+  --rj-text-lg: 1.25rem;
+  --rj-text-xl: 1.5rem;
+  --rj-text-2xl: 2rem;
+  --rj-tracking-tight: -0.03em;
+  --rj-tracking-wide: 0.08em;
+
+  --rj-space-1: 4px;
+  --rj-space-2: 8px;
+  --rj-space-3: 12px;
+  --rj-space-4: 16px;
+  --rj-space-5: 24px;
+  --rj-space-6: 32px;
+  --rj-space-7: 48px;
+  --rj-space-8: 64px;
+  --rj-space-9: 96px;
+  --rj-space-10: 128px;
+
+  --rj-radius-sm: 8px;
+  --rj-radius-md: 16px;
+  --rj-radius-lg: 28px;
+  --rj-radius-xl: 40px;
+  --rj-radius-pill: 999px;
+
+  /* Reel safe area (1080x1920) */
+  --rj-safe-top: 220px;
+  --rj-safe-bottom: 380px;
+  --rj-safe-left: 90px;
+  --rj-safe-right: 90px;
+}

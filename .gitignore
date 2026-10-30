@@ -1,0 +1,12 @@
+node_modules/
+.env
+.env.*
+!.env.example
+data/*.sqlite*
+output/reels/*.mp4
+output/**/*.wav
+output/**/tmp/
+dist/
+.cache/
+*.log
+backups/
