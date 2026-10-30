@@ -8,3 +8,4 @@ export { fetchYoutubeCc, isCcBy, assertYoutubeUrl } from './youtube-cc.js';
 export { chooseFile } from './providers/common.js';
 export { searchPexels } from './providers/pexels.js';
 export { searchPixabay } from './providers/pixabay.js';
+export * from './fetch-sources.js';

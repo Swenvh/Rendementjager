@@ -3,6 +3,7 @@
  * npm run footage -- validate
  * npm run footage -- pick --slug <slug>
  * npm run footage -- slice --plan assets/footage/plans/nl-scenic.json (--input <file> | --input <sourceId>=<file> | --input-dir <dir>) [--only id,id] [--force]
+ * npm run footage -- fetch-sources --plan <plan.json> [--only id,id] [--force]   (yt-dlp, only the planned ranges)
  * npm run footage -- fetch --provider pexels|pixabay --query "..." --count N [--location "..."]
  * npm run footage -- fetch --provider youtube-cc --url <https://youtu.be/...> [--location "..."]
  */
@@ -12,6 +13,7 @@ import { fetchFromProvider } from './fetch.js';
 import { footageRoot, REPO_ROOT } from './paths.js';
 import { captionCreditLine, creditLineOf, loadManifest, validateManifest } from './manifest.js';
 import { pickClipChain, clipsNeeded } from './pick.js';
+import { fetchSources, summarizeFetchSources } from './fetch-sources.js';
 import { loadPlan, sliceClips } from './slice.js';
 import { fetchYoutubeCc } from './youtube-cc.js';
 
@@ -102,6 +104,16 @@ async function main() {
     for (const m of res.missingSources) console.log(`NO FILE for source "${m.id}" (${m.url}): download it yourself and name it ${m.id}.mp4 in the --input-dir, or pass --input ${m.id}=<file>`);
     for (const f of res.failed) console.log(`FAILED ${f.id}: ${f.reason}`);
     if (res.failed.length) process.exitCode = 1;
+    return;
+  }
+
+  if (cmd === 'fetch-sources') {
+    const planPath = flags.get('plan');
+    if (!planPath) throw new Error('Usage: footage fetch-sources --plan <plan.json> [--only id,id] [--force]');
+    const plan = loadPlan(inCwd(planPath));
+    const r = await fetchSources({ plan, root, only: flags.get('only')?.split(',').map((x) => x.trim()), force: flags.has('force'), log: (l) => console.log(l) });
+    console.log(`\n${summarizeFetchSources(r, planPath)}`);
+    if (r.failed.length) process.exitCode = 1;
     return;
   }
 

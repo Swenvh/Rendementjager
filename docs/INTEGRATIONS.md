@@ -32,6 +32,7 @@ Files live in `assets/footage/nl/` (git-ignored, only the manifest `assets/foota
 npm run footage -- list | validate
 npm run footage -- pick --slug <slug>
 npm run footage -- slice --plan assets/footage/plans/nl-scenic.json --input-dir <dir with <sourceId>.mp4>   # owner-supplied files
+npm run footage -- fetch-sources --plan assets/footage/plans/nl-scenic.json                  # yt-dlp: only the planned ranges of the owner-declared sources; UNTESTED live (mocked yt-dlp)
 npm run footage -- fetch --provider pexels --query "polder luchtfoto Nederland" --count 5     # UNTESTED live
 npm run footage -- fetch --provider pixabay --query "windmolens Kinderdijk" --count 5          # UNTESTED live
 npm run footage -- fetch --provider youtube-cc --url <https://youtu.be/...>                    # UNTESTED live, CC BY only

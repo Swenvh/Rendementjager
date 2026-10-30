@@ -40,6 +40,15 @@ Stem: er is **geen robotstem**. Zonder ElevenLabs zijn Reels stemloos: alleen on
 Voor de echte stem: `ELEVENLABS_API_KEY` en `ELEVENLABS_VOICE_ID` in `.env` en `RJ_TTS_PROVIDER=elevenlabs`
 (kost geld; standaard staat het uit).
 
+### De hele procedure in 4 stappen (Codespaces)
+
+1. **Open de Codespace** (groene knop Code, tab Codespaces). De dronebeelden downloaden zichzelf: alleen de 10-seconden stukken uit het planbestand, zonder geluid, staand gesneden (best effort).
+2. **Wacht** tot de installatie klaar is (enkele minuten). Onderaan de terminal staat de status ("Beelden: x/y clips bruikbaar"). Staat er 0? Dan weigerde YouTube de download (vaak vanaf cloud-servers): download de 3 video's zelf, zet ze in de map `inbox/` als `scenic-relaxation-nl.mp4`, `drone-snap-amsterdam.mp4`, `woerden-short.mp4` en draai `npm run footage -- slice --plan assets/footage/plans/nl-scenic.json --input-dir inbox`. Opnieuw proberen kan met `npm run footage -- fetch-sources --plan assets/footage/plans/nl-scenic.json`.
+3. **Bouw de Reels opnieuw:** `npm run reels:rebuild`. Alle bestaande Reels met een nieuwe achtergrond worden na elkaar gerenderd (ongeveer 6 minuten per Reel), gecontroleerd (media-QA), en opnieuw gekoppeld aan Mission Control. Met `-- --dry-run` zie je eerst wat er gebeurt.
+4. **Open het dashboard** (`npm run dev`, poort 5173) en kijk op **Review**. Je ziet per Reel welke clips zijn gebruikt. Een nieuwe video maakt een eerdere goedkeuring ongeldig: keur opnieuw goed.
+
+Niet live getest: de download vanaf YouTube (hier geblokkeerd), alleen met een nagebootste yt-dlp.
+
 ### Achtergrondbeelden (dronebeelden) toevoegen
 
 Zonder beelden gebruikt elke Reel de geanimeerde donkergroene achtergrond. Er worden alleen beelden gebruikt met een compleet manifest-item en een toegestane licentie (Pexels, Pixabay, CC0, CC BY met bronvermelding, of door jou aangeleverd). **YouTube-video's worden bewust niet gedownload door de tool** (auteursrecht); jij downloadt zelf wat je mag gebruiken.

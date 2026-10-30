@@ -1,5 +1,5 @@
 import { execFileSync } from 'node:child_process';
-import { existsSync, mkdirSync, mkdtempSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { loadManifest, saveManifest } from '@rj/footage-engine';
@@ -105,6 +105,12 @@ describe('resolveBackground (footage library -> Remotion public dir)', () => {
     expect(existsSync(join(pub, 'footage', `${r.props!.clips[0]!.clipId}.mp4`))).toBe(true);
     expect(() => templateCSchema.parse({ ...defaultTemplateC, background: r.props })).not.toThrow();
   });
+  it('a ~13 s table Reel uses 2 different clips (cross-fade); a short one uses 1', () => {
+    const root = mk(['a-01', 'b-01', 'c-01', 'd-01']);
+    const pub = mkdtempSync(join(tmpdir(), 'rj-pub-'));
+    expect(resolveBackground('2026-10-30-t', 13_100, undefined, { root, publicDir: pub, allSlugs: ['2026-10-30-t'] }).props!.clips).toHaveLength(2);
+    expect(resolveBackground('2026-10-30-t', 9_500, undefined, { root, publicDir: pub, allSlugs: ['2026-10-30-t'] }).props!.clips).toHaveLength(1);
+  });
   it('uses the storyboard clips when named and still usable; ignores unusable ones', () => {
     const root = mk(['a-01', 'b-01', 'c-01']);
     const pub = mkdtempSync(join(tmpdir(), 'rj-pub-'));
@@ -119,5 +125,17 @@ describe('resolveBackground (footage library -> Remotion public dir)', () => {
     m.clips[0]!.licence = 'Standard YouTube License' as never;
     saveManifest(root, m);
     expect(resolveBackground('s', 10_000, undefined, { root, publicDir: mkdtempSync(join(tmpdir(), 'rj-pub-')) }).props).toBeNull();
+  });
+});
+
+describe('reels:rebuild helpers', () => {
+  it('adds only missing credit lines above the hashtags', async () => {
+    const { ensureCredits } = await import('../scripts/rebuild');
+    const f = join(mkdtempSync(join(tmpdir(), 'rj-cap-')), 'caption.md');
+    writeFileSync(f, 'Hook\n\nTekst.\n\n#a #b\n');
+    expect(ensureCredits(f, ['Beeld: X van Y (CC BY)'])).toBe(true);
+    expect(ensureCredits(f, ['Beeld: X van Y (CC BY)'])).toBe(false);
+    const t = readFileSync(f, 'utf8');
+    expect(t.indexOf('Beeld: X')).toBeLessThan(t.indexOf('#a'));
   });
 });
