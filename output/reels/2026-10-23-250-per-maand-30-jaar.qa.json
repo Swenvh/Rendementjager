@@ -1,0 +1,75 @@
+{
+  "file": "output/reels/2026-10-23-250-per-maand-30-jaar.mp4",
+  "checkedAt": "2026-10-30T13:26:38.892Z",
+  "pass": true,
+  "issues": [],
+  "video": {
+    "codec": "h264",
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "pixFmt": "yuv420p",
+    "durationS": 49.813
+  },
+  "audio": {
+    "present": true,
+    "codec": "aac",
+    "sampleRate": 48000,
+    "integratedLufs": -16.81,
+    "maxVolumeDb": -4.5,
+    "meanVolumeDb": -19.6,
+    "silent": false
+  },
+  "expectedDurationMs": 49797,
+  "frames": [
+    {
+      "timeS": 2.999,
+      "label": "hook",
+      "file": "output/reels/2026-10-23-250-per-maand-30-jaar.frames/01-hook-3.0s.png",
+      "mean": 34.62,
+      "stdDev": 39.24,
+      "blank": false
+    },
+    {
+      "timeS": 11.954,
+      "label": "assumptions",
+      "file": "output/reels/2026-10-23-250-per-maand-30-jaar.frames/02-assumptions-12.0s.png",
+      "mean": 30.11,
+      "stdDev": 22.25,
+      "blank": false
+    },
+    {
+      "timeS": 20.903,
+      "label": "growth",
+      "file": "output/reels/2026-10-23-250-per-maand-30-jaar.frames/03-growth-20.9s.png",
+      "mean": 31.08,
+      "stdDev": 27.35,
+      "blank": false
+    },
+    {
+      "timeS": 30.944,
+      "label": "result",
+      "file": "output/reels/2026-10-23-250-per-maand-30-jaar.frames/04-result-30.9s.png",
+      "mean": 37.84,
+      "stdDev": 42.73,
+      "blank": false
+    },
+    {
+      "timeS": 42.157,
+      "label": "risks",
+      "file": "output/reels/2026-10-23-250-per-maand-30-jaar.frames/05-risks-42.2s.png",
+      "mean": 30.09,
+      "stdDev": 23.46,
+      "blank": false
+    },
+    {
+      "timeS": 48.551,
+      "label": "cta",
+      "file": "output/reels/2026-10-23-250-per-maand-30-jaar.frames/06-cta-48.6s.png",
+      "mean": 29.82,
+      "stdDev": 25.88,
+      "blank": false
+    }
+  ],
+  "reportPath": "output/reels/2026-10-23-250-per-maand-30-jaar.qa.json"
+}
