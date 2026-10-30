@@ -43,7 +43,20 @@ npm run series -- capacity                            # how many unique drafts t
 
 Options: `--kind compounding|cost|inflation|all`, `--variants 1..3`, `--date yyyy-mm-dd`, `--out <dir>` (use a temp dir plus `RJ_DB_PATH=<temp db>` to try things out), `--json`.
 
-`generate` registers a ContentIdea (stage **IDEA**), an immutable ScriptRevision (caption set), a Storyboard row and FinancialClaims (`unverified`). It never approves a gate and does not move the stage: IDEA -> SCRIPTING needs G1, which needs a research brief with sources from the approved registry. Series items have no external source, so a research-analyst must attach a brief (for example one method brief per series citing CBS/DNB/AFM) before a reviewer can grant G1. **Open decision for the owner:** keep G1 for pure calculation items, or allow a documented shortcut (this would change the transition map in `@rj/shared`; not done here).
+`generate` registers a ContentIdea (stage **IDEA**), an immutable ScriptRevision (caption set), a Storyboard row and FinancialClaims (`unverified`). It never approves a gate and does not move the stage: IDEA -> SCRIPTING still needs G1, and nothing here weakens it. Series items have no external source, so G1 for them is covered by a **method brief** (below) that the owner approves once per series kind.
+
+## Method briefs and G1 for series
+
+One `ResearchBrief` per series kind (`compounding`, `cost`, `inflation`), topic `Methodebrief reeks: <kind>`, stored with `Source` rows by `@rj/research-engine` and exported as markdown in `content/research/methods/<kind>.md`. Each states the formula and conventions (effective-annual rate, month-end contributions, cost as `(1+r)(1-c)` not `r-c`, real value = nominal / (1+p)^years), the exact `@rj/finance-engine` functions, the unit-test evidence, the limitations (all parameters hypothetical, no tax, no volatility, education not advice) and authoritative sources for the concepts only (no statistic from a source ends up in an item; every number comes from the finance-engine). Sources that could not be fetched are recorded as `UNVERIFIED` (excerpt starts with "UNVERIFIED"); the Review UI shows the flag and the owner must tick an acknowledgement. Create or list them: `npm run methods -- seed|list` (creates drafts, approves nothing).
+
+How G1 works for a series item:
+
+1. The owner opens **Methodebriefs** in Mission Control (`#/methodebrieven`), reads the brief and presses **G1 goedkeuren voor serie**. The API (`POST /api/methods/:kind/approve`) needs the owner-action header, the exact confirmation sentence, the brief id and the brief hash the owner reviewed.
+2. `WorkflowService.approveMethodBriefForSeries` (owner only) marks the brief approved and records one G1 approval (actor `owner`, notes `METHOD_BRIEF_G1 {briefId, briefHash, kind}`) on each series item of that kind that is still before SCRIPTING. The approval row is the item's reference to the brief by id and hash. Items generated later need another click (idempotent).
+3. The gate check re-verifies every time: the approval counts only if it was given by the owner, the item is a series item of the same kind as the brief, the brief is still approved and its **current hash equals the approved hash**. Editing the brief or any of its sources changes the hash, so G1 stops counting for all linked items at once (`invalidateStaleMethodApprovals` also marks the rows invalidated, with audit). "Goedkeuring intrekken" does the same on purpose.
+4. No agent can do this: other actors get `NOT_AUTHORIZED` (audited), `recordApproval` refuses the marker, and a marker row from anyone but the owner never counts. G2 to G5 are unchanged and still needed per item.
+
+Tests: `packages/content-engine/src/method-g1.test.ts` (agent actors, forged marker, stale hash, wrong kind, copied approval, brief edit, revoke, unverified without acknowledgement), `packages/research-engine/src/research.test.ts`, `apps/mission-control/test/methods.test.ts`. Source status at time of writing: all sources UNVERIFIED (hosts blocked in the cloud session; titles and URLs come from search results of 2026-10-30). A reviewer with network access must open each URL, confirm the page says what the brief claims, replace the UNVERIFIED excerpt with a short verified one and update the brief; the owner then approves the new hash.
 
 ## Weekly capacity planner
 

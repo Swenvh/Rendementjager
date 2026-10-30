@@ -7,6 +7,7 @@ import { Agents } from './pages/Agents';
 import { Analytics } from './pages/Analytics';
 import { Brand } from './pages/Brand';
 import { Calendar } from './pages/Calendar';
+import { Methodebrieven } from './pages/Methodebrieven';
 import { Overview } from './pages/Overview';
 import { Pipeline } from './pages/Pipeline';
 import { Review } from './pages/Review';
@@ -18,6 +19,7 @@ const NAV: { id: string; label: string; icon: Parameters<typeof Icon>[0]['name']
   { id: 'overzicht', label: 'Overzicht', icon: 'home', page: () => <Overview /> },
   { id: 'pipeline', label: 'Pipeline', icon: 'board', page: () => <Pipeline /> },
   { id: 'review', label: 'Review', icon: 'check', page: () => <Review /> },
+  { id: 'methodebrieven', label: 'Methodebriefs', icon: 'search', page: () => <Methodebrieven /> },
   { id: 'kalender', label: 'Kalender', icon: 'calendar', page: () => <Calendar /> },
   { id: 'studio', label: 'Video Studio', icon: 'film', page: () => <Studio /> },
   { id: 'agents', label: 'Agents', icon: 'bot', page: () => <Agents /> },

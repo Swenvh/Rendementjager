@@ -1,6 +1,7 @@
 import type { Repository } from '@rj/database';
 import { type ActorId, ActorIdSchema, type ResearchBrief, type Source, newId, topicHash, normalizeTopic } from '@rj/shared';
 import { findApprovedSource, hostnameOf } from './sources.js';
+import { METHOD_BRIEFS, METHOD_KINDS, type MethodKind, methodBriefHash, methodBriefTopic } from './methods.js';
 
 export interface BriefSourceInput {
   url: string;
@@ -122,6 +123,52 @@ export class ResearchService {
             excerpt: s.excerpt ?? null,
             createdAt: ts,
           }),
+        );
+      }
+      return { brief, sources, warnings: v.warnings };
+    });
+  }
+
+  // ---------------------------------------------------------------- method briefs (pure-calculation series)
+
+  /** Latest non-rejected method brief of a series kind, or null. */
+  async getMethodBrief(kind: MethodKind): Promise<{ brief: ResearchBrief; sources: Source[]; hash: string } | null> {
+    const topic = methodBriefTopic(kind);
+    const brief = await this.repo.researchBriefs.first({ topic, status: { op: 'ne', value: 'rejected' } }, { orderBy: 'createdAt', desc: true });
+    if (!brief) return null;
+    const sources = await this.repo.sources.list({ briefId: brief.id }, { orderBy: 'id' });
+    return { brief, sources, hash: methodBriefHash(brief, sources) };
+  }
+
+  /** Creates the three method briefs (status draft) when missing. Idempotent; never approves anything. */
+  async ensureMethodBriefs(actorId: string = 'research-analyst'): Promise<{ kind: MethodKind; briefId: string; created: boolean }[]> {
+    const out: { kind: MethodKind; briefId: string; created: boolean }[] = [];
+    for (const kind of METHOD_KINDS) {
+      const existing = await this.getMethodBrief(kind);
+      if (existing) out.push({ kind, briefId: existing.brief.id, created: false });
+      else out.push({ kind, briefId: (await this.createBrief(METHOD_BRIEFS[kind].input, actorId)).brief.id, created: true });
+    }
+    return out;
+  }
+
+  /**
+   * Replaces the content and sources of a brief. The brief returns to status draft, and its hash changes, so
+   * every G1 that was recorded against the old hash stops counting (see WorkflowService).
+   */
+  async updateBrief(id: string, input: ResearchBriefInput, actorId: string): Promise<{ brief: ResearchBrief; sources: Source[]; warnings: string[] }> {
+    ActorIdSchema.parse(actorId);
+    const v = validateResearchBrief(input, this.now());
+    if (!v.ok) throw new ResearchValidationError(v.errors);
+    const ts = this.now().toISOString();
+    return this.repo.transaction(async (tx) => {
+      if (!(await tx.researchBriefs.get(id))) throw new Error(`brief ${id} not found`);
+      for (const old of await tx.sources.list({ briefId: id })) await tx.sources.delete(old.id);
+      const brief = await tx.researchBriefs.update(id, { topic: input.topic.trim(), kind: input.kind, summary: input.summary, keyFacts: input.keyFacts, status: 'draft', updatedAt: ts });
+      const sources: Source[] = [];
+      for (const s of input.sources) {
+        const approved = findApprovedSource(s.url)!;
+        sources.push(
+          await tx.sources.insert({ id: newId('src'), briefId: id, url: s.url, domain: hostnameOf(s.url)!, title: s.title, publisher: approved.name, publishedAt: s.publishedAt ?? null, accessedAt: s.accessedAt ?? ts, trustTier: approved.tier, excerpt: s.excerpt ?? null, createdAt: ts }),
         );
       }
       return { brief, sources, warnings: v.warnings };

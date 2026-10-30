@@ -39,7 +39,7 @@ approvals go through `WorkflowService` (`@rj/content-engine`), never direct tabl
 
 ## Gate binding rules (enforced in `@rj/content-engine`)
 
-- G1 needs a research brief. G2/G3 approve the current script revision; a new revision invalidates them.
+- G1 needs a research brief (or, for series items, an owner-recorded G1 bound to the approved method brief's id + hash, stored in `approvals.notes` as `METHOD_BRIEF_G1 {json}`; no schema change). G2/G3 approve the current script revision; a new revision invalidates them.
 - G3 needs a fact-checker and a compliance-reviewer approval (or the owner); the fact-checker may not be the revision author.
 - G4 approves the current video sha256; G5 (owner only) approves video sha256 + caption hash.
   A new video invalidates G4/G5 (item back to QA_REVIEW, scheduled publications cancelled); a new caption invalidates G5 (back to READY_FOR_EDITOR).

@@ -8,5 +8,5 @@
     "test": "vitest run",
     "typecheck": "tsc -p ."
   },
-  "dependencies": {"@rj/shared": "*", "@rj/database": "*"}
+  "dependencies": {"@rj/shared": "*", "@rj/database": "*", "@rj/research-engine": "*"}
 }

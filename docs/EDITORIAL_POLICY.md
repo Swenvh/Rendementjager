@@ -60,8 +60,13 @@ answered as advice in comments/DMs; urgency/FOMO; crypto or leverage presented w
 | G4 | Media QA | qa-reliability-engineer (via `npm run qa -w @rj/video-engine`) | Technical checks pass (resolution, fps, duration, loudness, safe area, no black frames), on-screen numbers match approved script, audio labelled correctly, placeholder flags reported |
 | G5 | Owner approval | **owner only** (Mission Control) | Owner approves the exact MP4 sha256 + caption hash |
 
+### G1 for pure-calculation series items
+
+Series items (`@rj/series-engine`) carry no external source. G1 for them is satisfied only by an **owner-recorded** approval that points at the approved **method brief** of their series kind (brief id + content hash). It does not replace G2 to G5. It stops counting when the brief or its sources change, when the brief is un-approved, or when the item belongs to another kind. No agent may record or forge it; unverified sources need an explicit owner acknowledgement. Details: `docs/SERIES.md`.
+
 ## 5. Approval invalidation
 
+- Method brief changed after the owner's G1 for a series → G1 invalid for every linked item until the owner approves the new brief hash.
 - Script changed after G3 → G2 and G3 invalid; item returns to SCRIPT_READY.
 - MP4 or caption changed after G5 → G5 invalid; item returns to READY_FOR_EDITOR.
 - SCHEDULED/PUBLISHED only with a valid G5 for the current hashes; the scheduler recomputes the hash.

@@ -74,3 +74,50 @@ describe('ResearchService', () => {
     expect(r.duplicates.map((d) => d.topic)).toEqual(['Wat is een ETF', 'box 3 in 2026!', 'samengestelde rente uitgelegd']);
   });
 });
+
+import { METHOD_BRIEFS, METHOD_KINDS, isUnverifiedSource, methodBriefHash, methodBriefTopic, methodKindOfTopic, renderMethodBriefMarkdown } from './index.js';
+
+describe('method briefs', () => {
+  it('every definition is a valid brief on the approved registry, hypothetical only, with UNVERIFIED flags', () => {
+    for (const kind of METHOD_KINDS) {
+      const d = METHOD_BRIEFS[kind];
+      expect(validateResearchBrief(d.input, NOW)).toMatchObject({ ok: true, warnings: [] });
+      expect(d.input.sources.length).toBeGreaterThanOrEqual(2);
+      expect(d.input.summary).toMatch(/HYPOTHETISCH/);
+      expect(d.input.summary).toMatch(/finance-engine/);
+      expect(d.input.sources.every((s) => isUnverifiedSource({ excerpt: s.excerpt }))).toBe(true);
+      expect(methodKindOfTopic(d.input.topic)).toBe(kind);
+    }
+  });
+  it('ensureMethodBriefs is idempotent, stores draft briefs with sources, never approves', async () => {
+    const first = await svc.ensureMethodBriefs();
+    expect(first.every((r) => r.created)).toBe(true);
+    expect((await svc.ensureMethodBriefs()).every((r) => !r.created)).toBe(true);
+    expect(await repo.researchBriefs.count()).toBe(3);
+    for (const kind of METHOD_KINDS) {
+      const m = (await svc.getMethodBrief(kind))!;
+      expect(m.brief).toMatchObject({ status: 'draft', topic: methodBriefTopic(kind), contentId: null });
+      expect(m.sources.length).toBe(METHOD_BRIEFS[kind].input.sources.length);
+      expect(m.hash).toMatch(/^[a-f0-9]{64}$/);
+      expect(renderMethodBriefMarkdown(kind, m.brief, m.sources)).toContain(`brief_hash: ${m.hash}`);
+    }
+  });
+  it('hash changes on any content or source change, not on source order or ids', async () => {
+    await svc.ensureMethodBriefs();
+    const m = (await svc.getMethodBrief('cost'))!;
+    expect(methodBriefHash(m.brief, [...m.sources].reverse())).toBe(m.hash);
+    expect(methodBriefHash({ ...m.brief, summary: m.brief.summary + '.' }, m.sources)).not.toBe(m.hash);
+    expect(methodBriefHash(m.brief, [{ ...m.sources[0]!, excerpt: 'verified' }, ...m.sources.slice(1)])).not.toBe(m.hash);
+  });
+  it('updateBrief replaces sources, resets to draft, changes hash, and rejects unapproved domains', async () => {
+    await svc.ensureMethodBriefs();
+    const m = (await svc.getMethodBrief('inflation'))!;
+    await repo.researchBriefs.update(m.brief.id, { status: 'approved' });
+    const input = { ...METHOD_BRIEFS.inflation.input, summary: METHOD_BRIEFS.inflation.input.summary + ' extra' };
+    await svc.updateBrief(m.brief.id, input, 'research-analyst');
+    const after = (await svc.getMethodBrief('inflation'))!;
+    expect(after.brief.status).toBe('draft');
+    expect(after.hash).not.toBe(m.hash);
+    await expect(svc.updateBrief(m.brief.id, { ...input, sources: [{ url: 'https://randomblog.nl/x', title: 'x' }] }, 'research-analyst')).rejects.toBeInstanceOf(ResearchValidationError);
+  });
+});
