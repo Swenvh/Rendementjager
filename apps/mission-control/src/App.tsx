@@ -9,6 +9,7 @@ import { Brand } from './pages/Brand';
 import { Calendar } from './pages/Calendar';
 import { Overview } from './pages/Overview';
 import { Pipeline } from './pages/Pipeline';
+import { Review } from './pages/Review';
 import { Research } from './pages/Research';
 import { Settings } from './pages/Settings';
 import { Studio } from './pages/Studio';
@@ -16,6 +17,7 @@ import { Studio } from './pages/Studio';
 const NAV: { id: string; label: string; icon: Parameters<typeof Icon>[0]['name']; page: () => ReactNode }[] = [
   { id: 'overzicht', label: 'Overzicht', icon: 'home', page: () => <Overview /> },
   { id: 'pipeline', label: 'Pipeline', icon: 'board', page: () => <Pipeline /> },
+  { id: 'review', label: 'Review', icon: 'check', page: () => <Review /> },
   { id: 'kalender', label: 'Kalender', icon: 'calendar', page: () => <Calendar /> },
   { id: 'studio', label: 'Video Studio', icon: 'film', page: () => <Studio /> },
   { id: 'agents', label: 'Agents', icon: 'bot', page: () => <Agents /> },

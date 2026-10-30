@@ -5,6 +5,34 @@ import { eurCents, fmtDateTime } from '../lib/format';
 import { useShell } from '../lib/shell';
 import { GATE_LABELS, STAGES } from '../lib/stages';
 
+function CapacityWidget() {
+  const cap = useApi<any>('/api/review/capacity');
+  return (
+    <Panel title="Capaciteit (doel per week)" id="ov-cap" action={<a href="#/review" className="text-sm text-lime underline">Naar Review</a>}>
+      <Load state={cap} rows={2}>
+        {(c) => {
+          if (!c.hasData) return <Empty title="Geen data">Zodra er content-items zijn, staat hier het doel ({c.target} per week, {c.dailyTarget} per dag) tegenover wat is gescript, gerenderd, goedgekeurd en ingepland.</Empty>;
+          const rows: [string, string, number][] = [['Gescript', 'scripted', c.week.scripted], ['Gerenderd', 'rendered', c.week.rendered], ['Goedgekeurd (G5)', 'approved', c.week.approved], ['Ingepland', 'scheduled', c.week.scheduled]];
+          return (
+            <div className="space-y-3">
+              <p className="text-sm text-dim">Doel {c.target} per week (RJ_WEEKLY_TARGET), {c.dailyTarget} per dag. Deze week tot nu toe, vandaag tussen haakjes.</p>
+              <ul className="space-y-2">
+                {rows.map(([label, key, value]) => (
+                  <li key={key}>
+                    <div className="flex items-baseline justify-between text-sm"><span>{label}</span><span className="tabular font-bold">{value} / {c.target} <span className="font-normal text-dim">({c.today[key]} / {c.dailyTarget})</span></span></div>
+                    <div className="mt-1 h-2 overflow-hidden rounded-full bg-white/10" role="progressbar" aria-label={label} aria-valuemin={0} aria-valuemax={c.target} aria-valuenow={value}><div className="h-full rounded-full bg-lime" style={{ width: `${Math.min(100, (value / c.target) * 100)}%` }} /></div>
+                  </li>
+                ))}
+              </ul>
+              <p className="text-xs text-dim">{c.waitingRender} wachten op render: ongeveer {c.render.sequentialHours} uur achter elkaar ({c.render.minutesPerReel} min per Reel, 4 CPU's).</p>
+            </div>
+          );
+        }}
+      </Load>
+    </Panel>
+  );
+}
+
 export function Overview() {
   const brief = useApi<any>('/api/brief');
   const system = useApi<any>('/api/system');
@@ -24,6 +52,8 @@ export function Overview() {
                 <Stat label="Mislukte jobs (7 dgn)" value={b.failedJobs.length} tone={b.failedJobs.length ? 'bad' : undefined} note={`${b.queuedJobs} in wachtrij · ${b.runningJobs} bezig`} />
                 <Stat label="Kosten deze maand" value={eurCents(b.costs.monthCents)} note={`Vandaag: ${eurCents(b.costs.todayCents)}${b.costs.estimatedShareToday ? ' (deels schatting)' : ''}${caps ? ` · cap ${eurCents(caps.dailyCents)}/dag` : ''}`} />
               </div>
+
+              <CapacityWidget />
 
               <div className="grid gap-5 xl:grid-cols-[1.4fr_1fr]">
                 <Panel title="Wacht op goedkeuring" id="ov-await">
