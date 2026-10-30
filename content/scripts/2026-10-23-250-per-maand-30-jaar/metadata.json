@@ -2,8 +2,8 @@
   "slug": "2026-10-23-250-per-maand-30-jaar",
   "title": "Wat doet €250 per maand beleggen over 30 jaar?",
   "template": "TemplateC",
-  "preparedAt": "2026-10-30T13:20:10.250Z",
-  "durationMs": 49797,
+  "preparedAt": "2026-10-30T14:53:50.343Z",
+  "durationMs": 48880,
   "calculation": {
     "engine": "@rj/finance-engine",
     "function": "buildReelCalculation",
@@ -22,23 +22,25 @@
     }
   },
   "voice": {
-    "provider": "local-fallback",
+    "provider": "none",
     "brandVoice": false,
-    "voice": "mb-nl2",
-    "label": "LOCAL FALLBACK (espeak-ng), NOT the brand voice: replace with ElevenLabs before publishing",
-    "audioFile": "packages/video-engine/public/generated/2026-10-23-250-per-maand-30-jaar/voice.wav",
+    "voice": "none",
+    "mode": "voiceless",
+    "label": "VOICELESS: captions only, timings from reading speed (360 ms per spoken word), no audio stream. voiceless: ElevenLabs is opt-in (set RJ_TTS_PROVIDER=elevenlabs)",
+    "audioFile": null,
     "qa": {
-      "file": "/home/user/AI-workspace/rendementjager/packages/video-engine/public/generated/2026-10-23-250-per-maand-30-jaar/voice.wav",
-      "durationMs": 48197,
-      "targetLufs": -16,
-      "inputLufs": -20.89,
-      "outputLufs": -16.8,
-      "truePeakDb": -1.5,
-      "maxVolumeDb": -1.5,
-      "meanVolumeDb": -16.4,
+      "voice": "none",
+      "file": null,
+      "durationMs": 47280,
+      "targetLufs": 0,
+      "inputLufs": null,
+      "outputLufs": null,
+      "truePeakDb": null,
+      "maxVolumeDb": null,
+      "meanVolumeDb": null,
       "clipping": false,
       "silences": [],
-      "maxSilenceS": 1.5,
+      "maxSilenceS": 0,
       "pass": true,
       "issues": []
     },
@@ -48,106 +50,110 @@
         "text": "Wat doet €250 per maand beleggen over 30 jaar?",
         "spokenText": "Wat doet tweehonderdvijftig euro per maand beleggen over dertig jaar?",
         "startMs": 350,
-        "endMs": 3965,
-        "durationMs": 3615,
-        "cacheHit": true,
-        "wordTimingSource": "estimated"
+        "endMs": 3950,
+        "durationMs": 3600,
+        "cacheHit": false,
+        "wordTimingSource": "reading-speed"
       },
       {
         "id": "s02",
         "text": "We rekenen met een hypothetisch rendement van 7% effectief per jaar.",
-        "spokenText": "We rekenen met een hypothetisch rende-ment van zeven procent effectief per jaar.",
-        "startMs": 4415,
-        "endMs": 8422,
-        "durationMs": 4007,
+        "spokenText": "We rekenen met een hypothetisch rendement van zeven procent effectief per jaar.",
+        "startMs": 4400,
+        "endMs": 8720,
+        "durationMs": 4320,
         "cacheHit": false,
-        "wordTimingSource": "estimated"
+        "wordTimingSource": "reading-speed"
       },
       {
         "id": "s03",
         "text": "Je legt aan het eind van elke maand €250 in. Het rendement wordt per maand verrekend.",
-        "spokenText": "Je legt aan het eind van elke maand tweehonderdvijftig euro in. Het rende-ment wordt per maand verrekend.",
-        "startMs": 8722,
-        "endMs": 14783,
-        "durationMs": 6061,
+        "spokenText": "Je legt aan het eind van elke maand tweehonderdvijftig euro in. Het rendement wordt per maand verrekend.",
+        "startMs": 9020,
+        "endMs": 15140,
+        "durationMs": 6120,
         "cacheHit": false,
-        "wordTimingSource": "estimated"
+        "wordTimingSource": "reading-speed"
       },
       {
         "id": "s04",
         "text": "In 30 jaar leg je zelf €90.000 in.",
         "spokenText": "In dertig jaar leg je zelf negentigduizend euro in.",
-        "startMs": 15233,
-        "endMs": 17916,
-        "durationMs": 2683,
-        "cacheHit": true,
-        "wordTimingSource": "estimated"
+        "startMs": 15590,
+        "endMs": 18830,
+        "durationMs": 3240,
+        "cacheHit": false,
+        "wordTimingSource": "reading-speed"
       },
       {
         "id": "s05",
         "text": "Door rente op rente groeit dat in dit voorbeeld naar ruim €292.000.",
         "spokenText": "Door rente op rente groeit dat in dit voorbeeld naar ruim tweehonderdtweeënnegentigduizend euro.",
-        "startMs": 18216,
-        "endMs": 23005,
-        "durationMs": 4789,
-        "cacheHit": true,
-        "wordTimingSource": "estimated"
+        "startMs": 19130,
+        "endMs": 23810,
+        "durationMs": 4680,
+        "cacheHit": false,
+        "wordTimingSource": "reading-speed"
       },
       {
         "id": "s06",
         "text": "Daarvan is ruim €202.000 rendement.",
-        "spokenText": "Daarvan is ruim tweehonderdtweeduizend euro rende-ment.",
-        "startMs": 23455,
-        "endMs": 26317,
-        "durationMs": 2862,
-        "cacheHit": true,
-        "wordTimingSource": "estimated"
+        "spokenText": "Daarvan is ruim tweehonderdtweeduizend euro rendement.",
+        "startMs": 24260,
+        "endMs": 26420,
+        "durationMs": 2160,
+        "cacheHit": false,
+        "wordTimingSource": "reading-speed"
       },
       {
         "id": "s07",
         "text": "Reken je met 2% inflatie per jaar, dan is hetzelfde eindbedrag ruim €161.000 in geld van nu.",
-        "spokenText": "Reken je met twee procent inflaatsie per jaar, dan is hetzelfde eindbedrag ruim honderdeenenzestigduizend euro in geld van nu.",
-        "startMs": 26617,
-        "endMs": 33753,
-        "durationMs": 7136,
+        "spokenText": "Reken je met twee procent inflatie per jaar, dan is hetzelfde eindbedrag ruim honderdeenenzestigduizend euro in geld van nu.",
+        "startMs": 26720,
+        "endMs": 33680,
+        "durationMs": 6960,
         "cacheHit": false,
-        "wordTimingSource": "estimated"
+        "wordTimingSource": "reading-speed"
       },
       {
         "id": "s08",
         "text": "Dit is een rekenvoorbeeld, geen garantie. Het eindbedrag is nominaal: kosten, belasting en inflatie zitten er niet in.",
-        "spokenText": "Dit is een rekenvoorbeeld, geen garantie. Het eindbedrag is nominaal: kosten, belasting en inflaatsie zitten er niet in.",
-        "startMs": 34203,
-        "endMs": 41442,
-        "durationMs": 7239,
+        "spokenText": "Dit is een rekenvoorbeeld, geen garantie. Het eindbedrag is nominaal: kosten, belasting en inflatie zitten er niet in.",
+        "startMs": 34130,
+        "endMs": 40970,
+        "durationMs": 6840,
         "cacheHit": false,
-        "wordTimingSource": "estimated"
+        "wordTimingSource": "reading-speed"
       },
       {
         "id": "s09",
         "text": "En echte rendementen schommelen: sommige jaren gaat het omlaag.",
         "spokenText": "En echte rendementen schommelen: sommige jaren gaat het omlaag.",
-        "startMs": 41742,
-        "endMs": 45147,
-        "durationMs": 3405,
-        "cacheHit": true,
-        "wordTimingSource": "estimated"
+        "startMs": 41270,
+        "endMs": 44630,
+        "durationMs": 3360,
+        "cacheHit": false,
+        "wordTimingSource": "reading-speed"
       },
       {
         "id": "s10",
         "text": "Volg @rendementjager voor meer inzicht.",
         "spokenText": "Volg rendementjager voor meer inzicht.",
-        "startMs": 45597,
-        "endMs": 47797,
-        "durationMs": 2200,
-        "cacheHit": true,
-        "wordTimingSource": "estimated"
+        "startMs": 45080,
+        "endMs": 46880,
+        "durationMs": 1800,
+        "cacheHit": false,
+        "wordTimingSource": "reading-speed"
       }
     ]
   },
+  "background": {
+    "mode": "fallback-animated",
+    "reason": "no usable licensed clip in assets/footage/manifest.json"
+  },
   "captions": {
     "pages": 40,
-    "timing": "segment durations measured with ffprobe; word timings within a segment estimated by spoken length"
+    "timing": "segment durations from reading speed (deterministic, see voice-engine voiceless.ts); word timings spread by spoken length"
   },
   "logo": {
     "file": "logo-placeholder.svg",
@@ -158,17 +164,17 @@
   ],
   "render": {
     "file": "output/reels/2026-10-23-250-per-maand-30-jaar.mp4",
-    "sha256": "baea88f6ff657c9f4a2dae92d4143374fcfa853357a94a994d0d7a4cf102b8f7",
-    "sizeBytes": 15704942,
+    "sha256": "0408b55b0056028de22f6b44274ef69761ec43c8faccfdbab681569bfe0b3bc1",
+    "sizeBytes": 14270310,
     "composition": "TemplateC",
     "width": 1080,
     "height": 1920,
     "fps": 30,
-    "durationInFrames": 1494,
+    "durationInFrames": 1467,
     "codec": "h264",
-    "renderedAt": "2026-10-30T13:26:38.893Z",
-    "prepareMs": 4177,
-    "renderMs": 377538
+    "renderedAt": "2026-10-30T15:00:17.572Z",
+    "prepareMs": 83,
+    "renderMs": 382198
   },
   "mediaQa": {
     "report": "output/reels/2026-10-23-250-per-maand-30-jaar.qa.json",

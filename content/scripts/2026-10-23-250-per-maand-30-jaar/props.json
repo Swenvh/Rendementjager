@@ -1,913 +1,913 @@
 {
   "timeline": {
-    "totalMs": 49797,
+    "totalMs": 48880,
     "scenes": [
       {
         "id": "hook",
         "startMs": 0,
-        "endMs": 4165
+        "endMs": 4150
       },
       {
         "id": "assumptions",
-        "startMs": 4165,
-        "endMs": 14983
+        "startMs": 4150,
+        "endMs": 15340
       },
       {
         "id": "growth",
-        "startMs": 14983,
-        "endMs": 23205
+        "startMs": 15340,
+        "endMs": 24010
       },
       {
         "id": "result",
-        "startMs": 23205,
-        "endMs": 33953
+        "startMs": 24010,
+        "endMs": 33880
       },
       {
         "id": "risks",
-        "startMs": 33953,
-        "endMs": 45347
+        "startMs": 33880,
+        "endMs": 44830
       },
       {
         "id": "cta",
-        "startMs": 45347,
-        "endMs": 49797
+        "startMs": 44830,
+        "endMs": 48880
       }
     ]
   },
   "voice": {
-    "src": "generated/2026-10-23-250-per-maand-30-jaar/voice.wav",
-    "provider": "local-fallback",
+    "src": null,
+    "provider": "none",
     "brandVoice": false,
-    "durationMs": 48197
+    "durationMs": 47280
   },
   "captions": [
     {
       "text": "Wat doet €250 per",
       "startMs": 350,
-      "endMs": 2228,
+      "endMs": 2220,
       "segmentId": "s01",
       "words": [
         {
           "text": "Wat",
           "startMs": 350,
-          "endMs": 585
+          "endMs": 584
         },
         {
           "text": "doet",
-          "startMs": 585,
-          "endMs": 866
+          "startMs": 584,
+          "endMs": 864
         },
         {
           "text": "€250",
-          "startMs": 866,
-          "endMs": 1993
+          "startMs": 864,
+          "endMs": 1986
         },
         {
           "text": "per",
-          "startMs": 1993,
-          "endMs": 2228
+          "startMs": 1986,
+          "endMs": 2220
         }
       ]
     },
     {
       "text": "maand beleggen over 30",
-      "startMs": 2228,
-      "endMs": 3683,
+      "startMs": 2220,
+      "endMs": 3669,
       "segmentId": "s01",
       "words": [
         {
           "text": "maand",
-          "startMs": 2228,
-          "endMs": 2557
+          "startMs": 2220,
+          "endMs": 2547
         },
         {
           "text": "beleggen",
-          "startMs": 2557,
-          "endMs": 3026
+          "startMs": 2547,
+          "endMs": 3015
         },
         {
           "text": "over",
-          "startMs": 3026,
-          "endMs": 3308
+          "startMs": 3015,
+          "endMs": 3295
         },
         {
           "text": "30",
-          "startMs": 3308,
-          "endMs": 3683
+          "startMs": 3295,
+          "endMs": 3669
         }
       ]
     },
     {
       "text": "jaar?",
-      "startMs": 3683,
-      "endMs": 3965,
+      "startMs": 3669,
+      "endMs": 3950,
       "segmentId": "s01",
       "words": [
         {
           "text": "jaar?",
-          "startMs": 3683,
-          "endMs": 3965
+          "startMs": 3669,
+          "endMs": 3950
         }
       ]
     },
     {
       "text": "We rekenen met een",
-      "startMs": 4415,
-      "endMs": 5451,
+      "startMs": 4400,
+      "endMs": 5516,
       "segmentId": "s02",
       "words": [
         {
           "text": "We",
-          "startMs": 4415,
-          "endMs": 4595
+          "startMs": 4400,
+          "endMs": 4594
         },
         {
           "text": "rekenen",
-          "startMs": 4595,
-          "endMs": 5000
+          "startMs": 4594,
+          "endMs": 5031
         },
         {
           "text": "met",
-          "startMs": 5000,
-          "endMs": 5225
+          "startMs": 5031,
+          "endMs": 5274
         },
         {
           "text": "een",
-          "startMs": 5225,
-          "endMs": 5451
+          "startMs": 5274,
+          "endMs": 5516
         }
       ]
     },
     {
       "text": "hypothetisch rendement",
-      "startMs": 5451,
-      "endMs": 6576,
+      "startMs": 5516,
+      "endMs": 6730,
       "segmentId": "s02",
       "words": [
         {
           "text": "hypothetisch",
-          "startMs": 5451,
-          "endMs": 6081
+          "startMs": 5516,
+          "endMs": 6196
         },
         {
           "text": "rendement",
-          "startMs": 6081,
-          "endMs": 6576
+          "startMs": 6196,
+          "endMs": 6730
         }
       ]
     },
     {
       "text": "van 7% effectief per",
-      "startMs": 6576,
-      "endMs": 8152,
+      "startMs": 6730,
+      "endMs": 8429,
       "segmentId": "s02",
       "words": [
         {
           "text": "van",
-          "startMs": 6576,
-          "endMs": 6801
+          "startMs": 6730,
+          "endMs": 6973
         },
         {
           "text": "7%",
-          "startMs": 6801,
-          "endMs": 7432
+          "startMs": 6973,
+          "endMs": 7652
         },
         {
           "text": "effectief",
-          "startMs": 7432,
-          "endMs": 7927
+          "startMs": 7652,
+          "endMs": 8186
         },
         {
           "text": "per",
-          "startMs": 7927,
-          "endMs": 8152
+          "startMs": 8186,
+          "endMs": 8429
         }
       ]
     },
     {
       "text": "jaar.",
-      "startMs": 8152,
-      "endMs": 8422,
+      "startMs": 8429,
+      "endMs": 8720,
       "segmentId": "s02",
       "words": [
         {
           "text": "jaar.",
-          "startMs": 8152,
-          "endMs": 8422
+          "startMs": 8429,
+          "endMs": 8720
         }
       ]
     },
     {
       "text": "Je legt aan het",
-      "startMs": 8722,
-      "endMs": 9749,
+      "startMs": 9020,
+      "endMs": 10057,
       "segmentId": "s03",
       "words": [
         {
           "text": "Je",
-          "startMs": 8722,
-          "endMs": 8927
+          "startMs": 9020,
+          "endMs": 9227
         },
         {
           "text": "legt",
-          "startMs": 8927,
-          "endMs": 9236
+          "startMs": 9227,
+          "endMs": 9539
         },
         {
           "text": "aan",
-          "startMs": 9236,
-          "endMs": 9492
+          "startMs": 9539,
+          "endMs": 9798
         },
         {
           "text": "het",
-          "startMs": 9492,
-          "endMs": 9749
+          "startMs": 9798,
+          "endMs": 10057
         }
       ]
     },
     {
       "text": "eind van elke maand",
-      "startMs": 9749,
-      "endMs": 10982,
+      "startMs": 10057,
+      "endMs": 11302,
       "segmentId": "s03",
       "words": [
         {
           "text": "eind",
-          "startMs": 9749,
-          "endMs": 10057
+          "startMs": 10057,
+          "endMs": 10368
         },
         {
           "text": "van",
-          "startMs": 10057,
-          "endMs": 10314
+          "startMs": 10368,
+          "endMs": 10628
         },
         {
           "text": "elke",
-          "startMs": 10314,
-          "endMs": 10622
+          "startMs": 10628,
+          "endMs": 10939
         },
         {
           "text": "maand",
-          "startMs": 10622,
-          "endMs": 10982
+          "startMs": 10939,
+          "endMs": 11302
         }
       ]
     },
     {
       "text": "€250 in.",
-      "startMs": 10982,
-      "endMs": 12420,
+      "startMs": 11302,
+      "endMs": 12754,
       "segmentId": "s03",
       "words": [
         {
           "text": "€250",
-          "startMs": 10982,
-          "endMs": 12215
+          "startMs": 11302,
+          "endMs": 12547
         },
         {
           "text": "in.",
-          "startMs": 12215,
-          "endMs": 12420
+          "startMs": 12547,
+          "endMs": 12754
         }
       ]
     },
     {
       "text": "Het rendement wordt",
-      "startMs": 12420,
-      "endMs": 13602,
+      "startMs": 12754,
+      "endMs": 13947,
       "segmentId": "s03",
       "words": [
         {
           "text": "Het",
-          "startMs": 12420,
-          "endMs": 12677
+          "startMs": 12754,
+          "endMs": 13014
         },
         {
           "text": "rendement",
-          "startMs": 12677,
-          "endMs": 13242
+          "startMs": 13014,
+          "endMs": 13584
         },
         {
           "text": "wordt",
-          "startMs": 13242,
-          "endMs": 13602
+          "startMs": 13584,
+          "endMs": 13947
         }
       ]
     },
     {
       "text": "per maand verrekend.",
-      "startMs": 13602,
-      "endMs": 14783,
+      "startMs": 13947,
+      "endMs": 15140,
       "segmentId": "s03",
       "words": [
         {
           "text": "per",
-          "startMs": 13602,
-          "endMs": 13858
+          "startMs": 13947,
+          "endMs": 14206
         },
         {
           "text": "maand",
-          "startMs": 13858,
-          "endMs": 14218
+          "startMs": 14206,
+          "endMs": 14569
         },
         {
           "text": "verrekend.",
-          "startMs": 14218,
-          "endMs": 14783
+          "startMs": 14569,
+          "endMs": 15140
         }
       ]
     },
     {
       "text": "In 30 jaar leg",
-      "startMs": 15233,
-      "endMs": 16297,
+      "startMs": 15590,
+      "endMs": 16875,
       "segmentId": "s04",
       "words": [
         {
           "text": "In",
-          "startMs": 15233,
-          "endMs": 15418
+          "startMs": 15590,
+          "endMs": 15813
         },
         {
           "text": "30",
-          "startMs": 15418,
-          "endMs": 15788
+          "startMs": 15813,
+          "endMs": 16260
         },
         {
           "text": "jaar",
-          "startMs": 15788,
-          "endMs": 16066
+          "startMs": 16260,
+          "endMs": 16596
         },
         {
           "text": "leg",
-          "startMs": 16066,
-          "endMs": 16297
+          "startMs": 16596,
+          "endMs": 16875
         }
       ]
     },
     {
       "text": "je zelf €90.000 in.",
-      "startMs": 16297,
-      "endMs": 17916,
+      "startMs": 16875,
+      "endMs": 18830,
       "segmentId": "s04",
       "words": [
         {
           "text": "je",
-          "startMs": 16297,
-          "endMs": 16482
+          "startMs": 16875,
+          "endMs": 17098
         },
         {
           "text": "zelf",
-          "startMs": 16482,
-          "endMs": 16760
+          "startMs": 17098,
+          "endMs": 17433
         },
         {
           "text": "€90.000",
-          "startMs": 16760,
-          "endMs": 17731
+          "startMs": 17433,
+          "endMs": 18607
         },
         {
           "text": "in.",
-          "startMs": 17731,
-          "endMs": 17916
+          "startMs": 18607,
+          "endMs": 18830
         }
       ]
     },
     {
       "text": "Door rente op rente",
-      "startMs": 18216,
-      "endMs": 19290,
+      "startMs": 19130,
+      "endMs": 20180,
       "segmentId": "s05",
       "words": [
         {
           "text": "Door",
-          "startMs": 18216,
-          "endMs": 18485
+          "startMs": 19130,
+          "endMs": 19392
         },
         {
           "text": "rente",
-          "startMs": 18485,
-          "endMs": 18798
+          "startMs": 19392,
+          "endMs": 19699
         },
         {
           "text": "op",
-          "startMs": 18798,
-          "endMs": 18977
+          "startMs": 19699,
+          "endMs": 19874
         },
         {
           "text": "rente",
-          "startMs": 18977,
-          "endMs": 19290
+          "startMs": 19874,
+          "endMs": 20180
         }
       ]
     },
     {
       "text": "groeit dat in dit",
-      "startMs": 19290,
-      "endMs": 20275,
+      "startMs": 20180,
+      "endMs": 21142,
       "segmentId": "s05",
       "words": [
         {
           "text": "groeit",
-          "startMs": 19290,
-          "endMs": 19648
+          "startMs": 20180,
+          "endMs": 20530
         },
         {
           "text": "dat",
-          "startMs": 19648,
-          "endMs": 19872
+          "startMs": 20530,
+          "endMs": 20748
         },
         {
           "text": "in",
-          "startMs": 19872,
-          "endMs": 20051
+          "startMs": 20748,
+          "endMs": 20923
         },
         {
           "text": "dit",
-          "startMs": 20051,
-          "endMs": 20275
+          "startMs": 20923,
+          "endMs": 21142
         }
       ]
     },
     {
       "text": "voorbeeld naar ruim",
-      "startMs": 20275,
-      "endMs": 21304,
+      "startMs": 21142,
+      "endMs": 22148,
       "segmentId": "s05",
       "words": [
         {
           "text": "voorbeeld",
-          "startMs": 20275,
-          "endMs": 20767
+          "startMs": 21142,
+          "endMs": 21623
         },
         {
           "text": "naar",
-          "startMs": 20767,
-          "endMs": 21036
+          "startMs": 21623,
+          "endMs": 21886
         },
         {
           "text": "ruim",
-          "startMs": 21036,
-          "endMs": 21304
+          "startMs": 21886,
+          "endMs": 22148
         }
       ]
     },
     {
       "text": "€292.000.",
-      "startMs": 21304,
-      "endMs": 23005,
+      "startMs": 22148,
+      "endMs": 23810,
       "segmentId": "s05",
       "words": [
         {
           "text": "€292.000.",
-          "startMs": 21304,
-          "endMs": 23005
+          "startMs": 22148,
+          "endMs": 23810
         }
       ]
     },
     {
       "text": "Daarvan is ruim",
-      "startMs": 23455,
-      "endMs": 24393,
+      "startMs": 24260,
+      "endMs": 24968,
       "segmentId": "s06",
       "words": [
         {
           "text": "Daarvan",
-          "startMs": 23455,
-          "endMs": 23899
+          "startMs": 24260,
+          "endMs": 24595
         },
         {
           "text": "is",
-          "startMs": 23899,
-          "endMs": 24096
+          "startMs": 24595,
+          "endMs": 24744
         },
         {
           "text": "ruim",
-          "startMs": 24096,
-          "endMs": 24393
+          "startMs": 24744,
+          "endMs": 24968
         }
       ]
     },
     {
       "text": "€202.000 rendement.",
-      "startMs": 24393,
-      "endMs": 26317,
+      "startMs": 24968,
+      "endMs": 26420,
       "segmentId": "s06",
       "words": [
         {
           "text": "€202.000",
-          "startMs": 24393,
-          "endMs": 25774
+          "startMs": 24968,
+          "endMs": 26010
         },
         {
           "text": "rendement.",
-          "startMs": 25774,
-          "endMs": 26317
+          "startMs": 26010,
+          "endMs": 26420
         }
       ]
     },
     {
       "text": "Reken je met 2%",
-      "startMs": 26617,
-      "endMs": 28095,
+      "startMs": 26720,
+      "endMs": 28183,
       "segmentId": "s07",
       "words": [
         {
           "text": "Reken",
-          "startMs": 26617,
-          "endMs": 26974
+          "startMs": 26720,
+          "endMs": 27073
         },
         {
           "text": "je",
-          "startMs": 26974,
-          "endMs": 27178
+          "startMs": 27073,
+          "endMs": 27275
         },
         {
           "text": "met",
-          "startMs": 27178,
-          "endMs": 27433
+          "startMs": 27275,
+          "endMs": 27527
         },
         {
           "text": "2%",
-          "startMs": 27433,
-          "endMs": 28095
+          "startMs": 27527,
+          "endMs": 28183
         }
       ]
     },
     {
       "text": "inflatie per jaar, dan",
-      "startMs": 28095,
-      "endMs": 29522,
+      "startMs": 28183,
+      "endMs": 29494,
       "segmentId": "s07",
       "words": [
         {
           "text": "inflatie",
-          "startMs": 28095,
-          "endMs": 28707
+          "startMs": 28183,
+          "endMs": 28687
         },
         {
           "text": "per",
-          "startMs": 28707,
-          "endMs": 28962
+          "startMs": 28687,
+          "endMs": 28939
         },
         {
           "text": "jaar,",
-          "startMs": 28962,
-          "endMs": 29268
+          "startMs": 28939,
+          "endMs": 29242
         },
         {
           "text": "dan",
-          "startMs": 29268,
-          "endMs": 29522
+          "startMs": 29242,
+          "endMs": 29494
         }
       ]
     },
     {
       "text": "is hetzelfde",
-      "startMs": 29522,
-      "endMs": 30287,
+      "startMs": 29494,
+      "endMs": 30250,
       "segmentId": "s07",
       "words": [
         {
           "text": "is",
-          "startMs": 29522,
-          "endMs": 29726
+          "startMs": 29494,
+          "endMs": 29696
         },
         {
           "text": "hetzelfde",
-          "startMs": 29726,
-          "endMs": 30287
+          "startMs": 29696,
+          "endMs": 30250
         }
       ]
     },
     {
       "text": "eindbedrag ruim",
-      "startMs": 30287,
-      "endMs": 31204,
+      "startMs": 30250,
+      "endMs": 31158,
       "segmentId": "s07",
       "words": [
         {
           "text": "eindbedrag",
-          "startMs": 30287,
-          "endMs": 30899
+          "startMs": 30250,
+          "endMs": 30856
         },
         {
           "text": "ruim",
-          "startMs": 30899,
-          "endMs": 31204
+          "startMs": 30856,
+          "endMs": 31158
         }
       ]
     },
     {
       "text": "€161.000 in geld van",
-      "startMs": 31204,
-      "endMs": 33549,
+      "startMs": 31158,
+      "endMs": 33478,
       "segmentId": "s07",
       "words": [
         {
           "text": "€161.000",
-          "startMs": 31204,
-          "endMs": 32785
+          "startMs": 31158,
+          "endMs": 32722
         },
         {
           "text": "in",
-          "startMs": 32785,
-          "endMs": 32988
+          "startMs": 32722,
+          "endMs": 32923
         },
         {
           "text": "geld",
-          "startMs": 32988,
-          "endMs": 33294
+          "startMs": 32923,
+          "endMs": 33226
         },
         {
           "text": "van",
-          "startMs": 33294,
-          "endMs": 33549
+          "startMs": 33226,
+          "endMs": 33478
         }
       ]
     },
     {
       "text": "nu.",
-      "startMs": 33549,
-      "endMs": 33753,
+      "startMs": 33478,
+      "endMs": 33680,
       "segmentId": "s07",
       "words": [
         {
           "text": "nu.",
-          "startMs": 33549,
-          "endMs": 33753
+          "startMs": 33478,
+          "endMs": 33680
         }
       ]
     },
     {
       "text": "Dit is een",
-      "startMs": 34203,
-      "endMs": 34959,
+      "startMs": 34130,
+      "endMs": 34855,
       "segmentId": "s08",
       "words": [
         {
           "text": "Dit",
-          "startMs": 34203,
-          "endMs": 34473
+          "startMs": 34130,
+          "endMs": 34389
         },
         {
           "text": "is",
-          "startMs": 34473,
-          "endMs": 34689
+          "startMs": 34389,
+          "endMs": 34596
         },
         {
           "text": "een",
-          "startMs": 34689,
-          "endMs": 34959
+          "startMs": 34596,
+          "endMs": 34855
         }
       ]
     },
     {
       "text": "rekenvoorbeeld, geen",
-      "startMs": 34959,
-      "endMs": 36148,
+      "startMs": 34855,
+      "endMs": 35995,
       "segmentId": "s08",
       "words": [
         {
           "text": "rekenvoorbeeld,",
-          "startMs": 34959,
-          "endMs": 35824
+          "startMs": 34855,
+          "endMs": 35685
         },
         {
           "text": "geen",
-          "startMs": 35824,
-          "endMs": 36148
+          "startMs": 35685,
+          "endMs": 35995
         }
       ]
     },
     {
       "text": "garantie.",
-      "startMs": 36148,
-      "endMs": 36688,
+      "startMs": 35995,
+      "endMs": 36514,
       "segmentId": "s08",
       "words": [
         {
           "text": "garantie.",
-          "startMs": 36148,
-          "endMs": 36688
+          "startMs": 35995,
+          "endMs": 36514
         }
       ]
     },
     {
       "text": "Het eindbedrag is",
-      "startMs": 36688,
-      "endMs": 37823,
+      "startMs": 36514,
+      "endMs": 37602,
       "segmentId": "s08",
       "words": [
         {
           "text": "Het",
-          "startMs": 36688,
-          "endMs": 36958
+          "startMs": 36514,
+          "endMs": 36773
         },
         {
           "text": "eindbedrag",
-          "startMs": 36958,
-          "endMs": 37606
+          "startMs": 36773,
+          "endMs": 37395
         },
         {
           "text": "is",
-          "startMs": 37606,
-          "endMs": 37823
+          "startMs": 37395,
+          "endMs": 37602
         }
       ]
     },
     {
       "text": "nominaal:",
-      "startMs": 37823,
-      "endMs": 38363,
+      "startMs": 37602,
+      "endMs": 38120,
       "segmentId": "s08",
       "words": [
         {
           "text": "nominaal:",
-          "startMs": 37823,
-          "endMs": 38363
+          "startMs": 37602,
+          "endMs": 38120
         }
       ]
     },
     {
       "text": "kosten, belasting en",
-      "startMs": 38363,
-      "endMs": 39605,
+      "startMs": 38120,
+      "endMs": 39312,
       "segmentId": "s08",
       "words": [
         {
           "text": "kosten,",
-          "startMs": 38363,
-          "endMs": 38795
+          "startMs": 38120,
+          "endMs": 38535
         },
         {
           "text": "belasting",
-          "startMs": 38795,
-          "endMs": 39389
+          "startMs": 38535,
+          "endMs": 39105
         },
         {
           "text": "en",
-          "startMs": 39389,
-          "endMs": 39605
+          "startMs": 39105,
+          "endMs": 39312
         }
       ]
     },
     {
       "text": "inflatie zitten er",
-      "startMs": 39605,
-      "endMs": 40902,
+      "startMs": 39312,
+      "endMs": 40452,
       "segmentId": "s08",
       "words": [
         {
           "text": "inflatie",
-          "startMs": 39605,
-          "endMs": 40254
+          "startMs": 39312,
+          "endMs": 39830
         },
         {
           "text": "zitten",
-          "startMs": 40254,
-          "endMs": 40686
+          "startMs": 39830,
+          "endMs": 40245
         },
         {
           "text": "er",
-          "startMs": 40686,
-          "endMs": 40902
+          "startMs": 40245,
+          "endMs": 40452
         }
       ]
     },
     {
       "text": "niet in.",
-      "startMs": 40902,
-      "endMs": 41442,
+      "startMs": 40452,
+      "endMs": 40970,
       "segmentId": "s08",
       "words": [
         {
           "text": "niet",
-          "startMs": 40902,
-          "endMs": 41226
+          "startMs": 40452,
+          "endMs": 40763
         },
         {
           "text": "in.",
-          "startMs": 41226,
-          "endMs": 41442
+          "startMs": 40763,
+          "endMs": 40970
         }
       ]
     },
     {
       "text": "En echte rendementen",
-      "startMs": 41742,
-      "endMs": 42893,
+      "startMs": 41270,
+      "endMs": 42406,
       "segmentId": "s09",
       "words": [
         {
           "text": "En",
-          "startMs": 41742,
-          "endMs": 41934
+          "startMs": 41270,
+          "endMs": 41459
         },
         {
           "text": "echte",
-          "startMs": 41934,
-          "endMs": 42270
+          "startMs": 41459,
+          "endMs": 41791
         },
         {
           "text": "rendementen",
-          "startMs": 42270,
-          "endMs": 42893
+          "startMs": 41791,
+          "endMs": 42406
         }
       ]
     },
     {
       "text": "schommelen:",
-      "startMs": 42893,
-      "endMs": 43468,
+      "startMs": 42406,
+      "endMs": 42974,
       "segmentId": "s09",
       "words": [
         {
           "text": "schommelen:",
-          "startMs": 42893,
-          "endMs": 43468
+          "startMs": 42406,
+          "endMs": 42974
         }
       ]
     },
     {
       "text": "sommige jaren gaat het",
-      "startMs": 43468,
-      "endMs": 44763,
+      "startMs": 42974,
+      "endMs": 44251,
       "segmentId": "s09",
       "words": [
         {
           "text": "sommige",
-          "startMs": 43468,
-          "endMs": 43900
+          "startMs": 42974,
+          "endMs": 43400
         },
         {
           "text": "jaren",
-          "startMs": 43900,
-          "endMs": 44236
+          "startMs": 43400,
+          "endMs": 43731
         },
         {
           "text": "gaat",
-          "startMs": 44236,
-          "endMs": 44524
+          "startMs": 43731,
+          "endMs": 44015
         },
         {
           "text": "het",
-          "startMs": 44524,
-          "endMs": 44763
+          "startMs": 44015,
+          "endMs": 44251
         }
       ]
     },
     {
       "text": "omlaag.",
-      "startMs": 44763,
-      "endMs": 45147,
+      "startMs": 44251,
+      "endMs": 44630,
       "segmentId": "s09",
       "words": [
         {
           "text": "omlaag.",
-          "startMs": 44763,
-          "endMs": 45147
+          "startMs": 44251,
+          "endMs": 44630
         }
       ]
     },
     {
       "text": "Volg @rendementjager",
-      "startMs": 45597,
-      "endMs": 46723,
+      "startMs": 45080,
+      "endMs": 46001,
       "segmentId": "s10",
       "words": [
         {
           "text": "Volg",
-          "startMs": 45597,
-          "endMs": 45904
+          "startMs": 45080,
+          "endMs": 45331
         },
         {
           "text": "@rendementjager",
-          "startMs": 45904,
-          "endMs": 46723
+          "startMs": 45331,
+          "endMs": 46001
         }
       ]
     },
     {
       "text": "voor meer inzicht.",
-      "startMs": 46723,
-      "endMs": 47797,
+      "startMs": 46001,
+      "endMs": 46880,
       "segmentId": "s10",
       "words": [
         {
           "text": "voor",
-          "startMs": 46723,
-          "endMs": 47030
+          "startMs": 46001,
+          "endMs": 46252
         },
         {
           "text": "meer",
-          "startMs": 47030,
-          "endMs": 47337
+          "startMs": 46252,
+          "endMs": 46503
         },
         {
           "text": "inzicht.",
-          "startMs": 47337,
-          "endMs": 47797
+          "startMs": 46503,
+          "endMs": 46880
         }
       ]
     }
@@ -919,6 +919,7 @@
     "text": "Volg @rendementjager voor meer inzicht",
     "tagline": "Meer inzicht."
   },
+  "background": null,
   "kicker": "Geld in cijfers",
   "hookLines": [
     "Wat doet",
