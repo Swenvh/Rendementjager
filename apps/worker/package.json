@@ -13,6 +13,7 @@
     "@rj/shared": "*",
     "@rj/database": "*",
     "@rj/content-engine": "*",
-    "@rj/integrations": "*"
+    "@rj/integrations": "*",
+    "@rj/research-engine": "*"
   }
 }

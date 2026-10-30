@@ -19,6 +19,7 @@ const PRODUCTION_JOBS: readonly JobType[] = ['generate_audio', 'render_video', '
 export const JOB_AGENT: Readonly<Record<JobType, AgentId>> = {
   generate_audio: 'voice-producer',
   render_video: 'video-engineer',
+  render_batch: 'video-engineer',
   render_cover: 'video-engineer',
   media_qa: 'qa-engineer',
   collect_metrics: 'growth-analyst',

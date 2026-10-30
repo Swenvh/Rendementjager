@@ -362,6 +362,7 @@ export type AuditLog = z.infer<typeof AuditLogSchema>;
 export const JOB_TYPES = [
   'generate_audio',
   'render_video',
+  'render_batch',
   'render_cover',
   'media_qa',
   'collect_metrics',

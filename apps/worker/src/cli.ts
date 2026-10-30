@@ -3,11 +3,13 @@
  * npm run worker -- --watch [--interval 30000]   keep polling (Ctrl+C to stop)
  * npm run worker -- --enqueue daily_brief        enqueue a job (idempotent per type/content/day) and exit
  *                   [--content <id>] [--slug <slug>] [--run]   (--run also processes the queue once)
+ * npm run worker -- --enqueue render_batch [--limit N] [--run]   render every Reel with G2+G3 (RJ_RENDER_CONCURRENCY, default 2)
  */
 import { openRepository } from '@rj/database';
 import { JobTypeSchema } from '@rj/shared';
 import { amsterdamDate } from './handlers/daily-brief.js';
 import { registerDefaultHandlers } from './handlers/index.js';
+import { enqueueRenderBatch } from './handlers/render-batch.js';
 import { enqueueJob } from './queue.js';
 import { Worker } from './runner.js';
 
@@ -34,6 +36,15 @@ try {
   const enqueue = opt('enqueue');
   if (enqueue) {
     const type = JobTypeSchema.parse(enqueue);
+    if (type === 'render_batch') {
+      const limit = opt('limit');
+      const b = await enqueueRenderBatch(repo, { limit: limit ? Number(limit) : undefined });
+      console.log(b.jobId ? `${b.created ? 'queued' : 'already exists'}: render_batch ${b.jobId} with ${b.items.length} Reels` : 'no Reels ready to render (needs APPROVED_FOR_PRODUCTION with G2+G3)');
+      if (flag('run')) await once();
+      process.exitCode = 0;
+      await repo.close();
+      process.exit();
+    }
     const contentId = opt('content') ?? null;
     const slug = opt('slug');
     const key = opt('key') ?? `${type}:${contentId ?? '-'}:${amsterdamDate(new Date())}`;
