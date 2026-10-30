@@ -18,12 +18,12 @@ Takes one item from its current stage to READY_FOR_EDITOR (waiting for owner G5)
    Record both via the API. Fail → REVISION_REQUIRED → step 3 (script change invalidates G2/G3).
 6. Snapshot the approved script to `content/approved/<slug>/`; stage APPROVED_FOR_PRODUCTION.
 7. `creative-director`: storyboard + cover concept.
-8. `audio-voice-producer`: enqueue/run `generate_audio` (`npm run worker -- --once`). Fallback audio
-   is labelled and blocks publication-ready status unless the owner accepts it.
+8. `audio-voice-producer`: enqueue/run `generate_audio` (`npm run worker -- --once`). Without an ElevenLabs
+   opt-in the Reel is voiceless (captions only, `voice: none`); that is valid. There is no local voice.
 9. `render-content` for this slug.
 10. G4: `qa-reliability-engineer` runs `npm run qa -w @rj/video-engine -- output/reels/<slug>.mp4`.
 11. On G4 pass: stage READY_FOR_EDITOR. Tell the owner: MP4 path, cover, caption, sha256, QA
-    summary, flags (placeholder logo, fallback voice). Owner approves G5 in Mission Control.
+    summary, flags (placeholder logo, voiceless, background footage credit). Owner approves G5 in Mission Control.
 
 Concurrency: at most 3 agents at once (step 5 uses 2).
 

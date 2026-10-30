@@ -14,7 +14,9 @@ export interface SilenceSpan {
 }
 
 export interface AudioQaReport {
-  file: string;
+  /** 'none' = voiceless Reel: there is no audio to check and that is valid. */
+  voice: 'present' | 'none';
+  file: string | null;
   durationMs: number;
   targetLufs: number;
   inputLufs: number | null;
@@ -112,6 +114,7 @@ export async function audioQa(file: string, opts: AudioQaOptions = {}): Promise<
   if (vol.maxVolumeDb === null) issues.push('audio is completely silent');
   for (const s of silences) issues.push(`silence of ${s.durationS.toFixed(2)}s at ${s.startS.toFixed(2)}s`);
   return {
+    voice: 'present',
     file,
     durationMs,
     targetLufs,
@@ -125,5 +128,13 @@ export async function audioQa(file: string, opts: AudioQaOptions = {}): Promise<
     maxSilenceS,
     pass: issues.length === 0,
     issues,
+  };
+}
+
+/** QA result for a voiceless Reel: valid by definition (captions only, no audio stream is intended). */
+export function voicelessAudioQa(durationMs: number): AudioQaReport {
+  return {
+    voice: 'none', file: null, durationMs, targetLufs: 0, inputLufs: null, outputLufs: null, truePeakDb: null, maxVolumeDb: null,
+    meanVolumeDb: null, clipping: false, silences: [], maxSilenceS: 0, pass: true, issues: [],
   };
 }

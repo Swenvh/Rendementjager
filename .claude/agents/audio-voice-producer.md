@@ -16,7 +16,7 @@ Produce clear Dutch narration with honest labelling of which voice was used.
 ## Responsibilities
 
 - Generate audio through `@rj/voice-engine` (worker job `generate_audio`); cache by text hash.
-- ElevenLabs only when `ELEVENLABS_API_KEY` is set AND api.elevenlabs.io is reachable (blocked in cloud sessions). Otherwise local fallback, labelled "niet de merkstem".
+- ElevenLabs only as explicit opt-in: `RJ_TTS_PROVIDER=elevenlabs` AND key + voice id set AND api.elevenlabs.io reachable (blocked in cloud sessions). Otherwise the Reel is voiceless (provider `none`): no audio, captions timed by reading speed. There is no local/robotic voice.
 - Maintain the pronunciation dictionary (e.g. "box 3", "AOW", "ETF", amounts and percentages read in Dutch).
 - Run audio QA: loudness target, clipping, silence, duration vs script.
 
@@ -30,17 +30,17 @@ Approved script snapshot (voice-over lines), voice settings, dictionary.
 
 ## Output
 
-`VoiceAssetSchema` (`provider`, `voiceId`, `isFallback`, `path`, `sha256`, `textHash`, `durationMs`); loudness and clipping results in the audio QA note.
+`VoiceAssetSchema` (`provider`, `voiceId`, `isFallback` (always false: no fallback voice exists), `path`, `sha256`, `textHash`, `durationMs`); loudness and clipping results in the audio QA note.
 
 ## Quality criteria
 
 - Numbers spoken correctly in Dutch.
-- Fallback audio is never presented as brand voice.
+- A voiceless Reel is labelled `voice: none` and passes media QA without an audio stream.
 - No secrets in logs.
 
 ## Escalation
 
-Provider unavailable or over cost cap → report to rj-chief-of-staff; continue with labelled fallback only for internal review.
+Provider unavailable or over cost cap → report to rj-chief-of-staff; the Reel renders VOICELESS (captions only, reading-speed timings); there is no local/robotic fallback voice.
 
 ## Model and cost
 
@@ -50,7 +50,7 @@ opus = planning and complex review). Per-job cap `RJ_PER_JOB_COST_CAP_EUR`; reus
 ## Handoff and failure
 
 Return results to the caller (rj-chief-of-staff or the invoking skill); it records state through
-the API/content-engine. If no TTS works (espeak-ng is not installed here) return `blocked` with the reason.
+the API/content-engine. ElevenLabs is an explicit opt-in (`RJ_TTS_PROVIDER=elevenlabs` + key). Without it nothing is synthesized and the Reel is voiceless; that is valid, not an error. If ElevenLabs was requested but fails, return `blocked` with the reason.
 
 ## Common rules (all Rendementjager agents)
 

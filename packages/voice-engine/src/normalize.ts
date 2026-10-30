@@ -5,8 +5,6 @@ export interface PronunciationEntry {
   term: string;
   /** Spoken form for any provider. */
   spoken: string;
-  /** Optional override for the robotic local fallback voice (phonetic Dutch spelling). */
-  local?: string;
   /** Match case-sensitively (acronyms). Default false. */
   caseSensitive?: boolean;
 }
@@ -20,12 +18,12 @@ export const pronunciationDictionary: PronunciationEntry[] = [
   { term: 'AEX', spoken: 'aa-ee-iks', caseSensitive: true },
   { term: 'S&P 500', spoken: 'es en pee vijfhonderd', caseSensitive: true },
   { term: 'FIRE', spoken: 'faijer', caseSensitive: true },
-  { term: 'financial independence', spoken: 'financial independence', local: 'fainensjel indiependens' },
-  { term: 'samengestelde rente', spoken: 'samengestelde rente', local: 'samen-gestelde rente' },
-  { term: 'dividend', spoken: 'dividend', local: 'dievie-dent' },
-  { term: 'obligaties', spoken: 'obligaties', local: 'obbligaatsies' },
-  { term: 'inflatie', spoken: 'inflatie', local: 'inflaatsie' },
-  { term: 'rendement', spoken: 'rendement', local: 'rende-ment' },
+  { term: 'financial independence', spoken: 'financial independence' },
+  { term: 'samengestelde rente', spoken: 'samengestelde rente' },
+  { term: 'dividend', spoken: 'dividend' },
+  { term: 'obligaties', spoken: 'obligaties' },
+  { term: 'inflatie', spoken: 'inflatie' },
+  { term: 'rendement', spoken: 'rendement' },
   { term: 'p/m', spoken: 'per maand' },
   { term: 'p/j', spoken: 'per jaar' },
   { term: 'bijv.', spoken: 'bijvoorbeeld' },
@@ -33,7 +31,7 @@ export const pronunciationDictionary: PronunciationEntry[] = [
   { term: 'ca.', spoken: 'circa' },
 ];
 
-export type NormalizeTarget = 'default' | 'local';
+export type NormalizeTarget = 'default';
 
 const escapeRe = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
@@ -42,7 +40,7 @@ function applyDictionary(text: string, target: NormalizeTarget, dict: Pronunciat
   const sorted = [...dict].sort((a, b) => b.term.length - a.term.length);
   let out = text;
   for (const e of sorted) {
-    const spoken = target === 'local' && e.local ? e.local : e.spoken;
+    const spoken = e.spoken;
     const startB = /^\w/.test(e.term) ? '(?<![\\p{L}\\d])' : '';
     const endB = /\w$/.test(e.term) ? '(?![\\p{L}\\d])' : '';
     const re = new RegExp(`${startB}${escapeRe(e.term)}${endB}`, e.caseSensitive ? 'gu' : 'giu');

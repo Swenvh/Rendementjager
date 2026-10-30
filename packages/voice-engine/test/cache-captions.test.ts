@@ -6,12 +6,12 @@ import { cacheKey, VoiceCache, estimateWordTimings, toCaptionPages, type TimedSe
 
 describe('cache', () => {
   it('key is sha256 of provider + voice + normalized text', () => {
-    const a = cacheKey('local-fallback', 'mb-nl2', 'hallo');
+    const a = cacheKey('elevenlabs', 'voiceA', 'hallo');
     expect(a).toMatch(/^[0-9a-f]{64}$/);
-    expect(cacheKey('local-fallback', 'mb-nl2', 'hallo')).toBe(a);
-    expect(cacheKey('elevenlabs', 'mb-nl2', 'hallo')).not.toBe(a);
-    expect(cacheKey('local-fallback', 'nl', 'hallo')).not.toBe(a);
-    expect(cacheKey('local-fallback', 'mb-nl2', 'hallo!')).not.toBe(a);
+    expect(cacheKey('elevenlabs', 'voiceA', 'hallo')).toBe(a);
+    expect(cacheKey('other-provider', 'voiceA', 'hallo')).not.toBe(a);
+    expect(cacheKey('elevenlabs', 'voiceB', 'hallo')).not.toBe(a);
+    expect(cacheKey('elevenlabs', 'voiceA', 'hallo!')).not.toBe(a);
   });
   it('stores and returns entries', async () => {
     const dir = mkdtempSync(join(tmpdir(), 'rj-cache-'));

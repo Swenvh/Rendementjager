@@ -80,5 +80,5 @@ export async function synthesizeScript(
 
   const measured = await normalizeLoudness(mixPath, opts.outPath, opts.targetLufs ?? -16);
   const qa = await audioQa(opts.outPath, { targetLufs: opts.targetLufs ?? -16, inputLufs: measured.integratedLufs });
-  return { provider: provider.id, brandVoice: provider.brandVoice, voice: provider.voice, audioPath: opts.outPath, durationMs, leadInMs, segments: timed, qa };
+  return { provider: provider.id, brandVoice: provider.brandVoice, voice: provider.voice, audioPath: opts.outPath, durationMs, leadInMs, segments: timed, qa, timingSource: 'measured-audio' };
 }

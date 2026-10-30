@@ -2,7 +2,7 @@ import { mkdtempSync, readFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { describe, expect, it, vi } from 'vitest';
-import { ElevenLabsProvider, alignmentToWords, selectProvider } from '../src/index.js';
+import { ElevenLabsProvider, alignmentToWords, selectVoice } from '../src/index.js';
 
 const alignment = {
   characters: [...'hallo daar'],
@@ -43,16 +43,14 @@ describe('ElevenLabsProvider (mocked fetch; api.elevenlabs.io is blocked in clou
     await expect(p.synthesize('x', { outDir: tmpdir(), fileStem: 'x' })).rejects.not.toThrow(/secret-key/);
   });
 
-  it('falls back to the labelled local provider when not configured', () => {
-    const prev = { k: process.env.ELEVENLABS_API_KEY, v: process.env.ELEVENLABS_VOICE_ID };
-    delete process.env.ELEVENLABS_API_KEY;
-    delete process.env.ELEVENLABS_VOICE_ID;
-    const p = selectProvider();
-    expect(p.id).toBe('local-fallback');
-    expect(p.brandVoice).toBe(false);
-    process.env.ELEVENLABS_API_KEY = prev.k;
-    process.env.ELEVENLABS_VOICE_ID = prev.v;
-    if (prev.k === undefined) delete process.env.ELEVENLABS_API_KEY;
-    if (prev.v === undefined) delete process.env.ELEVENLABS_VOICE_ID;
+  it('is voiceless unless ElevenLabs is explicitly opted in AND configured', () => {
+    const keys = { ELEVENLABS_API_KEY: 'k', ELEVENLABS_VOICE_ID: 'v' };
+    expect(selectVoice({}).mode).toBe('none');
+    expect(selectVoice(keys).mode).toBe('none'); // keys alone are not an opt-in
+    expect(selectVoice({ RJ_TTS_PROVIDER: 'elevenlabs' }).mode).toBe('none'); // opt-in without keys
+    expect(selectVoice({ RJ_TTS_PROVIDER: 'elevenlabs' }).provider).toBeNull();
+    const on = selectVoice({ RJ_TTS_PROVIDER: 'elevenlabs', ...keys });
+    expect(on.mode).toBe('elevenlabs');
+    expect(on.provider?.brandVoice).toBe(true);
   });
 });

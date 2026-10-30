@@ -1,4 +1,6 @@
-export type ProviderId = 'elevenlabs' | 'local-fallback';
+/** Only ElevenLabs can synthesize. 'none' = voiceless Reel (captions only, no audio). */
+export type ProviderId = 'elevenlabs';
+export type VoiceMode = ProviderId | 'none';
 
 export interface WordTiming {
   text: string;
@@ -33,7 +35,7 @@ export interface TtsProvider {
   /** Voice identifier used in cache keys and metadata (never a secret). */
   readonly voice: string;
   /** Normalization target for the dictionary. */
-  readonly normalizeTarget: 'default' | 'local';
+  readonly normalizeTarget: 'default';
   isConfigured(): boolean;
   synthesize(normalizedText: string, opts: SynthesizeOptions): Promise<SegmentAudio>;
 }
@@ -57,16 +59,19 @@ export interface TimedSegment {
   /** Word timings relative to the whole track. */
   words: WordTiming[];
   /** 'provider' = returned by TTS, 'estimated' = distributed over the measured segment by length. */
-  wordTimingSource: 'provider' | 'estimated';
+  wordTimingSource: 'provider' | 'estimated' | 'reading-speed';
 }
 
 export interface VoiceTrack {
-  provider: ProviderId;
+  /** 'none' = voiceless: no audio file, timings derived from the script (see voiceless.ts). */
+  provider: VoiceMode;
   brandVoice: boolean;
   voice: string;
-  audioPath: string;
+  audioPath: string | null;
   durationMs: number;
   leadInMs: number;
   segments: TimedSegment[];
   qa: import('./audio-qa.js').AudioQaReport;
+  /** How segment durations were obtained. */
+  timingSource: 'measured-audio' | 'reading-speed';
 }

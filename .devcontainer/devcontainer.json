@@ -2,7 +2,7 @@
   "name": "Rendementjager",
   "image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm",
   "hostRequirements": { "cpus": 4 },
-  "postCreateCommand": "sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg espeak-ng && cp -n .env.example .env && npm ci --no-audit --no-fund && npm run db:migrate && npm run db:seed",
+  "postCreateCommand": "sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg && cp -n .env.example .env && npm ci --no-audit --no-fund && npm run db:migrate && npm run db:seed",
   "postAttachCommand": "npm run dev",
   "forwardPorts": [5173],
   "portsAttributes": {

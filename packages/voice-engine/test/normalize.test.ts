@@ -34,8 +34,6 @@ describe('normalizeForSpeech', () => {
     expect(normalizeForSpeech('Een ETF volgt de AEX')).toBe('Een ee-tee-ef volgt de aa-ee-iks');
     expect(normalizeForSpeech('De ECB verhoogt de rente')).toBe('De ee-cee-bee verhoogt de rente');
     expect(normalizeForSpeech('Volg @rendementjager')).toBe('Volg rendementjager');
-    expect(normalizeForSpeech('samengestelde rente', 'local')).toBe('samen-gestelde rente');
-    expect(normalizeForSpeech('financial independence', 'local')).toBe('fainensjel indiependens');
     expect(normalizeForSpeech('obligaties en dividend')).toBe('obligaties en dividend');
   });
   it('does not touch acronyms inside words', () => {

@@ -2,7 +2,7 @@
 # Installs the tools used by the repo's skills:
 #   - SkillSpector CLI (skill-inspector)
 #   - ffmpeg + yt-dlp (watch)
-#   - npm workspace dependencies and espeak-ng (Rendementjager)
+#   - npm workspace dependencies (Rendementjager)
 set -euo pipefail
 
 if [ "${CLAUDE_CODE_REMOTE:-}" != "true" ]; then
@@ -41,9 +41,6 @@ if [ -f "$ROOT_DIR/package-lock.json" ] && [ ! -d "$ROOT_DIR/node_modules" ]; th
   (cd "$ROOT_DIR" && npm ci --ignore-scripts --no-audit --no-fund --loglevel=error)
 fi
 
-# Local Dutch fallback voice (NOT the brand voice; ElevenLabs replaces it).
-if ! command -v espeak-ng >/dev/null 2>&1; then
-  apt-get install -y -qq espeak-ng mbrola mbrola-nl2 || { apt-get update -qq && apt-get install -y -qq espeak-ng mbrola mbrola-nl2; } || true
-fi
+# No local/robotic voice: without an ElevenLabs key Reels are voiceless (captions only). ffmpeg is needed for media QA and footage slicing.
 
 echo "export PATH=\"\$HOME/.local/bin:\$PATH\"" >> "${CLAUDE_ENV_FILE:-/dev/null}"
