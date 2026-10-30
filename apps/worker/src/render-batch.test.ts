@@ -220,7 +220,12 @@ describe('render_batch', () => {
     const res = job.result as { rendered: number; skipped: number; stoppedBy: string };
     expect(res.stoppedBy).toBe('emergency-stop');
     expect(res.skipped).toBe(3);
+    expect(res.rendered).toBe(1);
     expect(r.state.calls.length).toBe(1);
+    // the render is kept (asset registered); lifting the stop and running again completes the stage change without re-rendering
+    const first = (await repo.contentItems.get(items2[0]!.contentId))!;
+    expect(first.currentAssetSha256).not.toBeNull();
+    expect(first.stage).toBe('RENDERING');
   });
 
   it('refuses items without valid G2+G3 or in the wrong stage', async () => {

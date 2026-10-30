@@ -39,7 +39,7 @@ interface Built {
   overrides: Record<string, number | null>;
   claims: Claim[];
   tokens: Record<string, string>;
-  hooks: Record<HookPattern, [string, string]>;
+  hooks: Record<HookPattern, string[]>;
   segments: SceneSegment[][]; // per scene after the hook: assumptions, growth, result, risks, cta
   risks: string[];
   assumptionsFootnote: string;
@@ -88,9 +88,9 @@ function buildCompounding(p: TopicParams, v: number): Built {
     claims,
     tokens: {},
     hooks: {
-      question: [`Wat doet ${m} per maand beleggen over ${p.years} jaar bij ${r}?`, `Wat wordt ${m} per maand na ${p.years} jaar, gerekend met ${r} per jaar?`],
-      statement: [`${m} per maand, ${p.years} jaar lang, ${r} per jaar: dit is het rekenvoorbeeld.`, `Rente op rente in ${p.years} jaar: rekenvoorbeeld met ${m} per maand en ${r} per jaar.`],
-      contrast: [`Zelf leg je ${contrib} in. Het rekenvoorbeeld rekent ${endSp} uit.`, `${contrib} inleg tegenover ${endSp} in het rekenvoorbeeld: hoe kan dat?`],
+      question: [`Wat doet ${m} per maand beleggen over ${p.years} jaar bij ${r}?`, `Wat wordt ${m} per maand na ${p.years} jaar, gerekend met ${r} per jaar?`, `Hoe groot wordt ${m} per maand na ${p.years} jaar bij ${r} per jaar?`],
+      statement: [`${m} per maand, ${p.years} jaar lang, ${r} per jaar: dit is het rekenvoorbeeld.`, `Rente op rente in ${p.years} jaar: rekenvoorbeeld met ${m} per maand en ${r} per jaar.`, `Elke maand ${m}, ${p.years} jaar lang, ${r} per jaar: kijk wat rente op rente doet.`],
+      contrast: [`Zelf leg je ${contrib} in. Het rekenvoorbeeld rekent ${endSp} uit.`, `${contrib} inleg tegenover ${endSp} in het rekenvoorbeeld: hoe kan dat?`, `Eigen inleg ${contrib}, eindbedrag in het rekenvoorbeeld ${endSp}. Wat zit daartussen?`],
     },
     segments: [
       [
@@ -156,9 +156,9 @@ function buildCost(p: TopicParams, v: number): Built {
     claims,
     tokens: {},
     hooks: {
-      question: [`Wat maakt ${cl} of ${ch} kosten uit bij ${m} per maand over ${p.years} jaar?`, `Wat doen jaarlijkse kosten van ${ch} met ${m} per maand over ${p.years} jaar?`],
-      statement: [`Kleine kostenverschillen tellen op: ${cl} tegenover ${ch} per jaar, ${m} per maand, ${p.years} jaar lang.`, `Kosten werken als rente, maar dan andersom: ${ch} per jaar bij ${m} per maand over ${p.years} jaar.`],
-      contrast: [`${cl} of ${ch} kosten per jaar: ${diffSp} verschil over ${p.years} jaar.`, `Zelfde inleg van ${m} per maand, zelfde rendement, ${diffSp} verschil na ${p.years} jaar. Hoe kan dat?`],
+      question: [`Wat maakt ${cl} of ${ch} kosten uit bij ${m} per maand over ${p.years} jaar?`, `Wat doen jaarlijkse kosten van ${ch} met ${m} per maand over ${p.years} jaar?`, `Hoeveel scheelt ${cl} in plaats van ${ch} kosten per jaar bij ${m} per maand over ${p.years} jaar?`],
+      statement: [`Kleine kostenverschillen tellen op: ${cl} tegenover ${ch} per jaar, ${m} per maand, ${p.years} jaar lang.`, `Kosten werken als rente, maar dan andersom: ${ch} per jaar bij ${m} per maand over ${p.years} jaar.`, `Het kostenverschil tussen ${cl} en ${ch} per jaar telt door: ${m} per maand, ${p.years} jaar.`],
+      contrast: [`${cl} of ${ch} kosten per jaar: ${diffSp} verschil over ${p.years} jaar.`, `Zelfde inleg van ${m} per maand, zelfde rendement, ${diffSp} verschil na ${p.years} jaar. Hoe kan dat?`, `${m} per maand, ${p.years} jaar: ${diffSp} verschil tussen ${cl} en ${ch} kosten.`],
     },
     segments: [
       [
@@ -231,9 +231,9 @@ function buildInflation(p: TopicParams, v: number): Built {
     claims,
     tokens: {},
     hooks: {
-      question: [`Wat is ${m} per maand sparen over ${p.years} jaar nog waard bij ${i} inflatie?`, `Hoeveel koopkracht houdt ${m} per maand sparen over na ${p.years} jaar bij ${i} inflatie?`],
-      statement: [`Bij ${i} inflatie is ${m} per maand sparen over ${p.years} jaar minder waard dan het lijkt.`, `Inflatie werkt stil door: ${m} per maand sparen, ${p.years} jaar lang, ${i} per jaar.`],
-      contrast: [`Je spaart ${nominal}, maar in geld van nu is dat ongeveer ${realSp.replace(/^(ruim|bijna) /, '')}.`, `${nominal} gespaard, ${realSp} aan koopkracht in geld van nu.`],
+      question: [`Wat is ${m} per maand sparen over ${p.years} jaar nog waard bij ${i} inflatie?`, `Hoeveel koopkracht houdt ${m} per maand sparen over na ${p.years} jaar bij ${i} inflatie?`, `Hoeveel is ${nominal} sparen over ${p.years} jaar waard in geld van nu, bij ${i} inflatie?`],
+      statement: [`Bij ${i} inflatie is ${m} per maand sparen over ${p.years} jaar minder waard dan het lijkt.`, `Inflatie werkt stil door: ${m} per maand sparen, ${p.years} jaar lang, ${i} per jaar.`, `Sparen zonder rendement: ${m} per maand, ${p.years} jaar, ${i} inflatie per jaar.`],
+      contrast: [`Je spaart ${nominal}, maar in geld van nu is dat ongeveer ${realSp.replace(/^(ruim|bijna) /, '')}.`, `${nominal} gespaard, ${realSp} aan koopkracht in geld van nu.`, `Op papier ${nominal}, in koopkracht ${realSp}. Dat is wat ${i} inflatie doet.`],
     },
     segments: [
       [
@@ -284,7 +284,7 @@ const VISUALS: Record<string, string> = {
 
 export function buildItem(params: TopicParams, pattern: HookPattern, date: string): SeriesItem {
   const key = topicKey(params);
-  const phrase = pick(`${key}|${pattern}`, 2);
+  const phrase = pick(`${key}|${pattern}`, 3);
   const built = params.kind === 'compounding' ? buildCompounding(params, pick(key, 2)) : params.kind === 'cost' ? buildCost(params, pick(key, 2)) : buildInflation(params, pick(key, 2));
   const hook = built.hooks[pattern][phrase]!;
   const variantGroup = key.replace(/[:]/g, '-');

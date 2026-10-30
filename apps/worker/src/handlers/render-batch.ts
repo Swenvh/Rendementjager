@@ -260,9 +260,16 @@ export function createRenderBatchHandler(options: RenderBatchOptions = {}): JobH
           mkdirSync(join(root, 'output', 'reels'), { recursive: true });
           writeFileSync(sidecarPath(root, item.slug), JSON.stringify({ inputHash, sha256: out.sha256, renderedAt: now().toISOString() } satisfies Sidecar, null, 2) + '\n');
           await repo.renderJobs.update(rj.id, { status: 'succeeded', outputPath: relative(root, out.mp4Path), finishedAt: now().toISOString() });
-          await finish(content, item, out, inputHash);
+          // The MP4 exists now. If the follow-up transitions are refused (e.g. emergency stop), keep the render:
+          // the asset is registered and the next batch run reuses it and completes the transitions.
+          let note: string | undefined;
+          try {
+            await finish(content, item, out, inputHash);
+          } catch (err) {
+            note = `rendered, but the stage change was refused: ${(err instanceof Error ? err.message : String(err)).slice(0, 200)}`;
+          }
           result.rendered++;
-          result.items.push({ ...item, status: 'rendered', inputHash, sha256: out.sha256, attempts: attempt });
+          result.items.push({ ...item, status: 'rendered', inputHash, sha256: out.sha256, attempts: attempt, ...(note ? { reason: note } : {}) });
           return;
         } catch (err) {
           lastError = err instanceof Error ? err.message : String(err);

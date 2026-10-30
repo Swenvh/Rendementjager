@@ -160,6 +160,9 @@ export function planSeries(options: PlanOptions): Plan {
       if (prev && prev2 && prev2.hookPattern === c.pattern && prev.hookPattern === c.pattern) score -= 50;
       if (prev && prev.tags.amount === it.tags.amount) score -= 1;
       if (prev && prev.tags.horizon === it.tags.horizon) score -= 1;
+      // Keep the hook patterns balanced over the whole plan.
+      const pc = HOOK_PATTERNS.map((x) => stats.perPattern[x] ?? 0);
+      score -= ((stats.perPattern[c.pattern] ?? 0) - Math.min(...pc)) * 3;
       // Prefer fresh topics over a second variant of a topic: variants come later, A/B pairs get spread out.
       score -= (groupCount.get(c.key) ?? 0) * 4;
       if (score > bestScore) {

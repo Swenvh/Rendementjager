@@ -7,7 +7,7 @@
  * `plan` and `week` are dry runs (they write nothing). `generate` writes content/scripts/<date>-<slug>/ and registers
  * ContentIdea + ScriptRevision + FinancialClaim rows (stage IDEA at most; it never approves a gate).
  */
-import { join } from 'node:path';
+import { join, resolve } from 'node:path';
 import { WorkflowService, isEmergencyStopActive } from '@rj/content-engine';
 import { REPO_ROOT, defaultDbPath, openRepository, type Repository } from '@rj/database';
 import { existsSync } from 'node:fs';
@@ -74,7 +74,7 @@ async function main() {
   const json = flags.has('json');
   const variants = intFlag(flags.get('variants') ?? process.env.RJ_SERIES_VARIANTS, 'variants', 2);
   const maxPerKind = flags.has('max-per-kind') ? intFlag(flags.get('max-per-kind'), 'max-per-kind', 0) : undefined;
-  const outDir = flags.get('out') ? join(process.cwd(), flags.get('out')!) : join(REPO_ROOT, 'content', 'scripts');
+  const outDir = flags.get('out') ? resolve(process.cwd(), flags.get('out')!) : join(REPO_ROOT, 'content', 'scripts');
 
   if (cmd === 'capacity') {
     const c = capacity(SERIES_KINDS, variants);
