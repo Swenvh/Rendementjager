@@ -36,8 +36,28 @@ Dagelijks gebruik:
 - **Publiceren**: pagina **Publicatie**, of `npm run publish -- export <contentId>` voor het handmatige pakket.
 - **Noodstop**: zet `RJ_EMERGENCY_STOP=1` in `.env` of gebruik de schakelaar bij Instellingen.
 
+Stem: er is **geen robotstem**. Zonder ElevenLabs zijn Reels stemloos: alleen ondertitels op leestempo (dat is geldig en wordt zo gelabeld).
 Voor de echte stem: `ELEVENLABS_API_KEY` en `ELEVENLABS_VOICE_ID` in `.env` en `RJ_TTS_PROVIDER=elevenlabs`
-(kost geld; standaard staat het uit). Je officiële logo: zet het als `assets/brand/logo-official.svg`.
+(kost geld; standaard staat het uit).
+
+### Achtergrondbeelden (dronebeelden) toevoegen
+
+Zonder beelden gebruikt elke Reel de geanimeerde donkergroene achtergrond. Er worden alleen beelden gebruikt met een compleet manifest-item en een toegestane licentie (Pexels, Pixabay, CC0, CC BY met bronvermelding, of door jou aangeleverd). **YouTube-video's worden bewust niet gedownload door de tool** (auteursrecht); jij downloadt zelf wat je mag gebruiken.
+
+1. **Eigen of door jou aangeleverde video's** (bijvoorbeeld de drie YouTube-video's in `assets/footage/plans/nl-scenic.json`): download het bestand zelf, sleep het in de bestandenverkenner van je Codespace (of zet het op je eigen computer) en geef het de naam van het bron-id uit het plan: `scenic-relaxation-nl.mp4`, `drone-snap-amsterdam.mp4`, `woerden-short.mp4` in een map, bijvoorbeeld `inbox/`. Knip daarna de clips:
+   ```bash
+   npm run footage -- slice --plan assets/footage/plans/nl-scenic.json --input-dir inbox
+   npm run footage -- validate
+   ```
+   Elke clip wordt 10 seconden, staand (1080x1920), zonder geluid, en komt in `assets/footage/manifest.json` met jouw rechtenverklaring ("Owner declares rights held; not independently verified"). Jij blijft verantwoordelijk voor de rechten. Pas starttijden in het planbestand aan als je wilt, en vul het echte kanaal van de Short in. Kijk een frame na op watermerken.
+2. **Pexels of Pixabay** (gratis sleutel, niet live getest): zet `PEXELS_API_KEY` (of `PIXABAY_API_KEY`) in `.env` of de Codespaces-secrets en draai bijvoorbeeld `npm run footage -- fetch --provider pexels --query "windmolens Kinderdijk" --count 5`. Andere zoekopdrachten: polder, Amsterdam grachten, Rotterdam Erasmusbrug, tulpenvelden, Zwolle, Waddenzee, Delta Werken. Controleer daarna locatie en titel in het manifest.
+3. **YouTube met Creative Commons (CC BY)**: `npm run footage -- fetch --provider youtube-cc --url <link>` weigert alles wat geen CC BY is. De bronvermelding komt dan verplicht in de caption. Controleer de licentie zelf op de videopagina.
+
+Meer: `docs/INTEGRATIONS.md`, regels in `docs/EDITORIAL_POLICY.md` (paragraaf 7).
+
+### Tabellen en ranglijsten (Template D)
+
+`npm run series -- plan --kind table --count 6` maakt rekentabellen (inleg x looptijd). Een ranglijst met marktdata maak je alleen uit een bestand dat jij aanlevert, met bron, peildatum en periode per rij: `npm run dataset -- import <bestand.json|csv> --draft`. Ranglijsten van producten op basis van rendement uit het verleden gaan eerst langs de compliance-reviewer. Je officiële logo: zet het als `assets/brand/logo-official.svg`.
 
 ## Developer quickstart
 
@@ -65,7 +85,8 @@ packages/
   analytics-engine/  metric derivations, experiments
   integrations/      provider adapters + mocks (LLM, Buffer, n8n, Sheets)
   brand/             design tokens, logo, typography
-  voice-engine/      TTS (ElevenLabs + labelled local fallback)
+  voice-engine/      TTS (ElevenLabs opt-in; otherwise voiceless)
+  footage-engine/    licensed drone-footage library (manifest, validator, slice, fetch)
   video-engine/      Remotion templates, render, covers, media QA
 content/             research/, scripts/, approved/ (text artefacts)
 output/              reels/, covers/, reports/ (generated; mp4/wav git-ignored)

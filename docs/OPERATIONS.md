@@ -82,10 +82,16 @@ records the `instagram.com/reel/...` link with "Markeer als handmatig gepublicee
 ## Render and media QA
 
 ```bash
-npm run render -w @rj/video-engine -- --content <slug>         # -> output/reels/<slug>.mp4 (verified 2026-10-30 in a fresh copy: ~6 min, byte-identical sha256; only Template C is wired)
+npm run render -w @rj/video-engine -- --content <slug>         # -> output/reels/<slug>.mp4 (~6 min; Templates C and D are wired; voiceless unless ElevenLabs is opted in)
 npm run qa -w @rj/video-engine -- output/reels/<slug>.mp4      # media QA report (verified 2026-10-30)
 sha256sum output/reels/<slug>.mp4                              # hash that G5 binds to
 ```
+
+### Voice and background
+
+- **Voice:** there is no local voice. Without `RJ_TTS_PROVIDER=elevenlabs` + `ELEVENLABS_API_KEY` + `ELEVENLABS_VOICE_ID` a Reel renders **voiceless**: no audio stream, captions timed by reading speed (`READING_SPEED` in `packages/voice-engine/src/voiceless.ts`: 360 ms per spoken word, 120 ms per comma, minimum 1,6 s per line; numbers count as spoken words; deterministic). Media QA treats `voice: none` as valid (audio checks are skipped; format, size, fps, duration, blank frames are still checked). `metadata.json` records `voice.mode` (`voiceless` | `brand-voice`).
+- **Background:** `npm run footage -- list|validate|pick --slug <s>`. Empty or invalid library: the animated dark-green background. Details in `docs/INTEGRATIONS.md` (footage) and the README.
+- **Templates:** A/B/C plus D "Ranglijst / Tabel in cijfers" (`npm run dataset -- import <file>` for owner-provided rankings).
 
 Remotion uses the Chromium headless shell in `/opt/pw-browsers` in cloud sessions (as `../video`
 does). Renders require stage APPROVED_FOR_PRODUCTION or later.

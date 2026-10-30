@@ -31,7 +31,7 @@ the code disagree, the code and the contract win; fix this document.
 | `@rj/research-engine` | Approved source registry, `ResearchBrief` storage, topic dedupe by content hash | Accept unregistered sources as evidence |
 | `@rj/analytics-engine` | Derived metrics (null stays null), experiment comparisons | Fill gaps with 0 |
 | `@rj/integrations` | Provider interface, config validation, `status()` with `mode: live|mock` | Activate paid/live providers by default |
-| `@rj/voice-engine` | TTS interface, ElevenLabs adapter, labelled local fallback, pronunciation dictionary, cache, audio QA | Pass fallback audio off as brand voice |
+| `@rj/voice-engine` | TTS interface, ElevenLabs adapter, voiceless mode, pronunciation dictionary, cache, audio QA | Add a robotic local voice |
 | `@rj/video-engine` | Remotion 4.0.535 templates A/B/C (only C is wired into the render pipeline today; A/B are compositions without a content pipeline), render + cover scripts, media QA | Render without APPROVED_FOR_PRODUCTION |
 | `@rj/brand` | Tokens (TS + CSS vars), logo resolution, fonts | Ship an unofficial logo as official |
 | `@rj/worker` | Queue runner: claims jobs, idempotency, retries, timeouts, concurrency and cost caps, emergency stop | Publish without G5 |

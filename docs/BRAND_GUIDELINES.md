@@ -69,3 +69,10 @@ Check contrast (WCAG AA) for text; `lime` on `bg` and `surface` on `bg` pass for
 - Stock-photo luxury (Lambos, cash piles), generic AI-video look (linear fades, flat backgrounds:
   see the `remotion-motion-graphics` skill rules).
 - More than one lime accent per frame; text outside the safe area.
+
+## Background footage and grade
+
+- Ultra-realistic Dutch drone footage may sit behind the Reels (`DroneBackground`): slow drone motion only (max ~7% scale drift over a clip, small pan), never looped or time-stretched; 2 to 4 different clips per Reel with 1 s cross-fades.
+- Grade: a `bg` (#0B1F17) wash at ~52% plus top/bottom gradients and a vignette, so white text and lime numbers stay legible. Behind chart cards the footage is blurred and darkened a little. Text, charts and captions sit on top and stay inside the safe areas.
+- No licensed clip configured: the animated dark-green background stays (never a flat colour).
+- Template D (tables): title in a light label (`surface`, dark text, Manrope ExtraBold), rows as individual label boxes (min 34 px type, row height scales with the number of rows, 8 to 20 rows), lime only for the highlighted row, red only for negatives (with a sign). The value column keeps the right 130 px free for the Instagram action icons and the bottom 380 px stay free. Footer: disclaimer + source + as-of date.

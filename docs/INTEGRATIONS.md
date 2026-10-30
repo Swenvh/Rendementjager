@@ -10,7 +10,11 @@ checked against current official documentation before building or activating.
 | Claude (agents) | none (Claude Code subagents) | live via Claude Code | run any skill | `ANTHROPIC_API_KEY` optional for direct API use; not set |
 | LLM adapter (programmatic) | `ANTHROPIC_API_KEY` | mock | `status()` | Not needed for phase 1 |
 | ElevenLabs TTS | `ELEVENLABS_API_KEY`, `ELEVENLABS_VOICE_ID`, `ELEVENLABS_MODEL_ID` | **unavailable** here | voice-engine test (to be verified) | api.elevenlabs.io blocked in cloud (CONNECT 403); works only where the host is reachable. Paid; owner activates |
-| Local TTS fallback | none | fallback | voice-engine test | espeak-ng not installed in this container; audio labelled "niet de merkstem", not publishable |
+| Local/robotic TTS | removed | n.a. | voice-engine test | Decision 2026-10-30: no robotic voice in the product. Without ElevenLabs a Reel is voiceless (captions only) |
+| Footage library (owner-provided slices) | none | **built and tested** (synthetic clips) | `npm test -w @rj/footage-engine` | `footage slice` cuts portrait clips from files the owner supplies; no real clips are in the repo yet |
+| Pexels Videos API | `PEXELS_API_KEY` | built, **UNTESTED live** (pexels.com blocked here; mocked transport only) | mocked tests | Official API `api.videos.pexels.com`, Pexels License. Free key. Terms page not reachable from the sandbox: re-check https://www.pexels.com/license/ before use |
+| Pixabay Videos API | `PIXABAY_API_KEY` | built, **UNTESTED live** (mocked transport only) | mocked tests | Official API `pixabay.com/api/videos/`, Pixabay Content License. Re-check https://pixabay.com/service/license-summary/ before use |
+| YouTube CC BY via yt-dlp (`youtube-cc`) | none (yt-dlp installed) | built, **UNTESTED live** (YouTube blocked here; mocked yt-dlp output only) | mocked tests | Only videos whose metadata says "Creative Commons Attribution"; refuses otherwise or when the licence field is missing; video only; credit mandatory |
 | Buffer | `BUFFER_ACCESS_TOKEN` | mock | `status()` | *Verify* current Buffer API availability and Instagram Reels support; Buffer has restricted new API access in the past |
 | n8n | `N8N_WEBHOOK_URL` | mock | `status()` | Optional relay; no instance configured |
 | Google Sheets | MCP (session) / adapter mock | mock | Sheets MCP read | MCP available in Claude Code sessions; adapter is mock |
@@ -19,6 +23,21 @@ checked against current official documentation before building or activating.
 | YouTube Shorts | not defined | not built | — | Phase 6 |
 | TikTok | not defined | not built | — | Phase 6 |
 | GitHub | `gh` CLI / MCP | MCP failed to connect this session | — | For CI later |
+
+## Footage library (background drone footage)
+
+Files live in `assets/footage/nl/` (git-ignored, only the manifest `assets/footage/manifest.json` and `assets/footage/plans/` are tracked). Allowed licences: Pexels License, Pixabay Content License, CC0, CC BY, Owner-provided (see `docs/EDITORIAL_POLICY.md` section 7.1). Commands:
+
+```bash
+npm run footage -- list | validate
+npm run footage -- pick --slug <slug>
+npm run footage -- slice --plan assets/footage/plans/nl-scenic.json --input-dir <dir with <sourceId>.mp4>   # owner-supplied files
+npm run footage -- fetch --provider pexels --query "polder luchtfoto Nederland" --count 5     # UNTESTED live
+npm run footage -- fetch --provider pixabay --query "windmolens Kinderdijk" --count 5          # UNTESTED live
+npm run footage -- fetch --provider youtube-cc --url <https://youtu.be/...>                    # UNTESTED live, CC BY only
+```
+
+Suggested Dutch queries: polder, Amsterdam grachten, Rotterdam Erasmusbrug, windmolens Kinderdijk, tulpenvelden, Zwolle, Waddenzee, Delta Werken. `slice` output: portrait 1080x1920, 30 fps, H.264 crf 19, no audio, faststart, 10 s per clip (`clipDurationS`, 8 to 12 wanted). Slice plans list several sources (each with URL, channel, rights note, optional `avoid` ranges for title cards and end screens); the manifest records the source of every clip (`sourceId`). Each Reel uses a chain of different clips with 1 s cross-fades, never a looped or stretched clip. Fetch keys come from env only (`.env.example`).
 
 ## Instagram publishing and insights (verify against current Meta docs)
 

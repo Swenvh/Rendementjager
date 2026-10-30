@@ -84,3 +84,21 @@ Series items (`@rj/series-engine`) carry no external source. G1 for them is sati
 | Comment/DM asking for personal advice | Do not answer individually; generic education response template only after owner approval | owner |
 
 Every escalation is recorded in the audit log with reason and actor.
+
+## 7. Footage, voice and rankings
+
+### 7.1 Background footage: only licensed or owner-provided
+1. Backgrounds come from the footage library (`assets/footage/manifest.json`). A clip is used only with a complete manifest entry (id, file, title, source URL, author, licence, licence URL, retrieved date, location, duration, resolution) and an allowed licence: Pexels License, Pixabay Content License, CC0, CC BY (with credit), or Owner-provided. The validator refuses everything else; it cannot be switched off.
+2. **YouTube downloads are not supported by design (copyright).** There is no command that downloads a normal YouTube video, and nobody should add one. The only YouTube route is `footage fetch --provider youtube-cc`, which reads the video metadata first and refuses unless the licence is "Creative Commons Attribution" (CC BY). The credit line is then mandatory in `caption.md` and recorded in `metadata.json`.
+3. Owner-provided footage (own drone files, or files the owner declares rights for) is recorded as `Owner-provided` with a `rightsNote` ("Owner declares rights held; not independently verified"). The system does not verify the rights: the responsibility stays with the owner, who is also the only G5 approver.
+4. The owner confirms the licence on the video page. Third-party content inside a CC video (music, other people's footage) may not be covered by the licence, so only muted video is used; audio is always stripped. A visible watermark or title card in a source is avoided (plan `avoid` ranges, crop focus) and checked on a frame.
+5. A Reel that uses a clip whose licence asks for credit is not G4-clean until the credit line is in the caption (Review shows this).
+
+### 7.2 Voice
+No local or robotic voice exists. Without an ElevenLabs key a Reel is voiceless (captions only, timings from reading speed). ElevenLabs is an explicit, paid opt-in (`RJ_TTS_PROVIDER=elevenlabs` plus key). A voiceless Reel is valid for media QA.
+
+### 7.3 Tables and rankings (Template D)
+1. Calculated tables (finance-engine) follow section 1: assumptions on screen, nominal vs real stated, disclaimer in the footer.
+2. Market-data rankings use only an owner-provided dataset (`npm run dataset -- import`): source, as-of date and period on every row, one period per ranking, sorted order verified. Figures are never recalled from memory or filled in by an agent.
+3. **A ranking of products (funds, ETFs, shares) by past performance is escalated to the `compliance-reviewer` before G3.** Risks: it reads as a recommendation and invites cherry-picking (period, universe). The import flags `subject: products` and writes `compliance.json`; the item cannot pass G3 without the reviewer's verdict. Rankings of macro data (inflation, rates by country) follow the normal G3.
+4. Every table shows the disclaimer "Rendementen uit het verleden bieden geen garantie voor de toekomst. Geen beleggingsadvies." in the footer, plus source and as-of date.

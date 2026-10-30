@@ -17,7 +17,7 @@ foundation is built. Read it before touching code. Change it only via the Chief 
 | `apps/worker` | `@rj/worker` | foundation | Job queue runner: idempotency keys, retries, timeouts, concurrency + cost caps, emergency stop |
 | `apps/mission-control` | `@rj/mission-control` | mission-control | Hono/Node API (`server/`) + Vite/React/Tailwind UI (`src/`) |
 | `packages/brand` | `@rj/brand` | video | Design tokens (TS + CSS variables), logo assets, typography |
-| `packages/voice-engine` | `@rj/voice-engine` | video | TTS provider interface: ElevenLabs adapter + labelled local fallback, pronunciation dictionary, cache, audio QA |
+| `packages/voice-engine` | `@rj/voice-engine` | video | TTS provider interface: ElevenLabs adapter (explicit opt-in) + voiceless mode (reading-speed timings; no local voice), pronunciation dictionary, cache, audio QA |
 | `packages/video-engine` | `@rj/video-engine` | video | Remotion project: shared components, Templates A/B/C, render + cover scripts, media QA |
 | `.claude/`, `docs/`, `CLAUDE.md`, `workflows/` | — | org-docs | Agents, project skills (Chief of Staff commands), rules, documentation |
 

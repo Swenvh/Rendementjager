@@ -66,7 +66,12 @@ Tests: `packages/content-engine/src/method-g1.test.ts` (agent actors, forged mar
 
 `render_batch` (worker): `npm run worker -- --enqueue render_batch [--limit N] --run`, or "Zet alle klare items in de render-wachtrij" on the Review page. Only items with valid G2 + G3. Env: `RJ_RENDER_CONCURRENCY` (default 2), `RJ_RENDER_JOB_TIMEOUT_MS` (per render, default 15 min), `RJ_RENDER_DAILY_MINUTES_CAP` (default 480), `RJ_RENDER_ITEM_RETRIES` (default 1), `RJ_RENDER_MINUTES_PER_REEL` (estimate, default 4), `RJ_RENDER_COST_PER_REEL_CENTS` (default 0; checked against the per-job and daily cost caps), `RJ_EMERGENCY_STOP`. Idempotent: `output/reels/<slug>.render.json` stores the input hash (storyboard + TTS provider + template source); identical hash and untouched MP4 means no re-render. Render time: about 4 minutes per Reel on 4 CPUs; 100 Reels is about 6,7 machine-hours sequentially. Whether concurrency 2 is faster on 4 CPUs must be measured; the plan prints the sequential figure and a best case.
 
-Voice: renders use the local fallback voice unless `RJ_TTS_PROVIDER=elevenlabs`. The fallback is not the brand voice. Paid TTS cost at this volume is unknown and needs the owner's decision (cost caps will stop it).
+Voice: renders are voiceless (captions only, reading-speed timings) unless `RJ_TTS_PROVIDER=elevenlabs` with a key. There is no local voice. Paid TTS cost at this volume is unknown and needs the owner's decision (cost caps will stop it).
+
+## Backgrounds and the "Tabel in cijfers" series
+
+- `generate` gives every item a deterministic chain of different clips from the footage manifest (`storyboard.background.clipIds`; rotation over the id-sorted library with a stride of 6 clips per Reel, so neighbouring Reels share none while the library has 12+ clips). Library empty: nothing is set and the Reel uses the animated background. CC BY clips add their mandatory credit line to `caption.md` (above the hashtags); credits for all clips are recorded in `metadata.json` at render time. The content hash does not depend on the background.
+- **Tabel in cijfers** (`--kind table`, opt-in; `--kind all` still means the three Template C series): Template D matrix of monthly amount x years -> nominal end value, 4 return rates x 2 amount sets = 8 topics x 3 title patterns = 24 drafts. Every cell is a finance-engine call (claim with `calculationRef`), assumptions are on screen, the disclaimer is in the footer. Items are stored without a `content_items.template` value (DB check allows A/B/C only); the storyboard says D.
 
 ## Review at volume
 

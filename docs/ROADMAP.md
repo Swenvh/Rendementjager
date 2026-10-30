@@ -12,7 +12,8 @@ Status values: `done`, `in progress`, `designed`, `not started`, `blocked`.
 | 1 — Foundation | Pipeline core runs locally with tests | shared schemas, node:sqlite DB + migrations, content-engine gates + invalidation, finance-engine, research-engine, analytics-engine, integrations mocks, worker `--once` | 0 | in progress (parallel build) |
 | 2 — Mission Control | Owner can see the pipeline and grant G5 | Hono API on :8787, React UI on :5173, approvals bound to hashes, emergency stop, status with `configured`/`mock` | 1 | in progress (parallel build) |
 | 3 — Brand and video | Branded Reels render reproducibly | @rj/brand tokens + placeholder logo, Remotion 4.0.535 Templates A/B/C, covers, media QA (G4) | 1 | in progress (parallel build) |
-| 4 — Voice | Narration with QA | voice-engine interface, local fallback (labelled), pronunciation dictionary, cache; ElevenLabs when key + network allow | 3 | in progress; ElevenLabs blocked in cloud, espeak-ng missing |
+| 4 — Voice | Narration with QA | voice-engine interface, voiceless mode (reading-speed captions, no robotic voice), pronunciation dictionary, cache; ElevenLabs as explicit opt-in | 3 | voiceless mode done; ElevenLabs blocked in cloud (live untested) |
+| 3b — Backgrounds and tables | Premium drone backgrounds; table Reels | `@rj/footage-engine` (manifest + licence validator, slice, Pexels/Pixabay/CC BY fetch), `DroneBackground`, Template D, "Tabel in cijfers" series, `npm run dataset` | 3, 4 | built and tested with synthetic clips; **no real footage in the repo yet** (owner supplies files or an API key); fetch providers untested live |
 | 5 — First Reels end-to-end | 3–5 Reels pass G1–G5; owner publishes manually | research → script → G3 → render → G4 → G5; manual upload by owner; analytics entered manually or `null` | 1–4, official logo (or owner accepts placeholder), voice decision | not started |
 | 5b — Publishing | Owner-approved publishing | manual publish package + `verify`, Publicatie page, `publish_due` job (G5/hash/duplicate/caps/spacing/stop), `InstagramGraphAdapter` | 5 | built and tested locally (2026-10-30); **live Instagram untested** (Meta docs and API unreachable from the sandbox; needs Meta app, token, public hosting, owner decisions) |
 | 6 — Distribution and platforms | Scheduling behind G5; more platforms | IG professional account + Meta app review or Buffer/Hyper route; hash check before schedule; TikTok/Shorts adapters | 5, owner decisions, security review | not started |
@@ -25,6 +26,7 @@ Status values: `done`, `in progress`, `designed`, `not started`, `blocked`.
 3. Publishing route: manual (works now), or Meta Graph API (needs app review check, token, public hosting; adapter built, untested), Buffer, Hyper MCP.
 4. Where the DB lives persistently, and which scheduler activates `workflows/recurring-jobs.yaml`.
 5. Legal review of `docs/EDITORIAL_POLICY.md` before any monetisation.
+6. Footage: supply the downloaded source videos (see README), or set `PEXELS_API_KEY`. The owner carries the rights declaration for owner-provided clips. Confirm the real channel of the YouTube Short in `assets/footage/plans/nl-scenic.json`.
 
 ## Change log
 
