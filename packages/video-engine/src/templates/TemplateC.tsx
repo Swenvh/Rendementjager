@@ -162,6 +162,8 @@ export const TemplateC: React.FC<TemplateCProps> = (props) => (
     voiceSrc={props.voice.src}
     headerLabel="Geld in cijfers"
     hideFootnoteIn={['cta']}
+    background={props.background}
+    blurSceneIds={['growth', 'result']}
     renderScene={(id) => {
       switch (id) {
         case 'hook':

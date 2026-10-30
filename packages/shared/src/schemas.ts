@@ -17,6 +17,8 @@ const json = z.unknown();
 
 export const TemplateIdSchema = z.enum(['A', 'B', 'C']);
 export type TemplateId = z.infer<typeof TemplateIdSchema>;
+/** Storyboards may use Template D (tables); content_items.template stays A/B/C (DB CHECK) and is null for D. */
+export const StoryboardTemplateIdSchema = z.enum(['A', 'B', 'C', 'D']);
 
 export const ContentIdeaSchema = z.object({
   id,
@@ -144,7 +146,7 @@ export const StoryboardSchema = z.object({
   id,
   contentId: id,
   scriptRevisionId: id,
-  template: TemplateIdSchema,
+  template: StoryboardTemplateIdSchema,
   scenes: z.array(json),
   createdBy: ActorIdSchema,
   createdAt: ts,
@@ -157,7 +159,7 @@ export const VoiceAssetSchema = z.object({
   scriptRevisionId: id.nullable(),
   provider: z.string().min(1),
   voiceId: z.string().nullable(),
-  /** true when produced by the local fallback (not the brand voice). */
+  /** legacy flag: always false (no local fallback voice exists). */
   isFallback: z.boolean(),
   path: z.string().min(1),
   sha256: sha,

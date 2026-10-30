@@ -19,6 +19,15 @@ export const GRIDS = {
     ] as const,
   },
   inflation: { monthly: [50, 100, 250, 500, 1000], years: [10, 20, 30], rates: [0.02, 0.03] },
+  // "Tabel in cijfers": one table per (return, amount set); value columns are the horizons.
+  table: {
+    returns: [0.04, 0.06, 0.07, 0.08],
+    amountSets: [
+      [50, 100, 150, 200, 250, 300, 400, 500],
+      [100, 250, 500, 750, 1000, 1500, 2000, 2500],
+    ],
+    horizons: [10, 20, 30],
+  },
 } as const;
 
 /** Stable key for a topic, e.g. `compounding:250:30:r7`. */
@@ -31,6 +40,8 @@ export function topicKey(p: TopicParams): string {
       return `cost:${p.monthly}:${p.years}:r${r(p.annualReturn)}:c${r(p.costLow!)}-${r(p.costHigh!)}`;
     case 'inflation':
       return `inflation:${p.monthly}:${p.years}:p${r(p.inflation!)}`;
+    case 'table':
+      return `table:r${r(p.annualReturn)}:m${p.amounts!.join('-')}:y${p.horizons!.join('-')}`;
   }
 }
 
@@ -43,6 +54,10 @@ export function enumerateTopics(kind: SeriesKind): TopicParams[] {
     const g = GRIDS.cost;
     for (const monthly of g.monthly)
       for (const years of g.years) for (const [costLow, costHigh] of g.pairs) out.push({ kind, monthly, years, annualReturn: g.annualReturn, costLow, costHigh });
+  } else if (kind === 'table') {
+    const g = GRIDS.table;
+    for (const annualReturn of g.returns)
+      for (const set of g.amountSets) out.push({ kind, monthly: Math.max(...set), years: Math.max(...g.horizons), annualReturn, amounts: [...set], horizons: [...g.horizons] });
   } else {
     const g = GRIDS.inflation;
     for (const monthly of g.monthly) for (const years of g.years) for (const inflation of g.rates) out.push({ kind, monthly, years, annualReturn: 0, inflation });

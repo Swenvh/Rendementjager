@@ -46,6 +46,8 @@ export const TemplateA: React.FC<TemplateAProps> = (props) => {
       voiceSrc={props.voice.src}
       headerLabel="Rendement in 30 sec"
       hideFootnoteIn={['cta']}
+      background={props.background}
+      blurSceneIds={['chart']}
       renderScene={(id) => {
         if (id === 'hook')
           return (
@@ -87,6 +89,8 @@ export const TemplateB: React.FC<TemplateBProps> = (props) => {
       voiceSrc={props.voice.src}
       headerLabel="De markt uitgelegd"
       hideFootnoteIn={['cta']}
+      background={props.background}
+      blurSceneIds={['chart']}
       renderScene={(id) => {
         if (id === 'hook')
           return (

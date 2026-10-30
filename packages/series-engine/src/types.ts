@@ -1,5 +1,9 @@
+/** The three Template C series ("Geld in cijfers"). `--kind all` means these. */
 export const SERIES_KINDS = ['compounding', 'cost', 'inflation'] as const;
-export type SeriesKind = (typeof SERIES_KINDS)[number];
+/** "Tabel in cijfers": calculated matrix tables for Template D. Opt-in with `--kind table`. */
+export const TABLE_KIND = 'table' as const;
+export const ALL_SERIES_KINDS = [...SERIES_KINDS, TABLE_KIND] as const;
+export type SeriesKind = (typeof ALL_SERIES_KINDS)[number];
 
 export const HOOK_PATTERNS = ['question', 'statement', 'contrast'] as const;
 export type HookPattern = (typeof HOOK_PATTERNS)[number];
@@ -19,6 +23,9 @@ export interface TopicParams {
   costHigh?: number;
   /** inflation series only */
   inflation?: number;
+  /** table series only: monthly amounts (rows) and horizons in years (value columns) */
+  amounts?: number[];
+  horizons?: number[];
 }
 
 export interface Claim {
@@ -41,7 +48,7 @@ export interface ExperimentTags {
   amount: number;
   /** horizon in years */
   horizon: number;
-  template: 'C';
+  template: 'C' | 'D';
   /** Estimated duration in seconds (replaced by the measured duration after rendering). */
   durationS: number;
   variantGroup: string;
@@ -59,10 +66,15 @@ export interface SceneSegment {
 export interface Storyboard {
   slug: string;
   title: string;
-  template: 'TemplateC';
+  template: 'TemplateC' | 'TemplateD';
   series: string;
   language: 'nl';
-  calculation: { engine: '@rj/finance-engine'; function: 'buildReelCalculation'; overrides: Record<string, number | null> };
+  /** Template C only. */
+  calculation?: { engine: '@rj/finance-engine'; function: 'buildReelCalculation'; overrides: Record<string, number | null> };
+  /** Template D only: the calculated matrix the renderer builds with @rj/finance-engine. */
+  table?: { kind: 'matrix'; annualReturn: number; amounts: number[]; horizons: number[]; title: string; subtitle?: string };
+  /** Footage clip choice (ids from assets/footage/manifest.json), added at generate time when the library has clips. */
+  background?: { clipIds: string[] };
   onScreen: {
     kicker: string;
     hookLines: string[];

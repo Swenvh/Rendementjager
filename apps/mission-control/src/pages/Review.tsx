@@ -314,6 +314,29 @@ function ReviewCard({ id, bucket, gate, videoRef, rejectRef, approveRef, seen, s
                 </div>
               )}
             </Panel>
+            <Panel title="Beeld, stem en bronnen" id={`rv-bg-${id}`}>
+              <div className="space-y-2 text-sm">
+                <p><span className="text-dim">Stem: </span>{d.voice?.label ?? 'onbekend (nog niet gerenderd)'}</p>
+                {d.compliance?.escalateToComplianceReviewer && <p><Badge tone="bad">compliance-escalatie</Badge> <span className="text-dim">{d.compliance.reason}</span></p>}
+                {d.background?.mode === 'drone-footage' ? (
+                  <>
+                    <p><span className="text-dim">Achtergrond: </span>dronebeelden ({d.background.clips.length} clips)</p>
+                    <ul className="space-y-1">
+                      {d.background.clips.map((c: any) => (
+                        <li key={c.clipId} className="text-xs">
+                          <span className="font-medium">{c.clipId}</span> · {c.licence} · {c.author}{c.creditRequired ? ' · bronvermelding verplicht' : ''}
+                          <span className="block text-dim">{c.credit}{c.rightsNote ? ` (${c.rightsNote})` : ''}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    {d.background.captionCreditLines.length > 0 && (
+                      <p><Badge tone={d.background.creditInCaption ? 'good' : 'bad'}>{d.background.creditInCaption ? 'credit staat in caption' : 'credit ONTBREEKT in caption'}</Badge>{' '}
+                        <span className="text-dim">{d.background.captionCreditLines.join(' · ')}</span></p>
+                    )}
+                  </>
+                ) : <p><span className="text-dim">Achtergrond: </span>{d.background ? 'geanimeerde donkergroene achtergrond (geen gelicenseerde clip beschikbaar)' : 'onbekend (nog niet gerenderd)'}</p>}
+              </div>
+            </Panel>
             <Panel title="Caption" id={`rv-cap-${id}`}>
               {d.item.captionText ? <pre className="scroll-thin max-h-72 overflow-auto whitespace-pre-wrap font-sans text-sm">{d.item.captionText}</pre> : <Empty title="Geen caption" />}
             </Panel>

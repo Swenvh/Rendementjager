@@ -24,6 +24,7 @@
     "@remotion/renderer": "4.0.535",
     "@rj/brand": "*",
     "@rj/finance-engine": "*",
+    "@rj/footage-engine": "*",
     "@rj/voice-engine": "*",
     "react": "19.2.3",
     "react-dom": "19.2.3",

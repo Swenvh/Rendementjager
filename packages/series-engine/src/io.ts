@@ -90,7 +90,7 @@ export function writeItemFiles(item: SeriesItem, outDir: string): string | null 
   writeFileSync(join(dir, 'storyboard.json'), JSON.stringify(item.storyboard, null, 2) + '\n');
   writeFileSync(join(dir, 'series.json'), pretty(recordOf(item)));
   // The renderer rewrites metadata.json with render details; series.json stays untouched.
-  writeFileSync(join(dir, 'metadata.json'), pretty({ slug: item.slug, title: item.title, template: 'TemplateC', series: item.seriesName, trial: true, tags: item.tags, preparedAt: null }));
+  writeFileSync(join(dir, 'metadata.json'), pretty({ slug: item.slug, title: item.title, template: item.storyboard.template, series: item.seriesName, trial: true, tags: item.tags, preparedAt: null }));
   return dir;
 }
 
@@ -142,7 +142,8 @@ export async function registerItem(repo: Repository, wf: WorkflowService, item: 
       {
         title: item.title,
         pillar: item.pillar,
-        template: 'C',
+        // content_items.template is limited to A/B/C by a DB CHECK; Template D items are stored without it (the storyboard says D).
+        template: item.kind === 'table' ? undefined : 'C',
         series: item.seriesName,
         hook: item.hook,
         angle: `Variantgroep ${item.tags.variantGroup} · variant ${item.tags.variantIndex + 1} · hookpatroon ${item.hookPattern}`,
@@ -172,7 +173,7 @@ export async function registerItem(repo: Repository, wf: WorkflowService, item: 
   );
   await wf.setCaption(idea.id, item.caption, actor);
   const now = new Date().toISOString();
-  await repo.storyboards.insert({ id: newId('sb'), contentId: idea.id, scriptRevisionId: rev.id, template: 'C', scenes: item.storyboard.scenes, createdBy: actor as 'editorial-copywriter', createdAt: now });
+  await repo.storyboards.insert({ id: newId('sb'), contentId: idea.id, scriptRevisionId: rev.id, template: item.kind === 'table' ? 'D' : 'C', scenes: item.storyboard.scenes, createdBy: actor as 'editorial-copywriter', createdAt: now });
   for (const c of item.claims) {
     await repo.financialClaims.insert({
       id: newId('fc'),

@@ -145,12 +145,11 @@ export function systemRoutes(deps: AppDeps) {
     const cfg = loadWorkerConfig(env);
     const envStop = ['1', 'true', 'yes', 'on'].includes((env.RJ_EMERGENCY_STOP ?? '').trim().toLowerCase());
     const dbStop = (await repo.getConfig<boolean>('emergency_stop')) === true;
-    const voice = voiceStatus();
+    const voice = voiceStatus(env);
     return c.json({
       providers: [
         ...getProviderStatuses({ env }).map((s) => ({ id: s.id, kind: s.kind, configured: s.configured, mode: s.mode, note: s.note })),
-        { id: 'elevenlabs', kind: 'tts', configured: voice.elevenlabs.configured, mode: voice.elevenlabs.configured ? 'live' : 'disabled', note: 'Merkstem (betaald): alleen met RJ_TTS_PROVIDER=elevenlabs' },
-        { id: 'local-tts', kind: 'tts', configured: voice.localFallback.configured, mode: 'live', note: `Lokale fallback (${voice.localFallback.voice}), niet de merkstem` },
+        { id: 'elevenlabs', kind: 'tts', configured: voice.elevenlabs.configured, mode: voice.mode === 'elevenlabs' ? 'live' : 'disabled', note: 'Merkstem (betaald): alleen met RJ_TTS_PROVIDER=elevenlabs en sleutel. Zonder: Reels zijn stemloos (ondertitels op leestempo).' },
       ],
       costCaps: {
         dailyCents: cfg.dailyCostCapCents,

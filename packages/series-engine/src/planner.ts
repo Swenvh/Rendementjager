@@ -48,7 +48,7 @@ export interface Plan {
 /** The Reels that were made by hand before the series engine existed. */
 export const LEGACY_REFS: readonly ExistingRef[] = [{ topicKey: 'compounding:250:30:r7', hookPattern: 'question' }];
 
-export const DEFAULT_WEIGHTS: Record<SeriesKind, number> = { compounding: 3, cost: 2, inflation: 1 };
+export const DEFAULT_WEIGHTS: Record<SeriesKind, number> = { compounding: 3, cost: 2, inflation: 1, table: 1 };
 
 type Dims = { kind: SeriesKind; pattern: HookPattern; amount: number; horizon: number };
 const dimsOf = (i: Pick<SeriesItem, 'kind' | 'hookPattern' | 'tags'>): Dims => ({ kind: i.kind, pattern: i.hookPattern, amount: i.tags.amount, horizon: i.tags.horizon });

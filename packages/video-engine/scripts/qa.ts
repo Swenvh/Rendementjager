@@ -25,6 +25,8 @@ export interface MediaQaReport {
   pass: boolean;
   issues: string[];
   video: { codec: string | null; width: number | null; height: number | null; fps: number | null; pixFmt: string | null; durationS: number | null };
+  /** 'none' = voiceless Reel: no audio stream is valid. */
+  voice: 'none' | 'present';
   audio: { present: boolean; codec: string | null; sampleRate: number | null; integratedLufs: number | null; maxVolumeDb: number | null; meanVolumeDb: number | null; silent: boolean | null };
   expectedDurationMs: number | null;
   frames: FrameCheck[];
@@ -61,7 +63,18 @@ function sampleTimes(file: string, durationS: number): { timeS: number; label: s
   return [0.1, 0.25, 0.4, 0.55, 0.7, 0.9].map((p, i) => ({ timeS: durationS * p, label: `t${i}` }));
 }
 
-export async function runMediaQa(file: string, opts: { expectedDurationMs?: number; framesDir?: string } = {}): Promise<MediaQaReport> {
+/** Reads the voice mode from content/scripts/<slug>/props.json when the caller did not say. */
+function voiceModeFromProps(file: string): 'none' | 'present' {
+  const propsPath = join(CONTENT_SCRIPTS, basename(file).replace(/\.mp4$/, ''), 'props.json');
+  if (!existsSync(propsPath)) return 'present';
+  try {
+    return (JSON.parse(readFileSync(propsPath, 'utf8')) as { voice?: { provider?: string } }).voice?.provider === 'none' ? 'none' : 'present';
+  } catch {
+    return 'present';
+  }
+}
+
+export async function runMediaQa(file: string, opts: { expectedDurationMs?: number; framesDir?: string; voice?: 'none' | 'present' } = {}): Promise<MediaQaReport> {
   const abs = resolve(file);
   const issues: string[] = [];
   const probe = JSON.parse(execFileSync('ffprobe', ['-v', 'error', '-print_format', 'json', '-show_streams', '-show_format', abs]).toString()) as {
@@ -83,8 +96,13 @@ export async function runMediaQa(file: string, opts: { expectedDurationMs?: numb
     issues.push(`duration ${durationS}s differs from expected ${(opts.expectedDurationMs / 1000).toFixed(2)}s`);
 
   let audio: MediaQaReport['audio'] = { present: false, codec: null, sampleRate: null, integratedLufs: null, maxVolumeDb: null, meanVolumeDb: null, silent: null };
-  if (!a) issues.push('no audio stream');
-  else {
+  // Voiceless Reels (voice: none) are valid without audio; everything else is still checked.
+  const voiceMode = opts.voice ?? voiceModeFromProps(abs);
+  if (!a) {
+    if (voiceMode !== 'none') issues.push('no audio stream');
+  } else if (voiceMode === 'none') {
+    audio = { ...audio, present: true, codec: a.codec_name ?? null, sampleRate: a.sample_rate ? Number(a.sample_rate) : null };
+  } else {
     const vol = await volumeStats(abs);
     const loud = await measureLoudness(abs).catch(() => null);
     const silent = vol.maxVolumeDb === null || vol.maxVolumeDb < -40;
@@ -115,7 +133,7 @@ export async function runMediaQa(file: string, opts: { expectedDurationMs?: numb
   const reportPath = join(dirname(abs), `${basename(abs, '.mp4')}.qa.json`);
   const report: MediaQaReport = {
     file: relative(REPO_DIR, abs), checkedAt: new Date().toISOString(), pass: issues.length === 0, issues,
-    video, audio, expectedDurationMs: opts.expectedDurationMs ?? null, frames, reportPath: relative(REPO_DIR, reportPath),
+    voice: voiceMode, video, audio, expectedDurationMs: opts.expectedDurationMs ?? null, frames, reportPath: relative(REPO_DIR, reportPath),
   };
   writeFileSync(reportPath, JSON.stringify(report, null, 2) + '\n');
   return { ...report, reportPath };
@@ -128,6 +146,6 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     process.exit(1);
   }
   const r = await runMediaQa(resolve(process.env.INIT_CWD ?? process.cwd(), file), { framesDir: arg('frames-dir') });
-  console.log(JSON.stringify({ pass: r.pass, issues: r.issues, video: r.video, audio: r.audio, report: r.reportPath }, null, 2));
+  console.log(JSON.stringify({ pass: r.pass, issues: r.issues, voice: r.voice, video: r.video, audio: r.audio, report: r.reportPath }, null, 2));
   process.exit(r.pass ? 0 : 2);
 }

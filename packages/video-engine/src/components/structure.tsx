@@ -2,7 +2,8 @@ import React from 'react';
 import { AbsoluteFill, Audio, interpolate, Sequence, spring, staticFile, useCurrentFrame, useVideoConfig } from 'remotion';
 import { clamp, theme } from '../theme';
 import { msToFrame } from '../schemas';
-import { BgMesh, BrandHeader, BrandLogo, Grade, Grain, Vignette } from './layout';
+import { BgMesh, BrandHeader, BrandLogo, DroneBackground, Grade, Grain, Vignette } from './layout';
+import type { BackgroundProps } from '../schemas';
 import { CaptionOverlay, SourceFootnote } from './text';
 
 /** Segmented progress bar: one segment per scene. */
@@ -108,7 +109,11 @@ export const ReelShell: React.FC<{
   voiceSrc: string | null;
   headerLabel?: string;
   hideFootnoteIn?: string[];
-}> = ({ scenes, renderScene, captions, footnote, voiceSrc, headerLabel, hideFootnoteIn = [] }) => {
+  /** Licensed drone footage; null/undefined = animated dark-green fallback. */
+  background?: BackgroundProps | null;
+  /** Scene ids with chart cards: the footage is blurred and darkened a bit behind them. */
+  blurSceneIds?: string[];
+}> = ({ scenes, renderScene, captions, footnote, voiceSrc, headerLabel, hideFootnoteIn = [], background, blurSceneIds = [] }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const ms = (frame / fps) * 1000;
@@ -116,6 +121,7 @@ export const ReelShell: React.FC<{
   return (
     <AbsoluteFill style={{ backgroundColor: theme.colors.bg }}>
       <BgMesh />
+      {background ? <DroneBackground background={background} blurWindows={scenes.filter((x) => blurSceneIds.includes(x.id)).map((x) => ({ fromMs: x.startMs, toMs: x.endMs }))} /> : null}
       {scenes.map((s, i) => {
         const from = msToFrame(s.startMs, fps);
         const dur = Math.max(1, msToFrame(s.endMs, fps) - from);

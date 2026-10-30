@@ -4,7 +4,9 @@
   "private": true,
   "type": "module",
   "description": "Deterministic series generator (Geld in cijfers grids) + weekly capacity planner",
-  "exports": { ".": "./src/index.ts" },
+  "exports": {
+    ".": "./src/index.ts"
+  },
   "scripts": {
     "test": "vitest run",
     "typecheck": "tsc -p .",
@@ -14,6 +16,7 @@
     "@rj/shared": "*",
     "@rj/database": "*",
     "@rj/content-engine": "*",
-    "@rj/finance-engine": "*"
+    "@rj/finance-engine": "*",
+    "@rj/footage-engine": "*"
   }
 }

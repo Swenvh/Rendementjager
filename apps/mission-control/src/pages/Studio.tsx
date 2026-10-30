@@ -176,7 +176,7 @@ function RenderPanel({ d }: { d: any }) {
       <dl className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 text-sm">
         <dt className="text-dim">Slug</dt><dd>{d.item.slug ?? <span className="text-dim">niet gevonden</span>}</dd>
         <dt className="text-dim">Formaat</dt><dd>1080×1920 · 30 fps · H.264 · Template {d.item.template ?? '—'}</dd>
-        <dt className="text-dim">Voice</dt><dd>Lokale fallback (niet de merkstem), tenzij <code>RJ_TTS_PROVIDER=elevenlabs</code> (betaald, alleen met opdracht van de eigenaar)</dd>
+        <dt className="text-dim">Voice</dt><dd>Zonder stem: alleen ondertitels (leestempo), tenzij <code>RJ_TTS_PROVIDER=elevenlabs</code> met sleutel (betaald, alleen met opdracht van de eigenaar)</dd>
       </dl>
       <div className="mt-3 flex flex-wrap gap-2">{JOBS.map(([t, l]) => <Button key={t} disabled={busy !== null} onClick={() => enqueue(t)}>{busy === t ? 'Bezig…' : l}</Button>)}</div>
       <p className="mt-2 text-xs text-dim">Productie-jobs kunnen pas na G2 en G3 (de server weigert eerder).</p>

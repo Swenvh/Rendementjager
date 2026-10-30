@@ -112,7 +112,13 @@ export function renderInputHash(root: string, slug: string, env: NodeJS.ProcessE
   if (!existsSync(sb)) throw new NonRetryableError(`storyboard missing for ${slug}`);
   const h = createHash('sha256');
   h.update(JSON.stringify(sortKeys(JSON.parse(readFileSync(sb, 'utf8')))));
-  h.update(`|tts:${env.RJ_TTS_PROVIDER === 'elevenlabs' ? 'elevenlabs' : 'local'}|`);
+  // Voice mode: ElevenLabs only as explicit opt-in with a key; otherwise voiceless. Footage manifest changes the background.
+  h.update(`|voice:${env.RJ_TTS_PROVIDER === 'elevenlabs' && env.ELEVENLABS_API_KEY && env.ELEVENLABS_VOICE_ID ? 'elevenlabs' : 'none'}|`);
+  const manifest = join(env.RJ_FOOTAGE_DIR ?? join(root, 'assets', 'footage'), 'manifest.json');
+  h.update(`|footage:${existsSync(manifest) ? createHash('sha256').update(readFileSync(manifest)).digest('hex') : 'none'}|`);
+  // Provided-data tables (Template D): the dataset file decides what the MP4 shows.
+  const tableFile = (JSON.parse(readFileSync(sb, 'utf8')) as { table?: { datasetFile?: string } }).table?.datasetFile;
+  if (tableFile && !tableFile.includes('..') && existsSync(join(root, tableFile))) h.update(`|dataset:${createHash('sha256').update(readFileSync(join(root, tableFile))).digest('hex')}|`);
   const ve = join(root, 'packages', 'video-engine', 'src');
   for (const part of ['templates', 'components', 'calc']) hashTree(join(ve, part), h);
   for (const f of ['schemas.ts', 'theme.ts', 'Root.tsx']) if (existsSync(join(ve, f))) h.update(f).update(readFileSync(join(ve, f)));

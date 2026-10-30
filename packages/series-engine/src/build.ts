@@ -5,6 +5,7 @@ import {
   realValueOfAmount,
   type MonthlyContributionInput,
 } from '@rj/finance-engine';
+import { buildTableItem } from './build-table.js';
 import { topicKey } from './grids.js';
 import { HOOK_PATTERN_NL, type Claim, type ExperimentTags, type HookPattern, type SceneSegment, type SeriesItem, type Storyboard, type TopicParams } from './types.js';
 import { eur, hashOf, pct, pick, spokenEur, splitHook } from './util.js';
@@ -15,16 +16,18 @@ export const DISCLAIMER_NL =
 /** Assumption for the inflation shown next to compounding / cost examples (same as the first Reel). */
 export const DEFAULT_INFLATION = 0.02;
 const LUMP_SUM = 1000;
-const PILLAR = { compounding: 'vermogensopbouw', cost: 'beleggen-etfs', inflation: 'persoonlijke-financien' } as const;
+const PILLAR = { compounding: 'vermogensopbouw', cost: 'beleggen-etfs', inflation: 'persoonlijke-financien', table: 'vermogensopbouw' } as const;
 const SERIES_NAME = {
   compounding: 'Geld in cijfers: rente op rente',
   cost: 'Geld in cijfers: kosten',
   inflation: 'Geld in cijfers: inflatie',
+  table: 'Tabel in cijfers',
 } as const;
 const HASHTAGS = {
   compounding: { base: ['#beleggen', '#renteoprente', '#financieleeducatie'], pool: ['#vermogensopbouw', '#geldzaken', '#beleggenvoorbeginners', '#maandelijksinleggen', '#sparenenbeleggen'] },
   cost: { base: ['#beleggen', '#beleggingskosten', '#financieleeducatie'], pool: ['#etf', '#geldzaken', '#beleggenvoorbeginners', '#kosten', '#vermogensopbouw'] },
   inflation: { base: ['#inflatie', '#sparen', '#financieleeducatie'], pool: ['#geldzaken', '#koopkracht', '#persoonlijkefinancien', '#spaargeld', '#vermogensopbouw'] },
+  table: { base: ['#beleggen', '#renteoprente', '#financieleeducatie'], pool: ['#vermogensopbouw', '#geldzaken'] },
 } as const;
 const CTAS = [
   'Volg @rendementjager voor meer inzicht.',
@@ -283,6 +286,7 @@ const VISUALS: Record<string, string> = {
 };
 
 export function buildItem(params: TopicParams, pattern: HookPattern, date: string): SeriesItem {
+  if (params.kind === 'table') return buildTableItem(params, pattern, date);
   const key = topicKey(params);
   const phrase = pick(`${key}|${pattern}`, 3);
   const built = params.kind === 'compounding' ? buildCompounding(params, pick(key, 2)) : params.kind === 'cost' ? buildCost(params, pick(key, 2)) : buildInflation(params, pick(key, 2));

@@ -19,12 +19,13 @@ if (!slug) {
 const t0 = Date.now();
 const prepared = await prepareContent(slug);
 const tPrep = Date.now();
-console.log(`prepared ${slug}: voice ${prepared.track.provider} (brandVoice=${prepared.track.brandVoice}), ${prepared.track.durationMs} ms, audio QA ${prepared.track.qa.pass ? 'PASS' : 'FAIL'}`);
+console.log(`prepared ${slug}: voice ${prepared.track.provider} (brandVoice=${prepared.track.brandVoice}), ${prepared.track.durationMs} ms, audio QA ${prepared.track.qa.voice === 'none' ? 'n/a (voiceless)' : prepared.track.qa.pass ? 'PASS' : 'FAIL'}`);
+console.log(`background: ${(prepared.metadata.background as { mode: string }).mode}`);
 if (!prepared.track.qa.pass) console.warn('audio QA issues:', prepared.track.qa.issues);
 
 const serveUrl = await getBundle();
 const browserExecutable = findBrowserExecutable();
-const composition = await selectComposition({ serveUrl, id: 'TemplateC', inputProps: prepared.inputProps, browserExecutable });
+const composition = await selectComposition({ serveUrl, id: prepared.composition, inputProps: prepared.inputProps, browserExecutable });
 mkdirSync(OUTPUT_REELS, { recursive: true });
 const outFile = join(OUTPUT_REELS, `${slug}.mp4`);
 let lastPct = -10;
@@ -54,7 +55,7 @@ await renderMedia({
 });
 const renderMs = Date.now() - tPrep;
 const sha256 = createHash('sha256').update(readFileSync(outFile)).digest('hex');
-const qa = await runMediaQa(outFile, { expectedDurationMs: prepared.props.timeline.totalMs });
+const qa = await runMediaQa(outFile, { expectedDurationMs: prepared.props.timeline.totalMs, voice: prepared.track.provider === 'none' ? 'none' : 'present' });
 
 const metadata = {
   ...prepared.metadata,
@@ -62,7 +63,7 @@ const metadata = {
     file: relative(REPO_DIR, outFile),
     sha256,
     sizeBytes: statSync(outFile).size,
-    composition: 'TemplateC',
+    composition: prepared.composition,
     width: composition.width,
     height: composition.height,
     fps: composition.fps,

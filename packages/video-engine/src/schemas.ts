@@ -13,10 +13,33 @@ export const captionPageSchema = z.object({
 export const voiceSchema = z.object({
   /** Path relative to the Remotion public dir, or null for a silent preview. */
   src: z.string().nullable(),
-  provider: z.enum(['elevenlabs', 'local-fallback', 'none']),
+  /** 'none' = voiceless Reel (captions only). There is no local/robotic voice. */
+  provider: z.enum(['elevenlabs', 'none']),
   brandVoice: z.boolean(),
   durationMs: z.number(),
 });
+
+/**
+ * Drone background: a chain of DIFFERENT licensed clips (never looped) cross-faded across the Reel.
+ * `src` is relative to the Remotion public dir (copied from the footage library by the pipeline).
+ */
+export const backgroundClipSchema = z.object({
+  clipId: z.string(),
+  src: z.string(),
+  durationS: z.number().positive(),
+  /** Horizontal crop focus 0..100 for landscape sources. */
+  focusX: z.number().min(0).max(100).optional(),
+  /** Credit line recorded for the clip (required in the caption when the licence asks for it). */
+  credit: z.string(),
+  creditRequired: z.boolean(),
+  licence: z.string(),
+});
+export const backgroundSchema = z.object({
+  clips: z.array(backgroundClipSchema).min(1),
+  /** Cross-fade between clips, ms. */
+  fadeMs: z.number().int().min(200).max(3000).default(1000),
+});
+export type BackgroundProps = z.infer<typeof backgroundSchema>;
 
 export const sceneTimingSchema = z.object({ id: z.string(), startMs: z.number(), endMs: z.number() });
 
@@ -33,6 +56,8 @@ const shellSchema = z.object({
   captions: z.array(captionPageSchema),
   footnote: footnoteSchema,
   cta: z.object({ text: z.string(), tagline: z.string() }),
+  /** null/absent = animated dark-green fallback background. */
+  background: backgroundSchema.nullable().optional(),
   /** Show the dim "Illustratief" hint etc. Always on for illustrative visuals. */
 });
 
@@ -106,3 +131,73 @@ export type TemplateBProps = z.infer<typeof templateBSchema>;
 
 export const FPS = 30;
 export const msToFrame = (ms: number, fps = FPS) => Math.round((ms / 1000) * fps);
+
+// ---------- Template D: "Ranglijst" / "Tabel in cijfers" ----------
+export const tableSourceSchema = z.object({ name: z.string().min(1), url: z.string().url() });
+
+export const tableColumnSchema = z.object({
+  key: z.string().regex(/^[a-z][a-zA-Z0-9]*$/),
+  label: z.string().min(1),
+  /** 'value' columns are right-aligned, tabular and clear of the right-hand IG icons. */
+  kind: z.enum(['label', 'value']),
+});
+
+export const tableRowSchema = z.object({
+  cells: z.record(z.string(), z.string().min(1)),
+  highlight: z.boolean().optional(),
+  /** Numeric sort key (percent points, euros...). When present on all rows the order is verified. */
+  sortValue: z.number().finite().optional(),
+  /** Required per row for provided (market) data. */
+  source: tableSourceSchema.optional(),
+  asOfDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
+  period: z.string().min(1).optional(),
+});
+
+const isoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'ISO date (YYYY-MM-DD) required');
+
+/**
+ * Table / ranking Reel. Mandatory: title, columns, rows, source, asOfDate, dataOrigin, disclaimer.
+ * 'provided' (market data) data is rejected unless EVERY row carries its own source, as-of date and period,
+ * the global source has a URL, and the rows are in the stated order. Figures are never invented: calculated
+ * tables come from @rj/finance-engine, provided tables from an owner dataset (npm run dataset).
+ */
+export const templateDSchema = shellSchema
+  .extend({
+    kicker: z.string(),
+    title: z.string().min(1).max(72),
+    subtitle: z.string().max(140).optional(),
+    columns: z.array(tableColumnSchema).min(2).max(4),
+    rows: z.array(tableRowSchema).min(3).max(20),
+    source: z.object({ name: z.string().min(1), url: z.string().url().optional() }),
+    asOfDate: isoDate,
+    dataOrigin: z.enum(['calculated', 'provided']),
+    disclaimer: z.string().min(20),
+    /** Assumptions shown on screen for calculated tables (rate, timing, costs, tax). */
+    assumptions: z.array(z.string().min(1)).max(4).default([]),
+    sortDirection: z.enum(['asc', 'desc']).optional(),
+  })
+  .superRefine((t, ctx) => {
+    if ([t.subtitle, ...t.assumptions].filter(Boolean).join(' · ').length > 150) ctx.addIssue({ code: 'custom', message: 'subtitle + assumptions must fit two lines (150 characters)', path: ['assumptions'] });
+    const keys = t.columns.map((c) => c.key);
+    if (new Set(keys).size !== keys.length) ctx.addIssue({ code: 'custom', message: 'duplicate column keys', path: ['columns'] });
+    if (!t.columns.some((c) => c.kind === 'value')) ctx.addIssue({ code: 'custom', message: 'at least one value column', path: ['columns'] });
+    t.rows.forEach((r, i) => {
+      for (const k of keys) if (!r.cells[k]) ctx.addIssue({ code: 'custom', message: `row ${i + 1} has no value for column "${k}"`, path: ['rows', i, 'cells', k] });
+    });
+    if (t.dataOrigin === 'provided') {
+      if (!t.source.url) ctx.addIssue({ code: 'custom', message: 'provided data needs source.url', path: ['source', 'url'] });
+      t.rows.forEach((r, i) => {
+        if (!r.source) ctx.addIssue({ code: 'custom', message: `row ${i + 1}: provided data needs a source per row`, path: ['rows', i, 'source'] });
+        if (!r.asOfDate) ctx.addIssue({ code: 'custom', message: `row ${i + 1}: provided data needs asOfDate per row`, path: ['rows', i, 'asOfDate'] });
+        if (!r.period) ctx.addIssue({ code: 'custom', message: `row ${i + 1}: provided data needs the period per row`, path: ['rows', i, 'period'] });
+      });
+    }
+    if (t.sortDirection && t.rows.every((r) => r.sortValue !== undefined)) {
+      for (let i = 1; i < t.rows.length; i++) {
+        const a = t.rows[i - 1]!.sortValue!;
+        const b = t.rows[i]!.sortValue!;
+        if (t.sortDirection === 'desc' ? b > a : b < a) ctx.addIssue({ code: 'custom', message: `rows are not sorted ${t.sortDirection} at row ${i + 1}`, path: ['rows', i] });
+      }
+    }
+  });
+export type TemplateDProps = z.infer<typeof templateDSchema>;

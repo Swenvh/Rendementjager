@@ -132,8 +132,11 @@ describe('render_batch', () => {
     const third = fakeRender();
     await runBatch([a], {}, third.fn);
     expect(third.state.calls).toHaveLength(1);
-    // The TTS provider is part of the input hash.
-    expect(renderInputHash(root, a.slug, { RJ_TTS_PROVIDER: 'elevenlabs' })).not.toBe(renderInputHash(root, a.slug, {}));
+    // The voice mode is part of the input hash: ElevenLabs needs the explicit opt-in AND the keys; otherwise voiceless.
+    const on = { RJ_TTS_PROVIDER: 'elevenlabs', ELEVENLABS_API_KEY: 'k', ELEVENLABS_VOICE_ID: 'v' };
+    expect(renderInputHash(root, a.slug, on)).not.toBe(renderInputHash(root, a.slug, {}));
+    expect(renderInputHash(root, a.slug, { RJ_TTS_PROVIDER: 'elevenlabs' })).toBe(renderInputHash(root, a.slug, {}));
+    expect(renderInputHash(root, a.slug, { ELEVENLABS_API_KEY: 'k', ELEVENLABS_VOICE_ID: 'v' })).toBe(renderInputHash(root, a.slug, {}));
   });
 
   it('a tampered MP4 is not reused', async () => {

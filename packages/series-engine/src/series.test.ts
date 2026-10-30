@@ -6,6 +6,8 @@ import { createSqliteRepository } from '@rj/database';
 import { buildReelCalculation, formatPercent } from '@rj/finance-engine';
 import { topicHash } from '@rj/shared';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+import type { Clip } from '@rj/footage-engine';
+import { applyBackground } from './background.js';
 import { buildItem } from './build.js';
 import { CONTENT_MIX, allocate, estimateRender, planWeek, weeklyTargetFromEnv } from './capacity.js';
 import { allTopics, enumerateTopics, topicKey } from './grids.js';
@@ -91,7 +93,7 @@ describe('item building', () => {
 
   it('claims equal what the renderer computes from the storyboard overrides (buildReelCalculation)', () => {
     for (const i of items) {
-      const calc = buildReelCalculation(i.storyboard.calculation.overrides as never);
+      const calc = buildReelCalculation(i.storyboard.calculation!.overrides as never);
       const t = calc.result.totals;
       const val = (k: string) => i.claims.find((c) => c.key === k)?.value;
       if (i.kind === 'compounding') {
@@ -337,5 +339,77 @@ describe('files and registration', () => {
     } finally {
       await repo.close();
     }
+  });
+});
+
+describe('Tabel in cijfers (Template D series)', () => {
+  const topics = enumerateTopics('table');
+  it('has 8 topics, opt-in only (default kinds unchanged)', () => {
+    expect(topics).toHaveLength(8);
+    expect(capacity(undefined, 3).topics).toBe(135);
+    expect(new Set(topics.map(topicKey)).size).toBe(8);
+  });
+  const items = topics.flatMap((t) => HOOK_PATTERNS.map((p) => buildItem(t, p, DATE)));
+  it('24 unique, deterministic drafts; title fits the label; every cell is a finance-engine claim', () => {
+    expect(new Set(items.map((i) => i.contentHash)).size).toBe(24);
+    expect(new Set(items.map((i) => i.slug)).size).toBe(24);
+    expect(new Set(items.map((i) => topicHash(i.title))).size).toBe(24);
+    for (const i of items) {
+      expect(i.title.length).toBeLessThanOrEqual(72);
+      expect(i.storyboard.template).toBe('TemplateD');
+      expect(i.tags.template).toBe('D');
+      expect(i.claims.filter((c) => c.role === 'result')).toHaveLength(i.params.amounts!.length * i.params.horizons!.length);
+      expect(i.claims.every((c) => c.calculationRef.startsWith('@rj/finance-engine:'))).toBe(true);
+      expect(requiredDisclaimers(i.caption)).toEqual([]);
+      expect(textsOf(i).flatMap(lintCopy)).toEqual([]);
+    }
+    expect(JSON.stringify(buildItem(topics[3]!, 'contrast', DATE))).toBe(JSON.stringify(buildItem(topics[3]!, 'contrast', DATE)));
+  });
+  it('planSeries can plan the table kind', () => {
+    const p = planSeries({ kinds: ['table'], count: 6, date: DATE });
+    expect(p.items).toHaveLength(6);
+    expect(p.items.every((i) => i.kind === 'table')).toBe(true);
+  });
+});
+
+describe('background assignment (footage manifest)', () => {
+  const clip = (id: string, over: Partial<Clip> = {}): Clip => ({ id, file: `nl/${id}.mp4`, title: id, author: 'Eigenaar', licence: 'Owner-provided', retrievedDate: '2026-10-30', location: 'NL', durationS: 10, width: 1080, height: 1920, ...over });
+  const lib = ['a-01', 'b-01', 'c-01', 'd-01', 'e-01', 'f-01', 'g-01', 'h-01', 'i-01', 'j-01', 'k-01', 'l-01'].map((id) => clip(id));
+  const mk = (kind: 'compounding' | 'table', n: number) => {
+    const plan = planSeries({ kinds: [kind], count: n, date: DATE });
+    return plan.items;
+  };
+  it('empty library: nothing set, caption untouched', () => {
+    const [item] = mk('compounding', 1);
+    const before = item!.caption;
+    expect(applyBackground(item!, [], [item!.slug])).toBeNull();
+    expect(item!.storyboard.background).toBeUndefined();
+    expect(item!.caption).toBe(before);
+  });
+  it('is deterministic, never repeats a clip inside one Reel and rotates between neighbours', () => {
+    const a = mk('compounding', 4);
+    const b = mk('compounding', 4);
+    const slugs = a.map((i) => i.slug); // plan order
+    const ra = a.map((i) => applyBackground(i, lib, slugs)!.clipIds);
+    const rb = b.map((i) => applyBackground(i, lib, slugs)!.clipIds);
+    expect(ra).toEqual(rb);
+    for (const ids of ra) expect(new Set(ids).size).toBe(ids.length);
+    for (let i = 1; i < ra.length; i++) expect(ra[i]!.some((id) => ra[i - 1]!.includes(id))).toBe(false);
+  });
+  it('contentHash is unaffected; CC BY credit goes into the caption (above the hashtags), Pexels does not', () => {
+    const [item] = mk('compounding', 1);
+    const hash = item!.contentHash;
+    const cc = [clip('cc-01', { licence: 'CC BY', title: 'Dutch Windmills', author: 'Scenic NL', creditRequired: true })];
+    const r = applyBackground(item!, cc, [item!.slug])!;
+    expect(r.captionCreditLines).toEqual(['Beeld: Dutch Windmills van Scenic NL (CC BY)']);
+    expect(item!.contentHash).toBe(hash);
+    const lines = item!.caption.split('\n');
+    expect(lines.at(-1)!.startsWith('#')).toBe(true);
+    expect(item!.caption).toContain('Beeld: Dutch Windmills van Scenic NL (CC BY)');
+    const [other] = mk('table', 1);
+    const r2 = applyBackground(other!, [clip('px-01', { licence: 'Pexels License' })], [other!.slug])!;
+    expect(r2.captionCreditLines).toEqual([]);
+    expect(r2.allCredits[0]).toMatch(/Pexels/);
+    expect(other!.storyboard.background!.clipIds).toEqual(['px-01']);
   });
 });

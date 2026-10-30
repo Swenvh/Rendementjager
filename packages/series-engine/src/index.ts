@@ -6,3 +6,5 @@ export * from './capacity.js';
 export * from './lint.js';
 export * from './io.js';
 export { canonical, hashOf, eur, pct, spokenEur, eurRoundings } from './util.js';
+export * from './background.js';
+export { buildTableItem } from './build-table.js';

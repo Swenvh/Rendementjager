@@ -1,5 +1,6 @@
 import React from 'react';
-import { AbsoluteFill, Img, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig, getInputProps } from 'remotion';
+import { AbsoluteFill, Img, interpolate, OffthreadVideo, Sequence, spring, staticFile, useCurrentFrame, useVideoConfig, getInputProps } from 'remotion';
+import type { BackgroundProps } from '../schemas';
 import { logo } from '@rj/brand';
 import { clamp, theme } from '../theme';
 
@@ -129,5 +130,72 @@ export const BrandHeader: React.FC<{ label?: string }> = ({ label }) => {
         </span>
       ) : null}
     </div>
+  );
+};
+
+/**
+ * Licensed drone footage behind the Reel. A chain of DIFFERENT clips, cross-faded (clips are never looped or
+ * time-stretched). Each clip drifts slowly (scale + pan). On top: brand-green grade (#0B1F17), top/bottom
+ * gradient and vignette so text stays legible. Optional extra blur/darkening behind chart cards.
+ * Without a background the caller renders the animated BgMesh instead (graceful fallback).
+ */
+export const DroneBackground: React.FC<{ background: BackgroundProps; blurWindows?: { fromMs: number; toMs: number }[]; blurPx?: number }> = ({
+  background, blurWindows = [], blurPx = 14,
+}) => {
+  const frame = useCurrentFrame();
+  const { fps, durationInFrames } = useVideoConfig();
+  const fade = Math.round((background.fadeMs / 1000) * fps);
+  const ms = (frame / fps) * 1000;
+  // Layout: clip k starts when clip k-1 has `fade` frames left.
+  let t = 0;
+  const placed = background.clips.map((c) => {
+    const len = Math.round(c.durationS * fps);
+    const from = t;
+    t += Math.max(1, len - fade);
+    return { c, from, len };
+  });
+  // Smooth 0..1 blur amount: eases in/out over 12 frames at window edges.
+  const blurAmt = blurWindows.reduce((m, w) => {
+    const inP = interpolate(ms, [w.fromMs, w.fromMs + 400, w.toMs - 300, w.toMs], [0, 1, 1, 0], clamp);
+    return Math.max(m, inP);
+  }, 0);
+  return (
+    <AbsoluteFill style={{ backgroundColor: theme.colors.bg, overflow: 'hidden' }}>
+      <AbsoluteFill style={{ filter: blurAmt > 0.01 ? `blur(${(blurAmt * blurPx).toFixed(2)}px)` : undefined }}>
+        {placed.map(({ c, from, len }, i) => {
+          const last = i === placed.length - 1;
+          const dur = Math.min(len, durationInFrames - from);
+          if (dur <= 0) return null;
+          return (
+            <Sequence key={`${c.clipId}-${i}`} from={from} durationInFrames={dur} layout="none">
+              <ClipLayer src={c.src} focusX={c.focusX ?? 50} len={len} fade={fade} first={i === 0} fadeOut={last && from + len < durationInFrames} />
+            </Sequence>
+          );
+        })}
+      </AbsoluteFill>
+      {/* Grade: brand-green wash, then legibility gradients and vignette. */}
+      <AbsoluteFill style={{ backgroundColor: theme.colors.bg, opacity: 0.52 + blurAmt * 0.12 }} />
+      <AbsoluteFill style={{ background: `linear-gradient(180deg, ${theme.colors.bg}E6 0%, ${theme.colors.bg}80 24%, ${theme.colors.bg}33 48%, ${theme.colors.bg}80 70%, ${theme.colors.bg}F2 100%)` }} />
+      <AbsoluteFill style={{ background: `radial-gradient(ellipse at 50% 46%, transparent 38%, ${theme.colors.bg}CC 100%)` }} />
+    </AbsoluteFill>
+  );
+};
+
+const ClipLayer: React.FC<{ src: string; focusX: number; len: number; fade: number; first: boolean; fadeOut: boolean }> = ({ src, focusX, len, fade, first, fadeOut }) => {
+  const frame = useCurrentFrame();
+  const p = frame / Math.max(1, len - 1);
+  // Slow drone drift: push-in with a small lateral pan. Never faster than ~8% scale over a 10 s clip.
+  const scale = 1.04 + p * 0.07;
+  const pan = (p - 0.5) * -26;
+  const inOp = first ? 1 : interpolate(frame, [0, fade], [0, 1], { ...clamp, easing: theme.ease.soft });
+  const outOp = fadeOut ? interpolate(frame, [len - fade, len], [1, 0], clamp) : 1;
+  return (
+    <AbsoluteFill style={{ opacity: inOp * outOp }}>
+      <OffthreadVideo
+        src={staticFile(src)}
+        muted
+        style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: `${focusX}% 50%`, transform: `scale(${scale}) translateX(${pan}px)` }}
+      />
+    </AbsoluteFill>
   );
 };

@@ -2,7 +2,8 @@
 // calculation; Templates A/B use clearly labelled illustrative example data only.
 import { brand } from '@rj/brand';
 import { reelCalculationFromEngine } from './calc/from-finance-engine';
-import type { TemplateAProps, TemplateBProps, TemplateCProps } from './schemas';
+import { buildMatrixTable, CALCULATED_SOURCE, TABLE_DISCLAIMER_NL } from './calc/matrix';
+import type { TemplateAProps, TemplateBProps, TemplateCProps, TemplateDProps } from './schemas';
 
 const scenes = (ids: [string, number][]) => {
   let t = 0;
@@ -66,4 +67,23 @@ export const defaultTemplateB: TemplateBProps = {
     ].map(([open, high, low, close], i) => ({ label: `d${i + 1}`, open: open!, high: high!, low: low!, close: close! })),
   },
   points: ['Voorbeeldpunt één', 'Voorbeeldpunt twee', 'Voorbeeldpunt drie'],
+};
+
+const matrix = buildMatrixTable({ annualReturn: 0.07, amounts: [50, 100, 150, 200, 250, 300, 400, 500], horizons: [10, 20, 30] });
+/** Calculated table: monthly contribution x years -> end value (every cell from @rj/finance-engine). */
+export const defaultTemplateD: TemplateDProps = {
+  timeline: timeline([['table', 9500], ['cta', 3500]]),
+  voice: silent,
+  captions: [],
+  footnote: { text: TABLE_DISCLAIMER_NL },
+  cta,
+  kicker: 'Tabel in cijfers',
+  title: 'Eindbedrag per maand en looptijd',
+  columns: matrix.columns,
+  rows: matrix.rows,
+  source: CALCULATED_SOURCE,
+  asOfDate: '2026-10-30',
+  dataOrigin: 'calculated',
+  disclaimer: TABLE_DISCLAIMER_NL,
+  assumptions: matrix.assumptions,
 };

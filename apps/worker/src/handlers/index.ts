@@ -25,7 +25,7 @@ export interface DefaultHandlerOptions {
  * - render_cover  -> npm run cover  -w @rj/video-engine -- --content <...>
  * - media_qa      -> npm run qa     -w @rj/video-engine -- --content <...>
  * - generate_audio-> npm run voice  -w @rj/video-engine -- --content <...> (voice-over via prepareContent: storyboard
- *                    + finance-engine -> @rj/voice-engine synthesizeScript, cached, audio QA; local fallback unless RJ_TTS_PROVIDER=elevenlabs)
+ *                    + finance-engine -> @rj/voice-engine synthesizeScript, cached, audio QA; voiceless (reading-speed captions) unless RJ_TTS_PROVIDER=elevenlabs + key)
  * - publish_due  -> verifies G5 + hashes, guards (duplicate, caps, spacing, stop), then stages for manual posting or
  *                    (live Instagram, untested) posts; see publishing.ts
  * - collect_metrics -> fails "not available" (no metrics provider; never fabricate metrics)

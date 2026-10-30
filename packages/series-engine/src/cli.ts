@@ -10,11 +10,13 @@
 import { join, resolve } from 'node:path';
 import { WorkflowService, isEmergencyStopActive } from '@rj/content-engine';
 import { REPO_ROOT, defaultDbPath, openRepository, type Repository } from '@rj/database';
-import { existsSync } from 'node:fs';
+import { existsSync, readdirSync } from 'node:fs';
+import { footageRoot, usableClips } from '@rj/footage-engine';
+import { applyBackground } from './background.js';
 import { estimateRender, planWeek, weeklyTargetFromEnv, CONTENT_MIX } from './capacity.js';
 import { existingFromDb, existingFromFolders, parseSeriesNotes, registerItem, writeItemFiles } from './io.js';
 import { capacity, planSeries, spacingViolations, type Plan } from './planner.js';
-import { SERIES_KINDS, type SeriesKind } from './types.js';
+import { ALL_SERIES_KINDS, SERIES_KINDS, type SeriesKind } from './types.js';
 
 function parseArgs(argv: string[]) {
   const flags = new Map<string, string>();
@@ -34,8 +36,10 @@ function parseArgs(argv: string[]) {
 function kindsOf(v: string | undefined): SeriesKind[] {
   if (!v || v === 'all') return [...SERIES_KINDS];
   const out = v.split(',').map((x) => x.trim());
-  for (const k of out) if (!(SERIES_KINDS as readonly string[]).includes(k)) throw new Error(`Unknown --kind "${k}" (use ${SERIES_KINDS.join(', ')}, all)`);
-  return out as SeriesKind[];
+  // 'all' = the three Template C series; the table series is opt-in: --kind table, or --kind all,table
+  const expanded = out.flatMap((k) => (k === 'all' ? [...SERIES_KINDS] : [k]));
+  for (const k of expanded) if (!(ALL_SERIES_KINDS as readonly string[]).includes(k)) throw new Error(`Unknown --kind "${k}" (use ${ALL_SERIES_KINDS.join(', ')}, all)`);
+  return [...new Set(expanded)] as SeriesKind[];
 }
 
 const today = () => new Date().toISOString().slice(0, 10);
@@ -95,7 +99,17 @@ async function main() {
       const wf = new WorkflowService(repo);
       let created = 0;
       let skipped = 0;
+      let clips: ReturnType<typeof usableClips> = [];
+      try {
+        clips = usableClips(footageRoot());
+      } catch (e) {
+        console.log(`LET OP: footage-manifest onleesbaar (${e instanceof Error ? e.message : e}); geen achtergrondclips gekozen.`);
+      }
+      const allSlugs = [...new Set([...(existsSync(outDir) ? readdirSync(outDir).filter((d) => existsSync(join(outDir, d, 'storyboard.json'))).sort() : []), ...plan.items.map((i) => i.slug)])];
+      let withClips = 0;
       for (const item of plan.items) {
+        // Deterministic drone-footage choice (empty library: nothing is set and the animated background is used).
+        if (applyBackground(item, clips, allSlugs)) withClips++;
         const reg = await registerItem(repo, wf, item);
         if (reg === 'duplicate') {
           skipped++;
@@ -104,6 +118,7 @@ async function main() {
         writeItemFiles(item, outDir);
         created++;
       }
+      console.log(clips.length ? `Achtergrond: ${withClips} items kregen een ketting van gelicenseerde clips (${clips.length} bruikbare clips in de bibliotheek).` : 'Achtergrond: geen bruikbare clips in assets/footage/manifest.json, Reels gebruiken de geanimeerde donkergroene achtergrond.');
       console.log(`Gegenereerd: ${created} drafts (${skipped} overgeslagen als duplicaat) in ${outDir}`);
       console.log('Stage: IDEA met script, caption, storyboard en financiële claims. Geen enkele poort is goedgekeurd (G1 t/m G5 volgen via reviewers en de eigenaar).');
       for (const s of plan.shortfall) console.log(`LET OP: ${s}`);
@@ -141,7 +156,7 @@ async function main() {
     return;
   }
 
-  console.log('Gebruik: npm run series -- <plan|generate|week|capacity> [--kind compounding|cost|inflation|all] [--count N] [--variants 1..3] [--target N] [--date yyyy-mm-dd] [--out dir] [--json]');
+  console.log('Gebruik: npm run series -- <plan|generate|week|capacity> [--kind compounding|cost|inflation|table|all] [--count N] [--variants 1..3] [--target N] [--date yyyy-mm-dd] [--out dir] [--json]');
   process.exitCode = cmd ? 1 : 0;
 }
 

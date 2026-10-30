@@ -183,7 +183,27 @@ export function reviewRoutes(deps: AppDeps) {
       const f = join(deps.root, 'content', 'scripts', n.slug, 'series.json');
       if (existsSync(f)) seriesFile = JSON.parse(readFileSync(f, 'utf8'));
     }
+    // Background footage, voice mode and compliance flag recorded by the renderer / dataset import (files next to the script).
+    const folder = n?.slug ?? (asset ? basename(asset.path, '.mp4') : null);
+    const readJson = (f: string): Record<string, any> | null => {
+      if (!folder || !/^[A-Za-z0-9][\w.-]*$/.test(folder)) return null;
+      const p = join(deps.root, 'content', 'scripts', folder, f);
+      try {
+        return existsSync(p) ? (JSON.parse(readFileSync(p, 'utf8')) as Record<string, any>) : null;
+      } catch {
+        return null;
+      }
+    };
+    const meta = readJson('metadata.json');
+    const bg = (meta?.background ?? null) as { mode?: string; clips?: { clipId: string; licence: string; author: string; sourceUrl: string | null; credit: string; creditRequired: boolean; rightsNote: string | null }[]; captionCreditLines?: string[] } | null;
+    const creditLines = bg?.captionCreditLines ?? [];
+    const background = bg
+      ? { mode: bg.mode ?? 'unknown', clips: bg.clips ?? [], captionCreditLines: creditLines, creditInCaption: creditLines.every((l) => (item.captionText ?? '').includes(l)) }
+      : null;
     return c.json({
+      background,
+      voice: meta?.voice ? { mode: meta.voice.mode ?? null, label: meta.voice.label ?? null } : null,
+      compliance: readJson('compliance.json') ?? (meta?.compliance ?? null),
       item: { id: item.id, title: item.title, stage: item.stage, bucket: BUCKET_OF[item.stage] ?? null, series: item.series, pillar: item.pillar, captionText: item.captionText, captionHash: item.captionHash, assetSha256: item.currentAssetSha256, scriptRevisionId: item.currentScriptRevisionId },
       tags: n?.tags ?? null,
       trial: n?.trial ?? false,

@@ -1,7 +1,7 @@
 import React from 'react';
 import { AbsoluteFill } from 'remotion';
 import { SavingsGrowthChart } from '../components/charts';
-import { BgMesh, BrandLogo, Grade, Grain, Vignette } from '../components/layout';
+import { BgMesh, BrandLogo, DroneBackground, Grade, Grain, Vignette } from '../components/layout';
 import { formatEuro, formatEuroCents, formatPct } from '../format';
 import type { TemplateCProps } from '../schemas';
 import { theme } from '../theme';
@@ -15,6 +15,7 @@ export const CoverC: React.FC<TemplateCProps> = (props) => {
   return (
     <AbsoluteFill style={{ backgroundColor: theme.colors.bg }}>
       <BgMesh />
+      {props.background ? <DroneBackground background={props.background} /> : null}
       <div style={{ position: 'absolute', top: 330, left: 90, right: 90, bottom: 330, display: 'flex', flexDirection: 'column', gap: 34 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
           <BrandLogo size={72} style={{ borderRadius: 18 }} />
