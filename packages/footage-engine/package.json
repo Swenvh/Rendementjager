@@ -1,0 +1,13 @@
+{
+  "name": "@rj/footage-engine",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Licensed background-footage library: manifest + validator (licence gate), deterministic clip picker, official-API fetch (Pexels, Pixabay) and CC BY YouTube via yt-dlp. No scraping.",
+  "exports": { ".": "./src/index.ts" },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc -p .",
+    "footage": "tsx src/cli.ts"
+  }
+}

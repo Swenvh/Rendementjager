@@ -1,0 +1,66 @@
+{
+  "clipDurationS": 10,
+  "sources": [
+    {
+      "id": "scenic-relaxation-nl",
+      "title": "The Netherlands 4K - Scenic Relaxation Film",
+      "url": "https://youtu.be/wi08uYZBhRs",
+      "author": "Scenic Relaxation",
+      "retrievedDate": "2026-10-30",
+      "licence": "Owner-provided",
+      "rightsNote": "Owner declares rights held; not independently verified",
+      "clips": [
+        { "id": "windmolens-01", "start": 590, "location": "Windmolens, Nederland (volgens hoofdstuk van de bron; nog niet ter plekke gecontroleerd)" },
+        { "id": "tulpen-01", "start": 770, "location": "Tulpenvelden, Nederland (volgens hoofdstuk van de bron; nog niet ter plekke gecontroleerd)" },
+        { "id": "tulpen-02", "start": 880, "location": "Tulpenvelden, Nederland (volgens hoofdstuk van de bron; nog niet ter plekke gecontroleerd)" },
+        { "id": "den-haag-01", "start": 1010, "location": "Den Haag (volgens hoofdstuk van de bron; nog niet ter plekke gecontroleerd)" },
+        { "id": "rotterdam-01", "start": 1130, "location": "Rotterdam (volgens hoofdstuk van de bron; nog niet ter plekke gecontroleerd)" },
+        { "id": "kinderdijk-01", "start": 1860, "location": "Kinderdijk (volgens hoofdstuk van de bron; nog niet ter plekke gecontroleerd)" },
+        { "id": "kinderdijk-02", "start": 1930, "location": "Kinderdijk (volgens hoofdstuk van de bron; nog niet ter plekke gecontroleerd)" },
+        { "id": "zaanse-schans-01", "start": 2370, "location": "Zaanse Schans (volgens hoofdstuk van de bron; nog niet ter plekke gecontroleerd)" },
+        { "id": "veere-01", "start": 2250, "location": "Veere (volgens hoofdstuk van de bron; nog niet ter plekke gecontroleerd)" },
+        { "id": "marken-01", "start": 1720, "location": "Marken (volgens hoofdstuk van de bron; nog niet ter plekke gecontroleerd)" },
+        { "id": "amsterdam-01", "start": 430, "location": "Amsterdam (volgens hoofdstuk van de bron; nog niet ter plekke gecontroleerd)" },
+        { "id": "amsterdam-nacht-01", "start": 2540, "location": "Amsterdam bij nacht (volgens hoofdstuk van de bron; nog niet ter plekke gecontroleerd)" },
+        { "id": "polders-01", "start": 3000, "location": "Polders, Nederland (volgens hoofdstuk van de bron; nog niet ter plekke gecontroleerd)" },
+        { "id": "platteland-01", "start": 3250, "location": "Nederlands platteland (volgens hoofdstuk van de bron; nog niet ter plekke gecontroleerd)" },
+        { "id": "haarlem-01", "start": 1390, "location": "Haarlem (volgens hoofdstuk van de bron; nog niet ter plekke gecontroleerd)" }
+      ]
+    },
+    {
+      "id": "drone-snap-amsterdam",
+      "title": "Amsterdam (Drone Snap)",
+      "url": "https://youtu.be/Oxv6IRcuNaI",
+      "author": "Drone Snap",
+      "retrievedDate": "2026-10-30",
+      "licence": "Owner-provided",
+      "rightsNote": "Owner declares rights held; not independently verified",
+      "avoid": [
+        { "from": 0, "to": 11, "why": "titelkaart" },
+        { "from": 358, "to": 100000, "why": "eindscherm vanaf ca. 5:58" }
+      ],
+      "clips": [
+        { "id": "amsterdam-dam-01", "start": 31, "focusX": 35, "location": "Amsterdam, De Dam (starttijd 0:31 volgens beschrijving van de eigenaar; nog niet gecontroleerd)" },
+        { "id": "amsterdam-drone-02", "start": 55, "focusX": 35, "location": "Amsterdam (starttijd 0:55; onderwerp niet vastgesteld)" },
+        { "id": "amsterdam-magere-brug-01", "start": 93, "focusX": 35, "location": "Amsterdam, Magere Brug (starttijd 1:33; nog niet gecontroleerd)" },
+        { "id": "amsterdam-rijksmuseum-01", "start": 149, "focusX": 35, "location": "Amsterdam, Rijksmuseum (starttijd 2:29; nog niet gecontroleerd)" },
+        { "id": "amsterdam-de-gooyer-01", "start": 206, "focusX": 35, "location": "Amsterdam, Molen De Gooyer (starttijd 3:26; nog niet gecontroleerd)" },
+        { "id": "amsterdam-adam-toren-01", "start": 223, "focusX": 35, "location": "Amsterdam, A'DAM Toren (starttijd 3:43; nog niet gecontroleerd)" },
+        { "id": "zaanse-schans-02", "start": 288, "focusX": 35, "location": "Zaanse Schans (starttijd 4:48; nog niet gecontroleerd)" },
+        { "id": "amsterdam-arena-01", "start": 310, "focusX": 35, "location": "Amsterdam, Johan Cruijff ArenA (starttijd 5:10; nog niet gecontroleerd)" }
+      ]
+    },
+    {
+      "id": "woerden-short",
+      "title": "Dutch town from above (YouTube Short)",
+      "url": "https://www.youtube.com/shorts/YLizOy9FwO4",
+      "author": "ONBEKEND (kanaal van de Short door de eigenaar aan te vullen)",
+      "retrievedDate": "2026-10-30",
+      "licence": "Owner-provided",
+      "rightsNote": "Owner declares rights held; not independently verified",
+      "clips": [
+        { "id": "woerden-short-01", "start": 0, "durationS": 10, "location": "Nederlandse stad, waarschijnlijk Woerden (niet bevestigd)" }
+      ]
+    }
+  ]
+}

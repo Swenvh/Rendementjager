@@ -10,3 +10,7 @@ dist/
 .cache/
 *.log
 backups/
+
+# Footage library: the manifest (assets/footage/manifest.json) and plans are tracked; the video files are not.
+assets/footage/nl/*
+!assets/footage/nl/.gitkeep
