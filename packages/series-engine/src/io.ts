@@ -5,7 +5,8 @@ import type { WorkflowService } from '@rj/content-engine';
 import { WorkflowError } from '@rj/content-engine';
 import { newId, topicHash } from '@rj/shared';
 import type { ExistingRef } from './planner.js';
-import type { Claim, ExperimentTags, HookPattern, SeriesItem } from './types.js';
+import { buildItem } from './build.js';
+import type { Claim, ExperimentTags, HookPattern, SeriesItem, TopicParams } from './types.js';
 import { canonical } from './util.js';
 
 /** Machine-readable record stored in ContentIdea.notes (no schema change needed). */
@@ -17,13 +18,15 @@ export interface SeriesNotes {
   propsHash: string;
   trial: true;
   tags: ExperimentTags;
+  /** Grid point: lets Mission Control recompute every number from the finance-engine. */
+  params: TopicParams;
 }
 
 export function parseSeriesNotes(notes: string | null | undefined): SeriesNotes | null {
   if (!notes || !notes.startsWith('{')) return null;
   try {
     const n = JSON.parse(notes) as Partial<SeriesNotes>;
-    return n && n.rj === 'series/1' && typeof n.contentHash === 'string' && n.tags ? (n as SeriesNotes) : null;
+    return n && n.rj === 'series/1' && typeof n.contentHash === 'string' && n.tags && n.params ? (n as SeriesNotes) : null;
   } catch {
     return null;
   }
@@ -132,7 +135,7 @@ export const SERIES_ACTOR = 'editorial-copywriter';
  * grants; G2/G3 follow on the script revision created here.
  */
 export async function registerItem(repo: Repository, wf: WorkflowService, item: SeriesItem, actor: string = SERIES_ACTOR): Promise<RegisterResult | 'duplicate'> {
-  const notes: SeriesNotes = { rj: 'series/1', slug: item.slug, topicKey: item.topicKey, contentHash: item.contentHash, propsHash: item.propsHash, trial: true, tags: item.tags };
+  const notes: SeriesNotes = { rj: 'series/1', slug: item.slug, topicKey: item.topicKey, contentHash: item.contentHash, propsHash: item.propsHash, trial: true, tags: item.tags, params: item.params };
   let idea;
   try {
     idea = await wf.createContentIdea(
@@ -185,4 +188,13 @@ export async function registerItem(repo: Repository, wf: WorkflowService, item: 
     });
   }
   return { contentId: idea.id, scriptRevisionId: rev.id, claims: item.claims.length };
+}
+
+/**
+ * Recomputes the item from its grid point with the current finance-engine and compares the content
+ * hash: false means a number, hook or caption no longer matches what the engine produces today.
+ */
+export function verifySeriesNotes(notes: SeriesNotes): { ok: boolean; expected: string; actual: string } {
+  const again = buildItem(notes.params, notes.tags.hookPattern, '2000-01-01');
+  return { ok: again.contentHash === notes.contentHash, expected: notes.contentHash, actual: again.contentHash };
 }
