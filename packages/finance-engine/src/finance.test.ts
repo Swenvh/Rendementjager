@@ -162,3 +162,38 @@ describe('buildReelCalculation', () => {
     );
   });
 });
+
+import { compareAnnualCosts, purchasingPowerLoss, realValueOfAmount } from './series.js';
+import { futureValueOfMonthlyContributions as fv } from './compound.js';
+
+describe('series helpers', () => {
+  const base = { monthlyContribution: 250, years: 30, annualReturn: 0.07, compounding: 'monthly', timing: 'end', rateConvention: 'effective' } as const;
+  it('compareAnnualCosts equals two direct engine runs', () => {
+    const c = compareAnnualCosts(base, 0.002, 0.015);
+    expect(c.low.totals.endValueNominal).toBe(fv({ ...base, annualCostRate: 0.002 }).totals.endValueNominal);
+    expect(c.high.totals.endValueNominal).toBe(fv({ ...base, annualCostRate: 0.015 }).totals.endValueNominal);
+    expect(c.difference).toBeCloseTo(c.low.totals.endValueNominal - c.high.totals.endValueNominal, 6);
+    expect(c.difference).toBeGreaterThan(0);
+    expect(c.differenceShare).toBeGreaterThan(0);
+    expect(c.differenceShare).toBeLessThan(1);
+  });
+  it('equal costs give zero difference; reversed costs throw', () => {
+    expect(compareAnnualCosts(base, 0.01, 0.01).difference).toBe(0);
+    expect(() => compareAnnualCosts(base, 0.02, 0.01)).toThrow(RangeError);
+  });
+  it('realValueOfAmount: 1000 after 10 years at 2% ~ 820.35', () => {
+    expect(realValueOfAmount(1000, 10, 0.02)).toBeCloseTo(820.3483, 3);
+    expect(realValueOfAmount(1000, 0, 0.02)).toBe(1000);
+    expect(purchasingPowerLoss(1000, 10, 0.02)).toBeCloseTo(179.6517, 3);
+  });
+  it('realValueOfAmount validates input', () => {
+    expect(() => realValueOfAmount(-1, 1, 0.02)).toThrow(RangeError);
+    expect(() => realValueOfAmount(1, 1.5, 0.02)).toThrow(RangeError);
+    expect(() => realValueOfAmount(1, 1, -1)).toThrow(RangeError);
+  });
+  it('0% return equals the engine real value for savings (nominal vs real)', () => {
+    const r = fv({ monthlyContribution: 100, years: 10, annualReturn: 0, compounding: 'monthly', timing: 'end', inflationRate: 0.02 });
+    expect(r.totals.endValueNominal).toBeCloseTo(12000, 6);
+    expect(r.totals.endValueReal!).toBeLessThan(12000);
+  });
+});
