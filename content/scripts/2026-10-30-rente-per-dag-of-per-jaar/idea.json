@@ -1,0 +1,117 @@
+{
+  "claims": [
+    {
+      "calculationRef": "@rj/finance-engine:compoundingFrequencyValue({\"principal\":10000,\"years\":10,\"nominalRate\":0.06,\"periodsPerYear\":1})#endValue",
+      "claimText": "Per jaar / Na 10 jaar: €17.908",
+      "key": "r1-y10",
+      "role": "result",
+      "unit": "EUR",
+      "value": 17908.476965428545
+    },
+    {
+      "calculationRef": "@rj/finance-engine:compoundingFrequencyValue({\"principal\":10000,\"years\":30,\"nominalRate\":0.06,\"periodsPerYear\":1})#endValue",
+      "claimText": "Per jaar / Na 30 jaar: €57.435",
+      "key": "r1-y30",
+      "role": "result",
+      "unit": "EUR",
+      "value": 57434.91172913258
+    },
+    {
+      "calculationRef": "@rj/finance-engine:compoundingFrequencyValue({\"principal\":10000,\"years\":10,\"nominalRate\":0.06,\"periodsPerYear\":1})#effectiveAnnualRate",
+      "claimText": "Per jaar / Effectief per jaar: 6,00%",
+      "key": "r1-eff",
+      "role": "result",
+      "unit": "percent",
+      "value": 6.000000000000005
+    },
+    {
+      "calculationRef": "@rj/finance-engine:compoundingFrequencyValue({\"principal\":10000,\"years\":10,\"nominalRate\":0.06,\"periodsPerYear\":12})#endValue",
+      "claimText": "Per maand / Na 10 jaar: €18.194",
+      "key": "r2-y10",
+      "role": "result",
+      "unit": "EUR",
+      "value": 18193.967340322914
+    },
+    {
+      "calculationRef": "@rj/finance-engine:compoundingFrequencyValue({\"principal\":10000,\"years\":30,\"nominalRate\":0.06,\"periodsPerYear\":12})#endValue",
+      "claimText": "Per maand / Na 30 jaar: €60.226",
+      "key": "r2-y30",
+      "role": "result",
+      "unit": "EUR",
+      "value": 60225.752122629965
+    },
+    {
+      "calculationRef": "@rj/finance-engine:compoundingFrequencyValue({\"principal\":10000,\"years\":10,\"nominalRate\":0.06,\"periodsPerYear\":12})#effectiveAnnualRate",
+      "claimText": "Per maand / Effectief per jaar: 6,17%",
+      "key": "r2-eff",
+      "role": "result",
+      "unit": "percent",
+      "value": 6.167781186449828
+    },
+    {
+      "calculationRef": "@rj/finance-engine:compoundingFrequencyValue({\"principal\":10000,\"years\":10,\"nominalRate\":0.06,\"periodsPerYear\":52})#endValue",
+      "claimText": "Per week / Na 10 jaar: €18.215",
+      "key": "r3-y10",
+      "role": "result",
+      "unit": "EUR",
+      "value": 18214.886607046985
+    },
+    {
+      "calculationRef": "@rj/finance-engine:compoundingFrequencyValue({\"principal\":10000,\"years\":30,\"nominalRate\":0.06,\"periodsPerYear\":52})#endValue",
+      "claimText": "Per week / Na 30 jaar: €60.434",
+      "key": "r3-y30",
+      "role": "result",
+      "unit": "EUR",
+      "value": 60433.73222418156
+    },
+    {
+      "calculationRef": "@rj/finance-engine:compoundingFrequencyValue({\"principal\":10000,\"years\":10,\"nominalRate\":0.06,\"periodsPerYear\":52})#effectiveAnnualRate",
+      "claimText": "Per week / Effectief per jaar: 6,18%",
+      "key": "r3-eff",
+      "role": "result",
+      "unit": "percent",
+      "value": 6.179981954938096
+    },
+    {
+      "calculationRef": "@rj/finance-engine:compoundingFrequencyValue({\"principal\":10000,\"years\":10,\"nominalRate\":0.06,\"periodsPerYear\":365})#endValue",
+      "claimText": "Per dag / Na 10 jaar: €18.220",
+      "key": "r4-y10",
+      "role": "result",
+      "unit": "EUR",
+      "value": 18220.28954538426
+    },
+    {
+      "calculationRef": "@rj/finance-engine:compoundingFrequencyValue({\"principal\":10000,\"years\":30,\"nominalRate\":0.06,\"periodsPerYear\":365})#endValue",
+      "claimText": "Per dag / Na 30 jaar: €60.488",
+      "key": "r4-y30",
+      "role": "result",
+      "unit": "EUR",
+      "value": 60487.526123363525
+    },
+    {
+      "calculationRef": "@rj/finance-engine:compoundingFrequencyValue({\"principal\":10000,\"years\":10,\"nominalRate\":0.06,\"periodsPerYear\":365})#effectiveAnnualRate",
+      "claimText": "Per dag / Effectief per jaar: 6,18%",
+      "key": "r4-eff",
+      "role": "result",
+      "unit": "percent",
+      "value": 6.1831310677852525
+    }
+  ],
+  "contentHash": "0e49c25062bf7261287e4f4a60b743c75a024b59650a83872b255acd539b935b",
+  "hashtags": [
+    "#renteoprente",
+    "#beleggen",
+    "#financieleeducatie",
+    "#vermogensopbouw",
+    "#geldzaken"
+  ],
+  "hook": "Rente per dag of per jaar bijgeschreven: scheelt dat veel?",
+  "ideaId": 1,
+  "pillar": "beleggen-etfs",
+  "propsHash": "4f7174bc4a1ef3c07ce8f32af2b29169bcd6c071b796fefccd97f4becc532587",
+  "series": "Ideeën 2026-10-30",
+  "slug": "2026-10-30-rente-per-dag-of-per-jaar",
+  "template": "D",
+  "title": "Rente per jaar of per dag: wat scheelt het?",
+  "version": 1
+}

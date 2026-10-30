@@ -1,0 +1,122 @@
+{
+  "slug": "2026-10-30-noodbuffer-rekenvoorbeeld",
+  "title": "Noodbuffer: hoeveel is 3 tot 6 maanden uitgaven?",
+  "template": "TemplateD",
+  "preparedAt": "2026-10-30T16:45:50.797Z",
+  "durationMs": 10000,
+  "table": {
+    "origin": "calculated",
+    "rows": 4,
+    "columns": [
+      "label",
+      "target",
+      "build"
+    ],
+    "source": {
+      "name": "Eigen rekenvoorbeeld met @rj/finance-engine"
+    },
+    "asOfDate": "2026-10-30",
+    "assumptions": [
+      "Maandelijkse uitgaven van €2.000 en €250 per maand apart zijn gekozen voorbeelden, geen gemiddelden.",
+      "Buffer = maandelijkse uitgaven x aantal maanden. Opbouwtijd = buffer / maandbedrag, naar boven afgerond op hele maanden.",
+      "Zonder rente en zonder extra inkomsten of uitgaven in de tussentijd.",
+      "\"3 tot 6 maanden\" is een veelgebruikte vuistregel; de bron en de actuele adviezen daarvoor zijn nog te verifieren voordat ze genoemd worden."
+    ],
+    "disclaimer": "Educatief rekenvoorbeeld. Geen persoonlijk advies.",
+    "calculation": {
+      "engine": "@rj/finance-engine",
+      "source": "content/ideas idea sheet",
+      "ideaId": 7,
+      "claims": 8
+    },
+    "style": "plain-table (Template D)"
+  },
+  "voice": {
+    "provider": "none",
+    "brandVoice": false,
+    "voice": "none",
+    "mode": "voiceless",
+    "label": "VOICELESS: captions only, timings from reading speed (360 ms per spoken word), no audio stream. voiceless: ElevenLabs is opt-in (set RJ_TTS_PROVIDER=elevenlabs)",
+    "audioFile": null,
+    "qa": {
+      "voice": "none",
+      "file": null,
+      "durationMs": 12290,
+      "targetLufs": 0,
+      "inputLufs": null,
+      "outputLufs": null,
+      "truePeakDb": null,
+      "maxVolumeDb": null,
+      "meanVolumeDb": null,
+      "clipping": false,
+      "silences": [],
+      "maxSilenceS": 0,
+      "pass": true,
+      "issues": []
+    },
+    "segments": [
+      {
+        "id": "s01",
+        "text": "Noodbuffer: hoeveel is 3 tot 6 maanden uitgaven?. Voorbeeld: €2.000 uitgaven per maand en €250 per maand apart.",
+        "spokenText": "Noodbuffer: hoeveel is drie tot zes maanden uitgaven?. Voorbeeld: tweeduizend euro uitgaven per maand en tweehonderdvijftig euro per maand apart.",
+        "startMs": 350,
+        "endMs": 7790,
+        "durationMs": 7440,
+        "cacheHit": false,
+        "wordTimingSource": "reading-speed"
+      },
+      {
+        "id": "s02",
+        "text": "Rekenvoorbeeld, geen persoonlijk advies.",
+        "spokenText": "Rekenvoorbeeld, geen persoonlijk advies.",
+        "startMs": 8240,
+        "endMs": 9840,
+        "durationMs": 1600,
+        "cacheHit": false,
+        "wordTimingSource": "reading-speed"
+      },
+      {
+        "id": "s03",
+        "text": "Meer tips? Volg @rendementjager",
+        "spokenText": "Meer tips? Volg rendementjager",
+        "startMs": 10290,
+        "endMs": 11890,
+        "durationMs": 1600,
+        "cacheHit": false,
+        "wordTimingSource": "reading-speed"
+      }
+    ]
+  },
+  "background": {
+    "mode": "fallback-animated",
+    "reason": "no usable licensed clip in assets/footage/manifest.json"
+  },
+  "captions": {
+    "pages": 0,
+    "timing": "no narration captions on table Reels (rows fill the screen)"
+  },
+  "logo": {
+    "file": "logo-placeholder.svg",
+    "isPlaceholder": true
+  },
+  "brand": "@rendementjager",
+  "render": {
+    "file": "output/reels/2026-10-30-noodbuffer-rekenvoorbeeld.mp4",
+    "sha256": "80db608a8356bc445ff83166912ff6e6d6d99075060b73ab922f5972bc4f40fa",
+    "sizeBytes": 2695712,
+    "composition": "TemplateD",
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationInFrames": 300,
+    "codec": "h264",
+    "renderedAt": "2026-10-30T16:47:04.700Z",
+    "prepareMs": 41,
+    "renderMs": 72397
+  },
+  "mediaQa": {
+    "report": "output/reels/2026-10-30-noodbuffer-rekenvoorbeeld.qa.json",
+    "pass": true,
+    "issues": []
+  }
+}

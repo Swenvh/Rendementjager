@@ -1,0 +1,101 @@
+{
+  "slug": "2026-10-30-vuistregel-25x-uitgaven",
+  "title": "Financiële vrijheid: wat is 25 keer je uitgaven?",
+  "template": "TemplateA",
+  "series": "Ideeën 2026-10-30",
+  "language": "nl",
+  "ideaId": 11,
+  "table": {
+    "kind": "inline",
+    "title": "Financiële vrijheid: wat is 25 keer je uitgaven?",
+    "subtitle": "Vuistregel: jaaruitgaven delen door 4%. Geen garantie, geen advies.",
+    "columns": [
+      {
+        "key": "label",
+        "label": "Uitgaven",
+        "kind": "label"
+      },
+      {
+        "key": "r4",
+        "label": "Bij 4% (25x)",
+        "kind": "value"
+      },
+      {
+        "key": "r3",
+        "label": "Bij 3% (±33x)",
+        "kind": "value"
+      }
+    ],
+    "rows": [
+      {
+        "cells": {
+          "label": "€24.000",
+          "r4": "€600.000",
+          "r3": "€800.000"
+        },
+        "highlight": false
+      },
+      {
+        "cells": {
+          "label": "€30.000",
+          "r4": "€750.000",
+          "r3": "€1.000.000"
+        },
+        "highlight": true
+      },
+      {
+        "cells": {
+          "label": "€36.000",
+          "r4": "€900.000",
+          "r3": "€1.200.000"
+        },
+        "highlight": false
+      }
+    ],
+    "assumptions": [
+      "Streefbedrag = jaaruitgaven / opneempercentage: bij 4% is dat 25 keer, bij 3% ongeveer 33,3 keer de jaaruitgaven.",
+      "De 4%-regel is een vuistregel uit (waarschijnlijk Amerikaans) onderzoek over lange periodes; de herkomst en geldigheid voor Nederland zijn nog te verifieren voordat de bron wordt genoemd.",
+      "Kanttekeningen die in beeld of caption moeten: geen garantie, rendementen en inflatie schommelen, de volgorde van goede en slechte jaren telt mee, de looptijd (hoeveel jaar) is cruciaal, kosten en belasting zijn niet meegerekend.",
+      "De uitgavenbedragen zijn voorbeelden, geen gemiddelden."
+    ],
+    "footerLine": "Rekenvoorbeeld, geen persoonlijk advies.",
+    "disclaimer": "Educatief rekenvoorbeeld. Geen persoonlijk advies.",
+    "durationS": 10,
+    "claimCount": 6,
+    "ideaId": 11,
+    "size": "large"
+  },
+  "onScreen": {
+    "kicker": "Persoonlijke financiën",
+    "cta": "Meer tips? Volg @rendementjager",
+    "footnote": "Rekenvoorbeeld, geen persoonlijk advies."
+  },
+  "scenes": [
+    {
+      "id": "table",
+      "visual": "Titelblok, een korte regel, kolomkop en rijen een voor een; een korte voetregel.",
+      "segments": [
+        {
+          "id": "s01",
+          "text": "Financiële vrijheid: wat is 25 keer je uitgaven?. Vuistregel: jaaruitgaven delen door 4%. Geen garantie, geen advies.",
+          "pauseAfterMs": 450
+        },
+        {
+          "id": "s02",
+          "text": "Rekenvoorbeeld, geen persoonlijk advies.",
+          "pauseAfterMs": 450
+        }
+      ]
+    },
+    {
+      "id": "cta",
+      "visual": "Branded outro met CTA.",
+      "segments": [
+        {
+          "id": "s03",
+          "text": "Meer tips? Volg @rendementjager"
+        }
+      ]
+    }
+  ]
+}

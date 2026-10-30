@@ -1,0 +1,122 @@
+{
+  "slug": "2026-10-30-salarisverhoging-helft-apart",
+  "title": "Salarisverhoging: wat als je de helft belegt?",
+  "template": "TemplateC",
+  "preparedAt": "2026-10-30T17:00:26.895Z",
+  "durationMs": 10000,
+  "table": {
+    "origin": "calculated",
+    "rows": 3,
+    "columns": [
+      "label",
+      "contributed",
+      "end"
+    ],
+    "source": {
+      "name": "Eigen rekenvoorbeeld met @rj/finance-engine"
+    },
+    "asOfDate": "2026-10-30",
+    "assumptions": [
+      "Startinleg €100 per maand. Elk jaar vanaf jaar 2 komt er netto €100 per maand bij; 0%, 50% (€50) of 100% (€100) daarvan wordt extra ingelegd. Hypothetisch rendement 6% effectief per jaar, per maand verrekend, inleg aan het eind van de maand, nominaal, vóór kosten, belasting en inflatie.",
+      "De verhoging van €100 netto per maand elk jaar is een gekozen voorbeeld, geen verwachting van een salarisontwikkeling.",
+      "In het laatste jaar is de maandinleg bij 50% gestegen tot €550 per maand; bij 100% tot €1.000 per maand. Of dat haalbaar is, hangt van je situatie af.",
+      "Geen kosten, belasting en inflatie meegerekend."
+    ],
+    "disclaimer": "Rendementen uit het verleden bieden geen garantie voor de toekomst. Geen beleggingsadvies.",
+    "calculation": {
+      "engine": "@rj/finance-engine",
+      "source": "content/ideas idea sheet",
+      "ideaId": 12,
+      "claims": 7
+    },
+    "style": "plain-chart (Template C)"
+  },
+  "voice": {
+    "provider": "none",
+    "brandVoice": false,
+    "voice": "none",
+    "mode": "voiceless",
+    "label": "VOICELESS: captions only, timings from reading speed (360 ms per spoken word), no audio stream. voiceless: ElevenLabs is opt-in (set RJ_TTS_PROVIDER=elevenlabs)",
+    "audioFile": null,
+    "qa": {
+      "voice": "none",
+      "file": null,
+      "durationMs": 13810,
+      "targetLufs": 0,
+      "inputLufs": null,
+      "outputLufs": null,
+      "truePeakDb": null,
+      "maxVolumeDb": null,
+      "meanVolumeDb": null,
+      "clipping": false,
+      "silences": [],
+      "maxSilenceS": 0,
+      "pass": true,
+      "issues": []
+    },
+    "segments": [
+      {
+        "id": "s01",
+        "text": "Salarisverhoging: wat als je de helft belegt?. €100 per maand, elk jaar €100 netto erbij. 10 jaar, 6% per jaar.",
+        "spokenText": "Salarisverhoging: wat als je de helft belegt?. honderd euro per maand, elk jaar honderd euro netto erbij. tien jaar, zes procent per jaar.",
+        "startMs": 350,
+        "endMs": 8990,
+        "durationMs": 8640,
+        "cacheHit": false,
+        "wordTimingSource": "reading-speed"
+      },
+      {
+        "id": "s02",
+        "text": "Rekenvoorbeeld, geen garantie of advies.",
+        "spokenText": "Rekenvoorbeeld, geen garantie of advies.",
+        "startMs": 9440,
+        "endMs": 11360,
+        "durationMs": 1920,
+        "cacheHit": false,
+        "wordTimingSource": "reading-speed"
+      },
+      {
+        "id": "s03",
+        "text": "Meer tips? Volg @rendementjager",
+        "spokenText": "Meer tips? Volg rendementjager",
+        "startMs": 11810,
+        "endMs": 13410,
+        "durationMs": 1600,
+        "cacheHit": false,
+        "wordTimingSource": "reading-speed"
+      }
+    ]
+  },
+  "background": {
+    "mode": "fallback-animated",
+    "reason": "no usable licensed clip in assets/footage/manifest.json"
+  },
+  "captions": {
+    "pages": 0,
+    "timing": "no narration captions on table Reels (rows fill the screen)"
+  },
+  "logo": {
+    "file": "logo-placeholder.svg",
+    "isPlaceholder": true
+  },
+  "brand": "@rendementjager",
+  "render": {
+    "file": "output/reels/2026-10-30-salarisverhoging-helft-apart.mp4",
+    "sha256": "bebe7b83f66c61cbfcfcea7d497757c9027eb94b2c00241b7d43a1c4354daed5",
+    "sizeBytes": 2890260,
+    "composition": "TemplateCPlain",
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationInFrames": 300,
+    "codec": "h264",
+    "renderedAt": "2026-10-30T17:01:47.327Z",
+    "prepareMs": 58,
+    "renderMs": 79082
+  },
+  "mediaQa": {
+    "report": "output/reels/2026-10-30-salarisverhoging-helft-apart.qa.json",
+    "pass": true,
+    "issues": []
+  }
+}

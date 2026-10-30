@@ -1,0 +1,99 @@
+{
+  "timeline": {
+    "totalMs": 10000,
+    "scenes": [
+      {
+        "id": "table",
+        "startMs": 0,
+        "endMs": 8250
+      },
+      {
+        "id": "cta",
+        "startMs": 8250,
+        "endMs": 10000
+      }
+    ]
+  },
+  "voice": {
+    "src": null,
+    "provider": "none",
+    "brandVoice": false,
+    "durationMs": 12290
+  },
+  "captions": [],
+  "footnote": {
+    "text": "Educatief rekenvoorbeeld. Geen persoonlijk advies."
+  },
+  "cta": {
+    "text": "Meer tips? Volg @rendementjager",
+    "tagline": "Meer inzicht."
+  },
+  "background": null,
+  "kicker": "Persoonlijke financiën",
+  "title": "Noodbuffer: hoeveel is 3 tot 6 maanden uitgaven?",
+  "subtitle": "Voorbeeld: €2.000 uitgaven per maand en €250 per maand apart.",
+  "columns": [
+    {
+      "key": "label",
+      "label": "Buffer",
+      "kind": "label"
+    },
+    {
+      "key": "target",
+      "label": "Bedrag",
+      "kind": "value"
+    },
+    {
+      "key": "build",
+      "label": "Bij €250",
+      "kind": "value"
+    }
+  ],
+  "rows": [
+    {
+      "cells": {
+        "label": "3 maanden uitgaven",
+        "target": "€6.000",
+        "build": "2 jr"
+      },
+      "highlight": false
+    },
+    {
+      "cells": {
+        "label": "4 maanden uitgaven",
+        "target": "€8.000",
+        "build": "2 jr 8 mnd"
+      },
+      "highlight": false
+    },
+    {
+      "cells": {
+        "label": "5 maanden uitgaven",
+        "target": "€10.000",
+        "build": "3 jr 4 mnd"
+      },
+      "highlight": false
+    },
+    {
+      "cells": {
+        "label": "6 maanden uitgaven",
+        "target": "€12.000",
+        "build": "4 jr"
+      },
+      "highlight": false
+    }
+  ],
+  "source": {
+    "name": "Eigen rekenvoorbeeld met @rj/finance-engine"
+  },
+  "asOfDate": "2026-10-30",
+  "dataOrigin": "calculated",
+  "disclaimer": "Educatief rekenvoorbeeld. Geen persoonlijk advies.",
+  "footerLine": "Rekenvoorbeeld, geen persoonlijk advies.",
+  "assumptions": [
+    "Maandelijkse uitgaven van €2.000 en €250 per maand apart zijn gekozen voorbeelden, geen gemiddelden.",
+    "Buffer = maandelijkse uitgaven x aantal maanden. Opbouwtijd = buffer / maandbedrag, naar boven afgerond op hele maanden.",
+    "Zonder rente en zonder extra inkomsten of uitgaven in de tussentijd.",
+    "\"3 tot 6 maanden\" is een veelgebruikte vuistregel; de bron en de actuele adviezen daarvoor zijn nog te verifieren voordat ze genoemd worden."
+  ]
+}

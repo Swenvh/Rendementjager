@@ -1,0 +1,122 @@
+{
+  "slug": "2026-10-30-budgetregel-50-30-20",
+  "title": "50/30/20-regel: zo ziet €2.500 netto eruit",
+  "template": "TemplateA",
+  "preparedAt": "2026-10-30T16:36:01.160Z",
+  "durationMs": 10000,
+  "table": {
+    "origin": "calculated",
+    "rows": 3,
+    "columns": [
+      "label",
+      "share",
+      "amount"
+    ],
+    "source": {
+      "name": "Eigen rekenvoorbeeld met @rj/finance-engine"
+    },
+    "asOfDate": "2026-10-30",
+    "assumptions": [
+      "Het netto maandinkomen van €2.500 is een gekozen voorbeeld, geen gemiddeld of normaal inkomen.",
+      "50/30/20 is een vuistregel voor een eerste indeling; de herkomst en precieze definitie van de categorieën zijn nog te verifieren voordat de bron wordt genoemd.",
+      "Wat onder \"noodzaak\" valt (huur, energie, verzekeringen, boodschappen) verschilt per huishouden.",
+      "Geen rendement, geen belasting en geen toeslagen meegerekend."
+    ],
+    "disclaimer": "Educatief rekenvoorbeeld. Geen persoonlijk advies.",
+    "calculation": {
+      "engine": "@rj/finance-engine",
+      "source": "content/ideas idea sheet",
+      "ideaId": 6,
+      "claims": 3
+    },
+    "style": "plain-explain (Template A)"
+  },
+  "voice": {
+    "provider": "none",
+    "brandVoice": false,
+    "voice": "none",
+    "mode": "voiceless",
+    "label": "VOICELESS: captions only, timings from reading speed (360 ms per spoken word), no audio stream. voiceless: ElevenLabs is opt-in (set RJ_TTS_PROVIDER=elevenlabs)",
+    "audioFile": null,
+    "qa": {
+      "voice": "none",
+      "file": null,
+      "durationMs": 11570,
+      "targetLufs": 0,
+      "inputLufs": null,
+      "outputLufs": null,
+      "truePeakDb": null,
+      "maxVolumeDb": null,
+      "meanVolumeDb": null,
+      "clipping": false,
+      "silences": [],
+      "maxSilenceS": 0,
+      "pass": true,
+      "issues": []
+    },
+    "segments": [
+      {
+        "id": "s01",
+        "text": "50/30/20-regel: zo ziet €2.500 netto eruit. Vuistregel voor uitleg, geen advies. Jouw verdeling kan anders zijn.",
+        "spokenText": "vijftig/dertig/twintig-regel: zo ziet tweeduizend vijfhonderd euro netto eruit. Vuistregel voor uitleg, geen advies. Jouw verdeling kan anders zijn.",
+        "startMs": 350,
+        "endMs": 7070,
+        "durationMs": 6720,
+        "cacheHit": false,
+        "wordTimingSource": "reading-speed"
+      },
+      {
+        "id": "s02",
+        "text": "Rekenvoorbeeld, geen persoonlijk advies.",
+        "spokenText": "Rekenvoorbeeld, geen persoonlijk advies.",
+        "startMs": 7520,
+        "endMs": 9120,
+        "durationMs": 1600,
+        "cacheHit": false,
+        "wordTimingSource": "reading-speed"
+      },
+      {
+        "id": "s03",
+        "text": "Meer tips? Volg @rendementjager",
+        "spokenText": "Meer tips? Volg rendementjager",
+        "startMs": 9570,
+        "endMs": 11170,
+        "durationMs": 1600,
+        "cacheHit": false,
+        "wordTimingSource": "reading-speed"
+      }
+    ]
+  },
+  "background": {
+    "mode": "fallback-animated",
+    "reason": "no usable licensed clip in assets/footage/manifest.json"
+  },
+  "captions": {
+    "pages": 0,
+    "timing": "no narration captions on table Reels (rows fill the screen)"
+  },
+  "logo": {
+    "file": "logo-placeholder.svg",
+    "isPlaceholder": true
+  },
+  "brand": "@rendementjager",
+  "render": {
+    "file": "output/reels/2026-10-30-budgetregel-50-30-20.mp4",
+    "sha256": "92e02ec9a23f377d974ce9975a04da8288d05884e32db4c451b2f0e8219b4819",
+    "sizeBytes": 2678369,
+    "composition": "TemplateAPlain",
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationInFrames": 300,
+    "codec": "h264",
+    "renderedAt": "2026-10-30T16:37:16.732Z",
+    "prepareMs": 43,
+    "renderMs": 74250
+  },
+  "mediaQa": {
+    "report": "output/reels/2026-10-30-budgetregel-50-30-20.qa.json",
+    "pass": true,
+    "issues": []
+  }
+}

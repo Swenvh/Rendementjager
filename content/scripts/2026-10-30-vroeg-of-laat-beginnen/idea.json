@@ -1,0 +1,69 @@
+{
+  "claims": [
+    {
+      "calculationRef": "@rj/finance-engine:earlyVsLate({\"monthlyContribution\":200,\"totalYears\":40,\"earlyContributionYears\":40,\"lateStartsAfterYears\":10,\"annualReturn\":0.06})#early.contributed",
+      "claimText": "Start op 25 / Inleg: €96.000",
+      "key": "r1-contributed",
+      "role": "result",
+      "unit": "EUR",
+      "value": 96000
+    },
+    {
+      "calculationRef": "@rj/finance-engine:earlyVsLate({\"monthlyContribution\":200,\"totalYears\":40,\"earlyContributionYears\":40,\"lateStartsAfterYears\":10,\"annualReturn\":0.06})#early.endValue",
+      "claimText": "Start op 25 / Na 40 jaar: €381.536",
+      "key": "r1-end",
+      "role": "result",
+      "unit": "EUR",
+      "value": 381535.55109381943
+    },
+    {
+      "calculationRef": "@rj/finance-engine:earlyVsLate({\"monthlyContribution\":200,\"totalYears\":40,\"earlyContributionYears\":40,\"lateStartsAfterYears\":10,\"annualReturn\":0.06})#late.contributed",
+      "claimText": "Start op 35 / Inleg: €72.000",
+      "key": "r2-contributed",
+      "role": "result",
+      "unit": "EUR",
+      "value": 72000
+    },
+    {
+      "calculationRef": "@rj/finance-engine:earlyVsLate({\"monthlyContribution\":200,\"totalYears\":40,\"earlyContributionYears\":40,\"lateStartsAfterYears\":10,\"annualReturn\":0.06})#late.endValue",
+      "claimText": "Start op 35 / Na 40 jaar: €194.903",
+      "key": "r2-end",
+      "role": "result",
+      "unit": "EUR",
+      "value": 194902.59461039482
+    },
+    {
+      "calculationRef": "@rj/finance-engine:earlyVsLate({\"monthlyContribution\":200,\"totalYears\":40,\"earlyContributionYears\":10,\"lateStartsAfterYears\":10,\"annualReturn\":0.06})#early.contributed",
+      "claimText": "Start op 25, stop na 10 jaar / Inleg: €24.000",
+      "key": "r3-contributed",
+      "role": "result",
+      "unit": "EUR",
+      "value": 24000
+    },
+    {
+      "calculationRef": "@rj/finance-engine:earlyVsLate({\"monthlyContribution\":200,\"totalYears\":40,\"earlyContributionYears\":10,\"lateStartsAfterYears\":10,\"annualReturn\":0.06})#early.endValue",
+      "claimText": "Start op 25, stop na 10 jaar / Na 40 jaar: €186.633",
+      "key": "r3-end",
+      "role": "result",
+      "unit": "EUR",
+      "value": 186632.95648342406
+    }
+  ],
+  "contentHash": "a7abb3c09e22c2fee321cfa383fa2f55589c30c866d3fe535c4c07867c335feb",
+  "hashtags": [
+    "#vroegbeginnen",
+    "#renteoprente",
+    "#beleggen",
+    "#financieleeducatie",
+    "#vermogensopbouw"
+  ],
+  "hook": "Wat scheelt het als je 10 jaar eerder begint?",
+  "ideaId": 2,
+  "pillar": "beleggen-etfs",
+  "propsHash": "45360f23a34d9dc228f8463b2a006687cfe7b9bfa3bee284d058838950c40850",
+  "series": "Ideeën 2026-10-30",
+  "slug": "2026-10-30-vroeg-of-laat-beginnen",
+  "template": "C",
+  "title": "10 jaar eerder beginnen: wat scheelt het?",
+  "version": 1
+}

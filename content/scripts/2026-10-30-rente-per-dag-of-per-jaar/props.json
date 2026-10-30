@@ -1,0 +1,108 @@
+{
+  "timeline": {
+    "totalMs": 10000,
+    "scenes": [
+      {
+        "id": "table",
+        "startMs": 0,
+        "endMs": 8250
+      },
+      {
+        "id": "cta",
+        "startMs": 8250,
+        "endMs": 10000
+      }
+    ]
+  },
+  "voice": {
+    "src": null,
+    "provider": "none",
+    "brandVoice": false,
+    "durationMs": 12850
+  },
+  "captions": [],
+  "footnote": {
+    "text": "Rendementen uit het verleden bieden geen garantie voor de toekomst. Geen beleggingsadvies."
+  },
+  "cta": {
+    "text": "Meer tips? Volg @rendementjager",
+    "tagline": "Meer inzicht."
+  },
+  "background": null,
+  "kicker": "Beleggen",
+  "title": "Rente per jaar of per dag: wat scheelt het?",
+  "subtitle": "€10.000 bij 6% nominaal per jaar. Vóór kosten en belasting.",
+  "columns": [
+    {
+      "key": "label",
+      "label": "Rente",
+      "kind": "label"
+    },
+    {
+      "key": "y10",
+      "label": "Na 10 jaar",
+      "kind": "value"
+    },
+    {
+      "key": "y30",
+      "label": "Na 30 jaar",
+      "kind": "value"
+    },
+    {
+      "key": "eff",
+      "label": "Effectief",
+      "kind": "value"
+    }
+  ],
+  "rows": [
+    {
+      "cells": {
+        "label": "Per jaar",
+        "y10": "€17.908",
+        "y30": "€57.435",
+        "eff": "6,00%"
+      },
+      "highlight": false
+    },
+    {
+      "cells": {
+        "label": "Per maand",
+        "y10": "€18.194",
+        "y30": "€60.226",
+        "eff": "6,17%"
+      },
+      "highlight": false
+    },
+    {
+      "cells": {
+        "label": "Per week",
+        "y10": "€18.215",
+        "y30": "€60.434",
+        "eff": "6,18%"
+      },
+      "highlight": false
+    },
+    {
+      "cells": {
+        "label": "Per dag",
+        "y10": "€18.220",
+        "y30": "€60.488",
+        "eff": "6,18%"
+      },
+      "highlight": true
+    }
+  ],
+  "source": {
+    "name": "Eigen rekenvoorbeeld met @rj/finance-engine"
+  },
+  "asOfDate": "2026-10-30",
+  "dataOrigin": "calculated",
+  "disclaimer": "Rendementen uit het verleden bieden geen garantie voor de toekomst. Geen beleggingsadvies.",
+  "footerLine": "Rekenvoorbeeld, geen garantie of advies.",
+  "assumptions": [
+    "Eenmalig €10.000, geen extra inleg. Hypothetisch nominaal rendement van 6% per jaar (de rente wordt door de bijschrijffrequentie gedeeld: 6%/n per periode).",
+    "Nominaal, zonder kosten, belasting en inflatie.",
+    "Per dag = 365 bijschrijvingen per jaar, per week = 52, per maand = 12.",
+    "Hoe echte producten rente bijschrijven (en tegen welk percentage) is ONBEKEND en niet onderzocht; het voorbeeld zegt daar niets over."
+  ]
+}

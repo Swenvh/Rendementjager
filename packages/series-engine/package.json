@@ -10,13 +10,15 @@
   "scripts": {
     "test": "vitest run",
     "typecheck": "tsc -p .",
-    "series": "tsx src/cli.ts"
+    "series": "tsx src/cli.ts",
+    "ideas": "tsx src/ideas-cli.ts"
   },
   "dependencies": {
     "@rj/shared": "*",
     "@rj/database": "*",
     "@rj/content-engine": "*",
     "@rj/finance-engine": "*",
-    "@rj/footage-engine": "*"
+    "@rj/footage-engine": "*",
+    "@rj/content-ideas": "*"
   }
 }

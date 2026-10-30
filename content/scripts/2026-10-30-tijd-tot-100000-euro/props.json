@@ -1,0 +1,108 @@
+{
+  "timeline": {
+    "totalMs": 10000,
+    "scenes": [
+      {
+        "id": "table",
+        "startMs": 0,
+        "endMs": 8250
+      },
+      {
+        "id": "cta",
+        "startMs": 8250,
+        "endMs": 10000
+      }
+    ]
+  },
+  "voice": {
+    "src": null,
+    "provider": "none",
+    "brandVoice": false,
+    "durationMs": 12490
+  },
+  "captions": [],
+  "footnote": {
+    "text": "Rendementen uit het verleden bieden geen garantie voor de toekomst. Geen beleggingsadvies."
+  },
+  "cta": {
+    "text": "Meer tips? Volg @rendementjager",
+    "tagline": "Meer inzicht."
+  },
+  "background": null,
+  "kicker": "Beleggen",
+  "title": "Hoe lang duurt het om €100.000 te bereiken?",
+  "subtitle": "Inleg per maand, rendement per jaar (hypothetisch). Vóór kosten en belasting.",
+  "columns": [
+    {
+      "key": "label",
+      "label": "Per maand",
+      "kind": "label"
+    },
+    {
+      "key": "r0",
+      "label": "Bij 0%",
+      "kind": "value"
+    },
+    {
+      "key": "r4",
+      "label": "Bij 4%",
+      "kind": "value"
+    },
+    {
+      "key": "r7",
+      "label": "Bij 7%",
+      "kind": "value"
+    }
+  ],
+  "rows": [
+    {
+      "cells": {
+        "label": "€250",
+        "r0": "33 jr 4 mnd",
+        "r4": "21 jr 5 mnd",
+        "r7": "17 jr 6 mnd"
+      },
+      "highlight": false
+    },
+    {
+      "cells": {
+        "label": "€500",
+        "r0": "16 jr 8 mnd",
+        "r4": "12 jr 11 mnd",
+        "r7": "11 jr 3 mnd"
+      },
+      "highlight": true
+    },
+    {
+      "cells": {
+        "label": "€750",
+        "r0": "11 jr 2 mnd",
+        "r4": "9 jr 3 mnd",
+        "r7": "8 jr 4 mnd"
+      },
+      "highlight": false
+    },
+    {
+      "cells": {
+        "label": "€1.000",
+        "r0": "8 jr 4 mnd",
+        "r4": "7 jr 3 mnd",
+        "r7": "6 jr 8 mnd"
+      },
+      "highlight": false
+    }
+  ],
+  "source": {
+    "name": "Eigen rekenvoorbeeld met @rj/finance-engine"
+  },
+  "asOfDate": "2026-10-30",
+  "dataOrigin": "calculated",
+  "disclaimer": "Rendementen uit het verleden bieden geen garantie voor de toekomst. Geen beleggingsadvies.",
+  "footerLine": "Rekenvoorbeeld, geen garantie of advies.",
+  "assumptions": [
+    "Doel €100.000, beginsaldo €0, inleg aan het eind van de maand. Hypothetische rendementen effectief per jaar, per maand verrekend, inleg aan het eind van de maand, nominaal, vóór kosten, belasting en inflatie.",
+    "Looptijd = eerste maand waarin het saldo het doel haalt of overschrijdt.",
+    "De rij \"Zonder rendement\" is alleen sparen zonder groei (€100.000 / maandbedrag).",
+    "De rendementen zijn aannames, geen verwachtingen. Inflatie blijft buiten beeld: €100.000 later is minder waard dan nu."
+  ]
+}

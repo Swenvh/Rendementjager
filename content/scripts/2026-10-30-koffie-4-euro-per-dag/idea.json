@@ -1,0 +1,77 @@
+{
+  "claims": [
+    {
+      "calculationRef": "@rj/finance-engine:futureValueOfMonthlyContributions({\"monthlyContribution\":121.66666666666667,\"years\":10,\"annualReturn\":0.06,\"compounding\":\"monthly\",\"timing\":\"end\",\"rateConvention\":\"effective\",\"annualCostRate\":0})#totals.contributed",
+      "claimText": "10 jaar / Inleg: €14.600",
+      "key": "r1-contributed",
+      "role": "result",
+      "unit": "EUR",
+      "value": 14600
+    },
+    {
+      "calculationRef": "@rj/finance-engine:futureValueOfMonthlyContributions({\"monthlyContribution\":121.66666666666667,\"years\":10,\"annualReturn\":0.06,\"compounding\":\"monthly\",\"timing\":\"end\",\"rateConvention\":\"effective\",\"annualCostRate\":0})#totals.endValueNominal",
+      "claimText": "10 jaar / Eindwaarde: €19.768",
+      "key": "r1-end",
+      "role": "result",
+      "unit": "EUR",
+      "value": 19767.60216205367
+    },
+    {
+      "calculationRef": "@rj/finance-engine:futureValueOfMonthlyContributions({\"monthlyContribution\":121.66666666666667,\"years\":20,\"annualReturn\":0.06,\"compounding\":\"monthly\",\"timing\":\"end\",\"rateConvention\":\"effective\",\"annualCostRate\":0})#totals.contributed",
+      "claimText": "20 jaar / Inleg: €29.200",
+      "key": "r2-contributed",
+      "role": "result",
+      "unit": "EUR",
+      "value": 29200
+    },
+    {
+      "calculationRef": "@rj/finance-engine:futureValueOfMonthlyContributions({\"monthlyContribution\":121.66666666666667,\"years\":20,\"annualReturn\":0.06,\"compounding\":\"monthly\",\"timing\":\"end\",\"rateConvention\":\"effective\",\"annualCostRate\":0})#totals.endValueNominal",
+      "claimText": "20 jaar / Eindwaarde: €55.168",
+      "key": "r2-end",
+      "role": "result",
+      "unit": "EUR",
+      "value": 55168.36696014307
+    },
+    {
+      "calculationRef": "@rj/finance-engine:futureValueOfMonthlyContributions({\"monthlyContribution\":121.66666666666667,\"years\":30,\"annualReturn\":0.06,\"compounding\":\"monthly\",\"timing\":\"end\",\"rateConvention\":\"effective\",\"annualCostRate\":0})#totals.contributed",
+      "claimText": "30 jaar / Inleg: €43.800",
+      "key": "r3-contributed",
+      "role": "result",
+      "unit": "EUR",
+      "value": 43800
+    },
+    {
+      "calculationRef": "@rj/finance-engine:futureValueOfMonthlyContributions({\"monthlyContribution\":121.66666666666667,\"years\":30,\"annualReturn\":0.06,\"compounding\":\"monthly\",\"timing\":\"end\",\"rateConvention\":\"effective\",\"annualCostRate\":0})#totals.endValueNominal",
+      "claimText": "30 jaar / Eindwaarde: €118.566",
+      "key": "r3-end",
+      "role": "result",
+      "unit": "EUR",
+      "value": 118565.74505465687
+    },
+    {
+      "calculationRef": "@rj/finance-engine:dailyToMonthly({\"daily\":4})#result",
+      "claimText": "€4 per dag per maand (4 x 365 / 12)",
+      "key": "monthly",
+      "role": "assumption",
+      "unit": "EUR",
+      "value": 121.66666666666667
+    }
+  ],
+  "contentHash": "a0c09dc322a86083df79ad45e29b72f64107fd49f353f60448c2c6e67df73a00",
+  "hashtags": [
+    "#kleinebedragen",
+    "#renteoprente",
+    "#beleggen",
+    "#financieleeducatie",
+    "#geldzaken"
+  ],
+  "hook": "Wat wordt €4 per dag over 30 jaar?",
+  "ideaId": 9,
+  "pillar": "persoonlijke-financien",
+  "propsHash": "f23cf6d3465d5988a3d0ede7ce0bb7b1fdb0c92f20e7c831110d2922d211172a",
+  "series": "Ideeën 2026-10-30",
+  "slug": "2026-10-30-koffie-4-euro-per-dag",
+  "template": "C",
+  "title": "€4 per dag: wat wordt dat na 10, 20 en 30 jaar?",
+  "version": 1
+}

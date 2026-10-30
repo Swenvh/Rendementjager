@@ -1,0 +1,101 @@
+{
+  "claims": [
+    {
+      "calculationRef": "@rj/finance-engine:futureValueOfMonthlyContributions({\"monthlyContribution\":200,\"years\":20,\"annualReturn\":-0.02,\"compounding\":\"monthly\",\"timing\":\"end\",\"rateConvention\":\"effective\",\"annualCostRate\":0})#totals.endValueNominal",
+      "claimText": "-2% per jaar / Eindwaarde: €39.520",
+      "key": "r1-end",
+      "role": "result",
+      "unit": "EUR",
+      "value": 39520.07845037521
+    },
+    {
+      "calculationRef": "@rj/finance-engine:futureValueOfMonthlyContributions({\"monthlyContribution\":200,\"years\":20,\"annualReturn\":-0.02,\"compounding\":\"monthly\",\"timing\":\"end\",\"rateConvention\":\"effective\",\"annualCostRate\":0})#totals.growth",
+      "claimText": "-2% per jaar / Groei: -€8.480",
+      "key": "r1-growth",
+      "role": "result",
+      "unit": "EUR",
+      "value": -8479.921549624793
+    },
+    {
+      "calculationRef": "@rj/finance-engine:futureValueOfMonthlyContributions({\"monthlyContribution\":200,\"years\":20,\"annualReturn\":0,\"compounding\":\"monthly\",\"timing\":\"end\",\"rateConvention\":\"effective\",\"annualCostRate\":0})#totals.endValueNominal",
+      "claimText": "0% per jaar / Eindwaarde: €48.000",
+      "key": "r2-end",
+      "role": "result",
+      "unit": "EUR",
+      "value": 48000
+    },
+    {
+      "calculationRef": "@rj/finance-engine:futureValueOfMonthlyContributions({\"monthlyContribution\":200,\"years\":20,\"annualReturn\":0,\"compounding\":\"monthly\",\"timing\":\"end\",\"rateConvention\":\"effective\",\"annualCostRate\":0})#totals.growth",
+      "claimText": "0% per jaar / Groei: €0",
+      "key": "r2-growth",
+      "role": "result",
+      "unit": "EUR",
+      "value": 0
+    },
+    {
+      "calculationRef": "@rj/finance-engine:futureValueOfMonthlyContributions({\"monthlyContribution\":200,\"years\":20,\"annualReturn\":0.02,\"compounding\":\"monthly\",\"timing\":\"end\",\"rateConvention\":\"effective\",\"annualCostRate\":0})#totals.endValueNominal",
+      "claimText": "2% per jaar / Eindwaarde: €58.846",
+      "key": "r3-end",
+      "role": "result",
+      "unit": "EUR",
+      "value": 58846.31842385006
+    },
+    {
+      "calculationRef": "@rj/finance-engine:futureValueOfMonthlyContributions({\"monthlyContribution\":200,\"years\":20,\"annualReturn\":0.02,\"compounding\":\"monthly\",\"timing\":\"end\",\"rateConvention\":\"effective\",\"annualCostRate\":0})#totals.growth",
+      "claimText": "2% per jaar / Groei: €10.846",
+      "key": "r3-growth",
+      "role": "result",
+      "unit": "EUR",
+      "value": 10846.318423850062
+    },
+    {
+      "calculationRef": "@rj/finance-engine:futureValueOfMonthlyContributions({\"monthlyContribution\":200,\"years\":20,\"annualReturn\":0.04,\"compounding\":\"monthly\",\"timing\":\"end\",\"rateConvention\":\"effective\",\"annualCostRate\":0})#totals.endValueNominal",
+      "claimText": "4% per jaar / Eindwaarde: €72.768",
+      "key": "r4-end",
+      "role": "result",
+      "unit": "EUR",
+      "value": 72768.34582334389
+    },
+    {
+      "calculationRef": "@rj/finance-engine:futureValueOfMonthlyContributions({\"monthlyContribution\":200,\"years\":20,\"annualReturn\":0.04,\"compounding\":\"monthly\",\"timing\":\"end\",\"rateConvention\":\"effective\",\"annualCostRate\":0})#totals.growth",
+      "claimText": "4% per jaar / Groei: €24.768",
+      "key": "r4-growth",
+      "role": "result",
+      "unit": "EUR",
+      "value": 24768.345823343887
+    },
+    {
+      "calculationRef": "@rj/finance-engine:futureValueOfMonthlyContributions({\"monthlyContribution\":200,\"years\":20,\"annualReturn\":0.06,\"compounding\":\"monthly\",\"timing\":\"end\",\"rateConvention\":\"effective\",\"annualCostRate\":0})#totals.endValueNominal",
+      "claimText": "6% per jaar / Eindwaarde: €90.688",
+      "key": "r5-end",
+      "role": "result",
+      "unit": "EUR",
+      "value": 90687.7265098242
+    },
+    {
+      "calculationRef": "@rj/finance-engine:futureValueOfMonthlyContributions({\"monthlyContribution\":200,\"years\":20,\"annualReturn\":0.06,\"compounding\":\"monthly\",\"timing\":\"end\",\"rateConvention\":\"effective\",\"annualCostRate\":0})#totals.growth",
+      "claimText": "6% per jaar / Groei: €42.688",
+      "key": "r5-growth",
+      "role": "result",
+      "unit": "EUR",
+      "value": 42687.726509824206
+    }
+  ],
+  "contentHash": "bd60c3fd56df4b044c898ce8966d971db7a462f0d73f86245e32a58618bfaeea",
+  "hashtags": [
+    "#sparenofbeleggen",
+    "#beleggen",
+    "#sparen",
+    "#financieleeducatie",
+    "#geldzaken"
+  ],
+  "hook": "Sparen of beleggen? Eerst: wat kan het verschil zijn?",
+  "ideaId": 5,
+  "pillar": "persoonlijke-financien",
+  "propsHash": "2dec5841eec070584e0333561c0c61d9f1a632dccb879a42304c45fd5c8ef445",
+  "series": "Ideeën 2026-10-30",
+  "slug": "2026-10-30-sparen-of-beleggen-scenarios",
+  "template": "D",
+  "title": "€200 per maand, 20 jaar: vijf mogelijke rendementen",
+  "version": 1
+}

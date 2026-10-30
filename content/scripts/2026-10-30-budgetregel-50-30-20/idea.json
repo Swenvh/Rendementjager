@@ -1,0 +1,45 @@
+{
+  "claims": [
+    {
+      "calculationRef": "@rj/finance-engine:budgetSplit({\"netMonthlyIncome\":2500})#needs",
+      "claimText": "Vaste lasten en noodzaak / Per maand: €1.250",
+      "key": "r1-amount",
+      "role": "result",
+      "unit": "EUR",
+      "value": 1250
+    },
+    {
+      "calculationRef": "@rj/finance-engine:budgetSplit({\"netMonthlyIncome\":2500})#wants",
+      "claimText": "Wensen / Per maand: €750",
+      "key": "r2-amount",
+      "role": "result",
+      "unit": "EUR",
+      "value": 750
+    },
+    {
+      "calculationRef": "@rj/finance-engine:budgetSplit({\"netMonthlyIncome\":2500})#savings",
+      "claimText": "Sparen en aflossen / Per maand: €500",
+      "key": "r3-amount",
+      "role": "result",
+      "unit": "EUR",
+      "value": 500
+    }
+  ],
+  "contentHash": "ba047f395305206503300534ddcdaf1d521e77cbb0196164fe42766664eddcce",
+  "hashtags": [
+    "#budget",
+    "#5030",
+    "#financieleorde",
+    "#geldzaken",
+    "#financieleeducatie"
+  ],
+  "hook": "Hoe verdeel je je inkomen met de 50/30/20-regel?",
+  "ideaId": 6,
+  "pillar": "persoonlijke-financien",
+  "propsHash": "7f9bfadaeb203eb2e329e6a2b34cf95e6e8d98c3299277ed040b14eedbe38c1d",
+  "series": "Ideeën 2026-10-30",
+  "slug": "2026-10-30-budgetregel-50-30-20",
+  "template": "A",
+  "title": "50/30/20-regel: zo ziet €2.500 netto eruit",
+  "version": 1
+}

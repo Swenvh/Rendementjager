@@ -3,7 +3,8 @@
 import { brand } from '@rj/brand';
 import { reelCalculationFromEngine } from './calc/from-finance-engine';
 import { buildMatrixTable, CALCULATED_SOURCE, TABLE_DISCLAIMER_NL, TABLE_FOOTER_NL, tableSubtitleNl } from './calc/matrix';
-import type { TemplateAProps, TemplateBProps, TemplateCProps, TemplateDProps } from './schemas';
+import { formatEur, futureValueOfMonthlyContributions } from '@rj/finance-engine';
+import type { TemplateAProps, TemplateBProps, TemplateCPlainProps, TemplateCProps, TemplateDProps } from './schemas';
 
 const scenes = (ids: [string, number][]) => {
   let t = 0;
@@ -88,4 +89,35 @@ export const defaultTemplateD: TemplateDProps = {
   dataOrigin: 'calculated',
   disclaimer: TABLE_DISCLAIMER_NL,
   assumptions: matrix.assumptions,
+};
+
+const plainYears = Array.from({ length: 31 }, (_, y) => y);
+const plainRun = (monthly: number) =>
+  plainYears.map((y) => ({ x: y, y: y === 0 ? 0 : futureValueOfMonthlyContributions({ monthlyContribution: monthly, years: y, annualReturn: 0.06, compounding: 'monthly', timing: 'end', rateConvention: 'effective', annualCostRate: 0 }).totals.endValueNominal }));
+const plainRun100 = plainRun(100);
+const plainRun200 = plainRun(200);
+const eurTightDefault = (v: number) => formatEur(Math.round(v)).replace(/€[\s\u00a0]*/, '€');
+/** Template C plain style preview: two example lines (EUR 100 and EUR 200 per month at 6%), every point an engine value. */
+export const defaultTemplateCPlain: TemplateCPlainProps = {
+  timeline: timeline([['chart', 8250], ['cta', 1750]]),
+  voice: silent,
+  captions: [],
+  footnote: { text: TABLE_DISCLAIMER_NL },
+  cta,
+  kicker: 'Voorbeeld',
+  title: 'Twee bedragen naast elkaar',
+  subtitle: '€100 en €200 per maand, 6% per jaar. Vóór kosten en belasting.',
+  footerLine: TABLE_FOOTER_NL,
+  chart: { xLabel: 'Jaar', unit: 'eur', series: [{ label: '€200 per maand', points: plainRun200 }, { label: '€100 per maand', points: plainRun100 }] },
+  columns: [{ key: 'label', label: 'Bedrag', kind: 'label' }, { key: 'end', label: 'Na 30 jaar', kind: 'value' }],
+  rows: [
+    { cells: { label: '€100 per maand', end: eurTightDefault(plainRun100[30]!.y) } },
+    { cells: { label: '€200 per maand', end: eurTightDefault(plainRun200[30]!.y) }, highlight: true },
+    { cells: { label: 'Verschil', end: eurTightDefault(plainRun200[30]!.y - plainRun100[30]!.y) } },
+  ],
+  disclaimer: TABLE_DISCLAIMER_NL,
+  source: CALCULATED_SOURCE,
+  asOfDate: '2026-10-30',
+  dataOrigin: 'calculated',
+  assumptions: ['Voorbeeld voor de preview'],
 };

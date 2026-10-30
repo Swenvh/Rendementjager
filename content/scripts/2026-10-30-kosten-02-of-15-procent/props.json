@@ -1,0 +1,108 @@
+{
+  "timeline": {
+    "totalMs": 10000,
+    "scenes": [
+      {
+        "id": "table",
+        "startMs": 0,
+        "endMs": 8250
+      },
+      {
+        "id": "cta",
+        "startMs": 8250,
+        "endMs": 10000
+      }
+    ]
+  },
+  "voice": {
+    "src": null,
+    "provider": "none",
+    "brandVoice": false,
+    "durationMs": 14050
+  },
+  "captions": [],
+  "footnote": {
+    "text": "Rendementen uit het verleden bieden geen garantie voor de toekomst. Geen beleggingsadvies."
+  },
+  "cta": {
+    "text": "Meer tips? Volg @rendementjager",
+    "tagline": "Meer inzicht."
+  },
+  "background": null,
+  "kicker": "Beleggen",
+  "title": "Kosten van 0,2% of 1,5%: wat scheelt het?",
+  "subtitle": "€10.000 eenmalig, 6% per jaar vóór kosten. Voorbeeldpercentages.",
+  "columns": [
+    {
+      "key": "label",
+      "label": "Kosten",
+      "kind": "label"
+    },
+    {
+      "key": "y10",
+      "label": "10 jaar",
+      "kind": "value"
+    },
+    {
+      "key": "y20",
+      "label": "20 jaar",
+      "kind": "value"
+    },
+    {
+      "key": "y30",
+      "label": "30 jaar",
+      "kind": "value"
+    }
+  ],
+  "rows": [
+    {
+      "cells": {
+        "label": "Zonder kosten",
+        "y10": "€17.908",
+        "y20": "€32.071",
+        "y30": "€57.435"
+      },
+      "highlight": false
+    },
+    {
+      "cells": {
+        "label": "0,2% kosten",
+        "y10": "€17.554",
+        "y20": "€30.813",
+        "y30": "€54.087"
+      },
+      "highlight": false
+    },
+    {
+      "cells": {
+        "label": "1,5% kosten",
+        "y10": "€15.396",
+        "y20": "€23.705",
+        "y30": "€36.497"
+      },
+      "highlight": false
+    },
+    {
+      "cells": {
+        "label": "Verschil",
+        "y10": "€2.157",
+        "y20": "€7.107",
+        "y30": "€17.589"
+      },
+      "highlight": true
+    }
+  ],
+  "source": {
+    "name": "Eigen rekenvoorbeeld met @rj/finance-engine"
+  },
+  "asOfDate": "2026-10-30",
+  "dataOrigin": "calculated",
+  "disclaimer": "Rendementen uit het verleden bieden geen garantie voor de toekomst. Geen beleggingsadvies.",
+  "footerLine": "Rekenvoorbeeld, geen garantie of advies.",
+  "assumptions": [
+    "Eenmalig €10.000, geen extra inleg. Hypothetisch rendement 6% effectief per jaar vóór kosten.",
+    "Kosten per jaar over het belegde bedrag, gerekend als (1 + rendement) x (1 - kosten) per jaar; dus niet \"rendement min kosten\".",
+    "0,2% en 1,5% zijn voorbeeldpercentages, geen opgave van bestaande producten of aanbieders.",
+    "Nominaal, zonder belasting en inflatie."
+  ]
+}

@@ -271,3 +271,116 @@ export const BarComparison: React.FC<{
     </div>
   );
 };
+
+export interface PlainSeries {
+  label: string;
+  points: { x: number; y: number }[];
+}
+
+/** Line colours of the plain multi-line chart: hero lime, white, green dashed. Index = series order. */
+export const PLAIN_SERIES_STYLE = [
+  { color: theme.colors.lime, width: 8, dash: undefined as string | undefined },
+  { color: theme.colors.surface, width: 6, dash: undefined as string | undefined },
+  { color: theme.colors.positive, width: 6, dash: '16 10' as string | undefined },
+] as const;
+
+/** Estimated number of legend lines for the plain chart (greedy wrap), so the caller can reserve space. */
+export function plainLegendLines(labels: string[], width = 860): number {
+  let lines = 1;
+  let used = 0;
+  for (const l of labels) {
+    const w = 62 + l.length * 15.5 + 34;
+    if (used > 0 && used + w > width) {
+      lines++;
+      used = 0;
+    }
+    used += w;
+  }
+  return lines;
+}
+export const PLAIN_LEGEND_LINE_H = 40;
+
+/**
+ * Simple multi-line chart (1 to 3 series, one shared x axis) for the plain 10 s Reels. Three y ticks, three x ticks,
+ * min 26 px text, legend below with a line sample per series. All values come from props (finance-engine output).
+ * `progress` 0..1 draws the lines from left to right.
+ */
+export const PlainLineChart: React.FC<{
+  series: PlainSeries[];
+  progress: number;
+  width: number;
+  height: number;
+  formatY: (v: number) => string;
+  xSuffix: string;
+}> = ({ series, progress, width, height, formatY, xSuffix }) => {
+  const frame = useCurrentFrame();
+  const padL = 150;
+  const padB = 52;
+  const padT = 16;
+  const padR = 24;
+  const w = width - padL - padR;
+  const h = height - padB - padT;
+  const xMax = Math.max(...series.flatMap((s) => s.points.map((p) => p.x)));
+  const yMax = niceMax(Math.max(...series.flatMap((s) => s.points.map((p) => p.y))));
+  const X = (x: number) => padL + (x / xMax) * w;
+  const Y = (v: number) => padT + h - (v / yMax) * h;
+  const yTicks = [0, yMax / 2, yMax];
+  const xTicks = [0, Math.round(xMax / 2), xMax];
+  const upto = progress * xMax;
+  const drawn = series.map((s) => {
+    const pts = s.points.map((p) => ({ x: X(p.x), y: Y(p.y), raw: p.x }));
+    const out: { x: number; y: number }[] = [];
+    for (let i = 0; i < pts.length; i++) {
+      if (pts[i]!.raw <= upto) out.push(pts[i]!);
+      else {
+        const prev = pts[i - 1];
+        if (prev) {
+          const t = (upto - prev.raw) / (pts[i]!.raw - prev.raw);
+          if (t > 0) out.push({ x: prev.x + (pts[i]!.x - prev.x) * t, y: prev.y + (pts[i]!.y - prev.y) * t });
+        }
+        break;
+      }
+    }
+    return out;
+  });
+  const head = drawn[0]![drawn[0]!.length - 1];
+  const pulse = 1 + Math.sin(frame / 6) * 0.12;
+  const legendLines = plainLegendLines(series.map((s) => s.label), width);
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 6, width }}>
+      <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} style={{ overflow: 'visible', display: 'block' }}>
+        {yTicks.map((t, i) => (
+          <g key={i}>
+            <line x1={padL} x2={width - padR} y1={Y(t)} y2={Y(t)} stroke={theme.colors.hairline} strokeWidth={1.5} />
+            <text x={padL - 16} y={Y(t) + 9} textAnchor="end" style={{ ...axisText, fontSize: 26 }} fill={theme.colors.textDim}>
+              {formatY(t)}
+            </text>
+          </g>
+        ))}
+        {xTicks.map((t, i) => (
+          <text key={i} x={X(t)} y={height - 14} textAnchor={i === 0 ? 'start' : i === xTicks.length - 1 ? 'end' : 'middle'} style={{ ...axisText, fontSize: 26 }} fill={theme.colors.textDim}>
+            {i === xTicks.length - 1 ? `${t} ${xSuffix}` : t}
+          </text>
+        ))}
+        {[...drawn].map((pts, i) => ({ pts, i })).reverse().map(({ pts, i }) => {
+          const st = PLAIN_SERIES_STYLE[i]!;
+          return pts.length > 1 ? <path key={i} d={pathOf(pts)} fill="none" stroke={st.color} strokeWidth={st.width} strokeLinecap="round" strokeLinejoin="round" strokeDasharray={st.dash} style={i === 0 ? { filter: `drop-shadow(0 0 14px ${theme.colors.limeGlow})` } : undefined} /> : null;
+        })}
+        {head ? <circle cx={head.x} cy={head.y} r={13 * pulse} fill={theme.colors.lime} /> : null}
+      </svg>
+      <div style={{ display: 'flex', flexWrap: 'wrap', columnGap: 34, rowGap: 2, minHeight: legendLines * PLAIN_LEGEND_LINE_H, paddingLeft: 10 }}>
+        {series.map((s, i) => {
+          const st = PLAIN_SERIES_STYLE[i]!;
+          return (
+            <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 14, height: PLAIN_LEGEND_LINE_H }}>
+              <svg width={48} height={14}>
+                <line x1={2} x2={46} y1={7} y2={7} stroke={st.color} strokeWidth={st.width - 1} strokeLinecap="round" strokeDasharray={st.dash} />
+              </svg>
+              <span style={{ fontFamily: theme.fonts.body, fontWeight: 500, fontSize: 28, color: theme.colors.surface, whiteSpace: 'nowrap' }}>{s.label}</span>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};

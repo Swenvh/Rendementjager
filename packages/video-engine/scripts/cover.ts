@@ -9,7 +9,7 @@ import { findBrowserExecutable } from './lib/browser.js';
 import { getBundle } from './lib/bundle.js';
 import { ASSETS_BRAND, CONTENT_SCRIPTS, OUTPUT_COVERS, REPO_DIR } from './lib/paths.js';
 import { syncStaticAssets } from './copy-fonts.js';
-import { templateCSchema, templateDSchema } from '../src/schemas.js';
+import { templateCPlainSchema, templateCSchema, templateDSchema } from '../src/schemas.js';
 
 const slug = arg('content');
 if (!slug) {
@@ -22,11 +22,14 @@ syncStaticAssets();
 const rawProps = JSON.parse(readFileSync(propsPath, 'utf8'));
 // Table Reels (Template D) use a still of the finished table instead of CoverC.
 const isTable = Array.isArray(rawProps.rows);
-const props = isTable ? templateDSchema.parse(rawProps) : templateCSchema.parse(rawProps);
+// Plain 10 s styles: Template C plain has a chart, Template A plain is Template D with size 'large'.
+const isPlainChart = isTable && !!rawProps.chart;
+const props = isPlainChart ? templateCPlainSchema.parse(rawProps) : isTable ? templateDSchema.parse(rawProps) : templateCSchema.parse(rawProps);
+const compositionId = isPlainChart ? 'TemplateCPlain' : isTable ? (rawProps.size === 'large' ? 'TemplateAPlain' : 'TemplateD') : 'CoverC';
 const inputProps = { ...props, brandLogoFile: resolveLogo((f) => existsSync(join(ASSETS_BRAND, f))).file };
 const serveUrl = await getBundle();
 const browserExecutable = findBrowserExecutable();
-const composition = await selectComposition({ serveUrl, id: isTable ? 'TemplateD' : 'CoverC', inputProps, browserExecutable });
+const composition = await selectComposition({ serveUrl, id: compositionId, inputProps, browserExecutable });
 mkdirSync(OUTPUT_COVERS, { recursive: true });
 const full = join(OUTPUT_COVERS, `${slug}.png`);
 const grid = join(OUTPUT_COVERS, `${slug}-grid-1080x1350.png`);

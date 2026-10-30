@@ -1,5 +1,5 @@
 /**
- * npm run reels:rebuild [-- --all] [-- --dry-run]
+ * npm run reels:rebuild [-- --all] [-- --dry-run] [-- --only slug1,slug2]
  *
  * Re-renders every existing item whose background changed (new/other footage clips in the manifest) or whose props
  * reference clips that are no longer usable, one after the other: render (with media QA), cover, then relink video,
@@ -41,7 +41,8 @@ function sh(args: string[]): number {
 
 function main() {
   const root = footageRoot();
-  const slugs = readdirSync(CONTENT_SCRIPTS).filter((d) => existsSync(join(CONTENT_SCRIPTS, d, 'storyboard.json'))).sort();
+  const only = process.argv.find((a) => a.startsWith('--only='))?.slice(7).split(',') ?? (process.argv.includes('--only') ? process.argv[process.argv.indexOf('--only') + 1]?.split(',') : undefined);
+  const slugs = readdirSync(CONTENT_SCRIPTS).filter((d) => existsSync(join(CONTENT_SCRIPTS, d, 'storyboard.json')) && (!only || only.includes(d))).sort();
   const todo: { slug: string; why: string }[] = [];
   for (const slug of slugs) {
     const dir = join(CONTENT_SCRIPTS, slug);

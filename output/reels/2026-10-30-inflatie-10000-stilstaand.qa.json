@@ -1,0 +1,44 @@
+{
+  "file": "output/reels/2026-10-30-inflatie-10000-stilstaand.mp4",
+  "checkedAt": "2026-10-30T16:58:54.468Z",
+  "pass": true,
+  "issues": [],
+  "voice": "none",
+  "video": {
+    "codec": "h264",
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "pixFmt": "yuv420p",
+    "durationS": 10
+  },
+  "audio": {
+    "present": false,
+    "codec": null,
+    "sampleRate": null,
+    "integratedLufs": null,
+    "maxVolumeDb": null,
+    "meanVolumeDb": null,
+    "silent": null
+  },
+  "expectedDurationMs": 10000,
+  "frames": [
+    {
+      "timeS": 5.94,
+      "label": "table",
+      "file": "output/reels/2026-10-30-inflatie-10000-stilstaand.frames/01-table-5.9s.png",
+      "mean": 41.37,
+      "stdDev": 49.54,
+      "blank": false
+    },
+    {
+      "timeS": 9.51,
+      "label": "cta",
+      "file": "output/reels/2026-10-30-inflatie-10000-stilstaand.frames/02-cta-9.5s.png",
+      "mean": 29.39,
+      "stdDev": 26.18,
+      "blank": false
+    }
+  ],
+  "reportPath": "output/reels/2026-10-30-inflatie-10000-stilstaand.qa.json"
+}

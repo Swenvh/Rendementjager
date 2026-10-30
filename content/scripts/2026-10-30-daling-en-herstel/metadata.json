@@ -1,0 +1,122 @@
+{
+  "slug": "2026-10-30-daling-en-herstel",
+  "title": "Na -50% heb je +100% nodig om terug te zijn",
+  "template": "TemplateA",
+  "preparedAt": "2026-10-30T16:37:23.364Z",
+  "durationMs": 10000,
+  "table": {
+    "origin": "calculated",
+    "rows": 5,
+    "columns": [
+      "label",
+      "after",
+      "need"
+    ],
+    "source": {
+      "name": "Eigen rekenvoorbeeld met @rj/finance-engine"
+    },
+    "asOfDate": "2026-10-30",
+    "assumptions": [
+      "Zuivere rekenkunde: nodig herstel = 1 / (1 - daling) - 1. Er is geen rendement, kosten of belasting aangenomen.",
+      "Het voorbeeld zegt niets over de kans of grootte van koersdalingen of herstel.",
+      "Een daling betreft de waarde van één belegging of portefeuille; dividenden en nieuwe inleg zijn buiten beschouwing gelaten.",
+      "Geen historische dalingen of herstelperioden genoemd; die zouden een bron en peildatum nodig hebben."
+    ],
+    "disclaimer": "Educatief rekenvoorbeeld. Geen persoonlijk advies.",
+    "calculation": {
+      "engine": "@rj/finance-engine",
+      "source": "content/ideas idea sheet",
+      "ideaId": 15,
+      "claims": 10
+    },
+    "style": "plain-explain (Template A)"
+  },
+  "voice": {
+    "provider": "none",
+    "brandVoice": false,
+    "voice": "none",
+    "mode": "voiceless",
+    "label": "VOICELESS: captions only, timings from reading speed (360 ms per spoken word), no audio stream. voiceless: ElevenLabs is opt-in (set RJ_TTS_PROVIDER=elevenlabs)",
+    "audioFile": null,
+    "qa": {
+      "voice": "none",
+      "file": null,
+      "durationMs": 12050,
+      "targetLufs": 0,
+      "inputLufs": null,
+      "outputLufs": null,
+      "truePeakDb": null,
+      "maxVolumeDb": null,
+      "meanVolumeDb": null,
+      "clipping": false,
+      "silences": [],
+      "maxSilenceS": 0,
+      "pass": true,
+      "issues": []
+    },
+    "segments": [
+      {
+        "id": "s01",
+        "text": "Na -50% heb je +100% nodig om terug te zijn. Rekenvoorbeeld met €10.000. Geen voorspelling van koersen.",
+        "spokenText": "Na -vijftig procent heb je +honderd procent nodig om terug te zijn. Rekenvoorbeeld met tienduizend euro. Geen voorspelling van koersen.",
+        "startMs": 350,
+        "endMs": 7550,
+        "durationMs": 7200,
+        "cacheHit": false,
+        "wordTimingSource": "reading-speed"
+      },
+      {
+        "id": "s02",
+        "text": "Rekenvoorbeeld, geen persoonlijk advies.",
+        "spokenText": "Rekenvoorbeeld, geen persoonlijk advies.",
+        "startMs": 8000,
+        "endMs": 9600,
+        "durationMs": 1600,
+        "cacheHit": false,
+        "wordTimingSource": "reading-speed"
+      },
+      {
+        "id": "s03",
+        "text": "Meer tips? Volg @rendementjager",
+        "spokenText": "Meer tips? Volg rendementjager",
+        "startMs": 10050,
+        "endMs": 11650,
+        "durationMs": 1600,
+        "cacheHit": false,
+        "wordTimingSource": "reading-speed"
+      }
+    ]
+  },
+  "background": {
+    "mode": "fallback-animated",
+    "reason": "no usable licensed clip in assets/footage/manifest.json"
+  },
+  "captions": {
+    "pages": 0,
+    "timing": "no narration captions on table Reels (rows fill the screen)"
+  },
+  "logo": {
+    "file": "logo-placeholder.svg",
+    "isPlaceholder": true
+  },
+  "brand": "@rendementjager",
+  "render": {
+    "file": "output/reels/2026-10-30-daling-en-herstel.mp4",
+    "sha256": "04a09b9d98a7fcfa3da73168bfedc869d0b734c2061103d33353c9823d99007e",
+    "sizeBytes": 2646753,
+    "composition": "TemplateAPlain",
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationInFrames": 300,
+    "codec": "h264",
+    "renderedAt": "2026-10-30T16:38:39.733Z",
+    "prepareMs": 41,
+    "renderMs": 74935
+  },
+  "mediaQa": {
+    "report": "output/reels/2026-10-30-daling-en-herstel.qa.json",
+    "pass": true,
+    "issues": []
+  }
+}

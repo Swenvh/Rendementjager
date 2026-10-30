@@ -1,0 +1,93 @@
+{
+  "claims": [
+    {
+      "calculationRef": "@rj/finance-engine:realValueOfAmount({\"amount\":10000,\"years\":10,\"inflationRate\":0.02})#result",
+      "claimText": "2% per jaar / Na 10 jaar: €8.203",
+      "key": "r1-y10",
+      "role": "result",
+      "unit": "EUR",
+      "value": 8203.482998751551
+    },
+    {
+      "calculationRef": "@rj/finance-engine:realValueOfAmount({\"amount\":10000,\"years\":20,\"inflationRate\":0.02})#result",
+      "claimText": "2% per jaar / Na 20 jaar: €6.730",
+      "key": "r1-y20",
+      "role": "result",
+      "unit": "EUR",
+      "value": 6729.713331080575
+    },
+    {
+      "calculationRef": "@rj/finance-engine:realValueOfAmount({\"amount\":10000,\"years\":30,\"inflationRate\":0.02})#result",
+      "claimText": "2% per jaar / Na 30 jaar: €5.521",
+      "key": "r1-y30",
+      "role": "result",
+      "unit": "EUR",
+      "value": 5520.708889799116
+    },
+    {
+      "calculationRef": "@rj/finance-engine:realValueOfAmount({\"amount\":10000,\"years\":10,\"inflationRate\":0.03})#result",
+      "claimText": "3% per jaar / Na 10 jaar: €7.441",
+      "key": "r2-y10",
+      "role": "result",
+      "unit": "EUR",
+      "value": 7440.93914896725
+    },
+    {
+      "calculationRef": "@rj/finance-engine:realValueOfAmount({\"amount\":10000,\"years\":20,\"inflationRate\":0.03})#result",
+      "claimText": "3% per jaar / Na 20 jaar: €5.537",
+      "key": "r2-y20",
+      "role": "result",
+      "unit": "EUR",
+      "value": 5536.757541863345
+    },
+    {
+      "calculationRef": "@rj/finance-engine:realValueOfAmount({\"amount\":10000,\"years\":30,\"inflationRate\":0.03})#result",
+      "claimText": "3% per jaar / Na 30 jaar: €4.120",
+      "key": "r2-y30",
+      "role": "result",
+      "unit": "EUR",
+      "value": 4119.867595159064
+    },
+    {
+      "calculationRef": "@rj/finance-engine:realValueOfAmount({\"amount\":10000,\"years\":10,\"inflationRate\":0.04})#result",
+      "claimText": "4% per jaar / Na 10 jaar: €6.756",
+      "key": "r3-y10",
+      "role": "result",
+      "unit": "EUR",
+      "value": 6755.641688257987
+    },
+    {
+      "calculationRef": "@rj/finance-engine:realValueOfAmount({\"amount\":10000,\"years\":20,\"inflationRate\":0.04})#result",
+      "claimText": "4% per jaar / Na 20 jaar: €4.564",
+      "key": "r3-y20",
+      "role": "result",
+      "unit": "EUR",
+      "value": 4563.869462012922
+    },
+    {
+      "calculationRef": "@rj/finance-engine:realValueOfAmount({\"amount\":10000,\"years\":30,\"inflationRate\":0.04})#result",
+      "claimText": "4% per jaar / Na 30 jaar: €3.083",
+      "key": "r3-y30",
+      "role": "result",
+      "unit": "EUR",
+      "value": 3083.186679734204
+    }
+  ],
+  "contentHash": "f566297ca135f2235fbd5c9c5233a44b693cb80e5d88957c7930094d123bff73",
+  "hashtags": [
+    "#inflatie",
+    "#koopkracht",
+    "#geldzaken",
+    "#financieleeducatie",
+    "#sparen"
+  ],
+  "hook": "Wat is €10.000 over 20 jaar nog waard?",
+  "ideaId": 4,
+  "pillar": "markt-economie",
+  "propsHash": "b643ae43dae6861d2388e3b04bca12a0845e409385cc8e3cb48831a6f6d23183",
+  "series": "Ideeën 2026-10-30",
+  "slug": "2026-10-30-inflatie-10000-stilstaand",
+  "template": "A",
+  "title": "€10.000 die stilstaat: wat is het later waard?",
+  "version": 1
+}

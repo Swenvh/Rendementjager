@@ -1,0 +1,123 @@
+{
+  "slug": "2026-10-30-eenmalig-of-maandelijks",
+  "title": "€10.000 in één keer of €100 per maand?",
+  "template": "TemplateC",
+  "preparedAt": "2026-10-30T16:56:10.976Z",
+  "durationMs": 10000,
+  "table": {
+    "origin": "calculated",
+    "rows": 3,
+    "columns": [
+      "label",
+      "y10",
+      "y20",
+      "y30"
+    ],
+    "source": {
+      "name": "Eigen rekenvoorbeeld met @rj/finance-engine"
+    },
+    "asOfDate": "2026-10-30",
+    "assumptions": [
+      "Hypothetisch rendement 6% effectief per jaar, per maand verrekend, inleg aan het eind van de maand, nominaal, vóór kosten, belasting en inflatie.",
+      "De totale inleg verschilt: €10.000 eenmalig tegenover €12.000, €24.000 of €36.000 bij €100 per maand. Daarom staat de inleg in de derde rij.",
+      "Het voorbeeld vergelijkt geen \"beter of slechter\"; het laat zien dat tijd en timing van inleg meetellen.",
+      "Geen kosten, belasting en inflatie meegerekend."
+    ],
+    "disclaimer": "Rendementen uit het verleden bieden geen garantie voor de toekomst. Geen beleggingsadvies.",
+    "calculation": {
+      "engine": "@rj/finance-engine",
+      "source": "content/ideas idea sheet",
+      "ideaId": 10,
+      "claims": 9
+    },
+    "style": "plain-chart (Template C)"
+  },
+  "voice": {
+    "provider": "none",
+    "brandVoice": false,
+    "voice": "none",
+    "mode": "voiceless",
+    "label": "VOICELESS: captions only, timings from reading speed (360 ms per spoken word), no audio stream. voiceless: ElevenLabs is opt-in (set RJ_TTS_PROVIDER=elevenlabs)",
+    "audioFile": null,
+    "qa": {
+      "voice": "none",
+      "file": null,
+      "durationMs": 12850,
+      "targetLufs": 0,
+      "inputLufs": null,
+      "outputLufs": null,
+      "truePeakDb": null,
+      "maxVolumeDb": null,
+      "meanVolumeDb": null,
+      "clipping": false,
+      "silences": [],
+      "maxSilenceS": 0,
+      "pass": true,
+      "issues": []
+    },
+    "segments": [
+      {
+        "id": "s01",
+        "text": "€10.000 in één keer of €100 per maand?. 6% per jaar, vóór kosten en belasting. Totale inleg verschilt.",
+        "spokenText": "tienduizend euro in één keer of honderd euro per maand?. zes procent per jaar, vóór kosten en belasting. Totale inleg verschilt.",
+        "startMs": 350,
+        "endMs": 8030,
+        "durationMs": 7680,
+        "cacheHit": false,
+        "wordTimingSource": "reading-speed"
+      },
+      {
+        "id": "s02",
+        "text": "Rekenvoorbeeld, geen garantie of advies.",
+        "spokenText": "Rekenvoorbeeld, geen garantie of advies.",
+        "startMs": 8480,
+        "endMs": 10400,
+        "durationMs": 1920,
+        "cacheHit": false,
+        "wordTimingSource": "reading-speed"
+      },
+      {
+        "id": "s03",
+        "text": "Meer tips? Volg @rendementjager",
+        "spokenText": "Meer tips? Volg rendementjager",
+        "startMs": 10850,
+        "endMs": 12450,
+        "durationMs": 1600,
+        "cacheHit": false,
+        "wordTimingSource": "reading-speed"
+      }
+    ]
+  },
+  "background": {
+    "mode": "fallback-animated",
+    "reason": "no usable licensed clip in assets/footage/manifest.json"
+  },
+  "captions": {
+    "pages": 0,
+    "timing": "no narration captions on table Reels (rows fill the screen)"
+  },
+  "logo": {
+    "file": "logo-placeholder.svg",
+    "isPlaceholder": true
+  },
+  "brand": "@rendementjager",
+  "render": {
+    "file": "output/reels/2026-10-30-eenmalig-of-maandelijks.mp4",
+    "sha256": "02a603f6ddf764786755c586e187693bdd59bf8217a1060c553478c17878cc5a",
+    "sizeBytes": 2863440,
+    "composition": "TemplateCPlain",
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationInFrames": 300,
+    "codec": "h264",
+    "renderedAt": "2026-10-30T16:57:30.745Z",
+    "prepareMs": 60,
+    "renderMs": 78313
+  },
+  "mediaQa": {
+    "report": "output/reels/2026-10-30-eenmalig-of-maandelijks.qa.json",
+    "pass": true,
+    "issues": []
+  }
+}

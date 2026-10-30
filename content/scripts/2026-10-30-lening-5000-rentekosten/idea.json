@@ -1,0 +1,101 @@
+{
+  "claims": [
+    {
+      "calculationRef": "@rj/finance-engine:annuityLoan({\"principal\":5000,\"annualRate\":0.06,\"months\":24})#totalInterest",
+      "claimText": "24 maanden / Rente totaal bij 6%: €318",
+      "key": "r1-r6",
+      "role": "result",
+      "unit": "EUR",
+      "value": 318.4732303308222
+    },
+    {
+      "calculationRef": "@rj/finance-engine:annuityLoan({\"principal\":5000,\"annualRate\":0.12,\"months\":24})#totalInterest",
+      "claimText": "24 maanden / Rente totaal bij 12%: €649",
+      "key": "r1-r12",
+      "role": "result",
+      "unit": "EUR",
+      "value": 648.8166667917653
+    },
+    {
+      "calculationRef": "@rj/finance-engine:annuityLoan({\"principal\":5000,\"annualRate\":0.06,\"months\":36})#totalInterest",
+      "claimText": "36 maanden / Rente totaal bij 6%: €476",
+      "key": "r2-r6",
+      "role": "result",
+      "unit": "EUR",
+      "value": 475.9487412799117
+    },
+    {
+      "calculationRef": "@rj/finance-engine:annuityLoan({\"principal\":5000,\"annualRate\":0.12,\"months\":36})#totalInterest",
+      "claimText": "36 maanden / Rente totaal bij 12%: €979",
+      "key": "r2-r12",
+      "role": "result",
+      "unit": "EUR",
+      "value": 978.5757663132149
+    },
+    {
+      "calculationRef": "@rj/finance-engine:annuityLoan({\"principal\":5000,\"annualRate\":0.06,\"months\":60})#totalInterest",
+      "claimText": "60 maanden / Rente totaal bij 6%: €800",
+      "key": "r3-r6",
+      "role": "result",
+      "unit": "EUR",
+      "value": 799.8404588283593
+    },
+    {
+      "calculationRef": "@rj/finance-engine:annuityLoan({\"principal\":5000,\"annualRate\":0.12,\"months\":60})#totalInterest",
+      "claimText": "60 maanden / Rente totaal bij 12%: €1.673",
+      "key": "r3-r12",
+      "role": "result",
+      "unit": "EUR",
+      "value": 1673.3343054705363
+    },
+    {
+      "calculationRef": "@rj/finance-engine:annuityLoan({\"principal\":5000,\"annualRate\":0.06,\"months\":36})#monthlyPayment",
+      "claimText": "Maandlast bij 6%, 36 maanden",
+      "key": "pay6-36",
+      "role": "result",
+      "unit": "EUR",
+      "value": 152.10968725777855
+    },
+    {
+      "calculationRef": "@rj/finance-engine:annuityLoan({\"principal\":5000,\"annualRate\":0.12,\"months\":36})#monthlyPayment",
+      "claimText": "Maandlast bij 12%, 36 maanden",
+      "key": "pay12-36",
+      "role": "result",
+      "unit": "EUR",
+      "value": 166.07154906425583
+    },
+    {
+      "calculationRef": "@rj/finance-engine:annuityLoan({\"principal\":5000,\"annualRate\":0.12,\"months\":60,\"extraMonthly\":50})#monthsToRepay",
+      "claimText": "Variant: 12%, 60 maanden, €50 extra per maand: aantal maanden tot afgelost",
+      "key": "extra-months",
+      "role": "result",
+      "unit": "months",
+      "value": 38
+    },
+    {
+      "calculationRef": "@rj/finance-engine:annuityLoan({\"principal\":5000,\"annualRate\":0.12,\"months\":60,\"extraMonthly\":50})#totalInterest",
+      "claimText": "Variant: totale rente met €50 extra per maand",
+      "key": "extra-interest",
+      "role": "result",
+      "unit": "EUR",
+      "value": 1015.4802780597704
+    }
+  ],
+  "contentHash": "65e2599bd99b9a3976f660c63c408d22ea370f219c866637191fff7fd72e4955",
+  "hashtags": [
+    "#lenen",
+    "#aflossen",
+    "#schulden",
+    "#financieleorde",
+    "#financieleeducatie"
+  ],
+  "hook": "Wat betaalt een lening van €5.000 aan rente?",
+  "ideaId": 8,
+  "pillar": "persoonlijke-financien",
+  "propsHash": "59b7b78bd3153593a14e5a3a139c2b90f2013cc7b34c319a21cdfbd48d2eeb68",
+  "series": "Ideeën 2026-10-30",
+  "slug": "2026-10-30-lening-5000-rentekosten",
+  "template": "D",
+  "title": "€5.000 lenen: wat kost de rente?",
+  "version": 1
+}

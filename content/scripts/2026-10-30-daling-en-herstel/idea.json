@@ -1,0 +1,101 @@
+{
+  "claims": [
+    {
+      "calculationRef": "@rj/finance-engine:lumpSumFutureValue({\"amount\":10000,\"years\":1,\"annualReturn\":-0.1})#result",
+      "claimText": "-10% / €10.000 wordt: €9.000",
+      "key": "r1-after",
+      "role": "result",
+      "unit": "EUR",
+      "value": 9000
+    },
+    {
+      "calculationRef": "@rj/finance-engine:recoveryRequired({\"drop\":0.1})#result",
+      "claimText": "-10% / Herstel nodig: 11,1%",
+      "key": "r1-need",
+      "role": "result",
+      "unit": "percent",
+      "value": 11.111111111111116
+    },
+    {
+      "calculationRef": "@rj/finance-engine:lumpSumFutureValue({\"amount\":10000,\"years\":1,\"annualReturn\":-0.2})#result",
+      "claimText": "-20% / €10.000 wordt: €8.000",
+      "key": "r2-after",
+      "role": "result",
+      "unit": "EUR",
+      "value": 8000
+    },
+    {
+      "calculationRef": "@rj/finance-engine:recoveryRequired({\"drop\":0.2})#result",
+      "claimText": "-20% / Herstel nodig: 25%",
+      "key": "r2-need",
+      "role": "result",
+      "unit": "percent",
+      "value": 25
+    },
+    {
+      "calculationRef": "@rj/finance-engine:lumpSumFutureValue({\"amount\":10000,\"years\":1,\"annualReturn\":-0.3})#result",
+      "claimText": "-30% / €10.000 wordt: €7.000",
+      "key": "r3-after",
+      "role": "result",
+      "unit": "EUR",
+      "value": 7000
+    },
+    {
+      "calculationRef": "@rj/finance-engine:recoveryRequired({\"drop\":0.3})#result",
+      "claimText": "-30% / Herstel nodig: 42,9%",
+      "key": "r3-need",
+      "role": "result",
+      "unit": "percent",
+      "value": 42.85714285714286
+    },
+    {
+      "calculationRef": "@rj/finance-engine:lumpSumFutureValue({\"amount\":10000,\"years\":1,\"annualReturn\":-0.5})#result",
+      "claimText": "-50% / €10.000 wordt: €5.000",
+      "key": "r4-after",
+      "role": "result",
+      "unit": "EUR",
+      "value": 5000
+    },
+    {
+      "calculationRef": "@rj/finance-engine:recoveryRequired({\"drop\":0.5})#result",
+      "claimText": "-50% / Herstel nodig: 100%",
+      "key": "r4-need",
+      "role": "result",
+      "unit": "percent",
+      "value": 100
+    },
+    {
+      "calculationRef": "@rj/finance-engine:lumpSumFutureValue({\"amount\":10000,\"years\":1,\"annualReturn\":-0.7})#result",
+      "claimText": "-70% / €10.000 wordt: €3.000",
+      "key": "r5-after",
+      "role": "result",
+      "unit": "EUR",
+      "value": 3000.0000000000005
+    },
+    {
+      "calculationRef": "@rj/finance-engine:recoveryRequired({\"drop\":0.7})#result",
+      "claimText": "-70% / Herstel nodig: 233,3%",
+      "key": "r5-need",
+      "role": "result",
+      "unit": "percent",
+      "value": 233.33333333333331
+    }
+  ],
+  "contentHash": "b22c2a4be29f5f28fa86d6e8cf1f31dd9ba36d97113286657d4c5c2902629676",
+  "hashtags": [
+    "#beurs",
+    "#koersdaling",
+    "#risico",
+    "#financieleeducatie",
+    "#beleggen"
+  ],
+  "hook": "Hoeveel moet een koers stijgen na een daling van 50%?",
+  "ideaId": 15,
+  "pillar": "markt-economie",
+  "propsHash": "9d35bca7b5d8d44f5c550ccf4f713060bfc4f7628441571b9f7af9bc7cdea1ab",
+  "series": "Ideeën 2026-10-30",
+  "slug": "2026-10-30-daling-en-herstel",
+  "template": "A",
+  "title": "Na -50% heb je +100% nodig om terug te zijn",
+  "version": 1
+}

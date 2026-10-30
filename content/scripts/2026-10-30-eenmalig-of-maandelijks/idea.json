@@ -1,0 +1,93 @@
+{
+  "claims": [
+    {
+      "calculationRef": "@rj/finance-engine:lumpSumFutureValue({\"amount\":10000,\"years\":10,\"annualReturn\":0.06,\"annualCostRate\":0})#result",
+      "claimText": "€10.000 in één keer / Na 10 jaar: €17.908",
+      "key": "r1-y10",
+      "role": "result",
+      "unit": "EUR",
+      "value": 17908.476965428545
+    },
+    {
+      "calculationRef": "@rj/finance-engine:lumpSumFutureValue({\"amount\":10000,\"years\":20,\"annualReturn\":0.06,\"annualCostRate\":0})#result",
+      "claimText": "€10.000 in één keer / Na 20 jaar: €32.071",
+      "key": "r1-y20",
+      "role": "result",
+      "unit": "EUR",
+      "value": 32071.35472212848
+    },
+    {
+      "calculationRef": "@rj/finance-engine:lumpSumFutureValue({\"amount\":10000,\"years\":30,\"annualReturn\":0.06,\"annualCostRate\":0})#result",
+      "claimText": "€10.000 in één keer / Na 30 jaar: €57.435",
+      "key": "r1-y30",
+      "role": "result",
+      "unit": "EUR",
+      "value": 57434.91172913258
+    },
+    {
+      "calculationRef": "@rj/finance-engine:futureValueOfMonthlyContributions({\"monthlyContribution\":100,\"years\":10,\"annualReturn\":0.06,\"compounding\":\"monthly\",\"timing\":\"end\",\"rateConvention\":\"effective\",\"annualCostRate\":0})#totals.endValueNominal",
+      "claimText": "€100 per maand / Na 10 jaar: €16.247",
+      "key": "r2-y10",
+      "role": "result",
+      "unit": "EUR",
+      "value": 16247.344242783838
+    },
+    {
+      "calculationRef": "@rj/finance-engine:futureValueOfMonthlyContributions({\"monthlyContribution\":100,\"years\":20,\"annualReturn\":0.06,\"compounding\":\"monthly\",\"timing\":\"end\",\"rateConvention\":\"effective\",\"annualCostRate\":0})#totals.endValueNominal",
+      "claimText": "€100 per maand / Na 20 jaar: €45.344",
+      "key": "r2-y20",
+      "role": "result",
+      "unit": "EUR",
+      "value": 45343.8632549121
+    },
+    {
+      "calculationRef": "@rj/finance-engine:futureValueOfMonthlyContributions({\"monthlyContribution\":100,\"years\":30,\"annualReturn\":0.06,\"compounding\":\"monthly\",\"timing\":\"end\",\"rateConvention\":\"effective\",\"annualCostRate\":0})#totals.endValueNominal",
+      "claimText": "€100 per maand / Na 30 jaar: €97.451",
+      "key": "r2-y30",
+      "role": "result",
+      "unit": "EUR",
+      "value": 97451.29730519741
+    },
+    {
+      "calculationRef": "@rj/finance-engine:futureValueOfMonthlyContributions({\"monthlyContribution\":100,\"years\":10,\"annualReturn\":0.06,\"compounding\":\"monthly\",\"timing\":\"end\",\"rateConvention\":\"effective\",\"annualCostRate\":0})#totals.contributed",
+      "claimText": "Inleg bij €100 per maand / Na 10 jaar: €12.000",
+      "key": "r3-y10",
+      "role": "result",
+      "unit": "EUR",
+      "value": 12000
+    },
+    {
+      "calculationRef": "@rj/finance-engine:futureValueOfMonthlyContributions({\"monthlyContribution\":100,\"years\":20,\"annualReturn\":0.06,\"compounding\":\"monthly\",\"timing\":\"end\",\"rateConvention\":\"effective\",\"annualCostRate\":0})#totals.contributed",
+      "claimText": "Inleg bij €100 per maand / Na 20 jaar: €24.000",
+      "key": "r3-y20",
+      "role": "result",
+      "unit": "EUR",
+      "value": 24000
+    },
+    {
+      "calculationRef": "@rj/finance-engine:futureValueOfMonthlyContributions({\"monthlyContribution\":100,\"years\":30,\"annualReturn\":0.06,\"compounding\":\"monthly\",\"timing\":\"end\",\"rateConvention\":\"effective\",\"annualCostRate\":0})#totals.contributed",
+      "claimText": "Inleg bij €100 per maand / Na 30 jaar: €36.000",
+      "key": "r3-y30",
+      "role": "result",
+      "unit": "EUR",
+      "value": 36000
+    }
+  ],
+  "contentHash": "6fc3d6e818d11ac298c3e22fd28ac62cc1e00d3ff809bc37d6099426ecfdf068",
+  "hashtags": [
+    "#beleggen",
+    "#maandelijksinleggen",
+    "#renteoprente",
+    "#financieleeducatie",
+    "#vermogensopbouw"
+  ],
+  "hook": "€10.000 in één keer of €100 per maand: wat is het verschil?",
+  "ideaId": 10,
+  "pillar": "beleggen-etfs",
+  "propsHash": "1f2b01220a47ea458bd18c7004a2ad491fcb5bf04c10e7aeaf324325a5f6c009",
+  "series": "Ideeën 2026-10-30",
+  "slug": "2026-10-30-eenmalig-of-maandelijks",
+  "template": "C",
+  "title": "€10.000 in één keer of €100 per maand?",
+  "version": 1
+}

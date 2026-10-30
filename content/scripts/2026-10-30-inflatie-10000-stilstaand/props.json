@@ -1,0 +1,100 @@
+{
+  "timeline": {
+    "totalMs": 10000,
+    "scenes": [
+      {
+        "id": "table",
+        "startMs": 0,
+        "endMs": 8250
+      },
+      {
+        "id": "cta",
+        "startMs": 8250,
+        "endMs": 10000
+      }
+    ]
+  },
+  "voice": {
+    "src": null,
+    "provider": "none",
+    "brandVoice": false,
+    "durationMs": 13850
+  },
+  "captions": [],
+  "footnote": {
+    "text": "Educatief rekenvoorbeeld. Geen persoonlijk advies."
+  },
+  "cta": {
+    "text": "Meer tips? Volg @rendementjager",
+    "tagline": "Meer inzicht."
+  },
+  "background": null,
+  "kicker": "Markt",
+  "title": "€10.000 die stilstaat: wat is het later waard?",
+  "subtitle": "In euro's van nu, bij 2%, 3% of 4% inflatie per jaar.",
+  "columns": [
+    {
+      "key": "label",
+      "label": "Inflatie",
+      "kind": "label"
+    },
+    {
+      "key": "y10",
+      "label": "10 jaar",
+      "kind": "value"
+    },
+    {
+      "key": "y20",
+      "label": "20 jaar",
+      "kind": "value"
+    },
+    {
+      "key": "y30",
+      "label": "30 jaar",
+      "kind": "value"
+    }
+  ],
+  "rows": [
+    {
+      "cells": {
+        "label": "2% per jaar",
+        "y10": "€8.203",
+        "y20": "€6.730",
+        "y30": "€5.521"
+      },
+      "highlight": false
+    },
+    {
+      "cells": {
+        "label": "3% per jaar",
+        "y10": "€7.441",
+        "y20": "€5.537",
+        "y30": "€4.120"
+      },
+      "highlight": true
+    },
+    {
+      "cells": {
+        "label": "4% per jaar",
+        "y10": "€6.756",
+        "y20": "€4.564",
+        "y30": "€3.083"
+      },
+      "highlight": false
+    }
+  ],
+  "source": {
+    "name": "Eigen rekenvoorbeeld met @rj/finance-engine"
+  },
+  "asOfDate": "2026-10-30",
+  "dataOrigin": "calculated",
+  "disclaimer": "Educatief rekenvoorbeeld. Geen persoonlijk advies.",
+  "footerLine": "Rekenvoorbeeld, geen persoonlijk advies.",
+  "assumptions": [
+    "Het bedrag groeit niet (0% rendement); alleen de prijzen stijgen met het genoemde percentage per jaar, elk jaar hetzelfde.",
+    "Waarde in euro's van nu = bedrag / (1 + inflatie) ^ jaren.",
+    "De percentages zijn voorbeeldwaarden; de werkelijke inflatie wisselt per jaar en per soort uitgaven. Actuele cijfers: CBS (verifieer).",
+    "Geen belasting en geen rente op het bedrag meegerekend."
+  ],
+  "size": "large"
+}

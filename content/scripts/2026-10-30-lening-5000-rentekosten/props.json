@@ -1,0 +1,91 @@
+{
+  "timeline": {
+    "totalMs": 10000,
+    "scenes": [
+      {
+        "id": "table",
+        "startMs": 0,
+        "endMs": 8250
+      },
+      {
+        "id": "cta",
+        "startMs": 8250,
+        "endMs": 10000
+      }
+    ]
+  },
+  "voice": {
+    "src": null,
+    "provider": "none",
+    "brandVoice": false,
+    "durationMs": 10610
+  },
+  "captions": [],
+  "footnote": {
+    "text": "Educatief rekenvoorbeeld. Geen persoonlijk advies."
+  },
+  "cta": {
+    "text": "Meer tips? Volg @rendementjager",
+    "tagline": "Meer inzicht."
+  },
+  "background": null,
+  "kicker": "Persoonlijke financiën",
+  "title": "€5.000 lenen: wat kost de rente?",
+  "subtitle": "Annuïteit, rente nominaal per jaar. Voorbeeldrentes, geen aanbod.",
+  "columns": [
+    {
+      "key": "label",
+      "label": "Looptijd",
+      "kind": "label"
+    },
+    {
+      "key": "r6",
+      "label": "Rente bij 6%",
+      "kind": "value"
+    },
+    {
+      "key": "r12",
+      "label": "Rente bij 12%",
+      "kind": "value"
+    }
+  ],
+  "rows": [
+    {
+      "cells": {
+        "label": "24 maanden",
+        "r6": "€318",
+        "r12": "€649"
+      },
+      "highlight": false
+    },
+    {
+      "cells": {
+        "label": "36 maanden",
+        "r6": "€476",
+        "r12": "€979"
+      },
+      "highlight": true
+    },
+    {
+      "cells": {
+        "label": "60 maanden",
+        "r6": "€800",
+        "r12": "€1.673"
+      },
+      "highlight": false
+    }
+  ],
+  "source": {
+    "name": "Eigen rekenvoorbeeld met @rj/finance-engine"
+  },
+  "asOfDate": "2026-10-30",
+  "dataOrigin": "calculated",
+  "disclaimer": "Educatief rekenvoorbeeld. Geen persoonlijk advies.",
+  "footerLine": "Rekenvoorbeeld, geen persoonlijk advies.",
+  "assumptions": [
+    "Annuïteitenlening: elke maand dezelfde betaling (rente + aflossing) aan het eind van de maand.",
+    "Maandrente = jaarrente / 12 (nominaal). Kosten, boetes en verzekeringen zijn niet meegerekend.",
+    "6% en 12% zijn voorbeeldpercentages, geen aanbod en niet representatief voor een bestaande aanbieder; wettelijke maxima en actuele regels zijn niet onderzocht (verifieer).",
+    "Geen advies om te lenen of niet te lenen."
+  ]
+}

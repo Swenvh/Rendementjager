@@ -9,7 +9,7 @@ import { brand, resolveLogo } from '@rj/brand';
 import { buildVoicelessTrack, selectVoice, synthesizeScript, toCaptionPages, READING_SPEED, type VoiceTrack } from '@rj/voice-engine';
 import { captionCreditLine, clipsNeeded, creditLineOf, footageRoot, pickClipChain, usableClips, assertClipUsable, CHAIN_FADE_S, type Clip } from '@rj/footage-engine';
 import { reelCalculationFromEngine } from '../../src/calc/from-finance-engine.js';
-import { templateCSchema, type BackgroundProps, type TemplateCProps, type TemplateDProps } from '../../src/schemas.js';
+import { templateCSchema, type BackgroundProps, type TemplateCPlainProps, type TemplateCProps, type TemplateDProps } from '../../src/schemas.js';
 import { ASSETS_BRAND, CONTENT_SCRIPTS, PUBLIC_DIR, REPO_DIR, VOICE_CACHE } from './paths.js';
 import { syncStaticAssets } from '../copy-fonts.js';
 import { prepareTable, type TableStoryboard } from './prepare-table.js';
@@ -17,7 +17,7 @@ import { prepareTable, type TableStoryboard } from './prepare-table.js';
 export interface Storyboard {
   slug: string;
   title: string;
-  template: 'TemplateC' | 'TemplateD';
+  template: 'TemplateA' | 'TemplateC' | 'TemplateD';
   /** Clip choice made at generate time by series-engine (ids from the footage manifest). */
   background?: { clipIds: string[] };
   calculation: { overrides: Partial<MonthlyContributionInput> };
@@ -171,18 +171,19 @@ export function voiceMetadata(track: VoiceTrack, reason: string) {
 
 export interface PreparedContent {
   dir: string;
-  props: TemplateCProps | TemplateDProps;
+  props: TemplateCProps | TemplateDProps | TemplateCPlainProps;
   metadata: Record<string, unknown>;
   track: VoiceTrack;
-  composition: 'TemplateC' | 'TemplateD';
-  inputProps: (TemplateCProps | TemplateDProps) & { brandLogoFile: string };
+  composition: 'TemplateC' | 'TemplateD' | 'TemplateAPlain' | 'TemplateCPlain';
+  inputProps: (TemplateCProps | TemplateDProps | TemplateCPlainProps) & { brandLogoFile: string };
 }
 
 export async function prepareContent(slug: string): Promise<PreparedContent> {
   if (!/^[A-Za-z0-9][\w.-]*$/.test(slug) || slug.includes('..')) throw new Error(`Invalid content slug "${slug}"`);
   const dir = join(CONTENT_SCRIPTS, slug);
   const sb = JSON.parse(readFileSync(join(dir, 'storyboard.json'), 'utf8')) as Storyboard;
-  if (sb.template === 'TemplateD') return prepareTable(slug, dir, sb as unknown as TableStoryboard);
+  // Template D, and the plain 10 s styles of Templates A and C (idea sheets), run through the table pipeline.
+  if (sb.template === 'TemplateD' || (sb as unknown as { table?: { kind?: string } }).table?.kind === 'inline') return prepareTable(slug, dir, sb as unknown as TableStoryboard);
   if (sb.template !== 'TemplateC') throw new Error(`Template ${sb.template} not wired into the pipeline yet`);
   syncStaticAssets();
 

@@ -1,0 +1,92 @@
+{
+  "timeline": {
+    "totalMs": 10000,
+    "scenes": [
+      {
+        "id": "table",
+        "startMs": 0,
+        "endMs": 8250
+      },
+      {
+        "id": "cta",
+        "startMs": 8250,
+        "endMs": 10000
+      }
+    ]
+  },
+  "voice": {
+    "src": null,
+    "provider": "none",
+    "brandVoice": false,
+    "durationMs": 11570
+  },
+  "captions": [],
+  "footnote": {
+    "text": "Educatief rekenvoorbeeld. Geen persoonlijk advies."
+  },
+  "cta": {
+    "text": "Meer tips? Volg @rendementjager",
+    "tagline": "Meer inzicht."
+  },
+  "background": null,
+  "kicker": "Persoonlijke financiën",
+  "title": "50/30/20-regel: zo ziet €2.500 netto eruit",
+  "subtitle": "Vuistregel voor uitleg, geen advies. Jouw verdeling kan anders zijn.",
+  "columns": [
+    {
+      "key": "label",
+      "label": "Potje",
+      "kind": "label"
+    },
+    {
+      "key": "share",
+      "label": "Deel",
+      "kind": "value"
+    },
+    {
+      "key": "amount",
+      "label": "Per maand",
+      "kind": "value"
+    }
+  ],
+  "rows": [
+    {
+      "cells": {
+        "label": "Vaste lasten",
+        "share": "50%",
+        "amount": "€1.250"
+      },
+      "highlight": false
+    },
+    {
+      "cells": {
+        "label": "Wensen",
+        "share": "30%",
+        "amount": "€750"
+      },
+      "highlight": false
+    },
+    {
+      "cells": {
+        "label": "Sparen en aflossen",
+        "share": "20%",
+        "amount": "€500"
+      },
+      "highlight": true
+    }
+  ],
+  "source": {
+    "name": "Eigen rekenvoorbeeld met @rj/finance-engine"
+  },
+  "asOfDate": "2026-10-30",
+  "dataOrigin": "calculated",
+  "disclaimer": "Educatief rekenvoorbeeld. Geen persoonlijk advies.",
+  "footerLine": "Rekenvoorbeeld, geen persoonlijk advies.",
+  "assumptions": [
+    "Het netto maandinkomen van €2.500 is een gekozen voorbeeld, geen gemiddeld of normaal inkomen.",
+    "50/30/20 is een vuistregel voor een eerste indeling; de herkomst en precieze definitie van de categorieën zijn nog te verifieren voordat de bron wordt genoemd.",
+    "Wat onder \"noodzaak\" valt (huur, energie, verzekeringen, boodschappen) verschilt per huishouden.",
+    "Geen rendement, geen belasting en geen toeslagen meegerekend."
+  ],
+  "size": "large"
+}

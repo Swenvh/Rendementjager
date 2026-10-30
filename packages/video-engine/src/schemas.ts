@@ -179,6 +179,8 @@ export const templateDSchema = shellSchema
     /** Assumptions shown on screen for calculated tables (rate, timing, costs, tax). */
     assumptions: z.array(z.string().min(1)).max(4).default([]),
     sortDirection: z.enum(['asc', 'desc']).optional(),
+    /** 'large' = Template A plain style (fewer rows, bigger figures). */
+    size: z.enum(['normal', 'large']).optional(),
   })
   .superRefine((t, ctx) => {
     if (t.dataOrigin === 'calculated' && t.assumptions.length === 0) ctx.addIssue({ code: 'custom', message: 'calculated tables must state their assumptions (kept in props/metadata/caption)', path: ['assumptions'] });
@@ -207,3 +209,34 @@ export const templateDSchema = shellSchema
     }
   });
 export type TemplateDProps = z.infer<typeof templateDSchema>;
+
+// ---------- Template C, plain 10 s style: chart + small summary table ----------
+export const plainChartSchema = z.object({
+  xLabel: z.string().min(1),
+  /** Only euros for now: every chart idea is a value-over-time chart in euros. */
+  unit: z.literal('eur'),
+  series: z
+    .array(z.object({ label: z.string().min(1).max(40), points: z.array(z.object({ x: z.number(), y: z.number().finite() })).min(2) }))
+    .min(1)
+    .max(3),
+});
+
+/**
+ * Template C in the plain 10 s style: short title, one plain assumptions line, a simple line chart (1-3 lines),
+ * a 3-4 row summary table and a one-line footer. No progress bar, tips CTA, header only (like Template D).
+ */
+export const templateCPlainSchema = shellSchema.extend({
+  kicker: z.string(),
+  title: z.string().min(1).max(72),
+  subtitle: z.string().max(140).optional(),
+  footerLine: z.string().min(1).max(60),
+  chart: plainChartSchema,
+  columns: z.array(tableColumnSchema).min(2).max(4),
+  rows: z.array(tableRowSchema).min(2).max(4),
+  disclaimer: z.string().min(20),
+  source: z.object({ name: z.string().min(1) }),
+  asOfDate: isoDate,
+  dataOrigin: z.literal('calculated'),
+  assumptions: z.array(z.string().min(1)).min(1).max(6),
+});
+export type TemplateCPlainProps = z.infer<typeof templateCPlainSchema>;

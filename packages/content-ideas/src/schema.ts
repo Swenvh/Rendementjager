@@ -6,6 +6,14 @@ import { z } from 'zod';
  */
 
 export const CATEGORIES = ['Koerstijgers', 'Finance op orde', 'Beurswijzer'] as const;
+/**
+ * The three category names above are INSPIRATION sources (names of other accounts), used only inside the internal
+ * ideas document. They must never appear on screen, in captions, hooks or hashtags. On screen the brand uses its own
+ * neutral labels (see ON_SCREEN_LABEL).
+ */
+export const FORBIDDEN_BRAND_NAMES = /beurswijzer|koerstijgers|finance\s+op\s+orde/i;
+export const ON_SCREEN_LABEL: Record<(typeof CATEGORIES)[number], string> = { Beurswijzer: 'Beleggen', 'Finance op orde': 'Persoonlijke financiën', Koerstijgers: 'Markt' };
+
 export const FORMATS = ['D', 'C', 'A'] as const;
 export const UNITS = ['text', 'eur', 'eur2', 'pct0', 'pct1', 'pct2', 'duration'] as const;
 const isoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'ISO date (YYYY-MM-DD) required');
@@ -142,6 +150,7 @@ export const ideaSchema = z
 
     const everyText = [idea.title, idea.onScreen.title, idea.onScreen.subtitle, idea.onScreen.footer, idea.caption, ...idea.hooks.map((h) => h.text), ...idea.storyboard.map((s) => s.onScreen)];
     for (const t of everyText) for (const re of FORBIDDEN_PHRASES) if (re.test(t)) add(`forbidden phrase ${re} in: ${t.slice(0, 60)}`);
+    for (const t of [...everyText, ...idea.hashtags, ...idea.hooks.map((h) => h.text)]) if (FORBIDDEN_BRAND_NAMES.test(t)) add(`other accounts' names may not appear on screen, in hooks, captions or hashtags: ${t.slice(0, 60)}`);
 
     if (!/geen (beleggings|persoonlijk )?advies|geen advies/i.test(idea.caption)) add('caption needs the "geen advies" disclaimer', ['caption']);
     if (idea.involvesReturns) {

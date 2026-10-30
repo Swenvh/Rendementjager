@@ -1,0 +1,85 @@
+{
+  "claims": [
+    {
+      "calculationRef": "@rj/finance-engine:emergencyBuffer({\"monthlyExpenses\":2000,\"bufferMonths\":3,\"monthlySaving\":250})#target",
+      "claimText": "3 maanden uitgaven / Bedrag: €6.000",
+      "key": "r1-target",
+      "role": "result",
+      "unit": "EUR",
+      "value": 6000
+    },
+    {
+      "calculationRef": "@rj/finance-engine:emergencyBuffer({\"monthlyExpenses\":2000,\"bufferMonths\":3,\"monthlySaving\":250})#monthsToBuild",
+      "claimText": "3 maanden uitgaven / Opbouwen bij €250: 2 jaar",
+      "key": "r1-build",
+      "role": "result",
+      "unit": "months",
+      "value": 24
+    },
+    {
+      "calculationRef": "@rj/finance-engine:emergencyBuffer({\"monthlyExpenses\":2000,\"bufferMonths\":4,\"monthlySaving\":250})#target",
+      "claimText": "4 maanden uitgaven / Bedrag: €8.000",
+      "key": "r2-target",
+      "role": "result",
+      "unit": "EUR",
+      "value": 8000
+    },
+    {
+      "calculationRef": "@rj/finance-engine:emergencyBuffer({\"monthlyExpenses\":2000,\"bufferMonths\":4,\"monthlySaving\":250})#monthsToBuild",
+      "claimText": "4 maanden uitgaven / Opbouwen bij €250: 2 jaar en 8 mnd",
+      "key": "r2-build",
+      "role": "result",
+      "unit": "months",
+      "value": 32
+    },
+    {
+      "calculationRef": "@rj/finance-engine:emergencyBuffer({\"monthlyExpenses\":2000,\"bufferMonths\":5,\"monthlySaving\":250})#target",
+      "claimText": "5 maanden uitgaven / Bedrag: €10.000",
+      "key": "r3-target",
+      "role": "result",
+      "unit": "EUR",
+      "value": 10000
+    },
+    {
+      "calculationRef": "@rj/finance-engine:emergencyBuffer({\"monthlyExpenses\":2000,\"bufferMonths\":5,\"monthlySaving\":250})#monthsToBuild",
+      "claimText": "5 maanden uitgaven / Opbouwen bij €250: 3 jaar en 4 mnd",
+      "key": "r3-build",
+      "role": "result",
+      "unit": "months",
+      "value": 40
+    },
+    {
+      "calculationRef": "@rj/finance-engine:emergencyBuffer({\"monthlyExpenses\":2000,\"bufferMonths\":6,\"monthlySaving\":250})#target",
+      "claimText": "6 maanden uitgaven / Bedrag: €12.000",
+      "key": "r4-target",
+      "role": "result",
+      "unit": "EUR",
+      "value": 12000
+    },
+    {
+      "calculationRef": "@rj/finance-engine:emergencyBuffer({\"monthlyExpenses\":2000,\"bufferMonths\":6,\"monthlySaving\":250})#monthsToBuild",
+      "claimText": "6 maanden uitgaven / Opbouwen bij €250: 4 jaar",
+      "key": "r4-build",
+      "role": "result",
+      "unit": "months",
+      "value": 48
+    }
+  ],
+  "contentHash": "6ab47c1863252816b48543e992d5c3e82d6397668b83b2354f09631d6bdeadc5",
+  "hashtags": [
+    "#noodbuffer",
+    "#sparen",
+    "#financieleorde",
+    "#geldzaken",
+    "#financieleeducatie"
+  ],
+  "hook": "Hoeveel geld heb je nodig als er iets onverwachts gebeurt?",
+  "ideaId": 7,
+  "pillar": "persoonlijke-financien",
+  "propsHash": "48e31147b2e22dacaa4e69e92eab1650ef43842dc95c8b5f047d8af99db9841f",
+  "series": "Ideeën 2026-10-30",
+  "slug": "2026-10-30-noodbuffer-rekenvoorbeeld",
+  "template": "D",
+  "title": "Noodbuffer: hoeveel is 3 tot 6 maanden uitgaven?",
+  "version": 1
+}

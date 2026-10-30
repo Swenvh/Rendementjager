@@ -1,0 +1,117 @@
+{
+  "claims": [
+    {
+      "calculationRef": "@rj/finance-engine:lumpSumFutureValue({\"amount\":10000,\"years\":10,\"annualReturn\":0.06,\"annualCostRate\":0})#result",
+      "claimText": "Zonder kosten / Na 10 jaar: €17.908",
+      "key": "r1-y10",
+      "role": "result",
+      "unit": "EUR",
+      "value": 17908.476965428545
+    },
+    {
+      "calculationRef": "@rj/finance-engine:lumpSumFutureValue({\"amount\":10000,\"years\":20,\"annualReturn\":0.06,\"annualCostRate\":0})#result",
+      "claimText": "Zonder kosten / Na 20 jaar: €32.071",
+      "key": "r1-y20",
+      "role": "result",
+      "unit": "EUR",
+      "value": 32071.35472212848
+    },
+    {
+      "calculationRef": "@rj/finance-engine:lumpSumFutureValue({\"amount\":10000,\"years\":30,\"annualReturn\":0.06,\"annualCostRate\":0})#result",
+      "claimText": "Zonder kosten / Na 30 jaar: €57.435",
+      "key": "r1-y30",
+      "role": "result",
+      "unit": "EUR",
+      "value": 57434.91172913258
+    },
+    {
+      "calculationRef": "@rj/finance-engine:lumpSumCostComparison({\"amount\":10000,\"years\":10,\"annualReturn\":0.06,\"lowCostRate\":0.002,\"highCostRate\":0.015})#low",
+      "claimText": "0,2% kosten / Na 10 jaar: €17.554",
+      "key": "r2-y10",
+      "role": "result",
+      "unit": "EUR",
+      "value": 17553.51381986419
+    },
+    {
+      "calculationRef": "@rj/finance-engine:lumpSumCostComparison({\"amount\":10000,\"years\":20,\"annualReturn\":0.06,\"lowCostRate\":0.002,\"highCostRate\":0.015})#low",
+      "claimText": "0,2% kosten / Na 20 jaar: €30.813",
+      "key": "r2-y20",
+      "role": "result",
+      "unit": "EUR",
+      "value": 30812.584742416308
+    },
+    {
+      "calculationRef": "@rj/finance-engine:lumpSumCostComparison({\"amount\":10000,\"years\":30,\"annualReturn\":0.06,\"lowCostRate\":0.002,\"highCostRate\":0.015})#low",
+      "claimText": "0,2% kosten / Na 30 jaar: €54.087",
+      "key": "r2-y30",
+      "role": "result",
+      "unit": "EUR",
+      "value": 54086.91321017413
+    },
+    {
+      "calculationRef": "@rj/finance-engine:lumpSumCostComparison({\"amount\":10000,\"years\":10,\"annualReturn\":0.06,\"lowCostRate\":0.002,\"highCostRate\":0.015})#high",
+      "claimText": "1,5% kosten / Na 10 jaar: €15.396",
+      "key": "r3-y10",
+      "role": "result",
+      "unit": "EUR",
+      "value": 15396.462821675555
+    },
+    {
+      "calculationRef": "@rj/finance-engine:lumpSumCostComparison({\"amount\":10000,\"years\":20,\"annualReturn\":0.06,\"lowCostRate\":0.002,\"highCostRate\":0.015})#high",
+      "claimText": "1,5% kosten / Na 20 jaar: €23.705",
+      "key": "r3-y20",
+      "role": "result",
+      "unit": "EUR",
+      "value": 23705.10674192376
+    },
+    {
+      "calculationRef": "@rj/finance-engine:lumpSumCostComparison({\"amount\":10000,\"years\":30,\"annualReturn\":0.06,\"lowCostRate\":0.002,\"highCostRate\":0.015})#high",
+      "claimText": "1,5% kosten / Na 30 jaar: €36.497",
+      "key": "r3-y30",
+      "role": "result",
+      "unit": "EUR",
+      "value": 36497.47946358797
+    },
+    {
+      "calculationRef": "@rj/finance-engine:lumpSumCostComparison({\"amount\":10000,\"years\":10,\"annualReturn\":0.06,\"lowCostRate\":0.002,\"highCostRate\":0.015})#difference",
+      "claimText": "Verschil / Na 10 jaar: €2.157",
+      "key": "r4-y10",
+      "role": "result",
+      "unit": "EUR",
+      "value": 2157.0509981886353
+    },
+    {
+      "calculationRef": "@rj/finance-engine:lumpSumCostComparison({\"amount\":10000,\"years\":20,\"annualReturn\":0.06,\"lowCostRate\":0.002,\"highCostRate\":0.015})#difference",
+      "claimText": "Verschil / Na 20 jaar: €7.107",
+      "key": "r4-y20",
+      "role": "result",
+      "unit": "EUR",
+      "value": 7107.478000492549
+    },
+    {
+      "calculationRef": "@rj/finance-engine:lumpSumCostComparison({\"amount\":10000,\"years\":30,\"annualReturn\":0.06,\"lowCostRate\":0.002,\"highCostRate\":0.015})#difference",
+      "claimText": "Verschil / Na 30 jaar: €17.589",
+      "key": "r4-y30",
+      "role": "result",
+      "unit": "EUR",
+      "value": 17589.433746586154
+    }
+  ],
+  "contentHash": "b932deb13abe5cff01f2cce6c6e8dbdb8eac156879f6dfe70dae67082a71afd4",
+  "hashtags": [
+    "#beleggingskosten",
+    "#etf",
+    "#beleggen",
+    "#financieleeducatie",
+    "#vermogensopbouw"
+  ],
+  "hook": "Wat doet 1,3 procentpunt aan kosten over 30 jaar?",
+  "ideaId": 3,
+  "pillar": "beleggen-etfs",
+  "propsHash": "18f15cd7691d39fae4fc2ef9e4b0a22d8c8e2d0e312dbd74fa3d58b25fb031e4",
+  "series": "Ideeën 2026-10-30",
+  "slug": "2026-10-30-kosten-02-of-15-procent",
+  "template": "D",
+  "title": "Kosten van 0,2% of 1,5%: wat scheelt het?",
+  "version": 1
+}

@@ -1,0 +1,122 @@
+{
+  "slug": "2026-10-30-vroeg-of-laat-beginnen",
+  "title": "10 jaar eerder beginnen: wat scheelt het?",
+  "template": "TemplateC",
+  "preparedAt": "2026-10-30T17:01:53.694Z",
+  "durationMs": 10000,
+  "table": {
+    "origin": "calculated",
+    "rows": 3,
+    "columns": [
+      "label",
+      "contributed",
+      "end"
+    ],
+    "source": {
+      "name": "Eigen rekenvoorbeeld met @rj/finance-engine"
+    },
+    "asOfDate": "2026-10-30",
+    "assumptions": [
+      "Twee denkbeeldige beleggers, geen echte personen of ervaringen. \"25\" en \"35\" zijn voorbeeldleeftijden; de einddatum is 40 jaar na de start van de eerste.",
+      "Beide leggen €200 per maand in, aan het eind van de maand. Hypothetisch rendement 6% effectief per jaar, per maand verrekend, inleg aan het eind van de maand, nominaal, vóór kosten, belasting en inflatie.",
+      "Derde rij: dezelfde vroege starter stopt na 10 jaar met inleggen en laat het geld 30 jaar staan.",
+      "Er is niets aangenomen over pensioenleeftijd of werkende jaren."
+    ],
+    "disclaimer": "Rendementen uit het verleden bieden geen garantie voor de toekomst. Geen beleggingsadvies.",
+    "calculation": {
+      "engine": "@rj/finance-engine",
+      "source": "content/ideas idea sheet",
+      "ideaId": 2,
+      "claims": 6
+    },
+    "style": "plain-chart (Template C)"
+  },
+  "voice": {
+    "provider": "none",
+    "brandVoice": false,
+    "voice": "none",
+    "mode": "voiceless",
+    "label": "VOICELESS: captions only, timings from reading speed (360 ms per spoken word), no audio stream. voiceless: ElevenLabs is opt-in (set RJ_TTS_PROVIDER=elevenlabs)",
+    "audioFile": null,
+    "qa": {
+      "voice": "none",
+      "file": null,
+      "durationMs": 13090,
+      "targetLufs": 0,
+      "inputLufs": null,
+      "outputLufs": null,
+      "truePeakDb": null,
+      "maxVolumeDb": null,
+      "meanVolumeDb": null,
+      "clipping": false,
+      "silences": [],
+      "maxSilenceS": 0,
+      "pass": true,
+      "issues": []
+    },
+    "segments": [
+      {
+        "id": "s01",
+        "text": "10 jaar eerder beginnen: wat scheelt het?. €200 per maand, 6% per jaar, 40 jaar. Vóór kosten en belasting.",
+        "spokenText": "tien jaar eerder beginnen: wat scheelt het?. tweehonderd euro per maand, zes procent per jaar, veertig jaar. Vóór kosten en belasting.",
+        "startMs": 350,
+        "endMs": 8270,
+        "durationMs": 7920,
+        "cacheHit": false,
+        "wordTimingSource": "reading-speed"
+      },
+      {
+        "id": "s02",
+        "text": "Rekenvoorbeeld, geen garantie of advies.",
+        "spokenText": "Rekenvoorbeeld, geen garantie of advies.",
+        "startMs": 8720,
+        "endMs": 10640,
+        "durationMs": 1920,
+        "cacheHit": false,
+        "wordTimingSource": "reading-speed"
+      },
+      {
+        "id": "s03",
+        "text": "Meer tips? Volg @rendementjager",
+        "spokenText": "Meer tips? Volg rendementjager",
+        "startMs": 11090,
+        "endMs": 12690,
+        "durationMs": 1600,
+        "cacheHit": false,
+        "wordTimingSource": "reading-speed"
+      }
+    ]
+  },
+  "background": {
+    "mode": "fallback-animated",
+    "reason": "no usable licensed clip in assets/footage/manifest.json"
+  },
+  "captions": {
+    "pages": 0,
+    "timing": "no narration captions on table Reels (rows fill the screen)"
+  },
+  "logo": {
+    "file": "logo-placeholder.svg",
+    "isPlaceholder": true
+  },
+  "brand": "@rendementjager",
+  "render": {
+    "file": "output/reels/2026-10-30-vroeg-of-laat-beginnen.mp4",
+    "sha256": "97023705feecfbd7cf65f28a67620f811ad09f632f90dabc28614f45107d5203",
+    "sizeBytes": 2877634,
+    "composition": "TemplateCPlain",
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationInFrames": 300,
+    "codec": "h264",
+    "renderedAt": "2026-10-30T17:03:09.256Z",
+    "prepareMs": 39,
+    "renderMs": 74080
+  },
+  "mediaQa": {
+    "report": "output/reels/2026-10-30-vroeg-of-laat-beginnen.qa.json",
+    "pass": true,
+    "issues": []
+  }
+}

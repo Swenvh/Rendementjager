@@ -1,0 +1,108 @@
+{
+  "timeline": {
+    "totalMs": 10000,
+    "scenes": [
+      {
+        "id": "table",
+        "startMs": 0,
+        "endMs": 8250
+      },
+      {
+        "id": "cta",
+        "startMs": 8250,
+        "endMs": 10000
+      }
+    ]
+  },
+  "voice": {
+    "src": null,
+    "provider": "none",
+    "brandVoice": false,
+    "durationMs": 12050
+  },
+  "captions": [],
+  "footnote": {
+    "text": "Educatief rekenvoorbeeld. Geen persoonlijk advies."
+  },
+  "cta": {
+    "text": "Meer tips? Volg @rendementjager",
+    "tagline": "Meer inzicht."
+  },
+  "background": null,
+  "kicker": "Markt",
+  "title": "Na -50% heb je +100% nodig om terug te zijn",
+  "subtitle": "Rekenvoorbeeld met €10.000. Geen voorspelling van koersen.",
+  "columns": [
+    {
+      "key": "label",
+      "label": "Daling",
+      "kind": "label"
+    },
+    {
+      "key": "after",
+      "label": "€10.000 wordt",
+      "kind": "value"
+    },
+    {
+      "key": "need",
+      "label": "Herstel nodig",
+      "kind": "value"
+    }
+  ],
+  "rows": [
+    {
+      "cells": {
+        "label": "-10%",
+        "after": "€9.000",
+        "need": "11,1%"
+      },
+      "highlight": false
+    },
+    {
+      "cells": {
+        "label": "-20%",
+        "after": "€8.000",
+        "need": "25%"
+      },
+      "highlight": false
+    },
+    {
+      "cells": {
+        "label": "-30%",
+        "after": "€7.000",
+        "need": "42,9%"
+      },
+      "highlight": false
+    },
+    {
+      "cells": {
+        "label": "-50%",
+        "after": "€5.000",
+        "need": "100%"
+      },
+      "highlight": true
+    },
+    {
+      "cells": {
+        "label": "-70%",
+        "after": "€3.000",
+        "need": "233,3%"
+      },
+      "highlight": false
+    }
+  ],
+  "source": {
+    "name": "Eigen rekenvoorbeeld met @rj/finance-engine"
+  },
+  "asOfDate": "2026-10-30",
+  "dataOrigin": "calculated",
+  "disclaimer": "Educatief rekenvoorbeeld. Geen persoonlijk advies.",
+  "footerLine": "Rekenvoorbeeld, geen persoonlijk advies.",
+  "assumptions": [
+    "Zuivere rekenkunde: nodig herstel = 1 / (1 - daling) - 1. Er is geen rendement, kosten of belasting aangenomen.",
+    "Het voorbeeld zegt niets over de kans of grootte van koersdalingen of herstel.",
+    "Een daling betreft de waarde van één belegging of portefeuille; dividenden en nieuwe inleg zijn buiten beschouwing gelaten.",
+    "Geen historische dalingen of herstelperioden genoemd; die zouden een bron en peildatum nodig hebben."
+  ],
+  "size": "large"
+}

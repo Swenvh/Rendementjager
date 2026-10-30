@@ -1,0 +1,107 @@
+{
+  "timeline": {
+    "totalMs": 10000,
+    "scenes": [
+      {
+        "id": "table",
+        "startMs": 0,
+        "endMs": 8250
+      },
+      {
+        "id": "cta",
+        "startMs": 8250,
+        "endMs": 10000
+      }
+    ]
+  },
+  "voice": {
+    "src": null,
+    "provider": "none",
+    "brandVoice": false,
+    "durationMs": 12250
+  },
+  "captions": [],
+  "footnote": {
+    "text": "Rendementen uit het verleden bieden geen garantie voor de toekomst. Geen beleggingsadvies."
+  },
+  "cta": {
+    "text": "Meer tips? Volg @rendementjager",
+    "tagline": "Meer inzicht."
+  },
+  "background": null,
+  "kicker": "Persoonlijke financiën",
+  "title": "€200 per maand, 20 jaar: vijf mogelijke rendementen",
+  "subtitle": "Inleg €48.000. Rendementen zijn aannames. Vóór kosten en belasting.",
+  "columns": [
+    {
+      "key": "label",
+      "label": "Rendement",
+      "kind": "label"
+    },
+    {
+      "key": "end",
+      "label": "Eindwaarde",
+      "kind": "value"
+    },
+    {
+      "key": "growth",
+      "label": "Groei",
+      "kind": "value"
+    }
+  ],
+  "rows": [
+    {
+      "cells": {
+        "label": "-2% per jaar",
+        "end": "€39.520",
+        "growth": "-€8.480"
+      },
+      "highlight": false
+    },
+    {
+      "cells": {
+        "label": "0% per jaar",
+        "end": "€48.000",
+        "growth": "€0"
+      },
+      "highlight": false
+    },
+    {
+      "cells": {
+        "label": "2% per jaar",
+        "end": "€58.846",
+        "growth": "€10.846"
+      },
+      "highlight": false
+    },
+    {
+      "cells": {
+        "label": "4% per jaar",
+        "end": "€72.768",
+        "growth": "€24.768"
+      },
+      "highlight": false
+    },
+    {
+      "cells": {
+        "label": "6% per jaar",
+        "end": "€90.688",
+        "growth": "€42.688"
+      },
+      "highlight": false
+    }
+  ],
+  "source": {
+    "name": "Eigen rekenvoorbeeld met @rj/finance-engine"
+  },
+  "asOfDate": "2026-10-30",
+  "dataOrigin": "calculated",
+  "disclaimer": "Rendementen uit het verleden bieden geen garantie voor de toekomst. Geen beleggingsadvies.",
+  "footerLine": "Rekenvoorbeeld, geen garantie of advies.",
+  "assumptions": [
+    "€200 per maand gedurende 20 jaar (totaal €48.000). Hypothetische rendementen effectief per jaar, per maand verrekend, inleg aan het eind van de maand, nominaal, vóór kosten, belasting en inflatie.",
+    "De percentages zijn aannames, geen rentetarieven of verwachtingen. Welke rente of welk rendement een product geeft, is ONBEKEND en niet onderzocht.",
+    "Rendement kan ook negatief zijn: de eerste rij toont een jaarlijkse min van 2%.",
+    "Geen bescherming of garantie bij beleggen meegerekend; geen beschrijving van spaarproducten."
+  ]
+}

@@ -1,0 +1,122 @@
+{
+  "slug": "2026-10-30-vuistregel-25x-uitgaven",
+  "title": "Financiële vrijheid: wat is 25 keer je uitgaven?",
+  "template": "TemplateA",
+  "preparedAt": "2026-10-30T16:54:03.498Z",
+  "durationMs": 10000,
+  "table": {
+    "origin": "calculated",
+    "rows": 3,
+    "columns": [
+      "label",
+      "r4",
+      "r3"
+    ],
+    "source": {
+      "name": "Eigen rekenvoorbeeld met @rj/finance-engine"
+    },
+    "asOfDate": "2026-10-30",
+    "assumptions": [
+      "Streefbedrag = jaaruitgaven / opneempercentage: bij 4% is dat 25 keer, bij 3% ongeveer 33,3 keer de jaaruitgaven.",
+      "De 4%-regel is een vuistregel uit (waarschijnlijk Amerikaans) onderzoek over lange periodes; de herkomst en geldigheid voor Nederland zijn nog te verifieren voordat de bron wordt genoemd.",
+      "Kanttekeningen die in beeld of caption moeten: geen garantie, rendementen en inflatie schommelen, de volgorde van goede en slechte jaren telt mee, de looptijd (hoeveel jaar) is cruciaal, kosten en belasting zijn niet meegerekend.",
+      "De uitgavenbedragen zijn voorbeelden, geen gemiddelden."
+    ],
+    "disclaimer": "Educatief rekenvoorbeeld. Geen persoonlijk advies.",
+    "calculation": {
+      "engine": "@rj/finance-engine",
+      "source": "content/ideas idea sheet",
+      "ideaId": 11,
+      "claims": 6
+    },
+    "style": "plain-explain (Template A)"
+  },
+  "voice": {
+    "provider": "none",
+    "brandVoice": false,
+    "voice": "none",
+    "mode": "voiceless",
+    "label": "VOICELESS: captions only, timings from reading speed (360 ms per spoken word), no audio stream. voiceless: ElevenLabs is opt-in (set RJ_TTS_PROVIDER=elevenlabs)",
+    "audioFile": null,
+    "qa": {
+      "voice": "none",
+      "file": null,
+      "durationMs": 11690,
+      "targetLufs": 0,
+      "inputLufs": null,
+      "outputLufs": null,
+      "truePeakDb": null,
+      "maxVolumeDb": null,
+      "meanVolumeDb": null,
+      "clipping": false,
+      "silences": [],
+      "maxSilenceS": 0,
+      "pass": true,
+      "issues": []
+    },
+    "segments": [
+      {
+        "id": "s01",
+        "text": "Financiële vrijheid: wat is 25 keer je uitgaven?. Vuistregel: jaaruitgaven delen door 4%. Geen garantie, geen advies.",
+        "spokenText": "Financiële vrijheid: wat is vijfentwintig keer je uitgaven?. Vuistregel: jaaruitgaven delen door vier procent. Geen garantie, geen advies.",
+        "startMs": 350,
+        "endMs": 7190,
+        "durationMs": 6840,
+        "cacheHit": false,
+        "wordTimingSource": "reading-speed"
+      },
+      {
+        "id": "s02",
+        "text": "Rekenvoorbeeld, geen persoonlijk advies.",
+        "spokenText": "Rekenvoorbeeld, geen persoonlijk advies.",
+        "startMs": 7640,
+        "endMs": 9240,
+        "durationMs": 1600,
+        "cacheHit": false,
+        "wordTimingSource": "reading-speed"
+      },
+      {
+        "id": "s03",
+        "text": "Meer tips? Volg @rendementjager",
+        "spokenText": "Meer tips? Volg rendementjager",
+        "startMs": 9690,
+        "endMs": 11290,
+        "durationMs": 1600,
+        "cacheHit": false,
+        "wordTimingSource": "reading-speed"
+      }
+    ]
+  },
+  "background": {
+    "mode": "fallback-animated",
+    "reason": "no usable licensed clip in assets/footage/manifest.json"
+  },
+  "captions": {
+    "pages": 0,
+    "timing": "no narration captions on table Reels (rows fill the screen)"
+  },
+  "logo": {
+    "file": "logo-placeholder.svg",
+    "isPlaceholder": true
+  },
+  "brand": "@rendementjager",
+  "render": {
+    "file": "output/reels/2026-10-30-vuistregel-25x-uitgaven.mp4",
+    "sha256": "8cd4e82f69d935179691a8221069f8e950078f75ab6ac1c3e1ee799cb452bbb4",
+    "sizeBytes": 2709048,
+    "composition": "TemplateAPlain",
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationInFrames": 300,
+    "codec": "h264",
+    "renderedAt": "2026-10-30T16:55:25.562Z",
+    "prepareMs": 35,
+    "renderMs": 80522
+  },
+  "mediaQa": {
+    "report": "output/reels/2026-10-30-vuistregel-25x-uitgaven.qa.json",
+    "pass": true,
+    "issues": []
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "slug": "2026-10-30-lening-5000-rentekosten",
+  "title": "€5.000 lenen: wat kost de rente?",
+  "template": "TemplateD",
+  "series": "Ideeën 2026-10-30",
+  "language": "nl",
+  "ideaId": 8,
+  "table": {
+    "kind": "inline",
+    "title": "€5.000 lenen: wat kost de rente?",
+    "subtitle": "Annuïteit, rente nominaal per jaar. Voorbeeldrentes, geen aanbod.",
+    "columns": [
+      {
+        "key": "label",
+        "label": "Looptijd",
+        "kind": "label"
+      },
+      {
+        "key": "r6",
+        "label": "Rente bij 6%",
+        "kind": "value"
+      },
+      {
+        "key": "r12",
+        "label": "Rente bij 12%",
+        "kind": "value"
+      }
+    ],
+    "rows": [
+      {
+        "cells": {
+          "label": "24 maanden",
+          "r6": "€318",
+          "r12": "€649"
+        },
+        "highlight": false
+      },
+      {
+        "cells": {
+          "label": "36 maanden",
+          "r6": "€476",
+          "r12": "€979"
+        },
+        "highlight": true
+      },
+      {
+        "cells": {
+          "label": "60 maanden",
+          "r6": "€800",
+          "r12": "€1.673"
+        },
+        "highlight": false
+      }
+    ],
+    "assumptions": [
+      "Annuïteitenlening: elke maand dezelfde betaling (rente + aflossing) aan het eind van de maand.",
+      "Maandrente = jaarrente / 12 (nominaal). Kosten, boetes en verzekeringen zijn niet meegerekend.",
+      "6% en 12% zijn voorbeeldpercentages, geen aanbod en niet representatief voor een bestaande aanbieder; wettelijke maxima en actuele regels zijn niet onderzocht (verifieer).",
+      "Geen advies om te lenen of niet te lenen."
+    ],
+    "footerLine": "Rekenvoorbeeld, geen persoonlijk advies.",
+    "disclaimer": "Educatief rekenvoorbeeld. Geen persoonlijk advies.",
+    "durationS": 10,
+    "claimCount": 10,
+    "ideaId": 8
+  },
+  "onScreen": {
+    "kicker": "Persoonlijke financiën",
+    "cta": "Meer tips? Volg @rendementjager",
+    "footnote": "Rekenvoorbeeld, geen persoonlijk advies."
+  },
+  "scenes": [
+    {
+      "id": "table",
+      "visual": "Titelblok, een korte regel, kolomkop en rijen een voor een; een korte voetregel.",
+      "segments": [
+        {
+          "id": "s01",
+          "text": "€5.000 lenen: wat kost de rente?. Annuïteit, rente nominaal per jaar. Voorbeeldrentes, geen aanbod.",
+          "pauseAfterMs": 450
+        },
+        {
+          "id": "s02",
+          "text": "Rekenvoorbeeld, geen persoonlijk advies.",
+          "pauseAfterMs": 450
+        }
+      ]
+    },
+    {
+      "id": "cta",
+      "visual": "Branded outro met CTA.",
+      "segments": [
+        {
+          "id": "s03",
+          "text": "Meer tips? Volg @rendementjager"
+        }
+      ]
+    }
+  ]
+}

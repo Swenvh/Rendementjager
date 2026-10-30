@@ -5,7 +5,7 @@ import { describe, expect, it } from 'vitest';
 import { evaluateRef, formatValue } from './calc.js';
 import { buildIdeasDocument } from './ideas.js';
 import { markdownToHtml, renderMarkdown } from './render.js';
-import { CTA_TEXT, ideaSchema, ideasDocumentSchema } from './schema.js';
+import { CTA_TEXT, FORBIDDEN_BRAND_NAMES, ON_SCREEN_LABEL, ideaSchema, ideasDocumentSchema } from './schema.js';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../../..');
 const jsonPath = resolve(root, 'content/ideas/2026-10-30-15-ideeen.json');
@@ -145,5 +145,24 @@ describe('committed files', () => {
     const html = markdownToHtml('## 01. A <b>\n\n| a | b |\n| --- | --- |\n| 1 | 2 |\n', 't');
     expect(html).toContain('<table>');
     expect(html).toContain('&lt;b&gt;');
+  });
+});
+
+describe('other accounts\' names never reach the screen', () => {
+  it('no on-screen text, hook, caption or hashtag mentions them; our own labels exist for every category', () => {
+    for (const i of doc.ideas) {
+      const texts = [i.title, i.onScreen.title, i.onScreen.subtitle, i.onScreen.footer, i.caption, ...i.hashtags, ...i.hooks.map((h) => h.text), ...i.storyboard.map((s) => s.onScreen)];
+      for (const t of texts) expect(FORBIDDEN_BRAND_NAMES.test(t), t).toBe(false);
+    }
+    expect(Object.values(ON_SCREEN_LABEL).every((l) => !FORBIDDEN_BRAND_NAMES.test(l))).toBe(true);
+    expect(doc.categoryInspirationAssumption).toMatch(/inspiratiebronnen, geen labels/);
+  });
+  it('the schema rejects them (case-insensitive) in captions, titles and hashtags', () => {
+    const base = doc.ideas[0]!;
+    for (const bad of ['BEURSWIJZER', 'Koerstijgers', 'finance op orde']) {
+      expect(ideaSchema.safeParse({ ...base, caption: `${base.caption}\n${bad}` }).success, bad).toBe(false);
+      expect(ideaSchema.safeParse({ ...base, onScreen: { ...base.onScreen, subtitle: bad } }).success, bad).toBe(false);
+    }
+    expect(ideaSchema.safeParse({ ...base, hashtags: [...base.hashtags.slice(0, 4), '#beurswijzer'] }).success).toBe(false);
   });
 });

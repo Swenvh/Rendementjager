@@ -1,0 +1,253 @@
+{
+  "slug": "2026-10-30-salarisverhoging-helft-apart",
+  "title": "Salarisverhoging: wat als je de helft belegt?",
+  "template": "TemplateC",
+  "series": "Ideeën 2026-10-30",
+  "language": "nl",
+  "ideaId": 12,
+  "table": {
+    "kind": "inline",
+    "title": "Salarisverhoging: wat als je de helft belegt?",
+    "subtitle": "€100 per maand, elk jaar €100 netto erbij. 10 jaar, 6% per jaar.",
+    "columns": [
+      {
+        "key": "label",
+        "label": "Verhoging",
+        "kind": "label"
+      },
+      {
+        "key": "contributed",
+        "label": "Inleg",
+        "kind": "value"
+      },
+      {
+        "key": "end",
+        "label": "Na 10 jaar",
+        "kind": "value"
+      }
+    ],
+    "rows": [
+      {
+        "cells": {
+          "label": "Niets apart",
+          "contributed": "€12.000",
+          "end": "€16.247"
+        },
+        "highlight": false
+      },
+      {
+        "cells": {
+          "label": "50% (+€50/jr)",
+          "contributed": "€39.000",
+          "end": "€48.921"
+        },
+        "highlight": true
+      },
+      {
+        "cells": {
+          "label": "100% (+€100/jr)",
+          "contributed": "€66.000",
+          "end": "€81.594"
+        },
+        "highlight": false
+      }
+    ],
+    "assumptions": [
+      "Startinleg €100 per maand. Elk jaar vanaf jaar 2 komt er netto €100 per maand bij; 0%, 50% (€50) of 100% (€100) daarvan wordt extra ingelegd. Hypothetisch rendement 6% effectief per jaar, per maand verrekend, inleg aan het eind van de maand, nominaal, vóór kosten, belasting en inflatie.",
+      "De verhoging van €100 netto per maand elk jaar is een gekozen voorbeeld, geen verwachting van een salarisontwikkeling.",
+      "In het laatste jaar is de maandinleg bij 50% gestegen tot €550 per maand; bij 100% tot €1.000 per maand. Of dat haalbaar is, hangt van je situatie af.",
+      "Geen kosten, belasting en inflatie meegerekend."
+    ],
+    "footerLine": "Rekenvoorbeeld, geen garantie of advies.",
+    "disclaimer": "Rendementen uit het verleden bieden geen garantie voor de toekomst. Geen beleggingsadvies.",
+    "durationS": 10,
+    "claimCount": 7,
+    "ideaId": 12,
+    "chart": {
+      "xLabel": "Jaar",
+      "unit": "eur",
+      "series": [
+        {
+          "label": "Niets apart",
+          "points": [
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": 1,
+              "y": 1232.65
+            },
+            {
+              "x": 2,
+              "y": 2539.26
+            },
+            {
+              "x": 3,
+              "y": 3924.27
+            },
+            {
+              "x": 4,
+              "y": 5392.38
+            },
+            {
+              "x": 5,
+              "y": 6948.58
+            },
+            {
+              "x": 6,
+              "y": 8598.15
+            },
+            {
+              "x": 7,
+              "y": 10346.69
+            },
+            {
+              "x": 8,
+              "y": 12200.14
+            },
+            {
+              "x": 9,
+              "y": 14164.8
+            },
+            {
+              "x": 10,
+              "y": 16247.34
+            }
+          ]
+        },
+        {
+          "label": "50% van elke verhoging",
+          "points": [
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": 1,
+              "y": 1232.65
+            },
+            {
+              "x": 2,
+              "y": 3155.59
+            },
+            {
+              "x": 3,
+              "y": 5810.23
+            },
+            {
+              "x": 4,
+              "y": 9240.48
+            },
+            {
+              "x": 5,
+              "y": 13492.87
+            },
+            {
+              "x": 6,
+              "y": 18616.72
+            },
+            {
+              "x": 7,
+              "y": 24664.34
+            },
+            {
+              "x": 8,
+              "y": 31691.14
+            },
+            {
+              "x": 9,
+              "y": 39755.87
+            },
+            {
+              "x": 10,
+              "y": 48920.81
+            }
+          ]
+        },
+        {
+          "label": "100% van elke verhoging",
+          "points": [
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": 1,
+              "y": 1232.65
+            },
+            {
+              "x": 2,
+              "y": 3771.92
+            },
+            {
+              "x": 3,
+              "y": 7696.19
+            },
+            {
+              "x": 4,
+              "y": 13088.57
+            },
+            {
+              "x": 5,
+              "y": 20037.15
+            },
+            {
+              "x": 6,
+              "y": 28635.3
+            },
+            {
+              "x": 7,
+              "y": 38981.99
+            },
+            {
+              "x": 8,
+              "y": 51182.13
+            },
+            {
+              "x": 9,
+              "y": 65346.93
+            },
+            {
+              "x": 10,
+              "y": 81594.28
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "onScreen": {
+    "kicker": "Persoonlijke financiën",
+    "cta": "Meer tips? Volg @rendementjager",
+    "footnote": "Rekenvoorbeeld, geen garantie of advies."
+  },
+  "scenes": [
+    {
+      "id": "table",
+      "visual": "Titelblok, een korte regel, lijngrafiek die zich tekent, daaronder de samenvattingstabel; een korte voetregel.",
+      "segments": [
+        {
+          "id": "s01",
+          "text": "Salarisverhoging: wat als je de helft belegt?. €100 per maand, elk jaar €100 netto erbij. 10 jaar, 6% per jaar.",
+          "pauseAfterMs": 450
+        },
+        {
+          "id": "s02",
+          "text": "Rekenvoorbeeld, geen garantie of advies.",
+          "pauseAfterMs": 450
+        }
+      ]
+    },
+    {
+      "id": "cta",
+      "visual": "Branded outro met CTA.",
+      "segments": [
+        {
+          "id": "s03",
+          "text": "Meer tips? Volg @rendementjager"
+        }
+      ]
+    }
+  ]
+}

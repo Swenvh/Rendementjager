@@ -1,0 +1,123 @@
+{
+  "slug": "2026-10-30-inflatie-10000-stilstaand",
+  "title": "€10.000 die stilstaat: wat is het later waard?",
+  "template": "TemplateA",
+  "preparedAt": "2026-10-30T16:57:38.332Z",
+  "durationMs": 10000,
+  "table": {
+    "origin": "calculated",
+    "rows": 3,
+    "columns": [
+      "label",
+      "y10",
+      "y20",
+      "y30"
+    ],
+    "source": {
+      "name": "Eigen rekenvoorbeeld met @rj/finance-engine"
+    },
+    "asOfDate": "2026-10-30",
+    "assumptions": [
+      "Het bedrag groeit niet (0% rendement); alleen de prijzen stijgen met het genoemde percentage per jaar, elk jaar hetzelfde.",
+      "Waarde in euro's van nu = bedrag / (1 + inflatie) ^ jaren.",
+      "De percentages zijn voorbeeldwaarden; de werkelijke inflatie wisselt per jaar en per soort uitgaven. Actuele cijfers: CBS (verifieer).",
+      "Geen belasting en geen rente op het bedrag meegerekend."
+    ],
+    "disclaimer": "Educatief rekenvoorbeeld. Geen persoonlijk advies.",
+    "calculation": {
+      "engine": "@rj/finance-engine",
+      "source": "content/ideas idea sheet",
+      "ideaId": 4,
+      "claims": 9
+    },
+    "style": "plain-explain (Template A)"
+  },
+  "voice": {
+    "provider": "none",
+    "brandVoice": false,
+    "voice": "none",
+    "mode": "voiceless",
+    "label": "VOICELESS: captions only, timings from reading speed (360 ms per spoken word), no audio stream. voiceless: ElevenLabs is opt-in (set RJ_TTS_PROVIDER=elevenlabs)",
+    "audioFile": null,
+    "qa": {
+      "voice": "none",
+      "file": null,
+      "durationMs": 13850,
+      "targetLufs": 0,
+      "inputLufs": null,
+      "outputLufs": null,
+      "truePeakDb": null,
+      "maxVolumeDb": null,
+      "meanVolumeDb": null,
+      "clipping": false,
+      "silences": [],
+      "maxSilenceS": 0,
+      "pass": true,
+      "issues": []
+    },
+    "segments": [
+      {
+        "id": "s01",
+        "text": "€10.000 die stilstaat: wat is het later waard?. In euro's van nu, bij 2%, 3% of 4% inflatie per jaar.",
+        "spokenText": "tienduizend euro die stilstaat: wat is het later waard?. In euro's van nu, bij twee procent, drie procent of vier procent inflatie per jaar.",
+        "startMs": 350,
+        "endMs": 9350,
+        "durationMs": 9000,
+        "cacheHit": false,
+        "wordTimingSource": "reading-speed"
+      },
+      {
+        "id": "s02",
+        "text": "Rekenvoorbeeld, geen persoonlijk advies.",
+        "spokenText": "Rekenvoorbeeld, geen persoonlijk advies.",
+        "startMs": 9800,
+        "endMs": 11400,
+        "durationMs": 1600,
+        "cacheHit": false,
+        "wordTimingSource": "reading-speed"
+      },
+      {
+        "id": "s03",
+        "text": "Meer tips? Volg @rendementjager",
+        "spokenText": "Meer tips? Volg rendementjager",
+        "startMs": 11850,
+        "endMs": 13450,
+        "durationMs": 1600,
+        "cacheHit": false,
+        "wordTimingSource": "reading-speed"
+      }
+    ]
+  },
+  "background": {
+    "mode": "fallback-animated",
+    "reason": "no usable licensed clip in assets/footage/manifest.json"
+  },
+  "captions": {
+    "pages": 0,
+    "timing": "no narration captions on table Reels (rows fill the screen)"
+  },
+  "logo": {
+    "file": "logo-placeholder.svg",
+    "isPlaceholder": true
+  },
+  "brand": "@rendementjager",
+  "render": {
+    "file": "output/reels/2026-10-30-inflatie-10000-stilstaand.mp4",
+    "sha256": "2ad94634fee3f560a009553c97fa99ed36ed8b45d0179e6df30eddf2b3e5a001",
+    "sizeBytes": 2707774,
+    "composition": "TemplateAPlain",
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationInFrames": 300,
+    "codec": "h264",
+    "renderedAt": "2026-10-30T16:58:54.470Z",
+    "prepareMs": 53,
+    "renderMs": 74849
+  },
+  "mediaQa": {
+    "report": "output/reels/2026-10-30-inflatie-10000-stilstaand.qa.json",
+    "pass": true,
+    "issues": []
+  }
+}

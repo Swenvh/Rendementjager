@@ -888,7 +888,7 @@ function idea14(): Idea {
   }));
   const title = 'ETF-ranglijst: rendement over {periode}';
   const subtitle = 'Bron: {bron}. Peildatum: {peildatum}. Alleen verleden.';
-  const hashtags = ['#etf', '#beleggen', '#beurswijzer', '#financieleeducatie', '#rendement'];
+  const hashtags = ['#etf', '#beleggen', '#etfs', '#financieleeducatie', '#rendement'];
   return {
     id: 14, slug: 'etf-ranglijst-sjabloon', status: 'IDEA', category: 'Beurswijzer', format: 'D', dataOrigin: 'template-awaiting-data', involvesReturns: true,
     hooks: hooks('Welke ETF’s hadden de afgelopen {periode} het hoogste rendement?', 'Een ranglijst laat het verleden zien, niet wat er komt.', 'Bovenaan in {periode}: wat zegt dat, en wat niet?'),
@@ -900,7 +900,7 @@ function idea14(): Idea {
       'Geen enkel getal, naam of rendement in dit sjabloon is echt; alles tussen [] of {} wordt pas ingevuld met een door de eigenaar aangeleverde dataset.',
       'Eén periode per ranglijst, sortering gecontroleerd, per rij bron, peildatum en periode (Redactiebeleid sectie 7.3).',
       'Rendement uit het verleden; vóór of na kosten, in welke valuta en met of zonder herbelegging moet in de dataset staan.',
-      'De Beurswijzer-referentie van de eigenaar (screenshot: 20 ETF’s, 5-jaarsrendement, drone-achtergrond, witte labels) is het uitgangspunt voor de opmaak; de inhoud niet.',
+      'De referentie van de eigenaar (screenshot van een ETF-ranglijst-Reel van een ander account: 20 ETF’s, 5-jaarsrendement, drone-achtergrond, witte labels) is het uitgangspunt voor de opmaak; de inhoud niet.',
     ],
     table: { columns: cols, rows, sortDirection: 'desc' },
     claims: [],
@@ -1002,7 +1002,7 @@ export function buildIdeasDocument(): IdeasDocument {
     language: 'nl',
     owner: 'Rendementjager (@rendementjager)',
     note: 'Vijftien uitgewerkte Reel-ideeën met verschillende rekenvoorbeelden. Ideeën zijn niet gerenderd en niet in de pipeline geregistreerd; de eigenaar beoordeelt ze eerst. Alle bedragen komen uit @rj/finance-engine (zie calculationRef per cel).',
-    categoryInspirationAssumption: 'AANNAME: de categorieën Koerstijgers (markt en koersbewegingen), Finance op orde (persoonlijke financiën) en Beurswijzer (beleggen, ETF-lijsten, tabellen) zijn gebaseerd op het soort Nederlandse finance-accounts dat de eigenaar volgt. Instagram is vanuit deze omgeving niet bereikbaar: die accounts zijn niet bekeken. De enige referentie is het screenshot van de eigenaar van een Beurswijzer-Reel (ranglijst van 20 ETF’s met 5-jaarsrendement, drone-achtergrond, witte labels).',
+    categoryInspirationAssumption: 'AANNAME (inspiratiebronnen, geen labels: deze namen zijn accounts van anderen, staan alleen in dit interne document en nooit op beeld, in captions of hashtags; op beeld gebruikt Rendementjager eigen labels: Beleggen, Persoonlijke financiën, Markt): de categorieën Koerstijgers (markt en koersbewegingen), Finance op orde (persoonlijke financiën) en Beurswijzer (beleggen, ETF-lijsten, tabellen) zijn gebaseerd op het soort Nederlandse finance-accounts dat de eigenaar volgt. Instagram is vanuit deze omgeving niet bereikbaar: die accounts zijn niet bekeken. De enige referentie is het screenshot van de eigenaar van een Beurswijzer-Reel (ranglijst van 20 ETF’s met 5-jaarsrendement, drone-achtergrond, witte labels).',
     globalAssumptions: [
       'Alle rendementen en rentes zijn hypothetisch (aannames), geen verwachting of garantie.',
       'Standaard: effectief rendement per jaar, per maand verrekend, inleg aan het eind van de maand, nominaal (zonder inflatie), vóór kosten en belasting. Afwijkingen staan per idee.',

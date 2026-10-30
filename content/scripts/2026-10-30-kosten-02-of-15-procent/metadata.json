@@ -1,0 +1,123 @@
+{
+  "slug": "2026-10-30-kosten-02-of-15-procent",
+  "title": "Kosten van 0,2% of 1,5%: wat scheelt het?",
+  "template": "TemplateD",
+  "preparedAt": "2026-10-30T16:59:01.379Z",
+  "durationMs": 10000,
+  "table": {
+    "origin": "calculated",
+    "rows": 4,
+    "columns": [
+      "label",
+      "y10",
+      "y20",
+      "y30"
+    ],
+    "source": {
+      "name": "Eigen rekenvoorbeeld met @rj/finance-engine"
+    },
+    "asOfDate": "2026-10-30",
+    "assumptions": [
+      "Eenmalig €10.000, geen extra inleg. Hypothetisch rendement 6% effectief per jaar vóór kosten.",
+      "Kosten per jaar over het belegde bedrag, gerekend als (1 + rendement) x (1 - kosten) per jaar; dus niet \"rendement min kosten\".",
+      "0,2% en 1,5% zijn voorbeeldpercentages, geen opgave van bestaande producten of aanbieders.",
+      "Nominaal, zonder belasting en inflatie."
+    ],
+    "disclaimer": "Rendementen uit het verleden bieden geen garantie voor de toekomst. Geen beleggingsadvies.",
+    "calculation": {
+      "engine": "@rj/finance-engine",
+      "source": "content/ideas idea sheet",
+      "ideaId": 3,
+      "claims": 12
+    },
+    "style": "plain-table (Template D)"
+  },
+  "voice": {
+    "provider": "none",
+    "brandVoice": false,
+    "voice": "none",
+    "mode": "voiceless",
+    "label": "VOICELESS: captions only, timings from reading speed (360 ms per spoken word), no audio stream. voiceless: ElevenLabs is opt-in (set RJ_TTS_PROVIDER=elevenlabs)",
+    "audioFile": null,
+    "qa": {
+      "voice": "none",
+      "file": null,
+      "durationMs": 14050,
+      "targetLufs": 0,
+      "inputLufs": null,
+      "outputLufs": null,
+      "truePeakDb": null,
+      "maxVolumeDb": null,
+      "meanVolumeDb": null,
+      "clipping": false,
+      "silences": [],
+      "maxSilenceS": 0,
+      "pass": true,
+      "issues": []
+    },
+    "segments": [
+      {
+        "id": "s01",
+        "text": "Kosten van 0,2% of 1,5%: wat scheelt het?. €10.000 eenmalig, 6% per jaar vóór kosten. Voorbeeldpercentages.",
+        "spokenText": "Kosten van nul komma twee procent of een komma vijf procent: wat scheelt het?. tienduizend euro eenmalig, zes procent per jaar vóór kosten. Voorbeeldpercentages.",
+        "startMs": 350,
+        "endMs": 9230,
+        "durationMs": 8880,
+        "cacheHit": false,
+        "wordTimingSource": "reading-speed"
+      },
+      {
+        "id": "s02",
+        "text": "Rekenvoorbeeld, geen garantie of advies.",
+        "spokenText": "Rekenvoorbeeld, geen garantie of advies.",
+        "startMs": 9680,
+        "endMs": 11600,
+        "durationMs": 1920,
+        "cacheHit": false,
+        "wordTimingSource": "reading-speed"
+      },
+      {
+        "id": "s03",
+        "text": "Meer tips? Volg @rendementjager",
+        "spokenText": "Meer tips? Volg rendementjager",
+        "startMs": 12050,
+        "endMs": 13650,
+        "durationMs": 1600,
+        "cacheHit": false,
+        "wordTimingSource": "reading-speed"
+      }
+    ]
+  },
+  "background": {
+    "mode": "fallback-animated",
+    "reason": "no usable licensed clip in assets/footage/manifest.json"
+  },
+  "captions": {
+    "pages": 0,
+    "timing": "no narration captions on table Reels (rows fill the screen)"
+  },
+  "logo": {
+    "file": "logo-placeholder.svg",
+    "isPlaceholder": true
+  },
+  "brand": "@rendementjager",
+  "render": {
+    "file": "output/reels/2026-10-30-kosten-02-of-15-procent.mp4",
+    "sha256": "82b63d5a6e1aecdc5ddc958ee182fcbc254433c1ba3203ad538ab34b970b451c",
+    "sizeBytes": 2732295,
+    "composition": "TemplateD",
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationInFrames": 300,
+    "codec": "h264",
+    "renderedAt": "2026-10-30T17:00:19.711Z",
+    "prepareMs": 49,
+    "renderMs": 76905
+  },
+  "mediaQa": {
+    "report": "output/reels/2026-10-30-kosten-02-of-15-procent.qa.json",
+    "pass": true,
+    "issues": []
+  }
+}

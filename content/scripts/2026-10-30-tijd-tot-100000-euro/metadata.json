@@ -1,0 +1,123 @@
+{
+  "slug": "2026-10-30-tijd-tot-100000-euro",
+  "title": "Hoe lang duurt het om €100.000 te bereiken?",
+  "template": "TemplateD",
+  "preparedAt": "2026-10-30T16:51:12.874Z",
+  "durationMs": 10000,
+  "table": {
+    "origin": "calculated",
+    "rows": 4,
+    "columns": [
+      "label",
+      "r0",
+      "r4",
+      "r7"
+    ],
+    "source": {
+      "name": "Eigen rekenvoorbeeld met @rj/finance-engine"
+    },
+    "asOfDate": "2026-10-30",
+    "assumptions": [
+      "Doel €100.000, beginsaldo €0, inleg aan het eind van de maand. Hypothetische rendementen effectief per jaar, per maand verrekend, inleg aan het eind van de maand, nominaal, vóór kosten, belasting en inflatie.",
+      "Looptijd = eerste maand waarin het saldo het doel haalt of overschrijdt.",
+      "De rij \"Zonder rendement\" is alleen sparen zonder groei (€100.000 / maandbedrag).",
+      "De rendementen zijn aannames, geen verwachtingen. Inflatie blijft buiten beeld: €100.000 later is minder waard dan nu."
+    ],
+    "disclaimer": "Rendementen uit het verleden bieden geen garantie voor de toekomst. Geen beleggingsadvies.",
+    "calculation": {
+      "engine": "@rj/finance-engine",
+      "source": "content/ideas idea sheet",
+      "ideaId": 13,
+      "claims": 12
+    },
+    "style": "plain-table (Template D)"
+  },
+  "voice": {
+    "provider": "none",
+    "brandVoice": false,
+    "voice": "none",
+    "mode": "voiceless",
+    "label": "VOICELESS: captions only, timings from reading speed (360 ms per spoken word), no audio stream. voiceless: ElevenLabs is opt-in (set RJ_TTS_PROVIDER=elevenlabs)",
+    "audioFile": null,
+    "qa": {
+      "voice": "none",
+      "file": null,
+      "durationMs": 12490,
+      "targetLufs": 0,
+      "inputLufs": null,
+      "outputLufs": null,
+      "truePeakDb": null,
+      "maxVolumeDb": null,
+      "meanVolumeDb": null,
+      "clipping": false,
+      "silences": [],
+      "maxSilenceS": 0,
+      "pass": true,
+      "issues": []
+    },
+    "segments": [
+      {
+        "id": "s01",
+        "text": "Hoe lang duurt het om €100.000 te bereiken?. Inleg per maand, rendement per jaar (hypothetisch). Vóór kosten en belasting.",
+        "spokenText": "Hoe lang duurt het om honderdduizend euro te bereiken?. Inleg per maand, rendement per jaar (hypothetisch). Vóór kosten en belasting.",
+        "startMs": 350,
+        "endMs": 7670,
+        "durationMs": 7320,
+        "cacheHit": false,
+        "wordTimingSource": "reading-speed"
+      },
+      {
+        "id": "s02",
+        "text": "Rekenvoorbeeld, geen garantie of advies.",
+        "spokenText": "Rekenvoorbeeld, geen garantie of advies.",
+        "startMs": 8120,
+        "endMs": 10040,
+        "durationMs": 1920,
+        "cacheHit": false,
+        "wordTimingSource": "reading-speed"
+      },
+      {
+        "id": "s03",
+        "text": "Meer tips? Volg @rendementjager",
+        "spokenText": "Meer tips? Volg rendementjager",
+        "startMs": 10490,
+        "endMs": 12090,
+        "durationMs": 1600,
+        "cacheHit": false,
+        "wordTimingSource": "reading-speed"
+      }
+    ]
+  },
+  "background": {
+    "mode": "fallback-animated",
+    "reason": "no usable licensed clip in assets/footage/manifest.json"
+  },
+  "captions": {
+    "pages": 0,
+    "timing": "no narration captions on table Reels (rows fill the screen)"
+  },
+  "logo": {
+    "file": "logo-placeholder.svg",
+    "isPlaceholder": true
+  },
+  "brand": "@rendementjager",
+  "render": {
+    "file": "output/reels/2026-10-30-tijd-tot-100000-euro.mp4",
+    "sha256": "619956285bd09fa11ca0f14f4280711aabe2e6f7c92307c7b0b05e1f42bd5ed3",
+    "sizeBytes": 2721670,
+    "composition": "TemplateD",
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationInFrames": 300,
+    "codec": "h264",
+    "renderedAt": "2026-10-30T16:52:28.290Z",
+    "prepareMs": 58,
+    "renderMs": 73971
+  },
+  "mediaQa": {
+    "report": "output/reels/2026-10-30-tijd-tot-100000-euro.qa.json",
+    "pass": true,
+    "issues": []
+  }
+}

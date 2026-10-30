@@ -1,0 +1,77 @@
+{
+  "claims": [
+    {
+      "calculationRef": "@rj/finance-engine:steppedSaving({\"initialMonthly\":100,\"yearlyStep\":0,\"years\":10,\"annualReturn\":0.06})#contributed",
+      "claimText": "Niets apart / Inleg: €12.000",
+      "key": "r1-contributed",
+      "role": "result",
+      "unit": "EUR",
+      "value": 12000
+    },
+    {
+      "calculationRef": "@rj/finance-engine:steppedSaving({\"initialMonthly\":100,\"yearlyStep\":0,\"years\":10,\"annualReturn\":0.06})#endValue",
+      "claimText": "Niets apart / Na 10 jaar: €16.247",
+      "key": "r1-end",
+      "role": "result",
+      "unit": "EUR",
+      "value": 16247.344242783833
+    },
+    {
+      "calculationRef": "@rj/finance-engine:steppedSaving({\"initialMonthly\":100,\"yearlyStep\":50,\"years\":10,\"annualReturn\":0.06})#contributed",
+      "claimText": "50% (+€50 per jaar) / Inleg: €39.000",
+      "key": "r2-contributed",
+      "role": "result",
+      "unit": "EUR",
+      "value": 39000
+    },
+    {
+      "calculationRef": "@rj/finance-engine:steppedSaving({\"initialMonthly\":100,\"yearlyStep\":50,\"years\":10,\"annualReturn\":0.06})#endValue",
+      "claimText": "50% (+€50 per jaar) / Na 10 jaar: €48.921",
+      "key": "r2-end",
+      "role": "result",
+      "unit": "EUR",
+      "value": 48920.810082339325
+    },
+    {
+      "calculationRef": "@rj/finance-engine:steppedSaving({\"initialMonthly\":100,\"yearlyStep\":100,\"years\":10,\"annualReturn\":0.06})#contributed",
+      "claimText": "100% (+€100 per jaar) / Inleg: €66.000",
+      "key": "r3-contributed",
+      "role": "result",
+      "unit": "EUR",
+      "value": 66000
+    },
+    {
+      "calculationRef": "@rj/finance-engine:steppedSaving({\"initialMonthly\":100,\"yearlyStep\":100,\"years\":10,\"annualReturn\":0.06})#endValue",
+      "claimText": "100% (+€100 per jaar) / Na 10 jaar: €81.594",
+      "key": "r3-end",
+      "role": "result",
+      "unit": "EUR",
+      "value": 81594.27592189483
+    },
+    {
+      "calculationRef": "@rj/finance-engine:steppedSaving({\"initialMonthly\":100,\"yearlyStep\":50,\"years\":10,\"annualReturn\":0.06})#finalMonthly",
+      "claimText": "Maandinleg in jaar 10 bij 50% van elke verhoging",
+      "key": "final-monthly-50",
+      "role": "result",
+      "unit": "EUR",
+      "value": 550
+    }
+  ],
+  "contentHash": "35ec236912dacb507e74372445cc82a68275d3790d12971ae1b1588819603f1f",
+  "hashtags": [
+    "#salarisverhoging",
+    "#beleggen",
+    "#lifestyleinflatie",
+    "#financieleorde",
+    "#financieleeducatie"
+  ],
+  "hook": "Wat als je de helft van elke salarisverhoging apart zet?",
+  "ideaId": 12,
+  "pillar": "persoonlijke-financien",
+  "propsHash": "296615742520340d3ba6c9b434db1500291d2c3cb8aa6d03f06abd9fc6b454da",
+  "series": "Ideeën 2026-10-30",
+  "slug": "2026-10-30-salarisverhoging-helft-apart",
+  "template": "C",
+  "title": "Salarisverhoging: wat als je de helft belegt?",
+  "version": 1
+}
