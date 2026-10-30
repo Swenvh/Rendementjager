@@ -44,3 +44,7 @@ approvals go through `WorkflowService` (`@rj/content-engine`), never direct tabl
 - G4 approves the current video sha256; G5 (owner only) approves video sha256 + caption hash.
   A new video invalidates G4/G5 (item back to QA_REVIEW, scheduled publications cancelled); a new caption invalidates G5 (back to READY_FOR_EDITOR).
 - An approval row only counts if its bindings match the item's current hashes; a G5 row from anyone but `owner` never counts.
+
+## Series items (no schema change)
+
+`@rj/series-engine` stores its machine-readable record as JSON in `content_items.notes` (`{rj:"series/1", slug, topicKey, contentHash, propsHash, trial, tags, params}`; tags = kind, hookPattern, amount, horizon, template, durationS, variantGroup, variantIndex, ratePct). `financial_claims.calculation_ref` holds `@rj/finance-engine:<fn>(<input>)#<path>`. Job type `render_batch` (payload `{items:[{contentId, slug}]}`) writes `render_jobs` rows per attempt and `output/reels/<slug>.render.json` (input hash). A first-class `experiment` column/table is a candidate when the analytics-engine starts joining on tags.

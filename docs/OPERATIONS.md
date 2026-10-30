@@ -56,6 +56,11 @@ approvals endpoint refuses G5 for every actor. Screenshots of the UI: `docs/scre
 npm run worker -- --once     # claim ready jobs, run them with timeouts/caps, exit (verified 2026-10-30: empty queue -> "processed 0")
 ```
 
+```bash
+npm run worker -- --enqueue render_batch [--limit N] --run   # render every Reel with G2+G3 (RJ_RENDER_CONCURRENCY, default 2)
+npm run series -- plan|generate|week|capacity                # see docs/SERIES.md
+```
+
 Use `--once` for every scheduled run (cron, Claude Code scheduled task, CI). Do not rely on a
 long-running worker in a cloud session; it dies with the container.
 

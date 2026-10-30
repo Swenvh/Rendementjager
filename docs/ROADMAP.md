@@ -29,3 +29,4 @@ Status values: `done`, `in progress`, `designed`, `not started`, `blocked`.
 
 - 2026-10-23: phase 0 docs, 12 agents, 12 skills, 4 rules, workflows written (org-docs agent).
 - 2026-10-30: independent QA pass (`docs/QA_REPORT.md`): phases 1-3 build verified from a clean copy; first Reel rendered as a CONCEPT (no gate passed, no research brief or script revision in the DB yet). Phase statuses above predate the build and were not re-scored.
+- 2026-10-30: volume layer (docs/SERIES.md): `@rj/series-engine` (405 unique trial-reel drafts from 3 grids, week planner), `render_batch` job, Review page and capacity widget. Drafts stop at IDEA until G1 (open decision: research step for pure calculation items). No Reel from the series has passed any gate.
