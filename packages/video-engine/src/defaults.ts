@@ -2,7 +2,7 @@
 // calculation; Templates A/B use clearly labelled illustrative example data only.
 import { brand } from '@rj/brand';
 import { reelCalculationFromEngine } from './calc/from-finance-engine';
-import { buildMatrixTable, CALCULATED_SOURCE, TABLE_DISCLAIMER_NL } from './calc/matrix';
+import { buildMatrixTable, CALCULATED_SOURCE, TABLE_DISCLAIMER_NL, TABLE_FOOTER_NL, tableSubtitleNl } from './calc/matrix';
 import type { TemplateAProps, TemplateBProps, TemplateCProps, TemplateDProps } from './schemas';
 
 const scenes = (ids: [string, number][]) => {
@@ -72,13 +72,15 @@ export const defaultTemplateB: TemplateBProps = {
 const matrix = buildMatrixTable({ annualReturn: 0.07, amounts: [50, 100, 150, 200, 250, 300, 400, 500], horizons: [10, 20, 30] });
 /** Calculated table: monthly contribution x years -> end value (every cell from @rj/finance-engine). */
 export const defaultTemplateD: TemplateDProps = {
-  timeline: timeline([['table', 9500], ['cta', 3500]]),
+  timeline: timeline([['table', 8250], ['cta', 1750]]),
   voice: silent,
   captions: [],
   footnote: { text: TABLE_DISCLAIMER_NL },
   cta,
   kicker: 'Tabel in cijfers',
-  title: 'Eindbedrag per maand en looptijd',
+  title: 'Zoveel groeit je inleg: €50 tot €500 per maand',
+  subtitle: tableSubtitleNl(0.07),
+  footerLine: TABLE_FOOTER_NL,
   columns: matrix.columns,
   rows: matrix.rows,
   source: CALCULATED_SOURCE,

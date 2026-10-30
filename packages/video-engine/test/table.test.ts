@@ -49,7 +49,7 @@ describe('Template D schema', () => {
   });
   const provided = () => {
     const t = datasetToTable(ds());
-    return { ...defaultTemplateD, ...t, dataOrigin: 'provided' as const, source: src, sortDirection: 'desc' as const, assumptions: [] };
+    return { ...defaultTemplateD, ...t, dataOrigin: 'provided' as const, source: src, sortDirection: 'desc' as const, assumptions: [], footerLine: undefined };
   };
   it('provided data passes only with source, date and period on EVERY row', () => {
     expect(templateDSchema.safeParse(provided()).success).toBe(true);
@@ -125,5 +125,24 @@ describe('dataset validation', () => {
     expect(v.errors).toEqual([]);
     expect(v.dataset!.rows[2]!.value).toBe(-2);
     expect(datasetToTable(v.dataset!).rows[2]!.cells.value).toBe('−2,0%');
+  });
+});
+
+describe('calculated table Reel: short, plain, 10 s by default', () => {
+  it('uses plain column headers and a 10 s total by default', async () => {
+    const { tableTotalMs, TABLE_FOOTER_NL, tableSubtitleNl } = await import('../src/calc/matrix');
+    const m = buildMatrixTable({ annualReturn: 0.08, amounts: [50, 100, 250], horizons: [10, 20, 30] });
+    expect(m.columns.map((c) => c.label)).toEqual(['Per maand', 'Na 10 jaar', 'Na 20 jaar', 'Na 30 jaar']);
+    expect(tableTotalMs()).toBe(10_000);
+    expect(tableTotalMs(12)).toBe(12_000);
+    expect(TABLE_FOOTER_NL).toBe('Rekenvoorbeeld, geen garantie of advies.');
+    expect(tableSubtitleNl(0.08).length).toBeLessThan(70);
+    expect(m.assumptions.length).toBeGreaterThan(0);
+  });
+  it('schema still requires the assumptions for calculated tables', async () => {
+    const { defaultTemplateD } = await import('../src/defaults');
+    const { templateDSchema } = await import('../src/schemas');
+    expect(templateDSchema.safeParse(defaultTemplateD).success).toBe(true);
+    expect(templateDSchema.safeParse({ ...defaultTemplateD, assumptions: [] }).success).toBe(false);
   });
 });

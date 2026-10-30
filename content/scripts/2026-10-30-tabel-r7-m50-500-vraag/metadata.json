@@ -1,0 +1,20 @@
+{
+  "preparedAt": null,
+  "series": "Tabel in cijfers",
+  "slug": "2026-10-30-tabel-r7-m50-500-vraag",
+  "tags": {
+    "amount": 500,
+    "durationS": 10,
+    "hookPattern": "question",
+    "horizon": 30,
+    "kind": "table",
+    "ratePct": 7,
+    "template": "D",
+    "trial": true,
+    "variantGroup": "table-r7-m50-100-150-200-250-300-400-500-y10-20-30",
+    "variantIndex": 0
+  },
+  "template": "TemplateD",
+  "title": "Hoeveel wordt €50 tot €500 per maand? Bij 7%",
+  "trial": true
+}

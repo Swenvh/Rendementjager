@@ -72,7 +72,7 @@ export interface Storyboard {
   /** Template C only. */
   calculation?: { engine: '@rj/finance-engine'; function: 'buildReelCalculation'; overrides: Record<string, number | null> };
   /** Template D only: the calculated matrix the renderer builds with @rj/finance-engine. */
-  table?: { kind: 'matrix'; annualReturn: number; amounts: number[]; horizons: number[]; title: string; subtitle?: string };
+  table?: { kind: 'matrix'; annualReturn: number; amounts: number[]; horizons: number[]; title: string; subtitle?: string; durationS?: number };
   /** Footage clip choice (ids from assets/footage/manifest.json), added at generate time when the library has clips. */
   background?: { clipIds: string[] };
   onScreen: {

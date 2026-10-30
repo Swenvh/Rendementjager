@@ -3,6 +3,13 @@ import { topicKey } from './grids.js';
 import { HOOK_PATTERN_NL, type Claim, type ExperimentTags, type HookPattern, type SeriesItem, type Storyboard, type TopicParams } from './types.js';
 import { eur, hashOf, pct, pick } from './util.js';
 
+/** Default Template D length in seconds (video-engine honours the same RJ_TABLE_DURATION_S). */
+export const tableDurationS = (): number => {
+  const env = Number(process.env.RJ_TABLE_DURATION_S);
+  return Number.isFinite(env) && env > 0 ? Math.min(30, Math.max(6, env)) : 10;
+};
+export const TABLE_FOOTER = 'Rekenvoorbeeld, geen garantie of advies.';
+
 /** Same disclaimer as the video footer (video-engine TABLE_DISCLAIMER_NL). */
 export const TABLE_DISCLAIMER = 'Rendementen uit het verleden bieden geen garantie voor de toekomst. Geen beleggingsadvies.';
 const SERIES = 'Tabel in cijfers';
@@ -18,9 +25,9 @@ function titleFor(p: TopicParams, pattern: HookPattern): string {
   const m = range(p.amounts!);
   const phrase = pick(`${topicKey(p)}|${pattern}`, 2);
   const t: Record<HookPattern, string[]> = {
-    question: [`Wat wordt ${m} per maand na ${years(p.horizons!)} bij ${r}?`, `Hoeveel wordt ${m} per maand over ${years(p.horizons!)} bij ${r}?`],
-    statement: [`Maandelijks ${m} inleggen bij ${r}: eindbedrag per looptijd`, `Eindbedrag per maand en looptijd: ${m}, ${r} per jaar`],
-    contrast: [`Bij ${r}: inleg en looptijd naast elkaar, ${m} per maand`, `Inleg en looptijd vergeleken: ${m} per maand, ${r}`],
+    question: [`Wat wordt je inleg? ${m} per maand, bij ${r}`, `Hoeveel wordt ${m} per maand? Bij ${r}`],
+    statement: [`Zoveel groeit je inleg: ${m} per maand, bij ${r}`, `Zo groeit ${m} per maand, bij ${r}`],
+    contrast: [`Inleg vergeleken: ${m} per maand, bij ${r}`, `Inleg naast elkaar: ${m} per maand, bij ${r}`],
   };
   return t[pattern][phrase]!;
 }
@@ -51,9 +58,10 @@ export function buildTableItem(p: TopicParams, pattern: HookPattern, date: strin
     }
   const cta = CTAS[pick(`${key}|${pattern}|cta`, CTAS.length)]!;
   const segs = [
-    { id: 's01', text: `${title} Dit is een rekenvoorbeeld met ${r} per jaar, zonder kosten en belasting.`, pauseAfterMs: 450 },
-    { id: 's02', text: 'Rendementen uit het verleden bieden geen garantie voor de toekomst. Geen beleggingsadvies.', pauseAfterMs: 450 },
+    { id: 's01', text: `${title}. Bij ${r} per jaar, vóór kosten en belasting.`, pauseAfterMs: 450 },
+    { id: 's02', text: 'Rekenvoorbeeld, geen garantie of advies.', pauseAfterMs: 450 },
   ];
+  const subtitle = `Bij ${r} per jaar. Bedragen vóór kosten en belasting.`;
   const assumptions = `Rekenvoorbeeld: ${r} effectief per jaar (hypothetisch), inleg aan het eind van de maand, nominaal, zonder kosten, belasting en inflatie.`;
   const storyboard: Storyboard = {
     slug: '',
@@ -61,18 +69,18 @@ export function buildTableItem(p: TopicParams, pattern: HookPattern, date: strin
     template: 'TemplateD',
     series: SERIES,
     language: 'nl',
-    table: { kind: 'matrix', annualReturn: p.annualReturn, amounts: p.amounts!, horizons: p.horizons!, title },
+    table: { kind: 'matrix', annualReturn: p.annualReturn, amounts: p.amounts!, horizons: p.horizons!, title, subtitle, durationS: tableDurationS() },
     onScreen: {
       kicker: SERIES,
       hookLines: [title],
       hookHighlightLine: 0,
-      assumptionsFootnote: assumptions,
+      assumptionsFootnote: subtitle,
       risks: { title: 'Let op', items: ['Hypothetisch voorbeeld, geen garantie', 'Nominaal: exclusief kosten, belasting en inflatie', TABLE_DISCLAIMER] },
-      footnote: TABLE_DISCLAIMER,
+      footnote: TABLE_FOOTER,
       cta: cta.replace(/\.$/, ''),
     },
     scenes: [
-      { id: 'table', visual: 'Titelblok (licht label), kolomkop en rijen een voor een; voetregel met aannames, disclaimer en bron.', segments: segs },
+      { id: 'table', visual: 'Titelblok (licht label), een korte regel, kolomkop en rijen een voor een; een korte voetregel. Aannames en bron staan in caption en metadata.', segments: segs },
       { id: 'cta', visual: 'Branded outro met CTA.', segments: [{ id: 's03', text: cta }] },
     ],
   };
@@ -85,7 +93,8 @@ export function buildTableItem(p: TopicParams, pattern: HookPattern, date: strin
     'Een rekenvoorbeeld:',
     `• Inleg per maand: ${range(p.amounts!)}, aan het eind van de maand`,
     `• Looptijden: ${years(p.horizons!)}`,
-    `• Hypothetisch rendement: ${r} effectief per jaar, per maand verrekend`,
+    `• Hypothetisch rendement: ${r} effectief per jaar, per maand verrekend; nominaal, zonder kosten, belasting en inflatie`,
+    `• Bron: eigen rekenvoorbeeld met @rj/finance-engine, peildatum ${date}`,
     `• Voorbeeld: ${eur(midRow)} per maand wordt na ${p.horizons![p.horizons!.length - 1]} jaar ${eur(Math.round(claims.find((c) => c.key === `m${midRow}y${p.horizons![p.horizons!.length - 1]}`)!.value))} (nominaal, zonder kosten en belasting)`,
     '',
     TABLE_DISCLAIMER,
@@ -98,7 +107,7 @@ export function buildTableItem(p: TopicParams, pattern: HookPattern, date: strin
   ].join('\n');
   const tags: ExperimentTags = {
     trial: true, kind: 'table', hookPattern: pattern, amount: Math.max(...p.amounts!), horizon: Math.max(...p.horizons!), template: 'D',
-    durationS: Math.round((2.5 + p.amounts!.length * 0.45 + 3.5 + 3.5) * 10) / 10,
+    durationS: tableDurationS(),
     variantGroup: key.replace(/[:]/g, '-'), variantIndex: (['question', 'statement', 'contrast'] as const).indexOf(pattern), ratePct: Math.round(p.annualReturn * 10_000) / 100,
   };
   const contentHash = hashOf({ v: 1, kind: 'table', topic: key, pattern, scenes: storyboard.scenes, onScreen: storyboard.onScreen, table: storyboard.table, caption, claims });
@@ -109,7 +118,8 @@ export function buildTableItem(p: TopicParams, pattern: HookPattern, date: strin
     `- Template: D "Tabel in cijfers" · 1080x1920 · 30 fps · ca. ${tags.durationS} s (schatting)`,
     `- Reeks: ${SERIES} · variantgroep ${tags.variantGroup} · hookpatroon: ${HOOK_PATTERN_NL[pattern]}`,
     '- Status: CONCEPT (nog geen G1/G2/G3/G4/G5). Elke cel is een aanroep van `@rj/finance-engine`; zie `series.json` (claims met calculationRef).',
-    `- Aannames op het scherm: ${assumptions}`,
+    `- Op het scherm: regel "${subtitle}" en voetregel "${TABLE_FOOTER}"`,
+    `- Aannames (niet op het scherm, wel in caption en metadata): ${assumptions}; bron: eigen rekenvoorbeeld met @rj/finance-engine, peildatum ${date}`,
     '',
     '## Gesproken tekst (per scène)',
     '| Scène | Voice-over |',

@@ -363,6 +363,12 @@ describe('Tabel in cijfers (Template D series)', () => {
       expect(requiredDisclaimers(i.caption)).toEqual([]);
       expect(textsOf(i).flatMap(lintCopy)).toEqual([]);
     }
+    for (const i of items) {
+      expect(i.tags.durationS).toBe(10);
+      expect(i.storyboard.onScreen.footnote).toBe('Rekenvoorbeeld, geen garantie of advies.');
+      expect(i.caption).toContain('@rj/finance-engine');
+      expect(i.title.length).toBeLessThanOrEqual(60);
+    }
     expect(JSON.stringify(buildItem(topics[3]!, 'contrast', DATE))).toBe(JSON.stringify(buildItem(topics[3]!, 'contrast', DATE)));
   });
   it('planSeries can plan the table kind', () => {

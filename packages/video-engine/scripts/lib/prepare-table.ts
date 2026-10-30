@@ -6,7 +6,7 @@
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { brand, resolveLogo } from '@rj/brand';
-import { buildMatrixTable, CALCULATED_SOURCE, TABLE_DISCLAIMER_NL } from '../../src/calc/matrix.js';
+import { buildMatrixTable, CALCULATED_SOURCE, TABLE_DISCLAIMER_NL, TABLE_FOOTER_NL, TABLE_OUTRO_MS, tableSubtitleNl, tableTotalMs } from '../../src/calc/matrix.js';
 import { datasetToTable, validateDataset, type Dataset } from '../../src/dataset.js';
 import { templateDSchema, type TemplateDProps } from '../../src/schemas.js';
 import { syncStaticAssets } from '../copy-fonts.js';
@@ -14,7 +14,7 @@ import { ASSETS_BRAND, REPO_DIR } from './paths.js';
 import { resolveBackground, voiceMetadata, voiceTrackFor, type PreparedContent } from './prepare.js';
 
 export type TableSpec =
-  | { kind: 'matrix'; annualReturn: number; amounts: number[]; horizons: number[]; title: string; subtitle?: string }
+  | { kind: 'matrix'; annualReturn: number; amounts: number[]; horizons: number[]; title: string; subtitle?: string; durationS?: number }
   | { kind: 'dataset'; datasetFile: string };
 
 export interface TableStoryboard {
@@ -38,7 +38,7 @@ export async function prepareTable(slug: string, dir: string, sb: TableStoryboar
   let extra: Record<string, unknown>;
   if (sb.table.kind === 'matrix') {
     const m = buildMatrixTable({ annualReturn: sb.table.annualReturn, amounts: sb.table.amounts, horizons: sb.table.horizons });
-    table = { columns: m.columns, rows: m.rows, source: CALCULATED_SOURCE, asOfDate: dateFromSlug, dataOrigin: 'calculated', assumptions: m.assumptions, title: sb.table.title, subtitle: sb.table.subtitle };
+    table = { columns: m.columns, rows: m.rows, source: CALCULATED_SOURCE, asOfDate: dateFromSlug, dataOrigin: 'calculated', assumptions: m.assumptions, title: sb.table.title, subtitle: sb.table.subtitle ?? tableSubtitleNl(sb.table.annualReturn) };
     extra = { calculation: { engine: '@rj/finance-engine', function: 'futureValueOfMonthlyContributions', spec: { annualReturn: sb.table.annualReturn, amounts: sb.table.amounts, horizons: sb.table.horizons }, cells: m.cells.length } };
   } else {
     const file = join(REPO_DIR, sb.table.datasetFile);
@@ -56,12 +56,17 @@ export async function prepareTable(slug: string, dir: string, sb: TableStoryboar
 
   const segments = sb.scenes.flatMap((sc) => sc.segments);
   const { track, sel } = await voiceTrackFor(slug, segments);
-  const tableMs = Math.max(tableSceneMs(table.rows.length), (() => {
-    const cta = sb.scenes.find((s) => s.id === 'cta')?.segments[0];
-    const t = cta && track.segments.find((x) => x.id === cta.id);
-    return t ? Math.max(0, t.startMs - 250) : 0;
-  })());
-  const timeline = { totalMs: tableMs + CTA_HOLD_MS, scenes: [{ id: 'table', startMs: 0, endMs: tableMs }, { id: 'cta', startMs: tableMs, endMs: tableMs + CTA_HOLD_MS }] };
+  // Calculated tables are short by design (default 10 s, no narration): table reveal + hold, then a short outro.
+  const calculated = sb.table.kind === 'matrix';
+  const outroMs = calculated ? TABLE_OUTRO_MS : CTA_HOLD_MS;
+  const tableMs = calculated
+    ? tableTotalMs(sb.table.kind === 'matrix' ? sb.table.durationS : undefined) - outroMs
+    : Math.max(tableSceneMs(table.rows.length), (() => {
+        const cta = sb.scenes.find((s) => s.id === 'cta')?.segments[0];
+        const t = cta && track.segments.find((x) => x.id === cta.id);
+        return t ? Math.max(0, t.startMs - 250) : 0;
+      })());
+  const timeline = { totalMs: tableMs + outroMs, scenes: [{ id: 'table', startMs: 0, endMs: tableMs }, { id: 'cta', startMs: tableMs, endMs: tableMs + outroMs }] };
   const bg = resolveBackground(slug, timeline.totalMs, sb.background?.clipIds);
 
   const props: TemplateDProps = templateDSchema.parse({
@@ -75,6 +80,7 @@ export async function prepareTable(slug: string, dir: string, sb: TableStoryboar
     kicker: sb.onScreen.kicker,
     ...table,
     disclaimer: TABLE_DISCLAIMER_NL,
+    ...(calculated ? { footerLine: TABLE_FOOTER_NL } : {}),
   });
   writeFileSync(join(dir, 'props.json'), JSON.stringify(props, null, 2) + '\n');
   const logo = resolveLogo((f) => existsSync(join(ASSETS_BRAND, f)));

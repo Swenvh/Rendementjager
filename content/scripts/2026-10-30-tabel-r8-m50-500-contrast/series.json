@@ -201,7 +201,7 @@
       "value": 704275
     }
   ],
-  "contentHash": "b75570dc6cceb94bfeff11475752c1d16806f1be75b8268ba94f7d77327db690",
+  "contentHash": "9c226b557ff271f536c5bb5d36e1957af8257dd582aed4f930b0c770634ff370",
   "hashtags": [
     "#beleggen",
     "#renteoprente",
@@ -209,16 +209,16 @@
     "#vermogensopbouw",
     "#geldzaken"
   ],
-  "hook": "Inleg en looptijd vergeleken: €50 tot €500 per maand, 8%",
+  "hook": "Inleg naast elkaar: €50 tot €500 per maand, bij 8%",
   "hookPattern": "contrast",
   "kind": "table",
   "pillar": "vermogensopbouw",
-  "propsHash": "c01955e6aa03983d40690bb631ed46d961066b9da6062f2997c2cd0024adebb4",
+  "propsHash": "bb08e5cb87167017957f8ecaeb9a513f164c263a9b8706089d866e9d8e881e77",
   "series": "Tabel in cijfers",
   "slug": "2026-10-30-tabel-r8-m50-500-contrast",
   "tags": {
     "amount": 500,
-    "durationS": 13.1,
+    "durationS": 10,
     "hookPattern": "contrast",
     "horizon": 30,
     "kind": "table",
@@ -228,7 +228,7 @@
     "variantGroup": "table-r8-m50-100-150-200-250-300-400-500-y10-20-30",
     "variantIndex": 2
   },
-  "title": "Inleg en looptijd vergeleken: €50 tot €500 per maand, 8%",
+  "title": "Inleg naast elkaar: €50 tot €500 per maand, bij 8%",
   "topicKey": "table:r8:m50-100-150-200-250-300-400-500:y10-20-30",
   "trial": true,
   "version": 1

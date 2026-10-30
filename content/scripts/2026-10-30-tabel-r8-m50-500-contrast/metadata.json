@@ -1,9 +1,9 @@
 {
   "slug": "2026-10-30-tabel-r8-m50-500-contrast",
-  "title": "Inleg en looptijd vergeleken: €50 tot €500 per maand, 8%",
+  "title": "Inleg naast elkaar: €50 tot €500 per maand, bij 8%",
   "template": "TemplateD",
-  "preparedAt": "2026-10-30T15:03:32.368Z",
-  "durationMs": 18540,
+  "preparedAt": "2026-10-30T15:25:55.945Z",
+  "durationMs": 10000,
   "table": {
     "origin": "calculated",
     "rows": 8,
@@ -57,7 +57,7 @@
     "qa": {
       "voice": "none",
       "file": null,
-      "durationMs": 17290,
+      "durationMs": 13450,
       "targetLufs": 0,
       "inputLufs": null,
       "outputLufs": null,
@@ -73,21 +73,21 @@
     "segments": [
       {
         "id": "s01",
-        "text": "Inleg en looptijd vergeleken: €50 tot €500 per maand, 8% Dit is een rekenvoorbeeld met 8% per jaar, zonder kosten en belasting.",
-        "spokenText": "Inleg en looptijd vergeleken: vijftig euro tot vijfhonderd euro per maand, acht procent Dit is een rekenvoorbeeld met acht procent per jaar, zonder kosten en belasting.",
+        "text": "Inleg naast elkaar: €50 tot €500 per maand, bij 8%. Bij 8% per jaar, vóór kosten en belasting.",
+        "spokenText": "Inleg naast elkaar: vijftig euro tot vijfhonderd euro per maand, bij acht procent. Bij acht procent per jaar, vóór kosten en belasting.",
         "startMs": 350,
-        "endMs": 10070,
-        "durationMs": 9720,
+        "endMs": 8630,
+        "durationMs": 8280,
         "cacheHit": false,
         "wordTimingSource": "reading-speed"
       },
       {
         "id": "s02",
-        "text": "Rendementen uit het verleden bieden geen garantie voor de toekomst. Geen beleggingsadvies.",
-        "spokenText": "Rendementen uit het verleden bieden geen garantie voor de toekomst. Geen beleggingsadvies.",
-        "startMs": 10520,
-        "endMs": 14840,
-        "durationMs": 4320,
+        "text": "Rekenvoorbeeld, geen garantie of advies.",
+        "spokenText": "Rekenvoorbeeld, geen garantie of advies.",
+        "startMs": 9080,
+        "endMs": 11000,
+        "durationMs": 1920,
         "cacheHit": false,
         "wordTimingSource": "reading-speed"
       },
@@ -95,8 +95,8 @@
         "id": "s03",
         "text": "Meer rekentabellen? Volg @rendementjager.",
         "spokenText": "Meer rekentabellen? Volg rendementjager.",
-        "startMs": 15290,
-        "endMs": 16890,
+        "startMs": 11450,
+        "endMs": 13050,
         "durationMs": 1600,
         "cacheHit": false,
         "wordTimingSource": "reading-speed"
@@ -118,17 +118,17 @@
   "brand": "@rendementjager",
   "render": {
     "file": "output/reels/2026-10-30-tabel-r8-m50-500-contrast.mp4",
-    "sha256": "f25e74df2aff194dd8ed7ad7c200a65344900be64633cc57a55b4a8c32630303",
-    "sizeBytes": 4706101,
+    "sha256": "209d85f852f3ada38ec76c99a374698382b23fa88c878ce083841d67ae76f379",
+    "sizeBytes": 2771852,
     "composition": "TemplateD",
     "width": 1080,
     "height": 1920,
     "fps": 30,
-    "durationInFrames": 557,
+    "durationInFrames": 300,
     "codec": "h264",
-    "renderedAt": "2026-10-30T15:06:01.980Z",
-    "prepareMs": 84,
-    "renderMs": 148552
+    "renderedAt": "2026-10-30T15:27:15.859Z",
+    "prepareMs": 56,
+    "renderMs": 78500
   },
   "mediaQa": {
     "report": "output/reels/2026-10-30-tabel-r8-m50-500-contrast.qa.json",

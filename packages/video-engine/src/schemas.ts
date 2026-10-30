@@ -172,12 +172,16 @@ export const templateDSchema = shellSchema
     asOfDate: isoDate,
     dataOrigin: z.enum(['calculated', 'provided']),
     disclaimer: z.string().min(20),
+    /** Optional short footer shown on screen instead of disclaimer + source (the full texts stay in props/metadata/caption). */
+    footerLine: z.string().max(60).optional(),
     /** Assumptions shown on screen for calculated tables (rate, timing, costs, tax). */
     assumptions: z.array(z.string().min(1)).max(4).default([]),
     sortDirection: z.enum(['asc', 'desc']).optional(),
   })
   .superRefine((t, ctx) => {
-    if ([t.subtitle, ...t.assumptions].filter(Boolean).join(' · ').length > 150) ctx.addIssue({ code: 'custom', message: 'subtitle + assumptions must fit two lines (150 characters)', path: ['assumptions'] });
+    if (t.dataOrigin === 'calculated' && t.assumptions.length === 0) ctx.addIssue({ code: 'custom', message: 'calculated tables must state their assumptions (kept in props/metadata/caption)', path: ['assumptions'] });
+    if (t.footerLine && t.dataOrigin !== 'calculated') ctx.addIssue({ code: 'custom', message: 'footerLine is only for calculated tables; provided data keeps the full disclaimer and source on screen', path: ['footerLine'] });
+    if ([t.subtitle, ...(t.dataOrigin === 'provided' ? t.assumptions : [])].filter(Boolean).join(' · ').length > 150) ctx.addIssue({ code: 'custom', message: 'info line must fit two lines (150 characters)', path: ['subtitle'] });
     const keys = t.columns.map((c) => c.key);
     if (new Set(keys).size !== keys.length) ctx.addIssue({ code: 'custom', message: 'duplicate column keys', path: ['columns'] });
     if (!t.columns.some((c) => c.kind === 'value')) ctx.addIssue({ code: 'custom', message: 'at least one value column', path: ['columns'] });

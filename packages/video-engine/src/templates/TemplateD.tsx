@@ -32,7 +32,8 @@ export function rowMetrics(n: number) {
 }
 
 /** Line under the title: subtitle and stated assumptions (calculated) or period (provided). */
-export const tableInfoLine = (p: Pick<TemplateDProps, 'subtitle' | 'assumptions'>) => [p.subtitle, ...p.assumptions].filter(Boolean).join(' · ');
+export const tableInfoLine = (p: Pick<TemplateDProps, 'subtitle' | 'assumptions' | 'dataOrigin'>) =>
+  [p.subtitle, ...(p.dataOrigin === 'provided' ? p.assumptions : [])].filter(Boolean).join(' · ');
 
 const isNegative = (s: string) => /^[−-]/.test(s.trim());
 
@@ -45,21 +46,24 @@ const TableScene: React.FC<{ props: TemplateDProps }> = ({ props }) => {
   const width = theme.reel.width - D_LAYOUT.left - D_LAYOUT.rightClear;
   const tp = spring({ frame: frame - 2, fps, config: theme.spring.smooth });
   // Row reveal: spread over the first ~60% of the scene, never slower than 7 frames per row.
-  const step = Math.max(2, Math.min(7, Math.floor((durationInFrames * 0.6) / n)));
+  const step = Math.max(2, Math.min(10, Math.floor((durationInFrames * 0.6) / n)));
   const labelCols = props.columns.filter((c) => c.kind === 'label');
   const valueCols = props.columns.filter((c) => c.kind === 'value');
   // Column widths: value columns share the space; label columns take what they need.
-  const longest = (key: string) => Math.max(...props.rows.map((r) => r.cells[key]!.length), props.columns.find((c) => c.key === key)!.label.length);
+  const headFont = 26;
+  const cellLongest = (key: string) => Math.max(...props.rows.map((r) => r.cells[key]!.length));
+  const headLen = (key: string) => props.columns.find((c) => c.key === key)!.label.length;
   const charW = 0.6;
   const pad = 20;
   const inner = width - pad * 2;
-  const valueW = valueCols.map((c) => Math.ceil(longest(c.key) * font * charW) + 16);
-  const labelNeed = labelCols.map((c) => Math.ceil(longest(c.key) * font * 0.56));
+  // Value columns: wide enough for the figures and for the (uppercase, letter-spaced) header; label columns share the rest.
+  const valueW = valueCols.map((c) => Math.max(Math.ceil(cellLongest(c.key) * font * charW) + 16, Math.ceil(headLen(c.key) * headFont * 0.78)));
   const labelSpace = inner - valueW.reduce((a, b) => a + b, 0);
+  const labelNeed = labelCols.map((c) => Math.max(cellLongest(c.key) * font * 0.56, headLen(c.key) * headFont * 0.78));
   const labelTotal = labelNeed.reduce((a, b) => a + b, 0) || 1;
   const labelW = labelNeed.map((w) => Math.max(90, Math.floor((w / labelTotal) * labelSpace)));
   const widthOf = (c: { key: string; kind: string }) => (c.kind === 'value' ? valueW[valueCols.findIndex((v) => v.key === c.key)]! : labelW[labelCols.findIndex((v) => v.key === c.key)]!);
-  const fitFont = (c: { key: string; kind: string }) => Math.min(font, Math.floor((widthOf(c) - 8) / (longest(c.key) * charW)));
+  const fitFont = (c: { key: string; kind: string }) => Math.min(font, Math.floor((widthOf(c) - 8) / (cellLongest(c.key) * (c.kind === 'value' ? charW : 0.56))));
   return (
     <>
       {/* Title block: light label, dark Manrope ExtraBold; assumptions / period line below it (max 2 lines). */}
@@ -67,18 +71,18 @@ const TableScene: React.FC<{ props: TemplateDProps }> = ({ props }) => {
         <div
           style={{
             padding: '20px 30px', borderRadius: theme.radii.md, background: theme.colors.surface, color: theme.colors.bg,
-            fontFamily: theme.fonts.heading, fontWeight: 800, fontSize: props.title.length > 40 ? 44 : 52, lineHeight: 1.1, letterSpacing: '-0.025em',
+            fontFamily: theme.fonts.heading, fontWeight: 800, fontSize: props.title.length > 40 ? 48 : 56, lineHeight: 1.1, letterSpacing: '-0.025em',
             opacity: tp, transform: `translateY(${interpolate(tp, [0, 1], [-24, 0], clamp)}px) scale(${interpolate(tp, [0, 1], [0.97, 1], clamp)})`,
           }}
         >
           {props.title}
         </div>
-        {info ? <div style={{ fontFamily: theme.fonts.body, fontWeight: 500, fontSize: 26, lineHeight: 1.3, color: theme.colors.textDim, opacity: tp }}>{info}</div> : null}
+        {info ? <div style={{ fontFamily: theme.fonts.body, fontWeight: 500, fontSize: 32, lineHeight: 1.3, color: theme.colors.textDim, opacity: tp }}>{info}</div> : null}
       </div>
       {/* Column header */}
       <div style={{ position: 'absolute', left: D_LAYOUT.left, width, top: D_LAYOUT.rowsTop, height: D_LAYOUT.headerH, display: 'flex', alignItems: 'center', padding: `0 ${pad}px`, opacity: tp }}>
         {props.columns.map((c) => (
-          <div key={c.key} style={{ width: widthOf(c), flex: '0 0 auto', textAlign: c.kind === 'value' ? 'right' : 'left', fontFamily: theme.fonts.body, fontWeight: 500, fontSize: 28, letterSpacing: '0.06em', textTransform: 'uppercase', color: theme.colors.textDim, whiteSpace: 'nowrap' }}>
+          <div key={c.key} style={{ width: widthOf(c), flex: '0 0 auto', textAlign: c.kind === 'value' ? 'right' : 'left', fontFamily: theme.fonts.body, fontWeight: 500, fontSize: headFont, letterSpacing: '0.06em', textTransform: 'uppercase', color: theme.colors.textDim, whiteSpace: 'nowrap' }}>
             {c.label}
           </div>
         ))}
@@ -129,7 +133,7 @@ export const TemplateD: React.FC<TemplateDProps> = (props) => {
     <ReelShell
       scenes={props.timeline.scenes}
       captions={props.captions}
-      footnote={{ text: props.disclaimer, source: sourceLine }}
+      footnote={props.footerLine ? { text: props.footerLine } : { text: props.disclaimer, source: sourceLine }}
       voiceSrc={props.voice.src}
       headerLabel={props.kicker}
       hideFootnoteIn={['cta']}

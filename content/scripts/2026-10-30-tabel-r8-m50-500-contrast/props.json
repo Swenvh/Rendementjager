@@ -1,16 +1,16 @@
 {
   "timeline": {
-    "totalMs": 18540,
+    "totalMs": 10000,
     "scenes": [
       {
         "id": "table",
         "startMs": 0,
-        "endMs": 15040
+        "endMs": 8250
       },
       {
         "id": "cta",
-        "startMs": 15040,
-        "endMs": 18540
+        "startMs": 8250,
+        "endMs": 10000
       }
     ]
   },
@@ -18,7 +18,7 @@
     "src": null,
     "provider": "none",
     "brandVoice": false,
-    "durationMs": 17290
+    "durationMs": 13450
   },
   "captions": [],
   "footnote": {
@@ -30,26 +30,27 @@
   },
   "background": null,
   "kicker": "Tabel in cijfers",
-  "title": "Inleg en looptijd vergeleken: €50 tot €500 per maand, 8%",
+  "title": "Inleg naast elkaar: €50 tot €500 per maand, bij 8%",
+  "subtitle": "Bij 8% per jaar. Bedragen vóór kosten en belasting.",
   "columns": [
     {
       "key": "amount",
-      "label": "Inleg p/m",
+      "label": "Per maand",
       "kind": "label"
     },
     {
       "key": "y10",
-      "label": "10 jaar",
+      "label": "Na 10 jaar",
       "kind": "value"
     },
     {
       "key": "y20",
-      "label": "20 jaar",
+      "label": "Na 20 jaar",
       "kind": "value"
     },
     {
       "key": "y30",
-      "label": "30 jaar",
+      "label": "Na 30 jaar",
       "kind": "value"
     }
   ],
@@ -133,6 +134,7 @@
   "asOfDate": "2026-10-30",
   "dataOrigin": "calculated",
   "disclaimer": "Rendementen uit het verleden bieden geen garantie voor de toekomst. Geen beleggingsadvies.",
+  "footerLine": "Rekenvoorbeeld, geen garantie of advies.",
   "assumptions": [
     "Rekenvoorbeeld: 8% effectief per jaar (hypothetisch)",
     "inleg aan het eind van de maand",

@@ -4,6 +4,20 @@ import type { TemplateDProps } from '../schemas';
 /** Disclaimer shown in the footer of every table Reel. */
 export const TABLE_DISCLAIMER_NL = 'Rendementen uit het verleden bieden geen garantie voor de toekomst. Geen beleggingsadvies.';
 
+/** One short footer line on screen for calculated tables; the full disclaimer stays in props, metadata and caption. */
+export const TABLE_FOOTER_NL = 'Rekenvoorbeeld, geen garantie of advies.';
+/** Default Template D length (configurable per Reel via the storyboard `durationS` or RJ_TABLE_DURATION_S). */
+export const TABLE_TOTAL_MS_DEFAULT = 10_000;
+export const TABLE_OUTRO_MS = 1750;
+export const tableTotalMs = (override?: number): number => {
+  const env = Number(process.env.RJ_TABLE_DURATION_S);
+  const s = override ?? (Number.isFinite(env) && env > 0 ? env : TABLE_TOTAL_MS_DEFAULT / 1000);
+  return Math.round(Math.min(30, Math.max(6, s)) * 1000);
+};
+
+/** Plain on-screen line under the title. */
+export const tableSubtitleNl = (annualReturn: number) => `Bij ${formatPercent(annualReturn)} per jaar. Bedragen vóór kosten en belasting.`;
+
 export const CALCULATED_SOURCE = { name: 'Eigen rekenvoorbeeld met @rj/finance-engine' } as const;
 
 export interface MatrixSpec {
@@ -47,7 +61,7 @@ export function buildMatrixTable(spec: MatrixSpec): MatrixTable {
     return { cells: rowCells, highlight: ri === Math.floor(spec.amounts.length / 2) };
   });
   return {
-    columns: [{ key: 'amount', label: 'Inleg p/m', kind: 'label' }, ...spec.horizons.map((y) => ({ key: `y${y}`, label: `${y} jaar`, kind: 'value' as const }))],
+    columns: [{ key: 'amount', label: 'Per maand', kind: 'label' }, ...spec.horizons.map((y) => ({ key: `y${y}`, label: `Na ${y} jaar`, kind: 'value' as const }))],
     rows,
     assumptions: [`Rekenvoorbeeld: ${formatPercent(spec.annualReturn)} effectief per jaar (hypothetisch)`, 'inleg aan het eind van de maand', 'nominaal, zonder kosten, belasting en inflatie'],
     cells,

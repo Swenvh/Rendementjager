@@ -1,0 +1,75 @@
+{
+  "slug": "2026-10-30-tabel-r7-m50-500-vraag",
+  "title": "Hoeveel wordt €50 tot €500 per maand? Bij 7%",
+  "template": "TemplateD",
+  "series": "Tabel in cijfers",
+  "language": "nl",
+  "table": {
+    "kind": "matrix",
+    "annualReturn": 0.07,
+    "amounts": [
+      50,
+      100,
+      150,
+      200,
+      250,
+      300,
+      400,
+      500
+    ],
+    "horizons": [
+      10,
+      20,
+      30
+    ],
+    "title": "Hoeveel wordt €50 tot €500 per maand? Bij 7%",
+    "subtitle": "Bij 7% per jaar. Bedragen vóór kosten en belasting.",
+    "durationS": 10
+  },
+  "onScreen": {
+    "kicker": "Tabel in cijfers",
+    "hookLines": [
+      "Hoeveel wordt €50 tot €500 per maand? Bij 7%"
+    ],
+    "hookHighlightLine": 0,
+    "assumptionsFootnote": "Bij 7% per jaar. Bedragen vóór kosten en belasting.",
+    "risks": {
+      "title": "Let op",
+      "items": [
+        "Hypothetisch voorbeeld, geen garantie",
+        "Nominaal: exclusief kosten, belasting en inflatie",
+        "Rendementen uit het verleden bieden geen garantie voor de toekomst. Geen beleggingsadvies."
+      ]
+    },
+    "footnote": "Rekenvoorbeeld, geen garantie of advies.",
+    "cta": "Volg @rendementjager voor meer inzicht"
+  },
+  "scenes": [
+    {
+      "id": "table",
+      "visual": "Titelblok (licht label), een korte regel, kolomkop en rijen een voor een; een korte voetregel. Aannames en bron staan in caption en metadata.",
+      "segments": [
+        {
+          "id": "s01",
+          "text": "Hoeveel wordt €50 tot €500 per maand? Bij 7%. Bij 7% per jaar, vóór kosten en belasting.",
+          "pauseAfterMs": 450
+        },
+        {
+          "id": "s02",
+          "text": "Rekenvoorbeeld, geen garantie of advies.",
+          "pauseAfterMs": 450
+        }
+      ]
+    },
+    {
+      "id": "cta",
+      "visual": "Branded outro met CTA.",
+      "segments": [
+        {
+          "id": "s03",
+          "text": "Volg @rendementjager voor meer inzicht."
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "slug": "2026-10-30-tabel-r8-m50-500-contrast",
-  "title": "Inleg en looptijd vergeleken: €50 tot €500 per maand, 8%",
+  "title": "Inleg naast elkaar: €50 tot €500 per maand, bij 8%",
   "template": "TemplateD",
   "series": "Tabel in cijfers",
   "language": "nl",
@@ -22,15 +22,17 @@
       20,
       30
     ],
-    "title": "Inleg en looptijd vergeleken: €50 tot €500 per maand, 8%"
+    "title": "Inleg naast elkaar: €50 tot €500 per maand, bij 8%",
+    "subtitle": "Bij 8% per jaar. Bedragen vóór kosten en belasting.",
+    "durationS": 10
   },
   "onScreen": {
     "kicker": "Tabel in cijfers",
     "hookLines": [
-      "Inleg en looptijd vergeleken: €50 tot €500 per maand, 8%"
+      "Inleg naast elkaar: €50 tot €500 per maand, bij 8%"
     ],
     "hookHighlightLine": 0,
-    "assumptionsFootnote": "Rekenvoorbeeld: 8% effectief per jaar (hypothetisch), inleg aan het eind van de maand, nominaal, zonder kosten, belasting en inflatie.",
+    "assumptionsFootnote": "Bij 8% per jaar. Bedragen vóór kosten en belasting.",
     "risks": {
       "title": "Let op",
       "items": [
@@ -39,22 +41,22 @@
         "Rendementen uit het verleden bieden geen garantie voor de toekomst. Geen beleggingsadvies."
       ]
     },
-    "footnote": "Rendementen uit het verleden bieden geen garantie voor de toekomst. Geen beleggingsadvies.",
+    "footnote": "Rekenvoorbeeld, geen garantie of advies.",
     "cta": "Meer rekentabellen? Volg @rendementjager"
   },
   "scenes": [
     {
       "id": "table",
-      "visual": "Titelblok (licht label), kolomkop en rijen een voor een; voetregel met aannames, disclaimer en bron.",
+      "visual": "Titelblok (licht label), een korte regel, kolomkop en rijen een voor een; een korte voetregel. Aannames en bron staan in caption en metadata.",
       "segments": [
         {
           "id": "s01",
-          "text": "Inleg en looptijd vergeleken: €50 tot €500 per maand, 8% Dit is een rekenvoorbeeld met 8% per jaar, zonder kosten en belasting.",
+          "text": "Inleg naast elkaar: €50 tot €500 per maand, bij 8%. Bij 8% per jaar, vóór kosten en belasting.",
           "pauseAfterMs": 450
         },
         {
           "id": "s02",
-          "text": "Rendementen uit het verleden bieden geen garantie voor de toekomst. Geen beleggingsadvies.",
+          "text": "Rekenvoorbeeld, geen garantie of advies.",
           "pauseAfterMs": 450
         }
       ]
