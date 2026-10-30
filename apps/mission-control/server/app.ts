@@ -7,6 +7,7 @@ import { errorBody, handleError } from './errors.js';
 import { calendarRoutes, contentRoutes } from './routes/content.js';
 import { analyticsRoutes, brandRoutes, mediaRoutes, researchRoutes } from './routes/library.js';
 import { methodRoutes } from './routes/methods.js';
+import { publishRoutes } from './routes/publish.js';
 import { reviewRoutes } from './routes/review.js';
 import { agentRoutes, jobRoutes, systemRoutes } from './routes/ops.js';
 
@@ -57,6 +58,7 @@ export function createApp(deps: AppDeps): Hono {
   app.route('/api/calendar', calendarRoutes(deps));
   app.route('/api/jobs', jobRoutes(deps));
   app.route('/api/review', reviewRoutes(deps));
+  app.route('/api/publish', publishRoutes(deps));
   app.route('/api/methods', methodRoutes(deps));
   app.route('/api/agents', agentRoutes(deps));
   app.route('/api/research', researchRoutes(deps));

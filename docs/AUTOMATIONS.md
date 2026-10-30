@@ -13,7 +13,7 @@ exists for Rendementjager. Nothing paid and nothing that publishes is activated.
 - **Capped**: per-job/day/month cost caps (`RJ_*_COST_CAP_EUR`); `RJ_MAX_CONCURRENT_JOBS` (2).
 - **Stoppable**: `RJ_EMERGENCY_STOP=1` makes every job exit without work.
 - **Honest output**: mocks labelled `mock`; missing metrics `null`; failures reported, not hidden.
-- **No publishing**: no job transitions to SCHEDULED/PUBLISHED. Distribution is manual, behind G5.
+- **Publishing is owner-gated**: no job schedules anything. The `publish_due` job only acts on items the owner already approved (G5) and scheduled; it re-verifies hashes and G5, and by default only *stages* them for manual posting. Live posting needs the extra opt-ins in `docs/INTEGRATIONS.md` and is untested.
 
 ## Jobs
 
@@ -22,6 +22,7 @@ exists for Rendementjager. Nothing paid and nothing that publishes is activated.
 | Daily 06:50 | system-health | skill `system-health` | 10 min | `system-health:{date}` | health section in brief |
 | Daily 06:55, 18:47 | worker drain | `npm run worker -- --once` | 30 min | per job | job results in DB |
 | Daily 07:07 | daily-brief | skill `daily-brief` | 15 min | `daily-brief:{date}` | `output/reports/{date}-daily-brief.md` |
+| Every 15 min (not activated) | publish_due | `npm run publish -- due --run` | 10 min | `publish_due:{contentId}:{scheduledAt}` | staged item (manual) or post id/url; deferred by caps/spacing/stop, retried; refusals -> failed + `error_logs` |
 | Daily 09:13 | analytics snapshot | worker job `collect_metrics` | 15 min | `{content_id}:{window}` | metric snapshots (mock until insights live) |
 | Mon 08:17 | research-topics | skill | 45 min | `research-topics:{iso_week}` | ResearchBrief + ContentIdea records |
 | Mon 09:43 | plan-week | skill | 30 min | `plan-week:{iso_week}` | week plan (ContentIdea set, `output/reports/`) |

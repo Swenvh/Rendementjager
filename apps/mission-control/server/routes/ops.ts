@@ -23,6 +23,7 @@ export const JOB_AGENT: Readonly<Record<JobType, AgentId>> = {
   render_cover: 'video-engineer',
   media_qa: 'qa-engineer',
   collect_metrics: 'growth-analyst',
+  publish_due: 'distribution-manager',
   daily_brief: 'chief-of-staff',
 };
 

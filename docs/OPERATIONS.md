@@ -64,6 +64,21 @@ npm run series -- plan|generate|week|capacity                # see docs/SERIES.m
 Use `--once` for every scheduled run (cron, Claude Code scheduled task, CI). Do not rely on a
 long-running worker in a cloud session; it dies with the container.
 
+## Publishing (Phase 5)
+
+```bash
+npm run publish -- export <contentId>   # output/publish/<slug>/: video.mp4, cover.png, caption.txt, hashtags.txt, schedule.txt, manifest.json (refuses without a valid owner G5)
+npm run publish -- verify <contentId>   # recomputes video sha256 + caption hash, checks G5; exit 1 = do NOT post
+npm run publish -- due [--run]          # enqueue publish_due for due SCHEDULED items (--run also drains the queue)
+npm run publish -- status               # mode, caps, usage in the last 24 h
+```
+
+Default is manual: a due item is "klaargezet" (staged); the owner downloads the package on Mission Control > Publicatie, posts it, and
+records the `instagram.com/reel/...` link with "Markeer als handmatig gepubliceerd" (G5 is re-checked). Env: `RJ_DAILY_PUBLISH_CAP`
+(10), `RJ_PUBLISH_MIN_SPACING_MIN` (60), `RJ_PUBLISH_MODE` (`manual` default | `instagram`), `RJ_PUBLIC_MEDIA_BASE_URL`,
+`RJ_PUBLISH_MAX_ATTEMPTS` (3). Live Instagram: see `docs/INTEGRATIONS.md` (untested). Failures land in Publicatie (log + errors) and in
+`error_logs` (scope `publish`).
+
 ## Render and media QA
 
 ```bash

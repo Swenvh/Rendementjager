@@ -366,6 +366,7 @@ export const JOB_TYPES = [
   'render_cover',
   'media_qa',
   'collect_metrics',
+  'publish_due',
   'daily_brief',
 ] as const;
 export const JobTypeSchema = z.enum(JOB_TYPES);

@@ -105,7 +105,7 @@ describe('retry', () => {
 describe('adapters', () => {
   it('without env everything is mock, configured false, labelled mock', () => {
     const st = getProviderStatuses({ env: {} });
-    expect(st.map((s) => s.id)).toEqual(['anthropic', 'buffer', 'n8n', 'google-sheets']);
+    expect(st.map((s) => s.id)).toEqual(['anthropic', 'buffer', 'n8n', 'google-sheets', 'instagram']);
     for (const s of st) {
       expect(s.configured).toBe(false);
       expect(s.mode).toBe('mock');

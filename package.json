@@ -21,6 +21,7 @@
     "dev": "npm run dev -w @rj/mission-control",
     "start": "npm run start -w @rj/mission-control",
     "series": "tsx packages/series-engine/src/cli.ts",
+    "publish": "tsx apps/worker/src/publish-cli.ts",
     "methods": "tsx packages/research-engine/src/cli.ts"
   },
   "devDependencies": {
