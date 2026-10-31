@@ -15,3 +15,6 @@ backups/
 assets/footage/nl/*
 !assets/footage/nl/.gitkeep
 output/reports/*.zip
+
+# Story stills are large (grain); rebuild with: npm run stories -- build
+output/stories/*/*.png

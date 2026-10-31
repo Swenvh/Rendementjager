@@ -9,6 +9,9 @@ import { TemplateCPlain } from './templates/TemplateCPlain';
 import { TemplateA, TemplateB } from './templates/TemplateAB';
 import { TemplateC } from './templates/TemplateC';
 import { CoverC } from './templates/Cover';
+import { Story, defaultStory } from './templates/Story';
+import { storyFrameSchema } from './stories/schema';
+import { STORY } from './stories/layout';
 
 // Duration follows the props timeline (which follows the measured voice-over).
 const fromTimeline: CalculateMetadataFunction<{ timeline: { totalMs: number } }> = ({ props }) => ({
@@ -33,6 +36,9 @@ export const RemotionRoot: React.FC = () => (
     </Folder>
     <Folder name="Covers">
       <Still id="CoverC" component={CoverC} schema={templateCSchema} defaultProps={defaultTemplateC} width={reel.width} height={reel.height} />
+    </Folder>
+    <Folder name="Stories">
+      <Still id="Story" component={Story} schema={storyFrameSchema} defaultProps={defaultStory} width={STORY.width} height={STORY.height} />
     </Folder>
   </>
 );

@@ -27,7 +27,8 @@
     "dataset": "tsx packages/video-engine/scripts/dataset.ts",
     "reels:rebuild": "tsx packages/video-engine/scripts/rebuild.ts",
     "ideas": "tsx packages/series-engine/src/ideas-cli.ts",
-    "concepts:package": "tsx packages/video-engine/scripts/package-concepts.ts"
+    "concepts:package": "tsx packages/video-engine/scripts/package-concepts.ts",
+    "stories": "tsx packages/video-engine/scripts/stories.ts"
   },
   "devDependencies": {
     "@types/node": "26.6.5",
